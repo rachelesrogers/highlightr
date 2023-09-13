@@ -1,9 +1,9 @@
-#' Title
+#' Transcript Cleaning Function
 #'
-#' @param transcript
-#' @param breaks
+#' @param transcript transcript document to be read
+#' @param breaks types of breaks between lines
 #'
-#' @return
+#' @return the poems grouped by words
 #' @export
 #'
 #' @examples
