@@ -1,13 +1,13 @@
-#' Creating plot object based on collocation counts
+#' Map collocation to ggplot object
 #'
-#' @param frequency_doc document of collocation frequencies
-#' @param n_scenario number of scenarios in which transcript occurs (used for weights)
+#' @param frequency_doc document of frequencies (returned from transcript_frequency)
+#' @param n_scenario number of scenarios for which this transcript appeared
 #'
-#' @return plot object
+#' @return list of plot, plot object, and frequency
 #' @export
 #'
 #' @examples
-collocate_plot <- function(frequency_doc,n_scenario=1){
+collocation_plot <- function(frequency_doc,n_scenario=1){
   frequency_doc[is.na(frequency_doc$Freq),]$Freq <- 0
   xlimit<-max(frequency_doc$x_coord)+5
 
@@ -15,7 +15,7 @@ collocate_plot <- function(frequency_doc,n_scenario=1){
   frequency_doc$frequency<- frequency_doc$Freq/n_scenario
 
   #Using ggplot to establish gradient
-  p <- ggplot(frequency_doc, aes(x=x_coord, y=stanza_line, label=words))+
+  p <- ggplot(frequency_doc, aes(x=x_coord, y=1, label=words))+
     geom_text(hjust="left", size=5, aes(alpha=frequency, color=frequency))+
     scale_y_reverse()+
     xlim(c(1, xlimit))+
@@ -32,6 +32,6 @@ collocate_plot <- function(frequency_doc,n_scenario=1){
 
   p_obj <- ggplot_build(p)
 
-  plot_vars<- list(plot = p, build = p_obj, freq=frequency_doc %>% select(words, frequency, x_coord, stanza_line))
+  plot_vars<- list(plot = p, build = p_obj, freq=frequency_doc %>% select(words, frequency, x_coord))
   return(plot_vars)
 }

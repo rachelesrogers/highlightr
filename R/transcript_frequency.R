@@ -1,36 +1,31 @@
-#' Counts frequency of collocations within the transcript itself
+#' Mapping Collocation Frequency to Transcript Document
 #'
-#' @param filelocation location of transcript file
-#' @param page_number page number of transcript under consideration
-#' @param collocate_object collocated comments from collocate_comments or collocate_comments_fuzzy
+#' @param transcript transcript document
+#' @param collocate_object collocation object (returned from collocate_comments_fuzzy)
 #'
-#' @return
+#' @return a dataframe of the transcript document with collocation values
 #' @export
 #'
 #' @examples
-transcript_frequency <- function(filelocation, page_number, collocate_object){
-  descript_words <- transcript_cleaning(readLines(filelocation), breaks="quote")
+transcript_frequency <- function(transcript, collocate_object){
+  descript_words <- transcript_cleaning(transcript$Transcript_prompts)
 
-  descript_words_tomerge <- descript_words[descript_words$stanza== page_number,]
+  descript_words[descript_words$words %in% c("-"," ", "Narrator:", "Court:", "Pros:",
+                                             "Fire:", "Def:"), ]$to_merge<-""
 
-  descript_words_tomerge[descript_words_tomerge$words %in% c("-"," ","Q:","A:","Court:","Defense:","Prosecution:","\"Q:"), ]$to_merge<-""
-  #descript_words_tomerge[descript_words_tomerge$lines=="Test-fired bullets admitted into evidence---", ]$to_merge<-""
-
-  descript_words_tomerge_filtered <- descript_words_tomerge # %>% filter(!(words %in% c("-"," ","Q:","A:","Court:","Defense:","Prosecution:","\"Q:")))
-
-  descript_words_tomerge_filtered$word_number<-NA
-  descript_words_tomerge_filtered[descript_words_tomerge_filtered$to_merge!="",]$word_number <-
-    seq(from=1, to=dim(descript_words_tomerge_filtered[descript_words_tomerge_filtered$to_merge!="",])[1])
+  descript_words$word_number<-NA
+  descript_words[descript_words$to_merge!="",]$word_number <-
+    seq(from=1, to=dim(descript_words[descript_words$to_merge!="",])[1])
 
   collocate_object$to_merge <- gsub("'","",collocate_object$to_merge)
   collocate_object$to_merge <- gsub("\\.","",collocate_object$to_merge)
   collocate_object$to_merge <- gsub("-","",collocate_object$to_merge)
 
-  merged <- left_join(descript_words_tomerge_filtered, collocate_object, by=c("word_number","to_merge"))
+  merged <- left_join(descript_words, collocate_object, by=c("word_number","to_merge"))
 
   merged$Freq <- rowSums(merged[,c("col_1","col_2","col_3","col_4","col_5")], na.rm=TRUE)/rowSums(!is.na(merged[,c("col_1","col_2","col_3","col_4","col_5")]))
 
-  merged_final<- left_join(descript_words_tomerge, merged)
+  merged_final<- left_join(descript_words, merged)
 
   return(merged_final)
 }

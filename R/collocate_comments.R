@@ -1,16 +1,15 @@
-#' Collocation Counts
+#' Collocation of Comments
 #'
-#' @param transcript_token tokenized transcript document
-#' @param page_number transcript page number to be considered
-#' @param note_token tokenized note document
+#' @param transcript_token transcript token to act as baseline for notes
+#' @param note_token tokenized document of notes
 #'
-#' @return dataframe with collocation counts
+#' @return data frame of transcript and corresponding note frequency
 #' @export
 #'
 #' @examples
-collocate_comments <- function(transcript_token, page_number, note_token){
+collocate_comments <- function(transcript_token, note_token){
   #Creating ngrams of length 5
-  descript_ngrams <- tokens_ngrams(transcript_token[page_number], n = 5L, skip = 0L, concatenator = " ")
+  descript_ngrams <- tokens_ngrams(transcript_token, n = 5L, skip = 0L, concatenator = " ")
   descript_ngram_df <- data.frame(tolower(unlist(descript_ngrams)))
   rel_freq <-as.data.frame(table(descript_ngram_df)) #calculating frequency of ngrams
   descript_ngram_df <- left_join(descript_ngram_df, rel_freq) #binding frequency to collocations

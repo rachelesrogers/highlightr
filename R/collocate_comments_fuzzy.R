@@ -1,16 +1,15 @@
-#' Collocation Counts including Fuzzy Matches
+#' Collocate Comments Fuzzy
 #'
-#' @param transcript_token tokenized transcript document
-#' @param page_number page number of the transcript
-#' @param note_token tokenized note document
+#' @param transcript_token transcript token to act as baseline for notes
+#' @param note_token tokenized document of notes
 #'
-#' @return collocation counts with fuzzy matches
+#' @return data frame of transcript and corresponding note frequency
 #' @export
 #'
 #' @examples
-collocate_comments_fuzzy <- function(transcript_token, page_number, note_token){
+collocate_comments_fuzzy <- function(transcript_token, note_token){
   #Same as previous notes
-  descript_ngrams <- tokens_ngrams(transcript_token[page_number], n = 5L, skip = 0L, concatenator = " ")
+  descript_ngrams <- tokens_ngrams(transcript_token, n = 5L, skip = 0L, concatenator = " ")
   descript_ngram_df <- data.frame(tolower(unlist(descript_ngrams)))
   rel_freq <-as.data.frame(table(descript_ngram_df))
   descript_ngram_df <- left_join(descript_ngram_df, rel_freq)
