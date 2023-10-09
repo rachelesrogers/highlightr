@@ -8,11 +8,12 @@
 #'
 #' @examples
 collocate_comments <- function(transcript_token, note_token){
+  `%>%` <- magrittr::`%>%`
   #Creating ngrams of length 5
-  descript_ngrams <- tokens_ngrams(transcript_token, n = 5L, skip = 0L, concatenator = " ")
+  descript_ngrams <- quanteda::tokens_ngrams(transcript_token, n = 5L, skip = 0L, concatenator = " ")
   descript_ngram_df <- data.frame(tolower(unlist(descript_ngrams)))
   rel_freq <-as.data.frame(table(descript_ngram_df)) #calculating frequency of ngrams
-  descript_ngram_df <- left_join(descript_ngram_df, rel_freq) #binding frequency to collocations
+  descript_ngram_df <- dplyr::left_join(descript_ngram_df, rel_freq) #binding frequency to collocations
   names(descript_ngram_df) <- c("collocation", "transcript_freq")
 
   # numbering words in the collocation
@@ -27,15 +28,15 @@ collocate_comments <- function(transcript_token, note_token){
   #descript_ngram_df$collocation <- map_df(descript_ngram_df$collocation, ~ gsub("-","",.x))
 
   #getting collocations from notes
-  col_descript <- note_token %>% textstat_collocations(min_count = 1, size=5)
+  col_descript <- note_token %>% quanteda.textstats::textstat_collocations(min_count = 1, size=5)
   #col_descript$collocation <- tolower(col_descript$collocation)
 
-  col_merged_descript <- left_join(descript_ngram_df, col_descript)
+  col_merged_descript <- dplyr::left_join(descript_ngram_df, col_descript)
 
   #replacing na's with 0's
   col_merged_descript$count <- replace(col_merged_descript$count,is.na(col_merged_descript$count),0)
 
-  col_descript_long <- col_merged_descript %>%  pivot_longer(cols = 3:7,
+  col_descript_long <- col_merged_descript %>%  tidyr::pivot_longer(cols = 3:7,
                                                              names_to = "col_number",
                                                              names_prefix = "word_",
                                                              values_to = "word_number"
@@ -43,8 +44,8 @@ collocate_comments <- function(transcript_token, note_token){
   #calculating relative frequency based on number of times colloactions occur
   col_descript_long$rel_freq <- col_descript_long$count/col_descript_long$transcript_freq
 
-  descript_tomerge <- col_descript_long %>% select(rel_freq, col_number, word_number) %>%
-    pivot_wider(names_from = col_number, values_from = rel_freq, names_prefix = "col_")
+  descript_tomerge <- col_descript_long %>% dplyr::select(rel_freq, col_number, word_number) %>%
+    tidyr::pivot_wider(names_from = col_number, values_from = rel_freq, names_prefix = "col_")
 
   return(descript_tomerge)
 

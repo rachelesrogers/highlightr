@@ -20,11 +20,11 @@ transcript_frequency <- function(transcript, collocate_object){
   collocate_object$to_merge <- gsub("\\.","",collocate_object$to_merge)
   collocate_object$to_merge <- gsub("-","",collocate_object$to_merge)
 
-  merged <- left_join(descript_words, collocate_object, by=c("word_number","to_merge"))
+  merged <- dplyr::left_join(descript_words, collocate_object, by=c("word_number","to_merge"))
 
   merged$Freq <- rowSums(merged[,c("col_1","col_2","col_3","col_4","col_5")], na.rm=TRUE)/rowSums(!is.na(merged[,c("col_1","col_2","col_3","col_4","col_5")]))
 
-  merged_final<- left_join(descript_words, merged)
+  merged_final<- dplyr::left_join(descript_words, merged)
 
   return(merged_final)
 }

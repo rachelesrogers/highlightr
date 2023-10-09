@@ -9,23 +9,25 @@
 
 
 transcript_cleaning <- function(transcript){
+  `%>%` <- magrittr::`%>%`
   # Code from Dr. Vanderplas' 850 class
-  poem <- tibble(lines = transcript) %>%
+  poem <- tibble::tibble(lines = transcript) %>%
     # This looks for a letter + a space (of any sort, so an end-line counts) or
     # punctuation (last word of a line ends with e.g. a period or comma)
-    mutate(n_words = str_count(lines, "([A-z][[:space:][:punct:]])"))
+    dplyr::mutate(n_words = stringr::str_count(lines, "([A-z][[:space:][:punct:]])"))
 
   poem$lines <- gsub("/"," ",  poem$lines)
   poem$lines <- gsub("<.*?>", "", poem$lines)
-  poem$lines <- poem$lines  %>% str_replace("<center>", "")  %>% str_replace("---","") # %>%
+  poem$lines <- poem$lines  %>% stringr::str_replace("<center>", "")  %>%
+    stringr::str_replace("---","")
 
   poem_words <- poem %>%
-    mutate(words = str_split(lines, "[[:space:]]", simplify = F)) %>%
-    unnest(c(words)) %>%
+    dplyr::mutate(words = stringr::str_split(lines, "[[:space:]]", simplify = F)) %>%
+    tidyr::unnest(c(words)) %>%
     # Require words to have some non-space character
-    filter(nchar(str_trim(words)) > 0) %>%
-    filter(!(words %in% c("<br", "><br", ">"))) %>%
-    mutate(word_num = 1:n())
+    dplyr::filter(nchar(stringr::str_trim(words)) > 0) %>%
+    dplyr::filter(!(words %in% c("<br", "><br", ">"))) %>%
+    dplyr::mutate(word_num = 1:n())
 
   # Removing html break marks
   poem_words$words<-gsub("</br>","", poem_words$words)
@@ -45,14 +47,14 @@ transcript_cleaning <- function(transcript){
     }
   }
   poem_words$to_merge<- tolower(poem_words$words)
-  poem_words$to_merge<-removePunctuation(poem_words$to_merge)
+  poem_words$to_merge<- tm::removePunctuation(poem_words$to_merge)
 
   group_exp <- poem_words %>%
-    group_by(to_merge) %>%
-    summarize(stanza_freq=n()) %>%
-    ungroup()
+    dplyr::group_by(to_merge) %>%
+    dplyr::summarize(stanza_freq=n()) %>%
+    dplyr::ungroup()
 
-  poem_words <- right_join(poem_words, group_exp)
+  poem_words <- dplyr::right_join(poem_words, group_exp)
 
 
   return(poem_words)
