@@ -25,19 +25,7 @@ highlighted_text <- function(plot_object, descript){
   #Get color from ggplot object, and paste css code together to print colors
   for (i in 1:length(page_df$colour)){
     page_df$rgb[i] <- paste(as.vector(col2rgb(page_df$colour[i])), collapse = ", ")
-    if (page_df$label[i] %in% c("Narrator:","Pros:","Def:","Court:","Fire:")){
-      page_df$word_assign[i] <- paste("<br/><div style=\"display: inline-block; padding:0px;
-  margin-left:-5px \">",page_df$label[i],"&nbsp;","</div>", sep="")
-    } else if (i==2){
-      page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i],",",page_df$colour[i],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
-    }else if (page_df$label[i+1] %in% c("Narrator:","Pros:","Def:","Court:","Fire:") & page_df$x[i]==1){
-      page_df$word_assign[i] <- paste("<br/> <div style=\"display: inline-block; padding:0px;
-  margin-left:-5px \">",page_df$label[i],"&nbsp;","</div>", sep="")
-    } else if (page_df$label[i-1] %in% c("Narrator:","Pros:","Def:","Court:","Fire:")){
-      page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i-2],",",page_df$colour[i],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
-    }else if (page_df$label[i] =="-"){
+    if (page_df$label[i] =="-"){
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i-1],",",page_df$colour[i+1],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
     }else if (page_df$label[i-1] =="-"){

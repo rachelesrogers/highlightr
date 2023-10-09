@@ -10,8 +10,7 @@
 transcript_frequency <- function(transcript, collocate_object){
   descript_words <- transcript_cleaning(transcript$Transcript_prompts)
 
-  descript_words[descript_words$words %in% c("-"," ", "Narrator:", "Court:", "Pros:",
-                                             "Fire:", "Def:"), ]$to_merge<-""
+  descript_words[descript_words$words %in% c("-"," "), ]$to_merge<-""
 
   descript_words$word_number<-NA
   descript_words[descript_words$to_merge!="",]$word_number <-
