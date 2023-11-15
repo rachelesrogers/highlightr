@@ -6,6 +6,16 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
+This package can be used to create a highlighted source document based
+on the frequency of phrases found in single or multiple note sheets. The
+goal of this method is to indicate the portions of the source document
+that individuals felt was most worth copying into notes, based on phrase
+frequency. The inputs necessary for this procedure are a notes document
+and a source document. The output will be HTML code for generating the
+highlighted text.
+
+## Acknowledgements
+
 This work was funded (or partially funded) by the Center for Statistics
 and Applications in Forensic Evidence (CSAFE) through Cooperative
 Agreements 70NANB15H176 and 70NANB20H019 between NIST and Iowa State
