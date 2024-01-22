@@ -27,7 +27,7 @@ transcript_cleaning <- function(transcript){
     # Require words to have some non-space character
     dplyr::filter(nchar(stringr::str_trim(words)) > 0) %>%
     dplyr::filter(!(words %in% c("<br", "><br", ">"))) %>%
-    dplyr::mutate(word_num = 1:n())
+    dplyr::mutate(word_num = 1:dplyr::n())
 
   # Removing html break marks
   poem_words$words<-gsub("</br>","", poem_words$words)
@@ -51,7 +51,7 @@ transcript_cleaning <- function(transcript){
 
   group_exp <- poem_words %>%
     dplyr::group_by(to_merge) %>%
-    dplyr::summarize(stanza_freq=n()) %>%
+    dplyr::summarize(stanza_freq=dplyr::n()) %>%
     dplyr::ungroup()
 
   poem_words <- dplyr::right_join(poem_words, group_exp)

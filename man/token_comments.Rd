@@ -15,3 +15,6 @@ tokenized comments
 \description{
 Tokenize comments
 }
+\examples{
+toks_comment <- token_comments(comment_example)
+}

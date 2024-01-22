@@ -5,12 +5,12 @@
 #' @return a tokenized object
 #' @export
 #'
-#' @example
+#' @example transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+#' toks_transcript <- token_transcript(transcript_example_rename)
 
 token_transcript <- function(transcript_file){
   `%>%` <- magrittr::`%>%`
-  description_df <- transcript_file %>% dplyr::select(Page, Transcript) %>%
-    dplyr::rename("docid"="Page", "text"="Transcript")
+  description_df <- transcript_file
   description_df <- purrr::map_df(description_df, ~ gsub("<.*?>", "", .x)) #removing all html expressions
   description_df <- purrr::map_df(description_df, ~ gsub("\\\\n", "", .x)) #removing line breaks
 

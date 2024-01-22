@@ -6,7 +6,15 @@
 #' @return css code for highlighted text
 #' @export
 #'
-#' @examples
+#' @examples comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+#' toks_comment <- token_comments(comment_example_rename)
+#' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+#' toks_transcript <- token_transcript(transcript_example_rename)
+#' collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+#' merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
+#' freq_plot <- collocation_plot(merged_frequency)
+#' page_highlight <- highlighted_text(freq_plot, merged_frequency)
+
 highlighted_text <- function(plot_object, descript){
   `%>%` <- magrittr::`%>%`
   page_df<-plot_object$build$data[[1]]
@@ -25,10 +33,13 @@ highlighted_text <- function(plot_object, descript){
   #Get color from ggplot object, and paste css code together to print colors
   for (i in 1:length(page_df$colour)){
     # page_df$rgb[i] <- paste(as.vector(col2rgb(page_df$colour[i])), collapse = ", ")
-    if (page_df$label[i] =="-"){
+    if (i == 1){
+      page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i-1],",",page_df$colour[i],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
+    }else if (page_df$label[i] =="-"){
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i-1],",",page_df$colour[i+1],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
-    }else if (page_df$label[i-1] =="-"){
+    }else if (page_df$label[i-1] %in% "-"){
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i],",",page_df$colour[i],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
     }else{

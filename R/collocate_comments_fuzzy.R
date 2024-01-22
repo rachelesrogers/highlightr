@@ -6,7 +6,12 @@
 #' @return data frame of transcript and corresponding note frequency
 #' @export
 #'
-#' @examples
+#' @examples comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+#' toks_comment <- token_comments(comment_example_rename)
+#' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+#' toks_transcript <- token_transcript(transcript_example_rename)
+#' collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+
 collocate_comments_fuzzy <- function(transcript_token, note_token){
   `%>%` <- magrittr::`%>%`
   #Same as previous notes
@@ -47,7 +52,7 @@ collocate_comments_fuzzy <- function(transcript_token, note_token){
     dplyr::slice_min(order_by=dist, n=1) #finding the closest match
   #counting the number of closest matches per collocation
   close_freq<-as.data.frame(table(fuzzy_matches$collocation.y))
-  close_freq <- close_freq %>% rename("collocation.y"="Var1", "close_freq"="Freq")
+  close_freq <- close_freq %>% dplyr::rename("collocation.y"="Var1", "close_freq"="Freq")
 
   fuzzy_matches <- dplyr::left_join(fuzzy_matches, close_freq)
 

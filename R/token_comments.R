@@ -5,7 +5,8 @@
 #' @return tokenized comments
 #' @export
 #'
-#' @examples
+#' @examples comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+#' toks_comment <- token_comments(comment_example_rename)
 
 token_comments <- function(comment_document){
 
