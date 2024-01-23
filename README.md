@@ -78,7 +78,7 @@ page_highlight
 </div>
 
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,,#FEE95A) ">
+  margin-left:-5px; background: linear-gradient(to right,#FEE95A,#FEE95A) ">
 
 In 
 
