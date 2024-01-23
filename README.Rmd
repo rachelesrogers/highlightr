@@ -54,4 +54,7 @@ page_highlight <- highlighted_text(freq_plot, merged_frequency)
 
 ```
 
-`r page_highlight`
+```{r results='asis'}
+page_highlight
+
+```
