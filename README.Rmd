@@ -16,8 +16,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-# highlightr
-
 <!-- badges: start -->
 <!-- badges: end -->
 

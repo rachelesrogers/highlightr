@@ -2,9 +2,6 @@
 # highlightr <a href="https://rachelesrogers.github.io/highlightr/"><img src="man/figures/logo.png" align="right" height="139" alt="highlightr website" /></a>
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# highlightr
-
 <!-- badges: start -->
 <!-- badges: end -->
 
