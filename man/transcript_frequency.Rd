@@ -17,3 +17,11 @@ a dataframe of the transcript document with collocation values
 \description{
 Mapping Collocation Frequency to Transcript Document
 }
+\examples{
+comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+toks_comment <- token_comments(comment_example_rename)
+transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+toks_transcript <- token_transcript(transcript_example_rename)
+collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
+}

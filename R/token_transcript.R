@@ -5,7 +5,7 @@
 #' @return a tokenized object
 #' @export
 #'
-#' @example transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+#' @examples transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 #' toks_transcript <- token_transcript(transcript_example_rename)
 
 token_transcript <- function(transcript_file){

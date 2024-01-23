@@ -15,3 +15,7 @@ a tokenized object
 \description{
 Tokenize Transcript
 }
+\examples{
+transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+toks_transcript <- token_transcript(transcript_example_rename)
+}

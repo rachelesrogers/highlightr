@@ -16,5 +16,6 @@ tokenized comments
 Tokenize comments
 }
 \examples{
-toks_comment <- token_comments(comment_example)
+comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+toks_comment <- token_comments(comment_example_rename)
 }
