@@ -7,7 +7,7 @@
 token_transcript(transcript_file)
 }
 \arguments{
-\item{filelocation}{data frame of the transcript}
+\item{transcript_file}{data frame of the transcript}
 }
 \value{
 a tokenized object

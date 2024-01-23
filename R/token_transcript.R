@@ -1,6 +1,6 @@
 #' Tokenize Transcript
 #'
-#' @param filelocation data frame of the transcript
+#' @param transcript_file data frame of the transcript
 #'
 #' @return a tokenized object
 #' @export
