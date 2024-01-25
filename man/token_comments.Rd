@@ -7,7 +7,8 @@
 token_comments(comment_document)
 }
 \arguments{
-\item{comment_document}{document containing comments}
+\item{comment_document}{document containing notes by individual, where the
+column containing the notes is named page_notes}
 }
 \value{
 tokenized comments

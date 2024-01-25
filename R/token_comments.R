@@ -3,7 +3,8 @@
 #' This function tokenizes comments that are to be used in [collocate_comments_fuzzy()]
 #' or [collocate_comments()]
 #'
-#' @param comment_document document containing comments
+#' @param comment_document document containing notes by individual, where the
+#' column containing the notes is named page_notes
 #'
 #' @return tokenized comments
 #' @export

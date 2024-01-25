@@ -3,7 +3,8 @@
 #' This function tokenizes a transcript document that is to be used in
 #' [collocate_comments_fuzzy()] or [collocate_comments()]
 #'
-#' @param transcript_file data frame of the transcript
+#' @param transcript_file data frame of the transcript, where the transcript text
+#' is in a column named text.
 #'
 #' @return a tokenized object
 #' @export

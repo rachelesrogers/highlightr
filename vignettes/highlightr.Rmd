@@ -14,13 +14,49 @@ knitr::opts_chunk$set(
 )
 ```
 
+This package is designed to map a group of individuals' notes to the corresponding parent text, based on the frequency with which phrases occur in the individual notes.
+The parent text is highlighted corresponding to this frequency, in order to create a 'heatmap' of popular phrases found in the note sheets.
+
+This example is taken from the initial description of a crime used in a study of jury perception of algorithm use and demonstrative evidence.
+
+The first step is to re-assign names in the notepad text to correspond with the expected format used in [token_comments()] and use the function to tokenize the comments.
 ```{r, message=FALSE}
 library(highlightr)
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+
 toks_comment <- token_comments(comment_example_rename)
+```
+
+The next step is to tokenize the transcript in a similar manner.
+
+```{r, message=FALSE}
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+
 toks_transcript <- token_transcript(transcript_example_rename)
+```
+
+After that, a fuzzy collocation is used to match the tokenized notes to the phrases in the tokenized transcript.
+This function first determines the number of times a collocation of length 5 occurs in participant notes.
+Fuzzy (or indirect) matches are then added to the frequency count of the transcript collocation that is the closest match.
+These fuzzy matches are weighted based on the edit distance between the transcript collocation and the indirect phrase:
+$$
+\frac{n}{(d + 0.25)*m}
+$$
+
+Here, $n$ is the frequency of the fuzzy collocation, $d$ is the distance between the fuzzy collocation and the transcript collocation, and $m$ is the number of closest matches for the fuzzy collocation.
+
+```{r, message=FALSE}
 collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+
+head(collocation_object)
+
+```
+The output assigns the frequency of each collocation to each word that occurs in that collocation.
+For example, the first collocation in the description is `r collocation_object$collocation[1]`, which occurs with a frequency of `r round(collocation_object$col_1[1], 2)`.
+This is the only collocation in which the first word will appear, so this is the only collocation value provided for the first word.
+The second word, `r collocation_object$to_merge[2]` appears in the next collocation as well: `r collocation_object$collocation[2]`, whose frequency is `r round(collocation_object$col_1[2],2)`, and so on for all words in the description.
+
+```{r, message=FALSE}
 merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
 freq_plot <- collocation_plot(merged_frequency)
 page_highlight <- highlighted_text(freq_plot, merged_frequency)
