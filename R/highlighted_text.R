@@ -3,7 +3,7 @@
 #' Adds html tags to create a highlighted testimony corresponding to word frequency.
 #'
 #' @param plot_object plot object resulting from [collocation_plot()]
-#' @param descript collocation frequency document resulting from transcript_frequency
+#' @param descript collocation frequency document resulting from [transcript_frequency()]
 #'
 #' @return html code for highlighted text
 #' @export

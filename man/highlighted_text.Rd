@@ -9,7 +9,7 @@ highlighted_text(plot_object, descript)
 \arguments{
 \item{plot_object}{plot object resulting from \code{\link[=collocation_plot]{collocation_plot()}}}
 
-\item{descript}{collocation frequency document resulting from transcript_frequency}
+\item{descript}{collocation frequency document resulting from \code{\link[=transcript_frequency]{transcript_frequency()}}}
 }
 \value{
 html code for highlighted text
