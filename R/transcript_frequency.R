@@ -1,7 +1,11 @@
 #' Mapping Collocation Frequency to Transcript Document
 #'
+#' This function connects the collocation frequency calculated in
+#' [collocate_comments_fuzzy()] to the base transcript.
+#'
 #' @param transcript transcript document
-#' @param collocate_object collocation object (returned from collocate_comments_fuzzy)
+#' @param collocate_object collocation object (returned
+#' from [collocate_comments_fuzzy()])
 #'
 #' @return a dataframe of the transcript document with collocation values
 #' @export

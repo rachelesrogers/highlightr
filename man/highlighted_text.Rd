@@ -7,15 +7,15 @@
 highlighted_text(plot_object, descript)
 }
 \arguments{
-\item{plot_object}{plot object resulting from collocation_plot}
+\item{plot_object}{plot object resulting from \code{\link[=collocation_plot]{collocation_plot()}}}
 
 \item{descript}{collocation frequency document resulting from transcript_frequency}
 }
 \value{
-css code for highlighted text
+html code for highlighted text
 }
 \description{
-Create Highlighted Testimony
+Adds html tags to create a highlighted testimony corresponding to word frequency.
 }
 \examples{
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)

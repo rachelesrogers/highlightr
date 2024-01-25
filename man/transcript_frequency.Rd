@@ -9,13 +9,15 @@ transcript_frequency(transcript, collocate_object)
 \arguments{
 \item{transcript}{transcript document}
 
-\item{collocate_object}{collocation object (returned from collocate_comments_fuzzy)}
+\item{collocate_object}{collocation object (returned
+from \code{\link[=collocate_comments_fuzzy]{collocate_comments_fuzzy()}})}
 }
 \value{
 a dataframe of the transcript document with collocation values
 }
 \description{
-Mapping Collocation Frequency to Transcript Document
+This function connects the collocation frequency calculated in
+\code{\link[=collocate_comments_fuzzy]{collocate_comments_fuzzy()}} to the base transcript.
 }
 \examples{
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)

@@ -13,7 +13,8 @@ token_transcript(transcript_file)
 a tokenized object
 }
 \description{
-Tokenize Transcript
+This function tokenizes a transcript document that is to be used in
+\code{\link[=collocate_comments_fuzzy]{collocate_comments_fuzzy()}} or \code{\link[=collocate_comments]{collocate_comments()}}
 }
 \examples{
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)

@@ -1,5 +1,8 @@
 #' Tokenize Transcript
 #'
+#' This function tokenizes a transcript document that is to be used in
+#' [collocate_comments_fuzzy()] or [collocate_comments()]
+#'
 #' @param transcript_file data frame of the transcript
 #'
 #' @return a tokenized object

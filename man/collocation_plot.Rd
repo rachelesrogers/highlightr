@@ -7,7 +7,8 @@
 collocation_plot(frequency_doc, n_scenario = 1)
 }
 \arguments{
-\item{frequency_doc}{document of frequencies (returned from transcript_frequency)}
+\item{frequency_doc}{document of frequencies (returned from
+\code{\link[=transcript_frequency]{transcript_frequency()}})}
 
 \item{n_scenario}{number of scenarios for which this transcript appeared}
 }
@@ -15,7 +16,7 @@ collocation_plot(frequency_doc, n_scenario = 1)
 list of plot, plot object, and frequency
 }
 \description{
-Map collocation to ggplot object
+This assigns colors based on frequency to the words in the transcript.
 }
 \examples{
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)

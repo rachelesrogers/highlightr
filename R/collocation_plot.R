@@ -1,6 +1,9 @@
 #' Map collocation to ggplot object
 #'
-#' @param frequency_doc document of frequencies (returned from transcript_frequency)
+#' This assigns colors based on frequency to the words in the transcript.
+#'
+#' @param frequency_doc document of frequencies (returned from
+#' [transcript_frequency()])
 #' @param n_scenario number of scenarios for which this transcript appeared
 #'
 #' @return list of plot, plot object, and frequency

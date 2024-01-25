@@ -13,7 +13,8 @@ token_comments(comment_document)
 tokenized comments
 }
 \description{
-Tokenize comments
+This function tokenizes comments that are to be used in \code{\link[=collocate_comments_fuzzy]{collocate_comments_fuzzy()}}
+or \code{\link[=collocate_comments]{collocate_comments()}}
 }
 \examples{
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)

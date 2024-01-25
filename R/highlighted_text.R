@@ -1,9 +1,11 @@
 #' Create Highlighted Testimony
 #'
-#' @param plot_object plot object resulting from collocation_plot
+#' Adds html tags to create a highlighted testimony corresponding to word frequency.
+#'
+#' @param plot_object plot object resulting from [collocation_plot()]
 #' @param descript collocation frequency document resulting from transcript_frequency
 #'
-#' @return css code for highlighted text
+#' @return html code for highlighted text
 #' @export
 #'
 #' @examples comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
