@@ -1,5 +1,8 @@
 #' Collocate Comments Fuzzy
 #'
+#' This function provides the frequency of collocations in comments that
+#' correspond to the provided transcript, using fuzzy matching.
+#'
 #' @param transcript_token transcript token to act as baseline for notes
 #' @param note_token tokenized document of notes
 #'

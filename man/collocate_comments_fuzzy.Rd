@@ -15,7 +15,8 @@ collocate_comments_fuzzy(transcript_token, note_token)
 data frame of transcript and corresponding note frequency
 }
 \description{
-Collocate Comments Fuzzy
+This function provides the frequency of collocations in comments that
+correspond to the provided transcript, using fuzzy matching.
 }
 \examples{
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
