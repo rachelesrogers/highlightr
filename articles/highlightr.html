@@ -74,18 +74,68 @@
 
     
     
+<p>This package is designed to map a group of individuals’ notes to the
+corresponding parent text, based on the frequency with which phrases
+occur in the individual notes. The parent text is highlighted
+corresponding to this frequency, in order to create a ‘heatmap’ of
+popular phrases found in the note sheets.</p>
+<p>This example is taken from the initial description of a crime used in
+a study of jury perception of algorithm use and demonstrative
+evidence.</p>
+<p>The first step is to re-assign names in the notepad text to
+correspond with the expected format used in [token_comments()] and use
+the function to tokenize the comments.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rachelesrogers.github.io/highlightr/">highlightr</a></span><span class="op">)</span></span>
 <span><span class="va">comment_example_rename</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">comment_example</span>, page_notes<span class="op">=</span><span class="va">Notes</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">toks_comment</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/token_comments.html">token_comments</a></span><span class="op">(</span><span class="va">comment_example_rename</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in .recacheSubclasses(def@className, def, env): undefined subclass</span></span>
-<span><span class="co">#&gt; "ndiMatrix" of class "replValueSp"; definition not updated</span></span>
-<span><span class="va">transcript_example_rename</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">transcript_example</span>, text<span class="op">=</span><span class="va">Text</span><span class="op">)</span></span>
-<span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/token_transcript.html">token_transcript</a></span><span class="op">(</span><span class="va">transcript_example_rename</span><span class="op">)</span></span>
-<span><span class="va">collocation_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
+<span><span class="co">#&gt; "ndiMatrix" of class "replValueSp"; definition not updated</span></span></code></pre></div>
+<p>The next step is to tokenize the transcript in a similar manner.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">transcript_example_rename</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">transcript_example</span>, text<span class="op">=</span><span class="va">Text</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/token_transcript.html">token_transcript</a></span><span class="op">(</span><span class="va">transcript_example_rename</span><span class="op">)</span></span></code></pre></div>
+<p>After that, a fuzzy collocation is used to match the tokenized notes
+to the phrases in the tokenized transcript. This function first
+determines the number of times a collocation of length 5 occurs in
+participant notes. Fuzzy (or indirect) matches are then added to the
+frequency count of the transcript collocation that is the closest match.
+These fuzzy matches are weighted based on the edit distance between the
+transcript collocation and the indirect phrase: <span class="math display">\[
+\frac{n}{(d + 0.25)*m}
+\]</span></p>
+<p>Here, <span class="math inline">\(n\)</span> is the frequency of the
+fuzzy collocation, <span class="math inline">\(d\)</span> is the
+distance between the fuzzy collocation and the transcript collocation,
+and <span class="math inline">\(m\)</span> is the number of closest
+matches for the fuzzy collocation.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">collocation_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in .recacheSubclasses(def@className, def, env): undefined subclass</span></span>
 <span><span class="co">#&gt; "ndiMatrix" of class "replValueSp"; definition not updated</span></span>
-<span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_rename</span>, <span class="va">collocation_object</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">collocation_object</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
+<span><span class="co">#&gt;   word_number col_1 col_2 col_3 col_4 col_5 to_merge  collocation               </span></span>
+<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>           1  6.85 <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    in        in this case the defendant</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>           2  7     6.85 <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    this      this case the defendant r…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>           3  7.44  7     6.85 <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    case      case the defendant richar…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>           4 10.1   7.44  7     6.85 <span style="color: #BB0000;">NA</span>    the       the defendant richard col…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>           5 11.4  10.1   7.44  7     6.85 defendant defendant richard cole ha…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>           6 23.0  11.4  10.1   7.44  7    richard   richard cole has been cha…</span></span></code></pre></div>
+<p>The output assigns the frequency of each collocation to each word
+that occurs in that collocation. For example, the first collocation in
+the description is in this case the defendant, which occurs with a
+frequency of 6.85. This is the only collocation in which the first word
+will appear, so this is the only collocation value provided for the
+first word. The second word, this appears in the next collocation as
+well: this case the defendant richard, whose frequency is 7, and so on
+for all words in the description.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_rename</span>, <span class="va">collocation_object</span><span class="op">)</span></span>
 <span><span class="va">freq_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span></span>
 <span><span class="va">page_highlight</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/highlighted_text.html">highlighted_text</a></span><span class="op">(</span><span class="va">freq_plot</span>, <span class="va">merged_frequency</span><span class="op">)</span></span></code></pre></div>
 <div>
