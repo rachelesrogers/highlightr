@@ -1,8 +1,8 @@
 ---
-title: "Crime Description Example"
+title: "crime-description"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Crime Description Example}
+  %\VignetteIndexEntry{crime-description}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
