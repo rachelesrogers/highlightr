@@ -54,4 +54,4 @@ page_highlight
 The below image is generated through the resulting html output (as seen
 in the vignette).
 
-<img src="man/figures/highlight_example.png" align="right" height="139" alt="highlightr example" />
+<img src="man/figures/highlight_example.PNG" align="right" height="139" alt="highlightr example" />
