@@ -7,9 +7,10 @@
 collocate_comments_fuzzy(transcript_token, note_token)
 }
 \arguments{
-\item{transcript_token}{transcript token to act as baseline for notes}
+\item{transcript_token}{transcript token to act as baseline for notes, resulting
+from \code{\link[=token_transcript]{token_transcript()}}}
 
-\item{note_token}{tokenized document of notes}
+\item{note_token}{tokenized document of notes, resulting from \code{\link[=token_comments]{token_comments()}}}
 }
 \value{
 data frame of transcript and corresponding note frequency

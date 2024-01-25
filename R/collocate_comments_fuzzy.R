@@ -3,8 +3,9 @@
 #' This function provides the frequency of collocations in comments that
 #' correspond to the provided transcript, using fuzzy matching.
 #'
-#' @param transcript_token transcript token to act as baseline for notes
-#' @param note_token tokenized document of notes
+#' @param transcript_token transcript token to act as baseline for notes, resulting
+#' from [token_transcript()]
+#' @param note_token tokenized document of notes, resulting from [token_comments()]
 #'
 #' @return data frame of transcript and corresponding note frequency
 #' @export
