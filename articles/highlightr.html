@@ -83,8 +83,9 @@ popular phrases found in the note sheets.</p>
 a study of jury perception of algorithm use and demonstrative
 evidence.</p>
 <p>The first step is to re-assign names in the notepad text to
-correspond with the expected format used in [token_comments()] and use
-the function to tokenize the comments.</p>
+correspond with the expected format used in
+<code><a href="../reference/token_comments.html">token_comments()</a></code> and use the function to tokenize the
+comments.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rachelesrogers.github.io/highlightr/">highlightr</a></span><span class="op">)</span></span>
 <span><span class="va">comment_example_rename</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">comment_example</span>, page_notes<span class="op">=</span><span class="va">Notes</span><span class="op">)</span></span>
@@ -134,9 +135,25 @@ will appear, so this is the only collocation value provided for the
 first word. The second word, “this”appears in the next collocation as
 well: this case the defendant richard, whose frequency is 7, and so on
 for all words in the description.</p>
+<p>Next, the <code><a href="../reference/transcript_frequency.html">transcript_frequency()</a></code> function attaches the
+collocation counts to the full text of the transcript. This provides
+additional information about the original formatting of the transcript
+that is needed when constructing the final object. The collocation
+frequencies are averaged per word.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_rename</span>, <span class="va">collocation_object</span><span class="op">)</span></span>
-<span><span class="va">freq_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_rename</span>, <span class="va">collocation_object</span><span class="op">)</span></span></code></pre></div>
+<p>The combined document is then fed through ggplot to assign gradient
+colors based on frequency, and the minimum and maximum values are
+recorded.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">freq_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span></span></code></pre></div>
+<p>After colors have been assigned, highlighted text is created based on
+frequency, as well as a gradient bar indicating the high and low values.
+The left side of each word gradient indicates the frequency of the
+previous word’s averaged collocation frequency, while the right side
+indicates the current word’s averaged collocation frequency.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="va">page_highlight</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/highlighted_text.html">highlighted_text</a></span><span class="op">(</span><span class="va">freq_plot</span>, <span class="va">merged_frequency</span><span class="op">)</span></span></code></pre></div>
 <div>
 0

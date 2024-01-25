@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   highlightr: highlightr.html
-last_built: 2024-01-25T20:29Z
+last_built: 2024-01-25T20:40Z
 urls:
   reference: https://rachelesrogers.github.io/highlightr/reference
   article: https://rachelesrogers.github.io/highlightr/articles
