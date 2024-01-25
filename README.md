@@ -52,6 +52,6 @@ page_highlight
 ```
 
 The below image is generated through the resulting html output (as seen
-in the `vignette("crime-description")`).
+in the `vignette("highlightr")`).
 
 <img src="man/figures/highlight_example.PNG" align="center" alt="highlightr example" />
