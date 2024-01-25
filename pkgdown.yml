@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   crime-description: crime-description.html
-last_built: 2024-01-25T16:32Z
+last_built: 2024-01-25T16:43Z
 urls:
   reference: https://rachelesrogers.github.io/highlightr/reference
   article: https://rachelesrogers.github.io/highlightr/articles
