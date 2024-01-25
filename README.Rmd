@@ -59,6 +59,6 @@ page_highlight <- highlighted_text(freq_plot, merged_frequency)
 page_highlight
 ```
 
-The below image is generated through the resulting html output (as seen in the vignette).
+The below image is generated through the resulting html output (as seen in the `vignette("crime-description")`).
 
 <img src="man/figures/highlight_example.PNG" align="center" alt="highlightr example" />
