@@ -19,3 +19,11 @@ data frame of transcript and corresponding note frequency
 This function provides the frequency of collocations in comments that
 correspond to the provided transcript.
 }
+\examples{
+comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+toks_comment <- token_comments(comment_example_rename)
+transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+toks_transcript <- token_transcript(transcript_example_rename)
+collocation_object <- collocate_comments(toks_transcript, toks_comment)
+
+}

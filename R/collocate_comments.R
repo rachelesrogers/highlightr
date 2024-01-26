@@ -10,7 +10,12 @@
 #' @return data frame of transcript and corresponding note frequency
 #' @export
 #'
-#' @examples
+#' @examples comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+#' toks_comment <- token_comments(comment_example_rename)
+#' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+#' toks_transcript <- token_transcript(transcript_example_rename)
+#' collocation_object <- collocate_comments(toks_transcript, toks_comment)
+#'
 collocate_comments <- function(transcript_token, note_token){
   `%>%` <- magrittr::`%>%`
   #Creating ngrams of length 5
