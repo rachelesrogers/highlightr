@@ -34,6 +34,7 @@ collocate_comments <- function(transcript_token, note_token){
                                  word_4 = seq(from = 4, to = (dim(descript_ngram_df)[1]+3)),
                                  word_5 = seq(from = 5, to = (dim(descript_ngram_df)[1]+4)))
 
+  descript_ngram_df$first_word <- stringr::word(descript_ngram_df$collocation,1)
   #descript_ngram_df$collocation <- map_df(descript_ngram_df$collocation, ~ gsub("-","",.x))
 
   #getting collocations from notes
@@ -55,6 +56,23 @@ collocate_comments <- function(transcript_token, note_token){
 
   descript_tomerge <- col_descript_long %>% dplyr::select(rel_freq, col_number, word_number) %>%
     tidyr::pivot_wider(names_from = col_number, values_from = rel_freq, names_prefix = "col_")
+
+  add_word<-descript_ngram_df %>% dplyr::select(word_1, first_word, collocation) %>%
+    dplyr::rename("word_number"="word_1")
+
+  descript_tomerge <- dplyr::left_join(descript_tomerge, add_word)
+  descript_tomerge<-descript_tomerge %>% dplyr::rename("to_merge"="first_word")
+
+  descript_tomerge[dim(descript_tomerge)[1]-3,]$to_merge <-
+    stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,2)
+  descript_tomerge[dim(descript_tomerge)[1]-2,]$to_merge <-
+    stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,3)
+  descript_tomerge[dim(descript_tomerge)[1]-1,]$to_merge <-
+    stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,4)
+  descript_tomerge[dim(descript_tomerge)[1],]$to_merge <-
+    stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,5)
+
+  return(descript_tomerge)
 
   return(descript_tomerge)
 
