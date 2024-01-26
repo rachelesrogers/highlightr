@@ -79,7 +79,7 @@ page_highlight <- highlighted_text(freq_plot, merged_frequency)
 
 ```
 
-`r page_highlight`
+`r page_highlight`  
 
 
 To exclude fuzzy matches, the `collocate_comments()` function can be used. Here, the listed frequencies are all whole numbers, because they are counts (without weighting).
@@ -90,6 +90,8 @@ collocation_object_nonfuzzy <- collocate_comments(toks_transcript, toks_comment)
 head(collocation_object_nonfuzzy)
 
 ```
+
+In this case, the highlighting pattern resembles that when the fuzzy matches are included, but the maximum value reached is smaller.
 
 ```{r, message=FALSE, warning=FALSE}
 merged_frequency_nonfuzzy <- transcript_frequency(transcript_example_rename, collocation_object_nonfuzzy)
