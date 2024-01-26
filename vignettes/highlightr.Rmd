@@ -81,7 +81,8 @@ page_highlight <- highlighted_text(freq_plot, merged_frequency)
 
 `r page_highlight`  
 
-
+  
+  
 To exclude fuzzy matches, the `collocate_comments()` function can be used. Here, the listed frequencies are all whole numbers, because they are counts (without weighting).
 
 ```{r, message=FALSE, warning=FALSE}
