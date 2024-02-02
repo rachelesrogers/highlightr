@@ -2,8 +2,10 @@ Package: highlightr
 Title: Compares Notes to Transcript Through Highlighting
 Version: 0.0.0.9000
 Authors@R: 
-    person("Rachel", "Rogers", , "rachel.rogers@huskers.unl.edu", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-4145-9630"))
+    c(person("Rachel", "Rogers", , "rachel.rogers@huskers.unl.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-4145-9630")),
+           person("Susan", "VanderPlas", , "susan.vanderplas@unl.edu", role = c("aut"),
+           comment = c(ORCID = "0000-0002-3803-0972")))
 Description: This package takes typed notes and compares them to the study transcript in order to use collocations to determine which portions of the transcript participants found worth copying into their notes.
 License: MIT + file LICENSE
 Encoding: UTF-8
