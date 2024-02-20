@@ -42,7 +42,7 @@ transcript_frequency <- function(transcript, collocate_object){
 transcript_cleaning <- function(transcript){
   `%>%` <- magrittr::`%>%`
   # Code from Dr. Vanderplas' 850 class
-  poem <- tibble::tibble(lines = transcript) %>%
+  poem <- transcript %>% tibble::tibble(lines = text) %>%
     # This looks for a letter + a space (of any sort, so an end-line counts) or
     # punctuation (last word of a line ends with e.g. a period or comma)
     dplyr::mutate(n_words = stringr::str_count(lines, "([A-z][[:space:][:punct:]])"))
