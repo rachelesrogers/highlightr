@@ -4,13 +4,11 @@
 #' study
 #'
 #'
-#' @format ## `validation_dataset`
-#' A data frame with 561 rows and 4 columns:
+#' @format ## `comment_example`
+#' A data frame with 125 rows and 2 columns:
 #' \describe{
-#'   \item{clean_prints}{Identifier}
-#'   \item{page_count}{page number}
-#'   \item{notes}{The uncleaned notes}
-#'   \item{corrected_notes}{hand cleaned notes to demonstrate correct format}
+#'   \item{ID}{Participant Identifier}
+#'   \item{Notes}{Participant notes}
 #'
 #' }
 #' @source Jury Perception Study
@@ -22,14 +20,25 @@
 #' Text corresponding to participant comments
 #'
 #'
-#' @format ## `validation_dataset`
-#' A data frame with 561 rows and 4 columns:
+#' @format ## `transcript_example`
+#' A data frame with 1 row and 1 column:
 #' \describe{
-#'   \item{clean_prints}{Identifier}
-#'   \item{page_count}{page number}
-#'   \item{notes}{The uncleaned notes}
-#'   \item{corrected_notes}{hand cleaned notes to demonstrate correct format}
+#'   \item{Text}{Transcript text corresponding to the jury perception study}
 #'
 #' }
 #' @source Jury Perception Study
 "transcript_example"
+
+#' Wikipedia Edit History for "Highlighter"
+#'
+#' Text corresponding to versions of the Wikipedia article for Highlighter
+#'
+#'
+#' @format ## `wiki_pages`
+#' A data frame with 50 rows and 1 column:
+#' \describe{
+#'   \item{page_notes}{text of the Wikipedia page for Highlighter}
+#'
+#' }
+#' @source Wikipedia: https://en.wikipedia.org/w/index.php?title=Highlighter&action=history
+"wiki_pages"
