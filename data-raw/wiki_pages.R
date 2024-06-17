@@ -28,7 +28,7 @@ for (i in 1:dim(url_list)[1]){
     filter(type == "p") %>%
     mutate(text = map_chr(node, html_text)) %>%
     mutate(cleantext = str_remove_all(text, "\\[.*?\\]") %>% str_trim()) %>%
-    plyr::summarise(cleantext = paste(cleantext, collapse = " "))
+    plyr::summarise(cleantext = paste(cleantext, collapse = "\n"))
 
   wiki_pages$page_notes[i] <- wiki_list$cleantext[1]
 
