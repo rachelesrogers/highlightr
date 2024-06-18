@@ -98,7 +98,7 @@ Note also that the colors used in highlighting can be changed in the "colors" ar
 ```{r, message=FALSE, warning=FALSE}
 merged_frequency_nonfuzzy <- transcript_frequency(transcript_example_rename, collocation_object_nonfuzzy)
 
-freq_plot_nonfuzzy <- collocation_plot(merged_frequency_nonfuzzy, colors=c("#15bf7e", "#fa6ed0"))
+freq_plot_nonfuzzy <- collocation_plot(merged_frequency_nonfuzzy, colors=c("#15bf7e", "#fcc7ed"))
 
 page_highlight_nonfuzzy <- highlighted_text(freq_plot_nonfuzzy, merged_frequency_nonfuzzy)
 ```
