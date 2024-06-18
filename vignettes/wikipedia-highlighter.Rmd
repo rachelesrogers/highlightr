@@ -106,7 +106,7 @@ merged_frequency <- transcript_frequency(transcript_example_rename, collocation_
 
 freq_plot <- collocation_plot(merged_frequency)
 
-page_highlight <- highlighted_text(freq_plot, merged_frequency)
+page_highlight <- highlighted_text(freq_plot, merged_frequency, labels=c("(fewest articles)", "(most articles)"))
 ```
 
 `r page_highlight`
