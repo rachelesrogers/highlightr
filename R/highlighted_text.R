@@ -39,6 +39,9 @@ highlighted_text <- function(plot_object, descript, labels=c("","")){
     if (i == 1){
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i],",",page_df$colour[i],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
+    }else if (grepl("<br>",page_df$label[i])){
+      page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i-1],",",page_df$colour[i],") \">",gsub("<br>","",page_df$label[i]),"&nbsp;","</div><br>", sep="")
     }else if (page_df$label[i] =="-"){
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i-1],",",page_df$colour[i+1],") \">",page_df$label[i],"&nbsp;","</div>", sep="")

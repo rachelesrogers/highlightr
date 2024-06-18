@@ -48,21 +48,21 @@ transcript_cleaning <- function(transcript){
     dplyr::mutate(n_words = stringr::str_count(lines, "([A-z][[:space:][:punct:]])"))
 
   poem$lines <- gsub("/"," ",  poem$lines)
-  poem$lines <- gsub("<.*?>", "", poem$lines)
-  poem$lines <- poem$lines  %>% stringr::str_replace("<center>", "")  %>%
-    stringr::str_replace("---","")
+  # poem$lines <- gsub("<.*?>", "", poem$lines)
+  # poem$lines <- poem$lines  %>% stringr::str_replace("<center>", "")  %>%
+  #   stringr::str_replace("---","")
 
   poem_words <- poem %>%
     dplyr::mutate(words = stringr::str_split(lines, "[[:space:]]", simplify = F)) %>%
     tidyr::unnest(c(words)) %>%
     # Require words to have some non-space character
     dplyr::filter(nchar(stringr::str_trim(words)) > 0) %>%
-    dplyr::filter(!(words %in% c("<br", "><br", ">"))) %>%
+    # dplyr::filter(!(words %in% c("<br", "><br", ">"))) %>%
     dplyr::mutate(word_num = 1:dplyr::n())
 
   # Removing html break marks
-  poem_words$words<-gsub("</br>","", poem_words$words)
-  poem_words$words<-gsub( "<br/>","", poem_words$words)
+  # poem_words$words<-gsub("</br>","", poem_words$words)
+  # poem_words$words<-gsub( "<br/>","", poem_words$words)
 
   # counting the number of characters
   poem_words$word_length<-nchar(poem_words$words)
@@ -78,6 +78,7 @@ transcript_cleaning <- function(transcript){
     }
   }
   poem_words$to_merge<- tolower(poem_words$words)
+  poem_words$to_merge<- gsub("<br>","", poem_words$to_merge)
   poem_words$to_merge<- tm::removePunctuation(poem_words$to_merge)
 
   group_exp <- poem_words %>%
