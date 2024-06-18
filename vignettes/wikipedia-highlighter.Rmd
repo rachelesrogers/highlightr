@@ -98,6 +98,7 @@ head(collocation_object)
 
 These frequencies can be mapped back to the transcript document, then highlighted as described based on the average collocation frequency that each word appeared in.
 The results are shown below.
+Note that the "labels" argument can be used to add additional labels to the gradient key.
 
 ```{r}
 
@@ -130,7 +131,7 @@ merged_frequency2 <- transcript_frequency(transcript_example_rename2, collocatio
 
 freq_plot2 <- collocation_plot(merged_frequency2)
 
-page_highlight2 <- highlighted_text(freq_plot2, merged_frequency2)
+page_highlight2 <- highlighted_text(freq_plot2, merged_frequency2, labels=c("(fewest articles)", "(most articles)"))
 
 ```
 

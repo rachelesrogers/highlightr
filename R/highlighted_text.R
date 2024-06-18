@@ -4,6 +4,7 @@
 #'
 #' @param plot_object plot object resulting from [collocation_plot()]
 #' @param descript collocation frequency document resulting from [transcript_frequency()]
+#' @param labels lower and upper labels for the gradient scale
 #'
 #' @return html code for highlighted text
 #' @export
