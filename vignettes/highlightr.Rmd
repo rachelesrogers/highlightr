@@ -57,7 +57,7 @@ This is the only collocation in which the first word will appear, so this is the
 The second word, "`r collocation_object$to_merge[2]`" appears in the next collocation as well: `r collocation_object$collocation[2]`, whose frequency is `r round(collocation_object$col_1[2],2)`, and so on for all words in the description.
 
 Next, the `transcript_frequency()` function attaches the collocation counts to the full text of the transcript.
-This provides additional information about the original formatting of the transcript that is needed when constructing the final object.
+<!-- This provides additional information about the original formatting of the transcript that is needed when constructing the final object. -->
 The collocation frequencies are averaged per word.
 
 ```{r, message=FALSE, warning=FALSE}

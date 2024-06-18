@@ -111,7 +111,7 @@ page_highlight <- highlighted_text(freq_plot, merged_frequency)
 
 `r page_highlight`
 
-This text indicates changes to the Wikipedia article, where darker colors appeared in the most versions (yellow as the primary highlight color and information regarding the trilighter).
+This text indicates changes to the Wikipedia article, where yellow indicates more occurrences (yellow as the primary highlight color and information regarding the trilighter).
 Lighter colors indicate text that is seen in fewer versions of the article (such as the introductory sentence and the reference to correction tape).
 
 We could also use the oldest version of the Highlighter article in the dataset as the transcript reference to view which text has been changed:
