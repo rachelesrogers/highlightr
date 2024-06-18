@@ -4,7 +4,8 @@
 #'
 #' @param frequency_doc document of frequencies (returned from
 #' [transcript_frequency()])
-#' @param n_scenario number of scenarios for which this transcript appeared
+#' @param n_scenario number of scenarios for which this transcript appeared. Defualt is 1
+#' @param colors list for color specification for the gradient. Default is c("#f251fc","#f8ff1b")
 #'
 #' @return list of plot, plot object, and frequency
 #' @export
@@ -17,7 +18,7 @@
 #' merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
 #' freq_plot <- collocation_plot(merged_frequency)
 
-collocation_plot <- function(frequency_doc,n_scenario=1){
+collocation_plot <- function(frequency_doc,n_scenario=1, colors=c("#f251fc","#f8ff1b")){
   `%>%` <- magrittr::`%>%`
   frequency_doc[is.na(frequency_doc$Freq),]$Freq <- 0
   xlimit<-max(frequency_doc$x_coord)+5
@@ -40,7 +41,7 @@ collocation_plot <- function(frequency_doc,n_scenario=1){
           panel.grid.major = ggplot2::element_blank(),
           panel.grid.minor = ggplot2::element_blank(),
           legend.position="bottom") +
-    ggplot2::scale_color_gradient(low="#f251fc", high="#f8ff1b")
+    ggplot2::scale_color_gradient(low=colors[1], high=colors[2])
 
   p_obj <- ggplot2::ggplot_build(p)
 

@@ -97,7 +97,7 @@ In this case, the highlighting pattern resembles that when the fuzzy matches are
 ```{r, message=FALSE, warning=FALSE}
 merged_frequency_nonfuzzy <- transcript_frequency(transcript_example_rename, collocation_object_nonfuzzy)
 
-freq_plot_nonfuzzy <- collocation_plot(merged_frequency_nonfuzzy)
+freq_plot_nonfuzzy <- collocation_plot(merged_frequency_nonfuzzy, colors=c("darkgreen", "pink"))
 
 page_highlight_nonfuzzy <- highlighted_text(freq_plot_nonfuzzy, merged_frequency_nonfuzzy)
 ```
