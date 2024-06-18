@@ -138,10 +138,9 @@ first word. The second word, “this” appears in the next collocation as
 well: this case the defendant richard, whose frequency is 7, and so on
 for all words in the description.</p>
 <p>Next, the <code><a href="../reference/transcript_frequency.html">transcript_frequency()</a></code> function attaches the
-collocation counts to the full text of the transcript. This provides
-additional information about the original formatting of the transcript
-that is needed when constructing the final object. The collocation
-frequencies are averaged per word.</p>
+collocation counts to the full text of the transcript.
+<!-- This provides additional information about the original formatting of the transcript that is needed when constructing the final object. -->
+The collocation frequencies are averaged per word.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_rename</span>, <span class="va">collocation_object</span><span class="op">)</span></span></code></pre></div>
 <p>The combined document is then fed through ggplot to assign gradient
