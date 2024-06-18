@@ -40,7 +40,7 @@ collocation_plot <- function(frequency_doc,n_scenario=1){
           panel.grid.major = ggplot2::element_blank(),
           panel.grid.minor = ggplot2::element_blank(),
           legend.position="bottom") +
-    ggplot2::scale_color_gradient(low="#f8ff1b", high="#f251fc")
+    ggplot2::scale_color_gradient(low="#f251fc", high="#f8ff1b")
 
   p_obj <- ggplot2::ggplot_build(p)
 
