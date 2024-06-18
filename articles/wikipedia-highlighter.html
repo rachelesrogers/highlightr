@@ -171,7 +171,9 @@ amount of times each collocation occurs.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>           6  7.83  8.45  7.59  9.47  7.64 fluorescent fluorescent pen is a ty…</span></span></code></pre></div>
 <p>These frequencies can be mapped back to the transcript document, then
 highlighted as described based on the average collocation frequency that
-each word appeared in. The results are shown below.</p>
+each word appeared in. The results are shown below. Note that the
+“labels” argument can be used to add additional labels to the gradient
+key.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_rename</span>, <span class="va">collocation_object</span><span class="op">)</span></span>
@@ -2068,9 +2070,9 @@ changed:</p>
 <span></span>
 <span><span class="va">freq_plot2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency2</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">page_highlight2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/highlighted_text.html">highlighted_text</a></span><span class="op">(</span><span class="va">freq_plot2</span>, <span class="va">merged_frequency2</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">page_highlight2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/highlighted_text.html">highlighted_text</a></span><span class="op">(</span><span class="va">freq_plot2</span>, <span class="va">merged_frequency2</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"(fewest articles)"</span>, <span class="st">"(most articles)"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div>
-52
+(fewest articles) 52
 <div style="
     height: 20px;
     width: 200px;
@@ -2078,7 +2080,7 @@ changed:</p>
     background: linear-gradient(45deg, #F251FC , #F8FF1B );">
 
 </div>
-496
+496 (most articles)
 </div>
 <div style="display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,#F8FF1B,#F8FF1B) ">
