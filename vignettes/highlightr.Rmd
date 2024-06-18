@@ -93,11 +93,12 @@ head(collocation_object_nonfuzzy)
 ```
 
 In this case, the highlighting pattern resembles that when the fuzzy matches are included, but the maximum value reached is smaller.
+Note also that the colors used in highlighting can be changed in the "colors" argument of the `collocation_plot` function.
 
 ```{r, message=FALSE, warning=FALSE}
 merged_frequency_nonfuzzy <- transcript_frequency(transcript_example_rename, collocation_object_nonfuzzy)
 
-freq_plot_nonfuzzy <- collocation_plot(merged_frequency_nonfuzzy, colors=c("darkgreen", "pink"))
+freq_plot_nonfuzzy <- collocation_plot(merged_frequency_nonfuzzy, colors=c("#15bf7e", "#fa6ed0"))
 
 page_highlight_nonfuzzy <- highlighted_text(freq_plot_nonfuzzy, merged_frequency_nonfuzzy)
 ```
