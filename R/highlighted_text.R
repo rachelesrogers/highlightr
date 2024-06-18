@@ -61,11 +61,11 @@ highlighted_text <- function(plot_object, descript){
   # high_freq$y <- -high_freq$y
   high_combined<- dplyr::inner_join(high_freq,plot_object$build$data[[1]], by=c("label","x"))
 
-  page_gradient <- paste("<div>",round(low_combined$frequency[1],2),"<div style=\"
+  page_gradient <- paste("<div>",round(low_combined$frequency[1]),"<div style=\"
     height: 20px;
     width: 200px;
     display: inline-block;
-    background: linear-gradient(45deg,",low_combined$colour[1],",", high_combined$colour[1],");\">","</div>",round(high_combined$frequency[1],2),"</div>")
+    background: linear-gradient(45deg,",low_combined$colour[1],",", high_combined$colour[1],");\">","</div>",round(high_combined$frequency[1]),"</div>")
 
   complete_wordassign<-paste(as.vector(page_df$word_assign), collapse="")
 
