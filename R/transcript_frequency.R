@@ -49,6 +49,7 @@ transcript_cleaning <- function(transcript){
 
   poem$lines <- gsub("/"," ",  poem$lines)
   poem$lines <- gsub(" <", "<", poem$lines)
+  poem$lines <- gsub("< ", "<", poem$lines)
   # poem$lines <- gsub("<.*?>", "", poem$lines)
   # poem$lines <- poem$lines  %>% stringr::str_replace("<center>", "")  %>%
   #   stringr::str_replace("---","")
