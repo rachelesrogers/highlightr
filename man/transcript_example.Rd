@@ -5,14 +5,11 @@
 \alias{transcript_example}
 \title{Transcript Example}
 \format{
-\subsection{\code{validation_dataset}}{
+\subsection{\code{transcript_example}}{
 
-A data frame with 561 rows and 4 columns:
+A data frame with 1 row and 1 column:
 \describe{
-\item{clean_prints}{Identifier}
-\item{page_count}{page number}
-\item{notes}{The uncleaned notes}
-\item{corrected_notes}{hand cleaned notes to demonstrate correct format}
+\item{Text}{Transcript text corresponding to the jury perception study}
 
 }
 }

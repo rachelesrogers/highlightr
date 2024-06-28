@@ -5,14 +5,12 @@
 \alias{comment_example}
 \title{Comment Example Dataset}
 \format{
-\subsection{\code{validation_dataset}}{
+\subsection{\code{comment_example}}{
 
-A data frame with 561 rows and 4 columns:
+A data frame with 125 rows and 2 columns:
 \describe{
-\item{clean_prints}{Identifier}
-\item{page_count}{page number}
-\item{notes}{The uncleaned notes}
-\item{corrected_notes}{hand cleaned notes to demonstrate correct format}
+\item{ID}{Participant Identifier}
+\item{Notes}{Participant notes}
 
 }
 }

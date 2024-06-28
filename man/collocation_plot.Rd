@@ -4,13 +4,19 @@
 \alias{collocation_plot}
 \title{Map collocation to ggplot object}
 \usage{
-collocation_plot(frequency_doc, n_scenario = 1)
+collocation_plot(
+  frequency_doc,
+  n_scenario = 1,
+  colors = c("#f251fc", "#f8ff1b")
+)
 }
 \arguments{
 \item{frequency_doc}{document of frequencies (returned from
 \code{\link[=transcript_frequency]{transcript_frequency()}})}
 
-\item{n_scenario}{number of scenarios for which this transcript appeared}
+\item{n_scenario}{number of scenarios for which this transcript appeared. Defualt is 1}
+
+\item{colors}{list for color specification for the gradient. Default is c("#f251fc","#f8ff1b")}
 }
 \value{
 list of plot, plot object, and frequency
