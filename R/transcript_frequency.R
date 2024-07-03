@@ -41,6 +41,7 @@ transcript_frequency <- function(transcript, collocate_object){
 
 transcript_cleaning <- function(transcript){
   `%>%` <- magrittr::`%>%`
+  text <- lines <- words <- to_merge <- NULL
   # Code from Dr. Vanderplas' 850 class
   poem <- transcript %>% tibble::tibble(lines = text) %>%
     # This looks for a letter + a space (of any sort, so an end-line counts) or

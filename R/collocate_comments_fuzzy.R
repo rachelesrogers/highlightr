@@ -17,6 +17,8 @@
 #' collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 
 collocate_comments_fuzzy <- function(transcript_token, note_token){
+  collocation.y <- dist <- collocation.x <- weighted_count <- col_number <- word_number <-
+    word_1 <- first_word <- collocation <- NULL
   `%>%` <- magrittr::`%>%`
   #Same as previous notes
   descript_ngrams <- quanteda::tokens_ngrams(transcript_token, n = 5L, skip = 0L, concatenator = " ")
