@@ -82,7 +82,7 @@ transcript_cleaning <- function(transcript){
     }
   }
   poem_words$to_merge<- tolower(poem_words$words)
-  poem_words$to_merge<- gsub("<br>","", poem_words$to_merge)
+  poem_words$to_merge<- gsub("<.*?>","", poem_words$to_merge)
   poem_words$to_merge<- tm::removePunctuation(poem_words$to_merge)
 
   group_exp <- poem_words %>%

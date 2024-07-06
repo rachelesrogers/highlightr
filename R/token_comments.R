@@ -17,7 +17,7 @@ token_comments <- function(comment_document){
   comment_df <- data.frame(docid = cbind(seq(1:dim(comment_document)[1])),
                            text=tolower(comment_document$page_notes)) #lowercasing text
 
-  comment_df <- purrr::map_df(comment_df, ~ gsub("<br>", "", .x))
+  comment_df <- purrr::map_df(comment_df, ~ gsub("<.*?>", "", .x))
 
   corpus_doc <- quanteda::corpus(comment_df)
 
