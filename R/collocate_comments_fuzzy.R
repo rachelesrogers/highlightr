@@ -35,10 +35,7 @@ collocate_comments_fuzzy <- function(transcript_token, note_token){
                                  word_5 = seq(from = 5, to = (dim(descript_ngram_df)[1]+4)))
   descript_ngram_df$first_word <- stringr::word(descript_ngram_df$collocation,1)
 
-  #descript_ngram_df$collocation <- map_df(descript_ngram_df$collocation, ~ gsub("-","",.x))
-
   col_descript <- note_token %>% quanteda.textstats::textstat_collocations(min_count = 1, size=5)
-  #col_descript$collocation <- tolower(col_descript$collocation)
 
   col_merged_descript <- dplyr::left_join(descript_ngram_df, col_descript)
   col_merged_descript$count <- replace(col_merged_descript$count,is.na(col_merged_descript$count),0)
