@@ -20,7 +20,7 @@ collocate_comments <- function(transcript_token, note_token){
   col_number <- word_number <- word_1 <- first_word <- collocation <- NULL
   `%>%` <- magrittr::`%>%`
   #Creating ngrams of length 5
-  descript_ngrams <- quanteda::tokens_ngrams(transcript_token, n = 5L, skip = 0L, concatenator = " ")
+  descript_ngrams <- quanteda::tokens_ngrams(transcript_token, n = 5, skip = 0, concatenator = " ")
   descript_ngram_df <- data.frame(tolower(unlist(descript_ngrams)))
   rel_freq <-as.data.frame(table(descript_ngram_df)) #calculating frequency of ngrams
   descript_ngram_df <- dplyr::left_join(descript_ngram_df, rel_freq) #binding frequency to collocations
