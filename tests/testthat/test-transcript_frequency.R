@@ -18,8 +18,8 @@ test_that("removing html tags works", {
                                  collocation= c("this is", "is a", "a test", NA))
   frequency_test <- transcript_frequency(transcript_test, collocation_test)
 
-  expect_identical(dim(transcript_test), c(9L, 14L))
+  expect_identical(dim(frequency_test), c(9L, 14L))
 
-  expect_identical(transcript_test$Freq, c(NaN, 2,NaN, NaN, 3,NaN, 5, NaN, 6))
+  expect_identical(frequency_test$Freq, c(NaN, 2,NaN, NaN, 3,NaN, 5, NaN, 6))
 
 })
