@@ -27,6 +27,7 @@
 #'
 #' }
 #' @source Jury Perception Study
+#' transcript_example <- gsub("</br>","<br>", transcript_example)
 "transcript_example"
 
 #' Wikipedia Edit History for "Highlighter"
