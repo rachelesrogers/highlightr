@@ -62,14 +62,18 @@ collocate_comments <- function(transcript_token, note_token, collocate_length=5)
   descript_tomerge <- dplyr::left_join(descript_tomerge, add_word)
   descript_tomerge<-descript_tomerge %>% dplyr::rename("to_merge"="first_word")
 
-  descript_tomerge[dim(descript_tomerge)[1]-3,]$to_merge <-
-    stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,2)
-  descript_tomerge[dim(descript_tomerge)[1]-2,]$to_merge <-
-    stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,3)
-  descript_tomerge[dim(descript_tomerge)[1]-1,]$to_merge <-
-    stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,4)
-  descript_tomerge[dim(descript_tomerge)[1],]$to_merge <-
-    stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,5)
+  for (i in 2:collocate_length){
+    descript_tomerge[dim(descript_tomerge)[1]-(collocate_length-i),]$to_merge <-
+      stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation, i)
+  }
+  # descript_tomerge[dim(descript_tomerge)[1]-3,]$to_merge <-
+  #   stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,2)
+  # descript_tomerge[dim(descript_tomerge)[1]-2,]$to_merge <-
+  #   stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,3)
+  # descript_tomerge[dim(descript_tomerge)[1]-1,]$to_merge <-
+  #   stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,4)
+  # descript_tomerge[dim(descript_tomerge)[1],]$to_merge <-
+  #   stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,5)
 
   return(descript_tomerge)
 
