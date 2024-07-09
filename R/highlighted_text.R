@@ -40,9 +40,6 @@ highlighted_text <- function(plot_object, descript, labels=c("","")){
   for (i in 1:length(page_df$colour)){
     if (grepl("<.*?>",page_df$label[i])){
       page_df$word_assign[i] <- page_df$label[i]
-  #     paste("<div style=\"display: inline-block; padding:0px;
-  # margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i-1],",",page_df$colour[i],") \">",gsub("<.*?>","",page_df$label[i]),"&nbsp;","</div>",
-  #                                     stringr::str_extract(page_df$label[i], "<.*?>"), sep="")
     }else if (first_word == "Yes"){
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i],",",page_df$colour[i],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
@@ -53,9 +50,6 @@ highlighted_text <- function(plot_object, descript, labels=c("","")){
       if (page_df$label[i] =="-"){
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[previous_color],",",page_df$colour[next_color],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
-  #   }else if (page_df$label[i-1] %in% "-"){
-  #     page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
-  # margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i],",",page_df$colour[i],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
     }else{
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[previous_color],",",page_df$colour[i],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
