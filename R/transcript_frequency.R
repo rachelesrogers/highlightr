@@ -50,9 +50,9 @@ transcript_cleaning <- function(transcript){
     dplyr::mutate(n_words = stringr::str_count(lines, "([A-z][[:space:][:punct:]])"))
 
   poem$lines <- gsub("/"," ",  poem$lines)
-  poem$lines <- gsub(" <", "<", poem$lines)
+  poem$lines <- gsub("([^ ])(<)", "\\1 \\2", poem$lines)
   poem$lines <- gsub("< ", "<", poem$lines)
-  poem$lines <- gsub("(>)([^ <])", "\\1 \\2", poem$lines)
+  poem$lines <- gsub("(>)([^ ])", "\\1 \\2", poem$lines)
 
   poem_words <- poem %>%
     dplyr::mutate(words = stringr::str_split(lines, "[[:space:]]", simplify = F)) %>%
