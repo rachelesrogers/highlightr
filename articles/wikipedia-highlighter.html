@@ -134,7 +134,7 @@ amount of times each collocation occurs.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">collocation_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(tolower.unlist.descript_ngrams..)`</span></span>
+<span><span class="co">#&gt; Joining with `by = join_by(unlist.descript_ngrams.)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(collocation.y)`</span></span>
@@ -2033,7 +2033,7 @@ changed:</p>
 <span><span class="va">toks_transcript2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/token_transcript.html">token_transcript</a></span><span class="op">(</span><span class="va">transcript_example_rename2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">collocation_object2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript2</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(tolower.unlist.descript_ngrams..)`</span></span>
+<span><span class="co">#&gt; Joining with `by = join_by(unlist.descript_ngrams.)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(collocation.y)`</span></span>
