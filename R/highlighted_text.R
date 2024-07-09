@@ -28,6 +28,8 @@ highlighted_text <- function(plot_object, descript, labels=c("","")){
 
   page_df$cleancolor <- gsub("#","",page_df$colour)
 
+  page_df$missing_val <- !(grepl("<.*?>",page_df$label)) & !(page_df$label %in% "-")
+
   page_df$rgb <- NA
   page_df$color_def <- NA
   page_df$word_assign <- NA
