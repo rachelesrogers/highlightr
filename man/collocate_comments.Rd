@@ -4,13 +4,15 @@
 \alias{collocate_comments}
 \title{Collocation of Comments}
 \usage{
-collocate_comments(transcript_token, note_token)
+collocate_comments(transcript_token, note_token, collocate_length = 5)
 }
 \arguments{
 \item{transcript_token}{transcript token to act as baseline for notes, resulting
 from \code{\link[=token_transcript]{token_transcript()}}}
 
 \item{note_token}{tokenized document of notes, resulting from \code{\link[=token_comments]{token_comments()}}}
+
+\item{collocate_length}{the length of the collocation}
 }
 \value{
 data frame of transcript and corresponding note frequency
