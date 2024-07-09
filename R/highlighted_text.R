@@ -31,19 +31,13 @@ highlighted_text <- function(plot_object, descript, labels=c("","")){
   page_df$rgb <- NA
   page_df$color_def <- NA
   page_df$word_assign <- NA
-  first_word <- 0
 
   #### CSS Color Assign ###
   #Get color from ggplot object, and paste css code together to print colors
   for (i in 1:length(page_df$colour)){
-    # if (grepl("<.*?>",page_df$label[i])){
-    #   page_df$word_assign <-
-    #     stringr::str_extract(page_df$label[i], "<.*?>")
-    # } else
-      if (first_word == 0){
+    if (i == 1){
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i],",",page_df$colour[i],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
-      first_word <- 1
     }else if (grepl("<.*?>",page_df$label[i])){
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i-1],",",page_df$colour[i],") \">",gsub("<.*?>","",page_df$label[i]),"&nbsp;","</div>",
