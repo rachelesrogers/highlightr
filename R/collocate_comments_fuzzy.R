@@ -26,13 +26,6 @@ collocate_comments_fuzzy <- function(transcript_token, note_token){
   rel_freq <-as.data.frame(table(descript_ngram_df))
   descript_ngram_df <- dplyr::left_join(descript_ngram_df, rel_freq)
   names(descript_ngram_df) <- c("collocation", "transcript_freq")
-  # descript_ngram_df <-data.frame(collocation = descript_ngram_df$collocation,
-  #                                transcript_freq = descript_ngram_df$transcript_freq,
-  #                                word_1 = seq(from = 1, to = dim(descript_ngram_df)[1]),
-  #                                word_2 = seq(from = 2, to = (dim(descript_ngram_df)[1]+1)),
-  #                                word_3 = seq(from = 3, to = (dim(descript_ngram_df)[1]+2)),
-  #                                word_4 = seq(from = 4, to = (dim(descript_ngram_df)[1]+3)),
-  #                                word_5 = seq(from = 5, to = (dim(descript_ngram_df)[1]+4)))
 
   descript_ngram_df <-data.frame(collocation = descript_ngram_df$collocation,
                                  transcript_freq = descript_ngram_df$transcript_freq)
