@@ -28,7 +28,7 @@ highlighted_text <- function(plot_object, descript, labels=c("","")){
 
   page_df$cleancolor <- gsub("#","",page_df$colour)
 
-  page_df$missing_val <- !(grepl("<.*?>",page_df$label)) & !(page_df$label %in% "-")
+  page_df$nonmissing_val <- !(grepl("<.*?>",page_df$label)) & !(page_df$label %in% "-")
 
   page_df$rgb <- NA
   page_df$color_def <- NA
@@ -38,14 +38,15 @@ highlighted_text <- function(plot_object, descript, labels=c("","")){
   #### CSS Color Assign ###
   #Get color from ggplot object, and paste css code together to print colors
   for (i in 1:length(page_df$colour)){
-    if (first_word == "Yes"){
+    if (grepl("<.*?>",page_df$label[i])){
+      page_df$word_assign[i] <- page_df$label[i]
+  #     paste("<div style=\"display: inline-block; padding:0px;
+  # margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i-1],",",page_df$colour[i],") \">",gsub("<.*?>","",page_df$label[i]),"&nbsp;","</div>",
+  #                                     stringr::str_extract(page_df$label[i], "<.*?>"), sep="")
+    }else if (first_word == "Yes"){
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i],",",page_df$colour[i],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
       first_word <- "No"
-    }else if (grepl("<.*?>",page_df$label[i])){
-      page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i-1],",",page_df$colour[i],") \">",gsub("<.*?>","",page_df$label[i]),"&nbsp;","</div>",
-                                      stringr::str_extract(page_df$label[i], "<.*?>"), sep="")
     }else if (page_df$label[i] =="-"){
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[i-1],",",page_df$colour[i+1],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
