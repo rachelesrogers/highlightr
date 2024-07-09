@@ -26,13 +26,21 @@ collocate_comments_fuzzy <- function(transcript_token, note_token){
   rel_freq <-as.data.frame(table(descript_ngram_df))
   descript_ngram_df <- dplyr::left_join(descript_ngram_df, rel_freq)
   names(descript_ngram_df) <- c("collocation", "transcript_freq")
+  # descript_ngram_df <-data.frame(collocation = descript_ngram_df$collocation,
+  #                                transcript_freq = descript_ngram_df$transcript_freq,
+  #                                word_1 = seq(from = 1, to = dim(descript_ngram_df)[1]),
+  #                                word_2 = seq(from = 2, to = (dim(descript_ngram_df)[1]+1)),
+  #                                word_3 = seq(from = 3, to = (dim(descript_ngram_df)[1]+2)),
+  #                                word_4 = seq(from = 4, to = (dim(descript_ngram_df)[1]+3)),
+  #                                word_5 = seq(from = 5, to = (dim(descript_ngram_df)[1]+4)))
+
   descript_ngram_df <-data.frame(collocation = descript_ngram_df$collocation,
-                                 transcript_freq = descript_ngram_df$transcript_freq,
-                                 word_1 = seq(from = 1, to = dim(descript_ngram_df)[1]),
-                                 word_2 = seq(from = 2, to = (dim(descript_ngram_df)[1]+1)),
-                                 word_3 = seq(from = 3, to = (dim(descript_ngram_df)[1]+2)),
-                                 word_4 = seq(from = 4, to = (dim(descript_ngram_df)[1]+3)),
-                                 word_5 = seq(from = 5, to = (dim(descript_ngram_df)[1]+4)))
+                                 transcript_freq = descript_ngram_df$transcript_freq)
+  for (i in 1:5){
+    descript_ngram_df <- cbind(descript_ngram_df, seq(from=i, to = dim(descript_ngram_df)[1]+(i-1)))
+    names(descript_ngram_df)[ncol(descript_ngram_df)]<-paste0("word_",i)
+  }
+
   descript_ngram_df$first_word <- stringr::word(descript_ngram_df$collocation,1)
 
   col_descript <- note_token %>% quanteda.textstats::textstat_collocations(min_count = 1, size=5)
