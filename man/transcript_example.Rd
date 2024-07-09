@@ -16,6 +16,8 @@ A data frame with 1 row and 1 column:
 }
 \source{
 Jury Perception Study
+transcript_example <- gsub("\if{html}{\out{</br>}}","\if{html}{\out{<br>}}", transcript_example)
+transcript_example <- data.frame(Text = transcript_example)
 }
 \usage{
 transcript_example
