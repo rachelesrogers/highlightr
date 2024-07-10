@@ -22,4 +22,6 @@ test_that("removing html tags works", {
 
   expect_identical(frequency_test$Freq, c(NaN, 2,NaN, NaN, 3,NaN, 5, NaN, 6))
 
+  expect_identical(frequency_test$to_merge, c("","this","","","is","","a","","test"))
+
 })
