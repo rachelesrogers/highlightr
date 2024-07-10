@@ -49,7 +49,7 @@ highlighted_text <- function(plot_object, descript, labels=c("","")){
       if (page_df$label[i] =="-"){
       next_color <- min(which(page_df$nonmissing_val)[which(page_df$nonmissing_val)>i])
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,",page_df$colour[previous_color],",",page_df$colour[previous_color],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
+  margin-left:-5px; background-color: ",page_df$colour[previous_color],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
     }else{
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,",page_df$colour[previous_color],",",page_df$colour[i],") \">",page_df$label[i],"&nbsp;","</div>", sep="")
