@@ -75,7 +75,7 @@ The left side of each word gradient indicates the frequency of the previous word
 
 ```{r, message=FALSE, warning=FALSE}
 
-page_highlight <- highlighted_text(freq_plot, merged_frequency)
+page_highlight <- highlighted_text(freq_plot)
 
 ```
 
@@ -100,7 +100,7 @@ merged_frequency_nonfuzzy <- transcript_frequency(transcript_example_rename, col
 
 freq_plot_nonfuzzy <- collocation_plot(merged_frequency_nonfuzzy, colors=c("#15bf7e", "#fcc7ed"))
 
-page_highlight_nonfuzzy <- highlighted_text(freq_plot_nonfuzzy, merged_frequency_nonfuzzy)
+page_highlight_nonfuzzy <- highlighted_text(freq_plot_nonfuzzy)
 ```
 
 `r page_highlight_nonfuzzy`
@@ -124,7 +124,7 @@ merged_frequency_2col <- transcript_frequency(transcript_example_rename, colloca
 
 freq_plot_2col <- collocation_plot(merged_frequency_2col)
 
-page_highlight_2col <- highlighted_text(freq_plot_2col, merged_frequency_2col)
+page_highlight_2col <- highlighted_text(freq_plot_2col)
 ```
 
 `r page_highlight_2col`

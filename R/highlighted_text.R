@@ -3,7 +3,6 @@
 #' Adds html tags to create a highlighted testimony corresponding to word frequency.
 #'
 #' @param plot_object plot object resulting from [collocation_plot()]
-#' @param descript collocation frequency document resulting from [transcript_frequency()]
 #' @param labels lower and upper labels for the gradient scale
 #'
 #' @return html code for highlighted text
@@ -18,7 +17,7 @@
 #' freq_plot <- collocation_plot(merged_frequency)
 #' page_highlight <- highlighted_text(freq_plot, merged_frequency)
 
-highlighted_text <- function(plot_object, descript, labels=c("","")){
+highlighted_text <- function(plot_object, labels=c("","")){
   `%>%` <- magrittr::`%>%`
   page_df<-plot_object$build$data[[1]]
 

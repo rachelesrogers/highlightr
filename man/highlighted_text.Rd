@@ -4,12 +4,10 @@
 \alias{highlighted_text}
 \title{Create Highlighted Testimony}
 \usage{
-highlighted_text(plot_object, descript, labels = c("", ""))
+highlighted_text(plot_object, labels = c("", ""))
 }
 \arguments{
 \item{plot_object}{plot object resulting from \code{\link[=collocation_plot]{collocation_plot()}}}
-
-\item{descript}{collocation frequency document resulting from \code{\link[=transcript_frequency]{transcript_frequency()}}}
 
 \item{labels}{lower and upper labels for the gradient scale}
 }
