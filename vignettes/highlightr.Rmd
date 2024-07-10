@@ -104,3 +104,27 @@ page_highlight_nonfuzzy <- highlighted_text(freq_plot_nonfuzzy, merged_frequency
 ```
 
 `r page_highlight_nonfuzzy`
+
+<br>
+
+Additionally, the length of the collocation can be changed.
+The default collocation length (shown above) is 5 words.
+Below, this collocation length has been changed to 2 words.
+
+```{r, message=FALSE, warning=FALSE}
+collocation_object_2col <- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)
+
+head(collocation_object_2col, n=7)
+
+```
+In these shorter collocations, we can see that the collocation containing the name "Richard Cole" is popular, with a frequency of 87.
+
+```{r, message=FALSE, warning=FALSE}
+merged_frequency_2col <- transcript_frequency(transcript_example_rename, collocation_object_2col)
+
+freq_plot_2col <- collocation_plot(merged_frequency_2col)
+
+page_highlight_2col <- highlighted_text(freq_plot_2col, merged_frequency_2col)
+```
+
+`r page_highlight_2col`
