@@ -1,12 +1,14 @@
 Package: highlightr
-Title: Compares Notes to Transcript Through Highlighting
+Title: Comparing Multiple Notes to Source Document Through Highlighting
 Version: 0.0.0.9000
 Authors@R: 
     c(person("Rachel", "Rogers", , "rrogers9@unl.edu", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-4145-9630")),
            person("Susan", "VanderPlas", , "susan.vanderplas@unl.edu", role = c("aut"),
            comment = c(ORCID = "0000-0002-3803-0972")))
-Description: Produces a highlighted version of a document based on multiple notes.
+Description: Input multiple note sheets based on a source document, 
+    and 'highlightr' will produce a highlighted version of the source document
+    indicating the frequency of occurrance in the inputted note sheets.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
