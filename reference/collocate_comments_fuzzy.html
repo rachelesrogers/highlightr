@@ -46,7 +46,7 @@ correspond to the provided transcript, using fuzzy matching.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">collocate_comments_fuzzy</span><span class="op">(</span><span class="va">transcript_token</span>, <span class="va">note_token</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">collocate_comments_fuzzy</span><span class="op">(</span><span class="va">transcript_token</span>, <span class="va">note_token</span>, collocate_length <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -60,6 +60,10 @@ from <code><a href="token_transcript.html">token_transcript()</a></code></p></dd
 
 <dt id="arg-note-token">note_token<a class="anchor" aria-label="anchor" href="#arg-note-token"></a></dt>
 <dd><p>tokenized document of notes, resulting from <code><a href="token_comments.html">token_comments()</a></code></p></dd>
+
+
+<dt id="arg-collocate-length">collocate_length<a class="anchor" aria-label="anchor" href="#arg-collocate-length"></a></dt>
+<dd><p>the length of the collocation</p></dd>
 
 </dl></div>
     <div class="section level2">
