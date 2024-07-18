@@ -703,19 +703,19 @@ trial. 
 default collocation length (shown above) is 5 words. Below, this
 collocation length has been changed to 2 words.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">collocation_object_2col</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span>, collocate_length <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">collocation_object_2col</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments.html">collocate_comments</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span>, collocate_length <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">collocation_object_2col</span>, n<span class="op">=</span><span class="fl">7</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 5</span></span></span>
 <span><span class="co">#&gt;   word_number col_1 col_2 to_merge  collocation      </span></span>
 <span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>           1  8.64 <span style="color: #BB0000;">NA</span>    in        in this          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>           2  7.63  8.64 this      this case        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>           3  7.24  7.63 case      case the         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>           4 11.3   7.24 the       the defendant    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>           5 24.5  11.3  defendant defendant richard</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>           6 88.2  24.5  richard   richard cole     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span>           7 20.6  88.2  cole      cole has</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>           1   6      <span style="color: #BB0000;">NA</span> in        in this          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>           2   7       6 this      this case        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>           3   7       7 case      case the         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>           4  10       7 the       the defendant    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>           5  21      10 defendant defendant richard</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>           6  87      21 richard   richard cole     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span>           7  18.5    87 cole      cole has</span></span></code></pre></div>
 <p>In these shorter collocations, we can see that the collocation
 containing the name “Richard Cole” is popular, with a frequency of
 87.</p>
@@ -734,74 +734,74 @@ containing the name “Richard Cole” is popular, with a frequency of
     background: linear-gradient(45deg, #F251FC , #F8FF1B );">
 
 </div>
-74
+72
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F96CE8,#F96CE8) ">
+  margin-left:-5px; background: linear-gradient(to right,#F765EE,#F765EE) ">
 In 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F96CE8,#F86BEA) ">
+  margin-left:-5px; background: linear-gradient(to right,#F765EE,#F767ED) ">
 this 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F86BEA,#F869EB) ">
+  margin-left:-5px; background: linear-gradient(to right,#F767ED,#F868EC) ">
 case, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F869EB,#F96EE7) ">
+  margin-left:-5px; background: linear-gradient(to right,#F868EC,#F96DE8) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F96EE7,#FE85D3) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96DE8,#FD80D8) ">
 defendant 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FE85D3 ">
+  margin-left:-5px; background-color: #FD80D8 ">
 - 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE85D3,#FFDA71) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FFD973) ">
 Richard 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDA71,#FFD677) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD973,#FFD777) ">
 Cole 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FFD677 ">
+  margin-left:-5px; background-color: #FFD777 ">
 - 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD677,#FF8CCC) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD777,#FF8BCE) ">
 has 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8CCC,#FF90C9) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF8BCE,#FF8ECB) ">
 been 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF90C9,#FFA7B1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF8ECB,#FFA6B2) ">
 charged 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FFB4A3) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA6B2,#FFAFA8) ">
 with 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFC58F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFAFA8,#FFBB9B) ">
 willfully 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC58F,#FFD874) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFCB86) ">
 discharging 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD874,#FFD37B) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCB86,#FFC989) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD37B,#FCF148) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFC989,#FCF148) ">
 firearm 
 </div>
 <div style="display: inline-block; padding:0px;
@@ -809,111 +809,111 @@ firearm 
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F8FF1B,#FFE265) ">
+  margin-left:-5px; background: linear-gradient(to right,#F8FF1B,#FFD973) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE265,#FFE069) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD973,#FFDA71) ">
 place 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE069,#FCF246) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFDA71,#FEE959) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF246,#FFD47B) ">
+  margin-left:-5px; background: linear-gradient(to right,#FEE959,#FFBE97) ">
 business. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD47B,#FF9CBC) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FF91C8) ">
 This 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9CBC,#FF90C8) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF91C8,#FF8FC9) ">
 crime 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF90C8,#FF98C1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF8FC9,#FF97C2) ">
 is 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF98C1,#FFA9AF) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF97C2,#FFA1B7) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA2B6) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA1B7,#FF91C8) ">
 felony. 
 </div>
 <br><br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA2B6,#FF8CCD) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF91C8,#FD7FD9) ">
 Mr. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8CCD,#FF89CF) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7FD9,#FE86D2) ">
 Cole 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF89CF,#FF8BCD) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE86D2,#FE85D4) ">
 has 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8BCD,#FFACAC) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE85D4,#FF99C0) ">
 pleaded 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFACAC,#FEEB55) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF99C0,#FFE069) ">
 not 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEEB55,#FFCB87) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFE069,#FFCA88) ">
 guilty 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCB87,#FD80D8) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCA88,#FD7DDA) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FC7CDB) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FA72E4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#F96DE8) ">
 charge. 
 </div>
 <br><br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FA72E4,#F55DF4) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96DE8,#F55BF5) ">
 You 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55DF4,#F55BF5) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 will 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55CF5) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 now 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55CF5,#F55EF3) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 read 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55EF3,#F55DF4) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55DF4,#F55BF5) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 summary 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55DF4) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55DF4,#F55DF4) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55DF4,#F55BF5) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 case. 
 </div>
 <div style="display: inline-block; padding:0px;
@@ -933,15 +933,15 @@ was 
 prepared 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F661F1) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 by 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F661F1,#F662F0) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 an 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F662F0,#F55DF4) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55DF4) ">
 objective 
 </div>
 <div style="display: inline-block; padding:0px;
@@ -949,23 +949,23 @@ objective 
 court 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F660F2,#F55EF3) ">
+  margin-left:-5px; background: linear-gradient(to right,#F660F2,#F55FF3) ">
 clerk. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55EF3,#F55BF5) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55FF3,#F55BF5) ">
 It 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55CF5) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 describes 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55CF5,#F55CF5) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 select 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55CF5,#F55BF5) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 evidence 
 </div>
 <div style="display: inline-block; padding:0px;
@@ -981,11 +981,11 @@ was 
 presented 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55CF5) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 at 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55CF5,#F251FC) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F251FC) ">
 trial. 
 </div>
   </main>
