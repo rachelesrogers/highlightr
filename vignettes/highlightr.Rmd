@@ -112,7 +112,7 @@ The default collocation length (shown above) is 5 words.
 Below, this collocation length has been changed to 2 words.
 
 ```{r, message=FALSE, warning=FALSE}
-collocation_object_2col <- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)
+collocation_object_2col <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
 
 head(collocation_object_2col, n=7)
 
