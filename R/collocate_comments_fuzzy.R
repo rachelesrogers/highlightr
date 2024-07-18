@@ -6,6 +6,7 @@
 #' @param transcript_token transcript token to act as baseline for notes, resulting
 #' from [token_transcript()]
 #' @param note_token tokenized document of notes, resulting from [token_comments()]
+#' @param collocate_length the length of the collocation
 #'
 #' @return data frame of transcript and corresponding note frequency
 #' @export
@@ -16,12 +17,12 @@
 #' toks_transcript <- token_transcript(transcript_example_rename)
 #' collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 
-collocate_comments_fuzzy <- function(transcript_token, note_token){
+collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_length=5){
   collocation.y <- dist <- collocation.x <- weighted_count <- col_number <- word_number <-
     word_1 <- first_word <- collocation <- NULL
   `%>%` <- magrittr::`%>%`
   #Same as previous notes
-  descript_ngrams <- quanteda::tokens_ngrams(transcript_token, n = 5L, skip = 0L, concatenator = " ")
+  descript_ngrams <- quanteda::tokens_ngrams(transcript_token, n = collocate_length, skip = 0L, concatenator = " ")
   descript_ngram_df <- data.frame(unlist(descript_ngrams))
   rel_freq <-as.data.frame(table(descript_ngram_df))
   descript_ngram_df <- dplyr::left_join(descript_ngram_df, rel_freq)
@@ -29,14 +30,15 @@ collocate_comments_fuzzy <- function(transcript_token, note_token){
 
   descript_ngram_df <-data.frame(collocation = descript_ngram_df$collocation,
                                  transcript_freq = descript_ngram_df$transcript_freq)
-  for (i in 1:5){
+  for (i in 1:collocate_length){
     descript_ngram_df <- cbind(descript_ngram_df, seq(from=i, to = dim(descript_ngram_df)[1]+(i-1)))
     names(descript_ngram_df)[ncol(descript_ngram_df)]<-paste0("word_",i)
   }
 
   descript_ngram_df$first_word <- stringr::word(descript_ngram_df$collocation,1)
 
-  col_descript <- note_token %>% quanteda.textstats::textstat_collocations(min_count = 1, size=5)
+  col_descript <- note_token %>% quanteda.textstats::textstat_collocations(min_count = 1,
+                                                                           size=collocate_length)
 
   col_merged_descript <- dplyr::left_join(descript_ngram_df, col_descript)
   col_merged_descript$count <- replace(col_merged_descript$count,is.na(col_merged_descript$count),0)
@@ -74,7 +76,7 @@ collocate_comments_fuzzy <- function(transcript_token, note_token){
   #Counting up fuzzy and non-fuzzy matches
   col_merged_fuzzy$final_count <- col_merged_fuzzy$count+col_merged_fuzzy$fuzzy_count
 
-  col_descript_long <- col_merged_fuzzy %>%  tidyr::pivot_longer(cols = 3:7,
+  col_descript_long <- col_merged_fuzzy %>%  tidyr::pivot_longer(cols = 3:(collocate_length+2),
                                                           names_to = "col_number",
                                                           names_prefix = "word_",
                                                           values_to = "word_number"
@@ -90,14 +92,10 @@ collocate_comments_fuzzy <- function(transcript_token, note_token){
   descript_tomerge <- dplyr::left_join(descript_tomerge, add_word)
   descript_tomerge<-descript_tomerge %>% dplyr::rename("to_merge"="first_word")
 
-  descript_tomerge[dim(descript_tomerge)[1]-3,]$to_merge <-
-    stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,2)
-  descript_tomerge[dim(descript_tomerge)[1]-2,]$to_merge <-
-    stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,3)
-  descript_tomerge[dim(descript_tomerge)[1]-1,]$to_merge <-
-    stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,4)
-  descript_tomerge[dim(descript_tomerge)[1],]$to_merge <-
-    stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation,5)
+  for (i in 2:collocate_length){
+    descript_tomerge[dim(descript_tomerge)[1]-(collocate_length-i),]$to_merge <-
+      stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation, i)
+  }
 
   return(descript_tomerge)
 
