@@ -7,8 +7,8 @@ Authors@R:
            person("Susan", "VanderPlas", , "susan.vanderplas@unl.edu", role = c("aut"),
            comment = c(ORCID = "0000-0002-3803-0972")))
 Description: Input multiple note sheets based on a source document, 
-    and 'highlightr' will produce a highlighted version of the source document
-    indicating the frequency of occurrance in the inputted note sheets.
+    and receive HTML code for a highlighted version of the source document
+    indicating the frequency of occurrence in the inputted note sheets.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
