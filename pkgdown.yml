@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   highlightr: highlightr.html
   wikipedia-highlighter: wikipedia-highlighter.html
-last_built: 2024-07-22T18:40Z
+last_built: 2024-07-22T18:49Z
 urls:
   reference: https://rachelesrogers.github.io/highlightr/reference
   article: https://rachelesrogers.github.io/highlightr/articles
