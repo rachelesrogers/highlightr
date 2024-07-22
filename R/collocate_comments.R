@@ -8,7 +8,7 @@
 #' @param note_token tokenized document of notes, resulting from [token_comments()]
 #' @param collocate_length the length of the collocation
 #'
-#' @return data frame of transcript and corresponding note frequency
+#' @return data frame of the transcript and corresponding note frequency
 #' @export
 #'
 #' @examples comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)

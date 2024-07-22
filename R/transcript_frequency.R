@@ -5,9 +5,9 @@
 #'
 #' @param transcript transcript document
 #' @param collocate_object collocation object (returned
-#' from [collocate_comments_fuzzy()])
+#' from [collocate_comments_fuzzy()] or [collocate_comments()])
 #'
-#' @return a dataframe of the transcript document with collocation values
+#' @return a dataframe of the transcript document with collocation values by word
 #' @export
 #'
 #' @examples comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
