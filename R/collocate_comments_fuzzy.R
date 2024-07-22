@@ -6,7 +6,7 @@
 #' @param transcript_token transcript token to act as baseline for notes, resulting
 #' from [token_transcript()]
 #' @param note_token tokenized document of notes, resulting from [token_comments()]
-#' @param collocate_length the length of the collocation
+#' @param collocate_length the length of the collocation. Default is 5
 #'
 #' @return data frame of the transcript and corresponding note frequency
 #' @export
