@@ -12,10 +12,10 @@ from \code{\link[=token_transcript]{token_transcript()}}}
 
 \item{note_token}{tokenized document of notes, resulting from \code{\link[=token_comments]{token_comments()}}}
 
-\item{collocate_length}{the length of the collocation}
+\item{collocate_length}{the length of the collocation. Default is 5}
 }
 \value{
-data frame of transcript and corresponding note frequency
+data frame of the transcript and corresponding note frequency
 }
 \description{
 This function provides the frequency of collocations in comments that

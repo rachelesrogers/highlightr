@@ -10,10 +10,10 @@ transcript_frequency(transcript, collocate_object)
 \item{transcript}{transcript document}
 
 \item{collocate_object}{collocation object (returned
-from \code{\link[=collocate_comments_fuzzy]{collocate_comments_fuzzy()}})}
+from \code{\link[=collocate_comments_fuzzy]{collocate_comments_fuzzy()}} or \code{\link[=collocate_comments]{collocate_comments()}})}
 }
 \value{
-a dataframe of the transcript document with collocation values
+a dataframe of the transcript document with collocation values by word
 }
 \description{
 This function connects the collocation frequency calculated in
