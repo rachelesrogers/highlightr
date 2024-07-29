@@ -11,7 +11,7 @@
 #'   \item{Notes}{Participant notes}
 #'
 #' }
-#' @source Jury Perception Study
+#' @source Jury Perception Study (see Rogers (2024) <https://digitalcommons.unl.edu/dissertations/AAI31240449>)
 "comment_example"
 
 
@@ -26,9 +26,7 @@
 #'   \item{Text}{Transcript text corresponding to the jury perception study}
 #'
 #' }
-#' @source Jury Perception Study
-#' transcript_example <- gsub("</br>","<br>", transcript_example)
-#' transcript_example <- data.frame(Text = transcript_example)
+#' @source Jury Perception Study (see Rogers (2024) <https://digitalcommons.unl.edu/dissertations/AAI31240449>)
 "transcript_example"
 
 #' Wikipedia Edit History for "Highlighter"
