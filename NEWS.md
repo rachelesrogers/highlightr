@@ -1,3 +1,3 @@
-# highlightr 0.0.0.9000
+# highlightr 1.0.0
 
 * Initial CRAN submission.
