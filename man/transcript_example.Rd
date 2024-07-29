@@ -15,9 +15,7 @@ A data frame with 1 row and 1 column:
 }
 }
 \source{
-Jury Perception Study
-transcript_example <- gsub("\if{html}{\out{</br>}}","\if{html}{\out{<br>}}", transcript_example)
-transcript_example <- data.frame(Text = transcript_example)
+Jury Perception Study (see Rogers (2024) \url{https://digitalcommons.unl.edu/dissertations/AAI31240449})
 }
 \usage{
 transcript_example

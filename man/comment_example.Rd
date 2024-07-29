@@ -16,7 +16,7 @@ A data frame with 125 rows and 2 columns:
 }
 }
 \source{
-Jury Perception Study
+Jury Perception Study (see Rogers (2024) \url{https://digitalcommons.unl.edu/dissertations/AAI31240449})
 }
 \usage{
 comment_example
