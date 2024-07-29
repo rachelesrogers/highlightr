@@ -25,6 +25,12 @@ Swarthmore College and University of Nebraska, Lincoln.
 
 ## Installation
 
+You can install from CRAN with:
+
+``` r
+install.packages("highlightr")
+```
+
 You can install the development version of highlightr from
 [GitHub](https://github.com/) with:
 

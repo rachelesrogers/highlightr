@@ -33,12 +33,19 @@ University of Pennsylvania, Swarthmore College and University of Nebraska, Linco
 
 ## Installation
 
+You can install from CRAN with:
+
+``` r
+install.packages("highlightr")
+```
+
 You can install the development version of highlightr from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("rachelesrogers/highlightr")
 ```
+
 
 ## Example
 
