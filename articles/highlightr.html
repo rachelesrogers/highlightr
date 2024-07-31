@@ -137,14 +137,17 @@ colors based on frequency, and the minimum and maximum values are
 recorded.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">freq_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span></span></code></pre></div>
-<p>After colors have been assigned, highlighted text is created based on
-frequency, as well as a gradient bar indicating the high and low values.
-The left side of each word gradient indicates the frequency of the
-previous word’s averaged collocation frequency, while the right side
-indicates the current word’s averaged collocation frequency.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">page_highlight</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/highlighted_text.html">highlighted_text</a></span><span class="op">(</span><span class="va">freq_plot</span><span class="op">)</span></span></code></pre></div>
+<p>After colors have been assigned, HTML output is created for
+highlighted text is created based on frequency, as well as a gradient
+bar indicating the high and low values. The left side of each word
+gradient indicates the frequency of the previous word’s averaged
+collocation frequency, while the right side indicates the current word’s
+averaged collocation frequency. This HTML output can be rendered into
+highlighted text by specifying <code>`r page_highlight`</code> in an R
+Markdown document outside of a code chunk and knitting to HTML:</p>
 <div>
 0
 <div style="
