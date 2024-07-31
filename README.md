@@ -57,6 +57,11 @@ page_highlight <- highlighted_text(freq_plot)
 page_highlight
 ```
 
+`page_highlight` will produce HTML output that can then be rendered into
+highlighted text. This can be done in R Markdown by specifying the
+object outside of a code chunk as `` `r page_highlight` ``, and knitting
+the document to HTML.
+
 The below image is generated through the resulting html output (as seen
 in the `vignette("highlightr")`).
 

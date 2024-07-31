@@ -70,14 +70,15 @@ The combined document is then fed through ggplot to assign gradient colors based
 freq_plot <- collocation_plot(merged_frequency)
 ```
 
-After colors have been assigned, highlighted text is created based on frequency, as well as a gradient bar indicating the high and low values.
-The left side of each word gradient indicates the frequency of the previous word's averaged collocation frequency, while the right side indicates the current word's averaged collocation frequency.
-
 ```{r, message=FALSE, warning=FALSE}
 
 page_highlight <- highlighted_text(freq_plot)
 
 ```
+
+After colors have been assigned, HTML output is created for highlighted text is created based on frequency, as well as a gradient bar indicating the high and low values.
+The left side of each word gradient indicates the frequency of the previous word's averaged collocation frequency, while the right side indicates the current word's averaged collocation frequency.
+This HTML output can be rendered into highlighted text by specifying `` `r '\x60r page_highlight\x60'` `` in an R Markdown document outside of a code chunk and knitting to HTML:
 
 `r page_highlight`  
 
