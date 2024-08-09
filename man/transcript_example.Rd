@@ -15,7 +15,7 @@ A data frame with 1 row and 1 column:
 }
 }
 \source{
-Jury Perception Study (see Rogers (2024) \url{https://digitalcommons.unl.edu/dissertations/AAI31240449/})
+Jury Perception Study (see Rogers (2024) \url{https://digitalcommons.unl.edu/dissertations/AAI31240449/} and Garrett et. al. (2020) \url{https://psycnet.apa.org/doiLanding?doi=10.1037\%2Flhb0000423})
 }
 \usage{
 transcript_example
