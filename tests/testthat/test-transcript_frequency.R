@@ -38,3 +38,19 @@ test_that("dash check", {
 
   expect_identical(frequency_test$Freq, c(2,NaN, 3, 5, NaN, 6))
 })
+
+test_that("values are given to the last observations",{
+  comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+  toks_comment <- token_comments(comment_example_rename)
+  transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+  toks_transcript <- token_transcript(transcript_example_rename)
+  collocation_object <- collocate_comments(toks_transcript, toks_comment, collocate_length = 6)
+  transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+
+  freq_test <- transcript_frequency(transcript_example_rename, collocation_object)
+
+  expect_true(all(!is.na(tail(freq_test$col_6, n=5))))
+  expect_true(all(!is.na(tail(freq_test$Freq))))
+
+
+})

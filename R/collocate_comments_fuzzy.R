@@ -94,7 +94,7 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
 
   for (i in 2:collocate_length){
     descript_tomerge[dim(descript_tomerge)[1]-(collocate_length-i),]$to_merge <-
-      stringr::word(descript_tomerge[dim(descript_tomerge)[1]-4,]$collocation, i)
+      stringr::word(descript_tomerge[dim(descript_tomerge)[1]-(collocate_length-1),]$collocation, i)
   }
 
   return(descript_tomerge)
