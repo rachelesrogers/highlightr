@@ -54,3 +54,25 @@ test_that("values are given to the last observations",{
 
 
 })
+
+test_that("symbols are used correctly for merging",{
+  symbol_test <-
+    data.frame(ID=1:7,
+               Notes=c("They paid $4.50", "There were 5,000 people", "Use a No.2 pencil",
+                       "they/them were the pronouns they used", "What… they paid $4.50",
+                       "They paid $4.50, and there were 5,000 people who used a No.2 pencil",
+                       "they/them were the pronouns they used when they paid $4.50"))
+  comment_example_rename <- dplyr::rename(symbol_test, page_notes=Notes)
+  toks_comment <- token_comments(comment_example_rename)
+  symbol_transcript <- data.frame(Text="They/them were the pronouns they used when they paid $4.50
+                                  to use a No.2 pencil. What… is how they started their speech; there
+                                  were 5,000 people")
+  transcript_example_rename <- dplyr::rename(symbol_transcript, text=Text)
+  toks_transcript <- token_transcript(transcript_example_rename)
+  collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
+  frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
+
+  expect_identical(collocation_object$col_1, frequency_test$col_1)
+
+}
+          )
