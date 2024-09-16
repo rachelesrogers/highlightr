@@ -16,3 +16,13 @@ test_that("html tags removed", {
   expect_identical(results[[4]], "color")
 
 })
+
+test_that("dollar sign removed", {
+  testing <- data.frame(ID = c(1),
+                        page_notes = c("$4.50"))
+
+  results <- token_comments(testing)
+
+  expect_identical(results[[1]], c("4.50"))
+
+})

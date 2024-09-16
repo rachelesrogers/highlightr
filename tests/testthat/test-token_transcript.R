@@ -8,3 +8,13 @@ test_that("html tags removed", {
                                    "tag", "without", "spaces", "color"))
 
 })
+
+test_that("dollar sign removed", {
+  testing <- data.frame(ID = c(1),
+                        page_notes = c("$4.50"))
+
+  results <- token_transcript(testing)
+
+  expect_identical(results[[1]], c("4.50"))
+
+})
