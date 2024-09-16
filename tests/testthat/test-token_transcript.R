@@ -35,3 +35,12 @@ test_that("comma between characters removed to keep characters together", {
   expect_identical(results[[1]], c("this","is","a","sentence","5000"))
 
 })
+
+test_that("dash removed and separates characters", {
+  testing <- data.frame(text = c("dash-name, 1877-1777"))
+
+  results <- token_transcript(testing)
+
+  expect_identical(results[[1]], c("dash","name", "1877", "1777"))
+
+})
