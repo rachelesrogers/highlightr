@@ -10,8 +10,7 @@ test_that("html tags removed", {
 })
 
 test_that("dollar sign removed", {
-  testing <- data.frame(ID = c(1),
-                        page_notes = c("$4.50"))
+  testing <- data.frame(text = c("$4.50"))
 
   results <- token_transcript(testing)
 
