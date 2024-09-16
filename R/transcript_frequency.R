@@ -49,6 +49,7 @@ transcript_cleaning <- function(transcript){
     # punctuation (last word of a line ends with e.g. a period or comma)
     dplyr::mutate(n_words = stringr::str_count(lines, "([A-z][[:space:][:punct:]])"))
 
+  poem$lines <- stringi::stri_trans_general(poem$lines, "latin-ascii")
   poem$lines <- gsub("([^ ])(<)", "\\1 \\2", poem$lines)
   poem$lines <- gsub("< ", "<", poem$lines)
   poem$lines <- gsub("-", " - ", poem$lines) #replacing dash with space

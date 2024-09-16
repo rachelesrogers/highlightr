@@ -19,6 +19,7 @@ token_comments <- function(comment_document){
 
   comment_df <- purrr::map_df(comment_df, ~ gsub("<.*?>", " ", .x))
   comment_df <- purrr::map_df(comment_df, ~ gsub("\\$", " ", .x))
+  comment_df <- purrr::map_df(comment_df, ~stringi::stri_trans_general(.x, "latin-ascii"))
   comment_df <- purrr::map_df(comment_df, ~ gsub("-", " ", .x)) #removing dash with space
   comment_df <- purrr::map_df(comment_df, ~ gsub("([[:alnum:]])(\\.)([[:alnum:]])","\\1\\3", .x)) #removing period between characters
   comment_df <- purrr::map_df(comment_df, ~ gsub("([[:alnum:]])(,)([[:alnum:]])","\\1\\3", .x)) #removing comma between characters
