@@ -17,7 +17,8 @@ token_transcript <- function(transcript_file){
   description_df <- transcript_file
   description_df <- purrr::map_df(description_df, ~ gsub("<.*?>", " ", .x)) #removing all html expressions
   description_df <- purrr::map_df(description_df, ~ gsub("\\\\n", " ", .x)) #removing line breaks
-  description_df <- purrr::map_df(description_df, ~ gsub("\\$", " ", .x)) #removing line breaks
+  description_df <- purrr::map_df(description_df, ~ gsub("\\$", " ", .x)) #removing dollar sign
+  description_df <- purrr::map_df(description_df, ~ gsub("([[:alnum:]])(\\.)([[:alnum:]])","\\1\\3", .x)) #removing period between characters
   description_df <- tolower(description_df)
 
   corpus_descript <- quanteda::corpus(description_df) #creating a corpus

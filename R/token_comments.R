@@ -19,6 +19,7 @@ token_comments <- function(comment_document){
 
   comment_df <- purrr::map_df(comment_df, ~ gsub("<.*?>", " ", .x))
   comment_df <- purrr::map_df(comment_df, ~ gsub("\\$", " ", .x))
+  comment_df <- purrr::map_df(comment_df, ~ gsub("([[:alnum:]])(\\.)([[:alnum:]])","\\1\\3", .x)) #removing period between characters
 
   corpus_doc <- quanteda::corpus(comment_df)
 
