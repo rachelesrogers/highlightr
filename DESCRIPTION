@@ -24,6 +24,7 @@ Imports:
     purrr,
     quanteda,
     quanteda.textstats,
+    stringi,
     stringr,
     tibble,
     tidyr,

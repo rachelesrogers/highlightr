@@ -53,6 +53,7 @@ transcript_cleaning <- function(transcript){
   poem$lines <- gsub("< ", "<", poem$lines)
   poem$lines <- gsub("(>)([^ ])", "\\1 \\2", poem$lines)
   poem$lines <- gsub("([[:alnum:]])(/)","\\1 \\2", poem$lines)
+  poem$lines <- stringi::stri_trans_general(poem$lines, "latin-ascii")
 
   poem_words <- poem %>%
     dplyr::mutate(words = stringr::str_split(lines, "[[:space:]]", simplify = F)) %>%
