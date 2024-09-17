@@ -119,3 +119,23 @@ test_that("colons are removed correctly for merging",{
 
 }
 )
+
+test_that("... are treated consistently",{
+  elipses_test <-
+    data.frame(ID=1:5,
+               Notes=c("who... did this", "it...was significant", "another... did this",
+                       "...did another thing",
+                       "in an example... here is a...with...another thing"))
+  comment_example_rename <- dplyr::rename(elipses_test, page_notes=Notes)
+  toks_comment <- token_comments(comment_example_rename)
+  elipses_transcript <- data.frame(Text="in an example... who... did this it...was significant. another... did another thing")
+  transcript_example_rename <- dplyr::rename(elipses_transcript, text=Text)
+  toks_transcript <- token_transcript(transcript_example_rename)
+  collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
+  frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
+
+  expect_identical(frequency_test$to_merge, c("in","an","example","who","did","this","it","was","significant",
+                                              "another","did","another","thing"))
+
+}
+)

@@ -53,6 +53,7 @@ transcript_cleaning <- function(transcript){
   poem$lines <- gsub("([^ ])(<)", "\\1 \\2", poem$lines)
   poem$lines <- gsub("< ", "<", poem$lines)
   poem$lines <- gsub("-", " - ", poem$lines) #replacing dash with space
+  poem$lines <- gsub("\\.\\.\\.", "\\.\\.\\.  ", poem$lines) #adding space after 3 dots
   poem$lines <- gsub("(>)([^ ])", "\\1 \\2", poem$lines)
   poem$lines <- gsub("([[:alnum:]])(/)","\\1 \\2", poem$lines)
   poem$lines <- stringi::stri_trans_general(poem$lines, "latin-ascii")
