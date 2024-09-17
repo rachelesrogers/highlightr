@@ -20,6 +20,7 @@ token_transcript <- function(transcript_file){
   description_df <- purrr::map_df(description_df, ~stringi::stri_trans_general(.x, "latin-ascii"))
   description_df <- purrr::map_df(description_df, ~ gsub("\\$", " ", .x)) #removing dollar sign
   description_df <- purrr::map_df(description_df, ~ gsub("-", " ", .x)) #removing dash with space
+  description_df <- purrr::map_df(description_df, ~ gsub(":", "", .x)) #removing colon without space
   description_df <- purrr::map_df(description_df, ~ gsub("([[:alnum:]])(\\.)([[:alnum:]])","\\1\\3", .x)) #removing period between characters
   description_df <- purrr::map_df(description_df, ~ gsub("([[:alnum:]])(,)([[:alnum:]])","\\1\\3", .x)) #removing comma between characters
   description_df <- tolower(description_df)

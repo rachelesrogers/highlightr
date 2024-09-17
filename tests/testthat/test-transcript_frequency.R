@@ -97,3 +97,25 @@ test_that("dashes are used correctly for merging",{
 
 }
 )
+
+
+test_that("colons are removed correctly for merging",{
+  colon_test <-
+    data.frame(ID=1:6,
+               Notes=c("wɔːlz did this", "year 1892:1777 was significant", "another wɔːlz did this",
+                       "in year 1892:1777 wɔːlz did another thing", "in an example: here is a colon space",
+                       "in an example: here is a colon space with wɔːlz and year 1892:1777"))
+  comment_example_rename <- dplyr::rename(colon_test, page_notes=Notes)
+  toks_comment <- token_comments(comment_example_rename)
+  dash_transcript <- data.frame(Text="in an example: here is a colon space
+                                  in the year 1892:1777 wɔːlz did this")
+  transcript_example_rename <- dplyr::rename(dash_transcript, text=Text)
+  toks_transcript <- token_transcript(transcript_example_rename)
+  collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
+  frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
+
+  expect_identical(frequency_test$to_merge, c("in","an","example","here","is","a","colon","space","in",
+                                              "the","year","18921777","wɔlz","did","this"))
+
+}
+)
