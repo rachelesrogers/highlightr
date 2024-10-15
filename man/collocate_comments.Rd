@@ -23,7 +23,7 @@ correspond to the provided transcript.
 }
 \examples{
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-toks_comment <- token_comments(comment_example_rename)
+toks_comment <- token_comments(comment_example_rename[1:100,])
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 toks_transcript <- token_transcript(transcript_example_rename)
 collocation_object <- collocate_comments(toks_transcript, toks_comment)
