@@ -26,7 +26,7 @@
 #'   \item{Text}{Transcript text corresponding to the jury perception study}
 #'
 #' }
-#' @source Jury Perception Study (see Rogers (2024) <https://digitalcommons.unl.edu/dissertations/AAI31240449/> and Garrett et. al. (2020) <https://psycnet.apa.org/doiLanding?doi=10.1037%2Flhb0000423>)
+#' @source Jury Perception Study (see Rogers (2024) <https://digitalcommons.unl.edu/dissertations/AAI31240449/> and Garrett et. al. (2020) <https://psycnet.apa.org/doi/10.1037/lhb0000423>)
 "transcript_example"
 
 #' Wikipedia Edit History for "Highlighter"
