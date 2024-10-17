@@ -1,3 +1,5 @@
+# highlightr (development version)
+
 # highlightr 1.0.2
 
 * Clarified wording in vignettes
