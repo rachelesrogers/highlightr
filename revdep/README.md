@@ -10,7 +10,7 @@
 |collate  |English_United States.utf8                                                    |
 |ctype    |English_United States.utf8                                                    |
 |tz       |America/Chicago                                                               |
-|date     |2024-10-15                                                                    |
+|date     |2024-10-17                                                                    |
 |rstudio  |2024.09.0+375 Cranberry Hibiscus (desktop)                                    |
 |pandoc   |3.1.11 @ C:\Users\rrogers9\AppData\Local\Programs\Quarto\bin\tools\pandoc.exe |
 
@@ -18,7 +18,7 @@
 
 |package            |old        |new        |Δ  |
 |:------------------|:----------|:----------|:--|
-|highlightr         |1.0.0      |1.0.0.9000 |*  |
+|highlightr         |1.0.0      |1.0.1      |*  |
 |BH                 |1.84.0-0   |1.84.0-0   |   |
 |cli                |3.6.3      |3.6.3      |   |
 |colorspace         |2.1-1      |2.1-1      |   |
