@@ -1,4 +1,4 @@
-# highlightr 1.0.1
+# highlightr 1.0.2
 
 * Clarified wording in vignettes
 
