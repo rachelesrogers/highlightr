@@ -1,5 +1,11 @@
 # highlightr (development version)
 
+* Remove dependency on `fuzzyjoin` package, and use `zoomerjoin` package instead
+
+* Change Levenshtein distance calculation in fuzzy joins to Jaccard distance
+
+* Re-compute fuzzy weights based on new distance calculation
+
 # highlightr 1.0.2
 
 * Clarified wording in vignettes

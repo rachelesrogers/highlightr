@@ -48,22 +48,20 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
   # Finding collocations that do not directly match the transcript
   mismatches <- dplyr::anti_join(col_descript, descript_ngram_df)
 
-  fuzzy_matches <- fuzzyjoin::stringdist_join(descript_ngram_df, mismatches,
-                                  by='collocation', #match based on collocation
-                                  mode='right', #use right join
-                                  method = "lv", #use levenshtein distance metric
-                                  max_dist=99,
-                                  distance_col='dist')%>%
+  fuzzy_matches <- zoomerjoin::jaccard_right_join(descript_ngram_df, mismatches,
+                                                  by='collocation', similarity_column="dist", n_bands=20000, threshold=0.4)%>%
+    dplyr::filter(!is.na(collocation.x)) %>%
     dplyr::group_by(collocation.y) %>%
-    dplyr::slice_min(order_by=dist, n=1) #finding the closest match
+    dplyr::slice_max(order_by=dist, n=1) #finding closest match based on Jaccard Distance
   #counting the number of closest matches per collocation
+  if (dim(fuzzy_matches)[1] != 0){
   close_freq<-as.data.frame(table(fuzzy_matches$collocation.y))
   close_freq <- close_freq %>% dplyr::rename("collocation.y"="Var1", "close_freq"="Freq")
 
   fuzzy_matches <- dplyr::left_join(fuzzy_matches, close_freq)
 
   #Fuzzy matches weight
-  fuzzy_matches$weighted_count <- fuzzy_matches$count/((fuzzy_matches$dist+0.25)*fuzzy_matches$close_freq)
+  fuzzy_matches$weighted_count <- (fuzzy_matches$count*fuzzy_matches$dist)/(fuzzy_matches$close_freq)
 
   #Counting up the number of fuzzy matches per transcript collocation
   fuzzy_col <-fuzzy_matches %>% dplyr::group_by(collocation.x) %>%
@@ -72,6 +70,11 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
   fuzzy_col <- fuzzy_col %>% dplyr::rename("collocation"="collocation.x")
 
   col_merged_fuzzy <- dplyr::left_join(col_merged_descript, fuzzy_col)
+  } else{
+    col_merged_fuzzy <- col_merged_descript
+    col_merged_fuzzy$fuzzy_count <- NA
+
+  }
   col_merged_fuzzy$fuzzy_count <- replace(col_merged_fuzzy$fuzzy_count, is.na(col_merged_fuzzy$fuzzy_count),0)
   #Counting up fuzzy and non-fuzzy matches
   col_merged_fuzzy$final_count <- col_merged_fuzzy$count+col_merged_fuzzy$fuzzy_count

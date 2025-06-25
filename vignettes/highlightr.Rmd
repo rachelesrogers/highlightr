@@ -40,10 +40,10 @@ This function first determines the number of times a collocation of length 5 occ
 Fuzzy (or indirect) matches are then added to the frequency count of the transcript collocation that is the closest match.
 These fuzzy matches are weighted based on the edit distance between the transcript collocation and the indirect phrase:
 $$
-\frac{n}{(d + 0.25)*m}
+\frac{n*d}{m}
 $$
 
-Here, $n$ is the frequency of the fuzzy collocation, $d$ is the distance between the fuzzy collocation and the transcript collocation, and $m$ is the number of closest matches for the fuzzy collocation.
+Here, $n$ is the frequency of the fuzzy collocation, $d$ is the Jaccard similarity between the fuzzy collocation and the transcript collocation (ranging from 0 to 1, where 1 indicates identical strings), and $m$ is the number of closest matches for the fuzzy collocation.
 
 ```{r, message=FALSE, warning=FALSE}
 collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
@@ -119,7 +119,7 @@ collocation_object_2col <- collocate_comments(toks_transcript, toks_comment, col
 head(collocation_object_2col, n=7)
 
 ```
-In these shorter collocations, we can see that the collocation containing the name "Richard Cole" is popular, with a frequency of 87.
+In these shorter collocations, we can see that the collocation containing the name "Richard Cole" is popular, with a frequency of 89.
 
 ```{r, message=FALSE, warning=FALSE}
 merged_frequency_2col <- transcript_frequency(transcript_example_rename, collocation_object_2col)
