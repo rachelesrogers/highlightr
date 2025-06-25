@@ -4,7 +4,13 @@
 \alias{collocate_comments_fuzzy}
 \title{Collocate Comments Fuzzy}
 \usage{
-collocate_comments_fuzzy(transcript_token, note_token, collocate_length = 5)
+collocate_comments_fuzzy(
+  transcript_token,
+  note_token,
+  collocate_length = 5,
+  n_bands = 50,
+  threshold = 0.7
+)
 }
 \arguments{
 \item{transcript_token}{transcript token to act as baseline for notes, resulting
@@ -13,6 +19,10 @@ from \code{\link[=token_transcript]{token_transcript()}}}
 \item{note_token}{tokenized document of notes, resulting from \code{\link[=token_comments]{token_comments()}}}
 
 \item{collocate_length}{the length of the collocation. Default is 5}
+
+\item{n_bands}{number of bands used in MinHash algorithm passed to \code{zoomerjoin::jaccard_right_join()} (default 5000)}
+
+\item{threshold}{considered a match in for Jaccard distance passed to \code{zoomerjoin::jaccard_right_join()} (default 0.4)}
 }
 \value{
 data frame of the transcript and corresponding note frequency
@@ -23,8 +33,8 @@ correspond to the provided transcript, using fuzzy matching.
 }
 \examples{
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-toks_comment <- token_comments(comment_example_rename[1:50,])
+toks_comment <- token_comments(comment_example_rename)
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 toks_transcript <- token_transcript(transcript_example_rename)
-collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+fuzzy_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, n_bands=40, threshold=0.9)
 }

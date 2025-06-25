@@ -7,17 +7,19 @@
 #' from [token_transcript()]
 #' @param note_token tokenized document of notes, resulting from [token_comments()]
 #' @param collocate_length the length of the collocation. Default is 5
+#' @param n_bands number of bands used in MinHash algorithm passed to `zoomerjoin::jaccard_right_join()` (default 5000)
+#' @param threshold considered a match in for Jaccard distance passed to `zoomerjoin::jaccard_right_join()` (default 0.4)
 #'
 #' @return data frame of the transcript and corresponding note frequency
 #' @export
 #'
 #' @examples comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-#' toks_comment <- token_comments(comment_example_rename[1:50,])
+#' toks_comment <- token_comments(comment_example_rename)
 #' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 #' toks_transcript <- token_transcript(transcript_example_rename)
-#' collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+#' fuzzy_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, n_bands=40, threshold=0.9)
 
-collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_length=5){
+collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_length=5, n_bands=50, threshold=0.7){
   collocation.y <- dist <- collocation.x <- weighted_count <- col_number <- word_number <-
     word_1 <- first_word <- collocation <- NULL
   `%>%` <- magrittr::`%>%`

@@ -89,7 +89,7 @@ test_that("dashes are used correctly for merging",{
                                   in the year 1892-1777 dash-name did this")
   transcript_example_rename <- dplyr::rename(dash_transcript, text=Text)
   toks_transcript <- token_transcript(transcript_example_rename)
-  collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
+  collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, n_bands=5000, threshold=0.4, collocate_length=2)
   frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
 
   expect_identical(frequency_test$to_merge, c("in","an","example","","here","is","a","dash","space","in",
