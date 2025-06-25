@@ -142,7 +142,7 @@ page_highlight2 <- highlighted_text(freq_plot2, labels=c("(fewest articles)", "(
 <br>
 
 In this case, the beginning of the first sentence ("A highlighter is a form...") is fairly popular.
-Note the counts for the gradient here are larger than those of the most recent article - with a minimum average collocation of 52 and a maximum average collocation of 496.
+Note the counts for the gradient here are larger than those of the most recent article - with a maximum average collocation of 1412.
 
 Wikipedia Citation:
 “Highlighter.” Wikipedia, 14 Mar. 2024. Wikipedia, https://en.wikipedia.org/w/index.php?title=Highlighter&oldid=1213690238.
