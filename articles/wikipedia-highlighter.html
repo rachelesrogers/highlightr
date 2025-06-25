@@ -8,8 +8,8 @@
 <title>Wikipedia Highlighter Article • highlightr</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Wikipedia Highlighter Article">
 </head>
 <body>
@@ -147,12 +147,12 @@ amount of times each collocation occurs.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
 <span><span class="co">#&gt;   word_number col_1 col_2 col_3 col_4 col_5 to_merge    collocation             </span></span>
 <span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>           1 10.2  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    a           a highlighter also call…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>           2  7.64 10.2  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    highlighter highlighter also called…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>           3  9.50  7.64 10.2  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    also        also called a fluoresce…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>           4  7.65  9.50  7.64 10.2  <span style="color: #BB0000;">NA</span>    called      called a fluorescent pe…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>           5  8.40  7.65  9.50  7.64 10.2  a           a fluorescent pen is a  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>           6  7.74  8.40  7.65  9.50  7.64 fluorescent fluorescent pen is a ty…</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>           1 68.9  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    a           a highlighter also call…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>           2  8.23 68.9  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    highlighter highlighter also called…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>           3  7.79  8.23 68.9  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    also        also called a fluoresce…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>           4  7.79  7.79  8.23 68.9  <span style="color: #BB0000;">NA</span>    called      called a fluorescent pe…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>           5  8.24  7.79  7.79  8.23 68.9  a           a fluorescent pen is a  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>           6  7.76  8.24  7.79  7.79  8.23 fluorescent fluorescent pen is a ty…</span></span></code></pre></div>
 <p>These frequencies can be mapped back to the transcript document, then
 highlighted as described based on the average collocation frequency that
 each word appeared in. The results are shown below. Note that the
@@ -178,1894 +178,1894 @@ key.</p>
     background: linear-gradient(45deg, #F251FC , #F8FF1B );">
 
 </div>
-269 (most articles)
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F45BF6,#F45BF6) ">
-A 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F45BF6,#F459F6) ">
-highlighter, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F459F6,#F45AF6) ">
-also 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#F459F7) ">
-called 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F459F7,#F459F7) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F459F7,#F459F7) ">
-fluorescent 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F459F7,#F55BF5) ">
-pen, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#FA72E4) ">
-is 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FA72E4,#FE86D2) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE86D2,#FF99C0) ">
-type 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF99C0,#FFABAD) ">
-of 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFABAD,#FFAEAA) ">
-writing 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAEAA,#FF9FB9) ">
-device 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9FB9,#FF93C6) ">
-used 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF93C6,#FE83D5) ">
-to 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#FA73E3) ">
-bring 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FA73E3,#FE82D6) ">
-attention 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE82D6,#FF92C7) ">
-to 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF92C7,#FFA0B9) ">
-sections 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA0B9,#FFAEAA) ">
-of 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAEAA,#FFBC99) ">
-text 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBE97) ">
-by 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBF96) ">
-marking 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF96,#FFBC99) ">
-them 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBA9C) ">
-with 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFB79F) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB4A2) ">
-vivid, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB4A2,#FFB1A6) ">
-translucent 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB1A6,#FFB3A4) ">
-colour. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFB4A3) ">
-A 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFB4A3) ">
-typical 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFA7B1) ">
-highlighter 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FF98C0) ">
-is 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF98C0,#FF87D1) ">
-fluorescent 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF87D1,#FB74E2) ">
-yellow, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FB74E2,#F660F1) ">
-with 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F660F1,#F55EF3) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55EF3,#F55DF4) ">
-color 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55DF4,#F55EF3) ">
-coming 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55EF3,#F763EF) ">
-from 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F763EF,#FB78DF) ">
-pyranine. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FB78DF,#FF8BCD) ">
-Different 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8BCD,#FF9CBC) ">
-compounds, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9CBC,#FFACAC) ">
-such 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFACAC,#FFB99D) ">
-as 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFBA9C) ">
-rhodamines 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFB99C) ">
-(Rhodamine 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99C,#FFBA9C) ">
-6GD, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFB99D) ">
-Rhodamine 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFBA9C) ">
-B) 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBA9B) ">
-are 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9B,#FFBA9C) ">
-used 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBA9B) ">
-for 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9B,#FFBA9C) ">
-other 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBA9C) ">
-colours. 
-</div>
-<br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFC391) ">
-A 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFC58E) ">
-highlighter 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC58E,#FFC68E) ">
-is 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC68E,#FFC58E) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC58E,#FFC490) ">
-felt 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FFC490 ">
-- 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC490,#FFB89E) ">
-tip 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB5A1) ">
-marker 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A1,#FFB4A3) ">
-filled 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFB5A2) ">
-with 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFB5A1) ">
-transparent 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A1,#FFB79F) ">
-fluorescent 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB89E) ">
-ink 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
-instead 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB99D) ">
-of 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
-black 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
-or 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFBA9C) ">
-opaque 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBB9B) ">
-ink. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9B) ">
-The 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9A) ">
-first 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9A) ">
-highlighter 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9B) ">
-was 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBA9C) ">
-invented 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFB99D) ">
-by 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB89E) ">
-Dr. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB79F) ">
-Frank 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB6A0) ">
-Honn 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A0,#FFB5A2) ">
-in 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFB4A3) ">
-1962 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFB5A1) ">
-and 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A1,#FFB6A0) ">
-produced 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A0,#FFB79F) ">
-by 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFBB9B) ">
-Carter’s 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBC99) ">
-Ink 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
-Company, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
-using 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFB5A1) ">
-trademarked 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A1,#FFB0A7) ">
-name 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFAAAE) ">
-Hi 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FFAAAE ">
-- 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFA5B3) ">
-Liter. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA5B3,#FFA5B3) ">
-Avery 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA5B3,#FFAAAE) ">
-Dennison 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFB0A7) ">
-Corporation 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFB6A1) ">
-now 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFBB9B) ">
-owns 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9B) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFB79F) ">
-brand, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFA7B1) ">
-having 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FF97C2) ">
-acquired 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF97C2,#FE85D3) ">
-Carter’s 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE85D3,#FD7FD8) ">
-in 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7FD8,#FC7CDB) ">
-1975. 
-</div>
-<br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FF9DBC) ">
-Many 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9DBC,#FFBC9A) ">
-highlighters 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFDA72) ">
-come 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDA72,#FFE166) ">
-in 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE166,#FEE85B) ">
-bright, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE85B,#FFDB70) ">
-often 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDB70,#FFCE83) ">
-fluorescent 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCE83,#FFBF95) ">
-and 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF95,#FFBE97) ">
-vibrant 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFC58E) ">
-colors. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC58E,#FFC78C) ">
-Being 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC78C,#FFC88A) ">
-fluorescent, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC88A,#FFC88A) ">
-highlighter 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC88A,#FFC989) ">
-ink 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC989,#FFC193) ">
-glows 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFC391) ">
-under 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFCD84) ">
-black 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCD84,#FFD678) ">
-light. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD678,#FFDF69) ">
-The 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDF69,#FEE85B) ">
-most 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE85B,#FDEE4F) ">
-common 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FDEE4F,#FDED52) ">
-color 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FDED52,#FDEF4E) ">
-for 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FDEF4E,#FDF04B) ">
-highlighters 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FDF04B,#FCF344) ">
-is 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF344,#FBF53E) ">
-yellow, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF53E,#FAF837) ">
-but 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF837,#FAF934) ">
-they 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF934,#FDF04B) ">
-are 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FDF04B,#FFE560) ">
-also 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE560,#FFDA71) ">
-found 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDA71,#FFCF81) ">
-in 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCF81,#FFC391) ">
-orange, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFC095) ">
-red, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC095,#FFBE96) ">
-pink, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE96,#FFBE97) ">
-purple, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
-blue, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBD98) ">
-and 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
-green 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBC99) ">
-varieties. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBB9A) ">
-Some 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9B) ">
-yellow 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9B) ">
-highlighters 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9B) ">
-may 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9B) ">
-look 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9B) ">
-greenish 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBC99) ">
-in 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBD98) ">
-colour 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
-to 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
-naked 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBB9A) ">
-eye. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9B) ">
-Yellow 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9A) ">
-is 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9A) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9A) ">
-preferred 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBC9A) ">
-color 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBC99) ">
-to 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
-use 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBD99) ">
-when 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBC99) ">
-making 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBB9A) ">
-photocopy 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBD99) ">
-as 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBE97) ">
-it 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
-will 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE96) ">
-not 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE96,#FFBE96) ">
-produce 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE96,#FFC095) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC095,#FFB0A7) ">
-shadow 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFA4B4) ">
-on 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA4B4,#FF97C1) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF97C1,#FF8BCD) ">
-copy. 
-</div>
-<br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8BCD,#FF8ACE) ">
-Highlighters 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8ACE,#FF9BBE) ">
-are 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9BBE,#FFA7B2) ">
-available 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA7B2,#FFB3A4) ">
-in 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFBD98) ">
-multiple 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBC99) ">
-forms, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBA9B) ">
-including 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9B,#FFBB9B) ">
-some 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9B) ">
-that 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9A) ">
-have 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBD99) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBE97) ">
-retractable 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFC095) ">
-felt 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC095,#FFC291) ">
-tip 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC291,#FFC68D) ">
-or 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC68D,#FFC68D) ">
-an 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC68D,#FFC88B) ">
-eraser 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC88B,#FFCA88) ">
-on 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCA88,#FFC78B) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC78B,#FFC490) ">
-end 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC490,#FFC391) ">
-opposite 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFC390) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC390,#FFC291) ">
-felt. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC291,#FFCE82) ">
-Other 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCE82,#FFDC6F) ">
-types 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDC6F,#FEEA58) ">
-of 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEEA58,#FCF443) ">
-highlighters 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF443,#F9FC29) ">
-include 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F9FC29,#F9FC2B) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F9FC2B,#FAF934) ">
-trilighter, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF934,#FAF837) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF837,#FAF837) ">
-triangularly 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FAF837 ">
-- 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF837,#F9FB2E) ">
-shaped 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F9FB2E,#F8FE21) ">
-pen 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F8FE21,#F8FF1C) ">
-with 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F8FF1C,#F8FF1B) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F8FF1B,#F8FE22) ">
-different 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #F8FE22 ">
-- 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F8FE22,#F9FC28) ">
-coloured 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F9FC28,#FAF933) ">
-tip 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF933,#FAF935) ">
-at 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF935,#FAF837) ">
-each 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF837,#FAF838) ">
-corner, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF838,#FBF63B) ">
-and 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF63B,#FCF149) ">
-ones 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF149,#FEE958) ">
-that 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE958,#FFE265) ">
-are 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE265,#FFD776) ">
-stackable. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD776,#FFCC86) ">
-There 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCC86,#FFC58E) ">
-are 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC58E,#FFC193) ">
-also 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFBD98) ">
-some 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBC99) ">
-forms 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBE97) ">
-of 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBF95) ">
-highlighters 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF95,#FFBF95) ">
-that 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF95,#FFBF96) ">
-have 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF96,#FFBF96) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF96,#FFBD98) ">
-wax 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FFBD98 ">
-- 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBC99) ">
-like 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
-quality 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
-similar 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
-to 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBE97) ">
-an 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBF96) ">
-oil 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF96,#FFC193) ">
-pastel. 
-</div>
-<br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFCE83) ">
-“Dry 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCE83,#FFDB71) ">
-highlighters” 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDB71,#FFE560) ">
-(occasionally 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE560,#FEEA58) ">
-called 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEEA58,#FEE959) ">
-“dry 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE959,#FFDD6D) ">
-line 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDD6D,#FFD17E) ">
-highlighters”) 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD17E,#FFC68D) ">
-have 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC68D,#FFC193) ">
-an 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFC193) ">
-applicator 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFC292) ">
-that 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC292,#FFC194) ">
-applies 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC194,#FFC193) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFC391) ">
-thin 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFC391) ">
-strip 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFC292) ">
-of 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC292,#FFC292) ">
-highlighter 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC292,#FFC094) ">
-tape 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC094,#FFBD98) ">
-(physically 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFAFA8) ">
-similar 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAFA8,#FF9DBC) ">
-to 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9DBC,#FF89CF) ">
-audio 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF89CF,#FB74E2) ">
-tape 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FB74E2,#F55CF5) ">
-or 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55CF5,#F55BF5) ">
-correction 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#FB76E1) ">
-tape) 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FF90C9) ">
-instead 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF90C9,#FFA5B4) ">
-of 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA5B4,#FFB89E) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFC78C) ">
-felt 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC78C,#FFCA88) ">
-tip. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCA88,#FFD27D) ">
-Unlike 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD27D,#FFDC6E) ">
-standard 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDC6E,#FFE560) ">
-highlighters, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE560,#FDED52) ">
-they 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FDED52,#FCF246) ">
-are 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF246,#FFE560) ">
-easily 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE560,#FFDA72) ">
-erasable. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDA72,#FFD17F) ">
-They 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD17F,#FFC88A) ">
-are 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC88A,#FFBE97) ">
-different 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFCB87) ">
-from 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCB87,#FFD776) ">
-“dry 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD776,#FFE265) ">
-mark 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE265,#FDED52) ">
-highlighters”, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FDED52,#FBF739) ">
-which 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF739,#FBF739) ">
-are 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF739,#FAF739) ">
-sometimes 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF739,#FAF837) ">
-advertised 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF837,#FAF934) ">
-as 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF934,#FDEF4C) ">
-being 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FDEF4C,#FFE561) ">
-useful 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE561,#FFD875) ">
-for 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD875,#FFCB86) ">
-highlighting 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCB86,#FFBF96) ">
-books 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF96,#FFBD98) ">
-with 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBC99) ">
-thin 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBD99) ">
-pages. 
-</div>
-<br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBD98) ">
-“Gel 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBC99) ">
-highlighters” 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC9A) ">
-contain 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBC9A) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBC9A) ">
-gel 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBC9A) ">
-stick 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBC9A) ">
-rather 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBF95) ">
-than 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF95,#FFC095) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC095,#FFC094) ">
-felt 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC094,#FFC193) ">
-tip. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFC194) ">
-The 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC194,#FFBD98) ">
-gel 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBC99) ">
-does 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
-not 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBB9A) ">
-bleed 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9A) ">
-through 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9A) ">
-paper 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9A) ">
-or 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBC9A) ">
-become 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBC9A) ">
-dried 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFC095) ">
-out 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC095,#FFC391) ">
-in 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFC490) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC490,#FFC48F) ">
-pen 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC48F,#FFC58E) ">
-as 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC58E,#FFB5A2) ">
-other 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFA4B5) ">
-highlighters’ 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA4B5,#FF93C5) ">
-inks 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF93C5,#FE82D6) ">
-may, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE82D6,#FA6FE6) ">
-which 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FA6FE6,#F96CE9) ">
-renders 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F96CE9,#F86AEA) ">
-them 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F86AEA,#FA6FE6) ">
-useless. 
-</div>
-<br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FA6FE6,#FE82D6) ">
-“Liquid 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE82D6,#FF97C2) ">
-Highlighters” 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF97C2,#FFA8B0) ">
-in 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFB79F) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFC292) ">
-range 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC292,#FFC193) ">
-of 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFBE97) ">
-colours 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBC99) ">
-are 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBB9A) ">
-also 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBC9A) ">
-available, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBC99) ">
-and 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC9A) ">
-because 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBC99) ">
-they 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBD98) ">
-put 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
-more 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
-ink 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
-on 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFB4A3) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFA8B0) ">
-page 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FF9BBD) ">
-when 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9BBD,#FF91C8) ">
-highlighting, 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF91C8,#FE84D4) ">
-they 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE84D4,#FF8ECA) ">
-make 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8ECA,#FF9ABE) ">
-words 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9ABE,#FFA7B1) ">
-stand 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FFB1A6) ">
-out 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB1A6,#FFBD99) ">
-more 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBC99) ">
-than 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
-with 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC9A) ">
-non 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FFBC9A ">
-- 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBB9B) ">
-liquid 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9A) ">
-types. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9A) ">
-Also 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBC9A) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBC9A) ">
-fact 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBD99) ">
-that 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBE97) ">
-more 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBF95) ">
-highlighting 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF95,#FFC094) ">
-ink 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC094,#FFC193) ">
-is 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFC193) ">
-put 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFC193) ">
-on 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFBF95) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF95,#FFBE97) ">
-page 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBD98) ">
-with 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBC99) ">
-liquid 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBB9A) ">
-highlighters 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBC99) ">
-means 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBE97) ">
-that 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
-highlighting 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBD98) ">
-ink 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBC9A) ">
-is 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFB99D) ">
-much 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB89E) ">
-more 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89F) ">
-resistive 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89F,#FFB2A5) ">
-to 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB2A5,#FFACAC) ">
-fading 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFACAC,#FFA3B5) ">
-with 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA3B5,#FF9ABE) ">
-age. 
-</div>
-<br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9ABE,#FF91C8) ">
-“Pastel 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF91C8,#FF8FCA) ">
-Highlighters” 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8FCA,#FF8CCC) ">
-use 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8CCC,#FF8CCC) ">
-pastel 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8CCC,#FF8CCD) ">
-dyes 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8CCD,#FF88D0) ">
-instead 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF88D0,#FE82D6) ">
-of 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE82D6,#FD7ED9) ">
-fluorescent 
+333 (most articles)
 </div>
 <div style="display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
-dyes. 
-</div>
-<br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FF89CF) ">
-Some 
+A 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF89CF,#FF98C0) ">
-word 
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#F96CE9) ">
+highlighter, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF98C0,#FFA7B2) ">
-processing 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA7B2,#FFB3A4) ">
-software 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFBD98) ">
-can 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
-simulate 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
-highlighting 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBE97) ">
-by 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
-using 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBF96) ">
-a 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF96,#FFBE97) ">
-technique 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBF96) ">
-similar 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF96,#FFBF95) ">
-to 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF95,#FFC48F) ">
-reverse 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC48F,#FFBB9A) ">
-video 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFB1A6) ">
-on 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB1A6,#FFA6B3) ">
-some 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA6B3,#FF98C0) ">
-terminals. 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF98C0,#FE86D2) ">
-Some 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE86D2,#FE83D5) ">
-forms 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#FD81D7) ">
-of 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD81D7,#FD80D7) ">
-syntax 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD80D7,#FD80D8) ">
-highlighting 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD7FD9) ">
-may 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7FD9,#FD7FD8) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96CE9,#F765EE) ">
 also 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7FD8,#FD7FD8) ">
-be 
+  margin-left:-5px; background: linear-gradient(to right,#F765EE,#F662F0) ">
+called 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7FD8,#FD7FD8) ">
-displayed 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7FD8,#FD81D7) ">
-in 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD81D7,#FE82D6) ">
-the 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE82D6,#FE82D6) ">
-style 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE82D6,#FE83D5) ">
-of 
-</div>
-<div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#FE84D4) ">
+  margin-left:-5px; background: linear-gradient(to right,#F662F0,#F660F2) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE84D4,#FE83D5) ">
-highlighter 
+  margin-left:-5px; background: linear-gradient(to right,#F660F2,#F457F8) ">
+fluorescent 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#FE84D4) ">
+  margin-left:-5px; background: linear-gradient(to right,#F457F8,#F458F8) ">
 pen, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE84D4,#FE83D5) ">
-with 
+  margin-left:-5px; background: linear-gradient(to right,#F458F8,#F86AEA) ">
+is 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#FE82D5) ">
+  margin-left:-5px; background: linear-gradient(to right,#F86AEA,#FF88D0) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE82D5,#FE82D6) ">
-bright 
+  margin-left:-5px; background: linear-gradient(to right,#FF88D0,#FF97C2) ">
+type 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE82D6,#FD81D7) ">
-or 
+  margin-left:-5px; background: linear-gradient(to right,#FF97C2,#FFA5B3) ">
+of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD81D7,#FD7FD9) ">
-pastel 
+  margin-left:-5px; background: linear-gradient(to right,#FFA5B3,#FFAFA8) ">
+writing 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7FD9,#FD7ED9) ">
-background 
+  margin-left:-5px; background: linear-gradient(to right,#FFAFA8,#FFABAD) ">
+device 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7FD8) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFABAD,#FF9ABF) ">
+used 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF9ABF,#FF95C4) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7FD8,#FD7FD9) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF95C4,#FF8DCC) ">
+bring 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF8DCC,#FFA0B8) ">
+attention 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA0B8,#FFACAB) ">
+to 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFACAB,#FFB2A5) ">
+sections 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB2A5,#FFBF96) ">
+of 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBF96,#FFC68D) ">
+text 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC68D,#FFB6A0) ">
+by 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB6A0,#FFAFA8) ">
+marking 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAFA8,#FFAEA9) ">
+them 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAEA9,#FFA6B2) ">
+with 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA6B2,#FFB4A3) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFB3A3) ">
+vivid, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB3A3,#FFC68E) ">
+translucent 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC68E,#FFC88B) ">
+colour. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC88B,#FFC98A) ">
+A 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC98A,#FFBA9C) ">
+typical 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFB89E) ">
+highlighter 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFA1B7) ">
+is 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA1B7,#FF9CBD) ">
+fluorescent 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF9CBD,#FF8CCC) ">
+yellow, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF8CCC,#FD7FD9) ">
+with 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FD7FD9,#FA72E4) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7FD9,#FD7ED9) ">
-text. 
+  margin-left:-5px; background: linear-gradient(to right,#FA72E4,#F867ED) ">
+color 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7EDA) ">
-Some 
+  margin-left:-5px; background: linear-gradient(to right,#F867ED,#F65FF2) ">
+coming 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7ED9) ">
-web 
+  margin-left:-5px; background: linear-gradient(to right,#F65FF2,#F65FF2) ">
+from 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7DDA) ">
-browser 
+  margin-left:-5px; background: linear-gradient(to right,#F65FF2,#FE85D3) ">
+pyranine. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
-extensions 
+  margin-left:-5px; background: linear-gradient(to right,#FE85D3,#FF94C5) ">
+Different 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
-also 
+  margin-left:-5px; background: linear-gradient(to right,#FF94C5,#FFA2B7) ">
+compounds, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
-enables 
+  margin-left:-5px; background: linear-gradient(to right,#FFA2B7,#FFABAC) ">
+such 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
-users 
+  margin-left:-5px; background: linear-gradient(to right,#FFABAC,#FFB99D) ">
+as 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
-to 
+  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFA8B0) ">
+rhodamines 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
-create 
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA8B0) ">
+(Rhodamine 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
-digital 
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA8B0) ">
+6GD, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
-highlights 
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA8B0) ">
+Rhodamine 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
-on 
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA8B0) ">
+B) 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
-websites 
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA8B0) ">
+are 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA8B0) ">
+used 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFADAB) ">
+for 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFADAB,#FFACAB) ">
+other 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFACAB,#FFB2A6) ">
+colours. 
+</div>
+<br><div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB2A6,#FFCE82) ">
+A 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCE82,#FFCC85) ">
+highlighter 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCC85,#FFCC86) ">
+is 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCC86,#FFCA88) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCA88,#FFC58F) ">
+felt 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background-color: #FFC58F ">
+- 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC58F,#FFA7B1) ">
+tip 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FFA8B0) ">
+marker 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA4B4) ">
+filled 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA4B4,#FFA7B2) ">
+with 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA7B2,#FFA7B1) ">
+transparent 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FFA8B1) ">
+fluorescent 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B1,#FFA9AF) ">
+ink 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+instead 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+of 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+black 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+or 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA7B1) ">
+opaque 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FFA8B0) ">
+ink. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA8B0) ">
+The 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA8B0) ">
+first 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA9AF) ">
+highlighter 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+was 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA8B0) ">
+invented 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA8B0) ">
+by 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA7B1) ">
+Dr. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FFA6B2) ">
+Frank 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA6B2,#FFA5B3) ">
+Honn 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA5B3,#FFA4B4) ">
+in 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA4B4,#FFA4B4) ">
+1962 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA4B4,#FFA5B4) ">
 and 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA5B4,#FFAFA8) ">
+produced 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAFA8,#FFB99C) ">
+by 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB99C,#FFBA9B) ">
+Carter’s 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9B,#FFBB9A) ">
+Ink 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBE97) ">
+Company, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFB5A2) ">
+using 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFABAD) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFABAD,#FFAAAE) ">
+trademarked 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFA5B4) ">
+name 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA5B4,#FF9DBB) ">
+Hi 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background-color: #FF9DBB ">
+- 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF9DBB,#FFA2B7) ">
+Liter. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA2B7,#FFA2B7) ">
+Avery 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA2B7,#FFA3B6) ">
+Dennison 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA3B6,#FFA8B0) ">
+Corporation 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFADAB) ">
+now 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFADAB,#FFA8B0) ">
+owns 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA8B0) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFB2A5) ">
+brand, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB2A5,#FFA4B5) ">
+having 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA4B5,#FF95C4) ">
+acquired 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF95C4,#FE85D3) ">
+Carter’s 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FE85D3,#FF8DCC) ">
+in 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF8DCC,#FF95C4) ">
+1975. 
+</div>
+<br><div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF95C4,#FFBA9C) ">
+Many 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFD775) ">
+highlighters 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD775,#F8FF1B) ">
+come 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#F8FF1B,#FAF933) ">
+in 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FAF933,#FEEA57) ">
+bright, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FEEA57,#FFD776) ">
+often 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD776,#FFC78C) ">
+fluorescent 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC78C,#FFB1A6) ">
+and 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB1A6,#FFB1A6) ">
+vibrant 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB1A6,#FFC293) ">
+colors. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC293,#FFCA88) ">
+Being 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCA88,#FFCD84) ">
+fluorescent, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCD84,#FFCD84) ">
+highlighter 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCD84,#FFDB70) ">
+ink 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDB70,#FFCB87) ">
+glows 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCB87,#FFCE82) ">
+under 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCE82,#FFD47B) ">
+black 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD47B,#FFD875) ">
+light. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD875,#FFD777) ">
+The 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD777,#FFDF69) ">
+most 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDF69,#FFDC6F) ">
+common 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDC6F,#FFDC6E) ">
+color 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDC6E,#FFDD6E) ">
+for 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDD6E,#FFDA71) ">
+highlighters 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDA71,#FFDD6C) ">
+is 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDD6C,#FFE068) ">
+yellow, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE068,#FFE167) ">
+but 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE167,#FFE75C) ">
+they 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE75C,#FFDF69) ">
+are 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDF69,#FFD579) ">
+also 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD579,#FFC989) ">
+found 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC989,#FFBF96) ">
+in 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBF96,#FFAFA8) ">
+orange, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAFA8,#FFADAA) ">
+red, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFADAA,#FFC88A) ">
+pink, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC88A,#FFDA71) ">
+purple, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDA71,#FFDB71) ">
+blue, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDB71,#FFD973) ">
+and 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD973,#FFD973) ">
+green 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD973,#FFBD99) ">
+varieties. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFA9AF) ">
+Some 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+yellow 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+highlighters 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+may 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+look 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+greenish 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+in 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+colour 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+to 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+naked 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+eye. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+Yellow 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+is 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AE) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AE,#FFAAAE) ">
+preferred 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFAAAE) ">
+color 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFAAAE) ">
+to 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFAAAE) ">
+use 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFA9AF) ">
+when 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+making 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+photocopy 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+as 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+it 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFAAAE) ">
+will 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFA9AF) ">
+not 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+produce 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFB79F) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFACAC) ">
+shadow 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFACAC,#FFA6B2) ">
+on 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA6B2,#FFA2B6) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA2B6,#FFB2A5) ">
+copy. 
+</div>
+<br><div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB2A5,#FFA5B4) ">
+Highlighters 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA5B4,#FFBA9C) ">
+are 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBF95) ">
+available 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBF95,#FFC391) ">
+in 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFB4A3) ">
+multiple 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFB3A4) ">
+forms, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFA9AF) ">
+including 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFAAAE) ">
+some 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFAAAE) ">
+that 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFAAAE) ">
+have 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFB0A7) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFB5A1) ">
+retractable 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB5A1,#FFB5A2) ">
+felt 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFB5A2) ">
+tip 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFCA87) ">
+or 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCA87,#FFC88B) ">
+an 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC88B,#FFD47B) ">
+eraser 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD47B,#FFE561) ">
+on 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE561,#FDED51) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FDED51,#FFDD6D) ">
+end 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDD6D,#FFD973) ">
+opposite 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD973,#FFD974) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD974,#FFD17F) ">
+felt. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD17F,#FFD17E) ">
+Other 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD17E,#FFDB70) ">
+types 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDB70,#FEE959) ">
+of 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FEE959,#FFE75D) ">
+highlighters 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE75D,#FFE75C) ">
+include 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE75C,#FFE75C) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE75C,#FFE363) ">
+trilighter, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE363,#FFE265) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE265,#FFE069) ">
+triangularly 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background-color: #FFE069 ">
+- 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE069,#FFE265) ">
+shaped 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE265,#FDEE4F) ">
+pen 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FDEE4F,#FDEF4D) ">
+with 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FDEF4D,#FDED52) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FDED52,#FEEC53) ">
+different 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background-color: #FEEC53 ">
+- 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FEEC53,#FEEB55) ">
+coloured 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FEEB55,#FFDE6B) ">
+tip 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDE6B,#FFDD6E) ">
+at 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDD6E,#FFDC6F) ">
+each 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDC6F,#FFDB71) ">
+corner, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDB71,#FFDA72) ">
+and 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDA72,#FFD973) ">
+ones 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD973,#FFD677) ">
+that 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD677,#FFD37C) ">
+are 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD37C,#FFCA88) ">
+stackable. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCA88,#FFC094) ">
+There 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC094,#FFB89E) ">
+are 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFBB9B) ">
+also 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFB4A2) ">
+some 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB4A2,#FFB4A3) ">
+forms 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFC98A) ">
+of 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC98A,#FFCB87) ">
+highlighters 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCB87,#FFC193) ">
+that 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFC193) ">
+have 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFC193) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFACAC) ">
+wax 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background-color: #FFACAC ">
+- 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFACAC,#FFABAC) ">
+like 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFABAC,#FFABAC) ">
+quality 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFABAC,#FFABAC) ">
+similar 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFABAC,#FFABAC) ">
+to 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFABAC,#FFABAC) ">
+an 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFABAC,#FFAAAE) ">
+oil 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFAAAE) ">
+pastel. 
+</div>
+<br><div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFC78C) ">
+“Dry 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC78C,#FFD17E) ">
+highlighters” 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD17E,#FFDC6F) ">
+(occasionally 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDC6F,#FFE560) ">
+called 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE560,#FDEF4E) ">
+“dry 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FDEF4E,#FFD37B) ">
+line 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD37B,#FFC989) ">
+highlighters”) 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC989,#FFD47A) ">
+have 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD47A,#FFCB86) ">
+an 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCB86,#FFC194) ">
+applicator 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC194,#FFCB86) ">
+that 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCB86,#FFCB86) ">
+applies 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCB86,#FFBC9A) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFCB86) ">
+thin 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCB86,#FFCB86) ">
+strip 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCB86,#FFC78C) ">
+of 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC78C,#FFC78C) ">
+highlighter 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC78C,#FFC194) ">
+tape 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC194,#FFB0A7) ">
+(physically 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFC193) ">
+similar 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFADAB) ">
+to 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFADAB,#FF9EBB) ">
+audio 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF9EBB,#FF8FC9) ">
+tape 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF8FC9,#FD7FD8) ">
+or 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FD7FD8,#F355F9) ">
+correction 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#F355F9,#FD7FD9) ">
+tape) 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FD7FD9,#FF9FB9) ">
+instead 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF9FB9,#FFADAB) ">
+of 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFADAB,#FFC095) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC095,#FFD17F) ">
+felt 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD17F,#FFCD84) ">
+tip. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCD84,#FFC989) ">
+Unlike 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC989,#FFD47B) ">
+standard 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD47B,#FFDA72) ">
+highlighters, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDA72,#FFE65E) ">
+they 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE65E,#FEEA56) ">
+are 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FEEA56,#FFDF69) ">
+easily 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDF69,#FFD579) ">
+erasable. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD579,#FFCC86) ">
+They 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCC86,#FFC095) ">
+are 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC095,#FFB79F) ">
+different 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFC292) ">
+from 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC292,#FFCD84) ">
+“dry 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFCD84,#FFD776) ">
+mark 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD776,#FFDD6E) ">
+highlighters”, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDD6E,#FFDF6A) ">
+which 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDF6A,#FFE069) ">
+are 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE069,#FFDF6A) ">
+sometimes 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDF6A,#FFDF6A) ">
+advertised 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFDF6A,#FDEE50) ">
+as 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FDEE50,#FFE363) ">
+being 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFE363,#FFD875) ">
+useful 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD875,#FFD27D) ">
+for 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD27D,#FFC88B) ">
+highlighting 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC88B,#FFB6A0) ">
+books 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB6A0,#FFB89F) ">
+with 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB89F,#FFB89E) ">
+thin 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB3A4) ">
+pages. 
+</div>
+<br><div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFBC9A) ">
+“Gel 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFB3A4) ">
+highlighters” 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFB2A5) ">
+contain 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB2A5,#FFB2A5) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB2A5,#FFB2A5) ">
+gel 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB2A5,#FFA9AF) ">
+stick 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+rather 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFAFA9) ">
+than 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAFA9,#FFB4A2) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB4A2,#FFB4A2) ">
+felt 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB4A2,#FFB4A2) ">
+tip. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB4A2,#FFB4A2) ">
+The 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB4A2,#FFAFA8) ">
+gel 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAFA8,#FFA9AF) ">
+does 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+not 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+bleed 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+through 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+paper 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+or 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+become 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+dried 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFAAAE) ">
+out 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFAAAD) ">
+in 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAD,#FFB3A4) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFB89E) ">
+pen 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFD37C) ">
+as 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFD37C,#FFC68D) ">
+other 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC68D,#FFBB9B) ">
+highlighters’ 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFA6B2) ">
+inks 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA6B2,#FF94C5) ">
+may, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF94C5,#F765EE) ">
+which 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#F765EE,#F765EE) ">
+renders 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#F765EE,#F765EE) ">
+them 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#F765EE,#FA70E5) ">
+useless. 
+</div>
+<br><div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FA70E5,#FD7FD9) ">
+“Liquid 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FD7FD9,#FF8DCC) ">
+Highlighters” 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF8DCC,#FF9ABF) ">
+in 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF9ABF,#FFA6B2) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA6B2,#FFAAAE) ">
+range 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFA9AF) ">
+of 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+colours 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+are 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+also 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+available, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+and 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+because 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+they 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFAAAE) ">
+put 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFAAAE) ">
+more 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFAAAE) ">
+ink 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFB6A0) ">
+on 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB6A0,#FFADAB) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFADAB,#FFAAAD) ">
+page 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAD,#FFA8B0) ">
+when 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFADAA) ">
+highlighting, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFADAA,#FF96C3) ">
+they 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF96C3,#FFA0B8) ">
+make 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA0B8,#FFA2B6) ">
+words 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA2B6,#FFA4B4) ">
+stand 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA4B4,#FF9FB9) ">
+out 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF9FB9,#FFA9AF) ">
+more 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+than 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+with 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+non 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background-color: #FFA9AF ">
+- 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+liquid 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+types. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+Also 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFAAAE) ">
+fact 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFAAAE) ">
+that 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFAAAE) ">
+more 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFABAD) ">
+highlighting 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFABAD,#FFAAAD) ">
+ink 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAD,#FFAAAE) ">
+is 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFA9AE) ">
+put 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AE,#FFA9AF) ">
+on 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+page 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+with 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+liquid 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFBA9C) ">
+highlighters 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBA9C) ">
+means 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBE96) ">
+that 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBE96,#FFC68D) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC68D,#FFC989) ">
+highlighting 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC989,#FFB99E) ">
+ink 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB99E,#FFB89E) ">
+is 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB3A4) ">
+much 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFABAD) ">
+more 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFABAD,#FFA8B0) ">
+resistive 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFA9AF) ">
+to 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA2B6) ">
+fading 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA2B6,#FF9DBC) ">
+with 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF9DBC,#FF95C3) ">
+age. 
+</div>
+<br><div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF95C3,#FF8ECA) ">
+“Pastel 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF8ECA,#FE85D3) ">
+Highlighters” 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FE85D3,#FE85D3) ">
+use 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FE85D3,#FE84D4) ">
+pastel 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FE84D4,#FF88D0) ">
+dyes 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF88D0,#FE83D5) ">
+instead 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#FD80D7) ">
+of 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FD80D7,#FD7EDA) ">
+fluorescent 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FF91C8) ">
+dyes. 
+</div>
+<br><div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF91C8,#FF9BBE) ">
+Some 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF9BBE,#FFA7B1) ">
+word 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FFB0A7) ">
+processing 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFBA9C) ">
+software 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFB5A2) ">
+can 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFB6A0) ">
+simulate 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB6A0,#FFB99D) ">
+highlighting 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFBC99) ">
+by 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFC193) ">
+using 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFBF96) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBF96,#FFB79F) ">
+technique 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFBA9B) ">
+similar 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9B,#FFBB9B) ">
+to 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBA9C) ">
+reverse 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBF96) ">
+video 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFBF96,#FFB79F) ">
+on 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFA8B0) ">
+some 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FF9ABE) ">
+terminals. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF9ABE,#FF8BCD) ">
+Some 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FF8BCD,#FC78DE) ">
+forms 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FC78DE,#FB77E0) ">
+of 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB77E0,#FB77E0) ">
+syntax 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB77E0,#FB77E0) ">
+highlighting 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB77E0,#FB77E0) ">
+may 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB77E0,#FB77E0) ">
+also 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB77E0,#FB77E0) ">
+be 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB77E0,#FB77E0) ">
+displayed 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB77E0,#FB77E0) ">
+in 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB77E0,#FC79DE) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FC79DE,#FE83D5) ">
+style 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#FE83D5) ">
+of 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#FE86D2) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FE86D2,#FE86D2) ">
+highlighter 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FE86D2,#FE84D4) ">
+pen, 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FE84D4,#FC7BDC) ">
+with 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FC7BDC,#FC7BDC) ">
+a 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FC7BDC,#FB77E0) ">
+bright 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB77E0,#FB77E0) ">
+or 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB77E0,#FB77E0) ">
+pastel 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB77E0,#FB76E0) ">
+background 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E0,#FB76E0) ">
+to 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E0,#FB76E0) ">
+the 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E0,#FB76E1) ">
+text. 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FB75E1) ">
+Some 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB75E1,#FB75E1) ">
+web 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB75E1,#FB75E1) ">
+browser 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB75E1,#FB75E1) ">
+extensions 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB75E1,#FB76E1) ">
+also 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FB76E1) ">
+enables 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FB76E1) ">
+users 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FB76E1) ">
+to 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FB76E1) ">
+create 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FB76E1) ">
+digital 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FB76E1) ">
+highlights 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FB76E1) ">
+on 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FB76E1) ">
+websites 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FB76E1) ">
+and 
+</div>
+<div style="display: inline-block; padding:0px;
+  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FB76E1) ">
 online 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FB76E1,#FB76E1) ">
 PDFs. 
 </div>
 <p><br></p>
@@ -2110,246 +2110,246 @@ changed:</p>
     background: linear-gradient(45deg, #F251FC , #F8FF1B );">
 
 </div>
-504 (most articles)
+1412 (most articles)
 </div>
 <div style="display: inline-block; padding:0px;
   margin-left:-5px; background: linear-gradient(to right,#F8FF1B,#F8FF1B) ">
 A 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F8FF1B,#FBF73A) ">
+  margin-left:-5px; background: linear-gradient(to right,#F8FF1B,#FFCB86) ">
 highlighter 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF73A,#FBF441) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCB86,#FFB0A8) ">
 is 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF441,#FEEB55) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB0A8,#FFA0B9) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEEB55,#FFE069) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA0B9,#FF96C3) ">
 form 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE069,#FFD27D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF96C3,#FB74E2) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD27D,#FFC58E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FB74E2,#F96CE9) ">
 marker 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC58E,#FFC193) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96CE9,#F86AEA) ">
 pen 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFBA9C) ">
+  margin-left:-5px; background: linear-gradient(to right,#F86AEA,#F86AEA) ">
 which 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#F86AEA,#F86BEA) ">
 is 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB3A4) ">
+  margin-left:-5px; background: linear-gradient(to right,#F86BEA,#F96EE7) ">
 used 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFADAA) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96EE7,#F96DE7) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFADAA,#FF9EBB) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96DE7,#F96EE7) ">
 highlight 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9EBB,#FF9BBE) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96EE7,#FA71E4) ">
 sections 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9BBE,#FF99C0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FA71E4,#FA71E5) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF99C0,#FF96C3) ">
+  margin-left:-5px; background: linear-gradient(to right,#FA71E5,#F96EE7) ">
 documents 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF96C3,#FF98C0) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96EE7,#FA71E5) ">
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF98C0,#FF97C1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FA71E5,#F96EE7) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF97C1,#FF8ECA) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96EE7,#F767ED) ">
 vivid 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8ECA,#FF87D1) ">
+  margin-left:-5px; background: linear-gradient(to right,#F767ED,#F763EF) ">
 colour, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF87D1,#FD80D7) ">
+  margin-left:-5px; background: linear-gradient(to right,#F763EF,#F660F2) ">
 but 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD80D7,#FC7ADD) ">
+  margin-left:-5px; background: linear-gradient(to right,#F660F2,#F45AF6) ">
 not 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7ADD,#FB74E2) ">
+  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#F45AF6) ">
 intended 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FB74E2,#FB74E2) ">
+  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#F45AF6) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FB74E2,#FB73E3) ">
+  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#F45AF6) ">
 obscure 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FB73E3,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#F661F1) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7ADD) ">
+  margin-left:-5px; background: linear-gradient(to right,#F661F1,#F867EC) ">
 content 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7ADD,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#F867EC,#F86AEA) ">
 beneath 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FF87D1) ">
+  margin-left:-5px; background: linear-gradient(to right,#F86AEA,#FC78DF) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF87D1,#FF92C7) ">
+  margin-left:-5px; background: linear-gradient(to right,#FC78DF,#FC7ADD) ">
 marking. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF92C7,#FFA8B0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FC7ADD,#FE83D5) ">
 As 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA8B0,#FFADAA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#FE82D6) ">
 such, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFADAA,#FFAFA9) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE82D6,#FE83D5) ">
 highlighter 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAFA9,#FFB0A7) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#FD7EDA) ">
 ink 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFAAAD) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FE82D6) ">
 is 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAAAD,#FF93C6) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE82D6,#FC7CDC) ">
 translucent. 
 </div>
 <br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF93C6,#FFA2B6) ">
+  margin-left:-5px; background: linear-gradient(to right,#FC7CDC,#FF8FCA) ">
 Many 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA2B6,#FFB3A4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF8FCA,#FF95C3) ">
 highlighters 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFABAD) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF95C3,#FF92C7) ">
 come 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFABAD,#FFA7B1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF92C7,#FF90C9) ">
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FFA0B9) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF90C9,#FF87D1) ">
 bright, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA0B9,#FF88D0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF87D1,#F96DE7) ">
 often 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF88D0,#F96DE8) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96DE7,#F661F1) ">
 neon 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F96DE8,#F86AEA) ">
+  margin-left:-5px; background: linear-gradient(to right,#F661F1,#F55CF5) ">
 colors, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F86AEA,#F96FE7) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55CF5,#F355F9) ">
 such 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F96FE7,#FC7ADD) ">
+  margin-left:-5px; background: linear-gradient(to right,#F355F9,#F355F9) ">
 as 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7ADD,#FD7FD8) ">
+  margin-left:-5px; background: linear-gradient(to right,#F355F9,#F45AF6) ">
 yellow 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7FD8,#FE86D2) ">
+  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#F45AF6) ">
 or 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE86D2,#FF89D0) ">
+  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#F55BF5) ">
 pink, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF89D0,#FF88D0) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F55BF5) ">
 but 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF88D0,#FD7FD8) ">
+  margin-left:-5px; background: linear-gradient(to right,#F55BF5,#F45AF6) ">
 also 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7FD8,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#F355F9) ">
 coming 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7FD8) ">
+  margin-left:-5px; background: linear-gradient(to right,#F355F9,#F355F9) ">
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7FD8,#FD7FD9) ">
+  margin-left:-5px; background: linear-gradient(to right,#F355F9,#F354FA) ">
 colors 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7FD9,#FF89D0) ">
+  margin-left:-5px; background: linear-gradient(to right,#F354FA,#F356F9) ">
 such 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF89D0,#FF8FCA) ">
+  margin-left:-5px; background: linear-gradient(to right,#F356F9,#F662F0) ">
 as 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8FCA,#FF94C5) ">
+  margin-left:-5px; background: linear-gradient(to right,#F662F0,#F765EE) ">
 blue, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF94C5,#FF96C3) ">
+  margin-left:-5px; background: linear-gradient(to right,#F765EE,#F86AEA) ">
 green, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF96C3,#FFA1B8) ">
+  margin-left:-5px; background: linear-gradient(to right,#F86AEA,#FA73E3) ">
 or 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA1B8,#FF8FCA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FA73E3,#FE85D3) ">
 purple. 
 </div>
 <p><br></p>
@@ -2369,7 +2369,7 @@ Wikipedia, <a href="https://en.wikipedia.org/w/index.php?title=Highlighter&amp;o
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
