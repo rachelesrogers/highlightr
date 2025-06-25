@@ -49,7 +49,7 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
   mismatches <- dplyr::anti_join(col_descript, descript_ngram_df)
 
   fuzzy_matches <- zoomerjoin::jaccard_right_join(descript_ngram_df, mismatches,
-                                                  by='collocation', similarity_column="dist", n_bands=20000, threshold=0.4)%>%
+                                                  by='collocation', similarity_column="dist", n_bands=5000, threshold=0.4)%>%
     dplyr::filter(!is.na(collocation.x)) %>%
     dplyr::group_by(collocation.y) %>%
     dplyr::slice_max(order_by=dist, n=1) #finding closest match based on Jaccard Distance

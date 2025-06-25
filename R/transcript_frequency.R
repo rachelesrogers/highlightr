@@ -14,7 +14,7 @@
 #' toks_comment <- token_comments(comment_example_rename)
 #' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 #' toks_transcript <- token_transcript(transcript_example_rename)
-#' collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+#' collocation_object <- collocate_comments(toks_transcript, toks_comment)
 #' merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
 
 transcript_frequency <- function(transcript, collocate_object){
