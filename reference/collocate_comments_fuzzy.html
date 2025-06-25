@@ -46,7 +46,13 @@ correspond to the provided transcript, using fuzzy matching.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">collocate_comments_fuzzy</span><span class="op">(</span><span class="va">transcript_token</span>, <span class="va">note_token</span>, collocate_length <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">collocate_comments_fuzzy</span><span class="op">(</span></span>
+<span>  <span class="va">transcript_token</span>,</span>
+<span>  <span class="va">note_token</span>,</span>
+<span>  collocate_length <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  n_bands <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>  threshold <span class="op">=</span> <span class="fl">0.7</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -65,6 +71,14 @@ from <code><a href="token_transcript.html">token_transcript()</a></code></p></dd
 <dt id="arg-collocate-length">collocate_length<a class="anchor" aria-label="anchor" href="#arg-collocate-length"></a></dt>
 <dd><p>the length of the collocation. Default is 5</p></dd>
 
+
+<dt id="arg-n-bands">n_bands<a class="anchor" aria-label="anchor" href="#arg-n-bands"></a></dt>
+<dd><p>number of bands used in MinHash algorithm passed to <code><a href="https://beniaminogreen.github.io/zoomerjoin/reference/jaccard-joins.html" class="external-link">zoomerjoin::jaccard_right_join()</a></code> (default 5000)</p></dd>
+
+
+<dt id="arg-threshold">threshold<a class="anchor" aria-label="anchor" href="#arg-threshold"></a></dt>
+<dd><p>considered a match in for Jaccard distance passed to <code><a href="https://beniaminogreen.github.io/zoomerjoin/reference/jaccard-joins.html" class="external-link">zoomerjoin::jaccard_right_join()</a></code> (default 0.4)</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -74,10 +88,10 @@ from <code><a href="token_transcript.html">token_transcript()</a></code></p></dd
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">comment_example_rename</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">comment_example</span>, page_notes<span class="op">=</span><span class="va">Notes</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">toks_comment</span> <span class="op">&lt;-</span> <span class="fu"><a href="token_comments.html">token_comments</a></span><span class="op">(</span><span class="va">comment_example_rename</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>,<span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">toks_comment</span> <span class="op">&lt;-</span> <span class="fu"><a href="token_comments.html">token_comments</a></span><span class="op">(</span><span class="va">comment_example_rename</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">transcript_example_rename</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">transcript_example</span>, text<span class="op">=</span><span class="va">Text</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="token_transcript.html">token_transcript</a></span><span class="op">(</span><span class="va">transcript_example_rename</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">collocation_object</span> <span class="op">&lt;-</span> <span class="fu">collocate_comments_fuzzy</span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fuzzy_object</span> <span class="op">&lt;-</span> <span class="fu">collocate_comments_fuzzy</span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span>, n_bands<span class="op">=</span><span class="fl">40</span>, threshold<span class="op">=</span><span class="fl">0.9</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(unlist.descript_ngrams.)`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(collocation)`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(collocation)`</span>
