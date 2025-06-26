@@ -1,4 +1,4 @@
-# highlightr (development version)
+# highlightr 1.1.0
 
 * Remove dependency on `fuzzyjoin` package, and use `zoomerjoin` package instead
 
