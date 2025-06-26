@@ -1,3 +1,8 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+* set OMP_THREAD_LIMIT due to testthat CPU time note
+
 ## Note
 
 Removes `fuzzyjoin` dependency due to scheduled archival on 2025-07-03
