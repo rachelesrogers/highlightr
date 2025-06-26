@@ -20,9 +20,9 @@ from \code{\link[=token_transcript]{token_transcript()}}}
 
 \item{collocate_length}{the length of the collocation. Default is 5}
 
-\item{n_bands}{number of bands used in MinHash algorithm passed to \code{zoomerjoin::jaccard_right_join()} (default 5000)}
+\item{n_bands}{number of bands used in MinHash algorithm passed to \code{zoomerjoin::jaccard_right_join()}. Default is 50}
 
-\item{threshold}{considered a match in for Jaccard distance passed to \code{zoomerjoin::jaccard_right_join()} (default 0.4)}
+\item{threshold}{considered a match in for Jaccard distance passed to \code{zoomerjoin::jaccard_right_join()}. Default is 0.7}
 }
 \value{
 data frame of the transcript and corresponding note frequency

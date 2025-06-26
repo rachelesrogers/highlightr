@@ -7,8 +7,8 @@
 #' from [token_transcript()]
 #' @param note_token tokenized document of notes, resulting from [token_comments()]
 #' @param collocate_length the length of the collocation. Default is 5
-#' @param n_bands number of bands used in MinHash algorithm passed to `zoomerjoin::jaccard_right_join()` (default 5000)
-#' @param threshold considered a match in for Jaccard distance passed to `zoomerjoin::jaccard_right_join()` (default 0.4)
+#' @param n_bands number of bands used in MinHash algorithm passed to `zoomerjoin::jaccard_right_join()`. Default is 50
+#' @param threshold considered a match in for Jaccard distance passed to `zoomerjoin::jaccard_right_join()`. Default is 0.7
 #'
 #' @return data frame of the transcript and corresponding note frequency
 #' @export
