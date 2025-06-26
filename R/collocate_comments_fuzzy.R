@@ -17,7 +17,7 @@
 #' toks_comment <- token_comments(comment_example_rename)
 #' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 #' toks_transcript <- token_transcript(transcript_example_rename)
-#' fuzzy_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, n_bands=40, threshold=0.9)
+#' fuzzy_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 
 collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_length=5, n_bands=50, threshold=0.7){
   collocation.y <- dist <- collocation.x <- weighted_count <- col_number <- word_number <-
@@ -51,7 +51,7 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
   mismatches <- dplyr::anti_join(col_descript, descript_ngram_df)
 
   fuzzy_matches <- zoomerjoin::jaccard_right_join(descript_ngram_df, mismatches,
-                                                  by='collocation', similarity_column="dist", n_bands=5000, threshold=0.4)%>%
+                                                  by='collocation', similarity_column="dist", n_bands=n_bands, threshold=threshold)%>%
     dplyr::filter(!is.na(collocation.x)) %>%
     dplyr::group_by(collocation.y) %>%
     dplyr::slice_max(order_by=dist, n=1) #finding closest match based on Jaccard Distance

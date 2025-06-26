@@ -36,5 +36,5 @@ comment_example_rename <- dplyr::rename(comment_example[1:10,], page_notes=Notes
 toks_comment <- token_comments(comment_example_rename)
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 toks_transcript <- token_transcript(transcript_example_rename)
-fuzzy_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, n_bands=40, threshold=0.9)
+fuzzy_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 }
