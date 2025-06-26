@@ -1,3 +1,5 @@
+Sys.setenv("OMP_THREAD_LIMIT" = 1)
+
 test_that("testing html tags", {
   transcript_test <- data.frame(text="<i>This </i> <b>is</b> a<br> test.")
   collocation_test <- data.frame(word_number=1:4, col_1=c(2,4,6, NA), col_2=c(NA, 2, 4, 6),

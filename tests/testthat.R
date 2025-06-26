@@ -6,7 +6,7 @@
 # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
 # * https://testthat.r-lib.org/articles/special-files.html
 
-Sys.setenv("OMP_THREAD_LIMIT" = 2)
+Sys.setenv("OMP_THREAD_LIMIT" = 1)
 
 library(testthat)
 library(highlightr)

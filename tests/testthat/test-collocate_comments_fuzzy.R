@@ -1,3 +1,6 @@
+testthat::skip_on_cran()
+Sys.setenv("OMP_THREAD_LIMIT" = 1)
+
 test_that("there are 5 collocations by default", {
   comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
   toks_comment <- token_comments(comment_example_rename)

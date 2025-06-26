@@ -1,3 +1,5 @@
+Sys.setenv("OMP_THREAD_LIMIT" = 1)
+
 test_that("html tags removed", {
   testing <- data.frame(ID = c(1,2),
                         page_notes = c("<i> The review </i>.",

@@ -1,3 +1,5 @@
+Sys.setenv("OMP_THREAD_LIMIT" = 1)
+
 test_that("html tags removed", {
   testing <- data.frame(text =
                           "<i> The review </i>. text with <br> a page break.<b>tag without spaces</b>.<font color='#9900FF'> color </font>")
