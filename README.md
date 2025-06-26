@@ -48,6 +48,8 @@ toks_comment <- token_comments(comment_example_rename)
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 toks_transcript <- token_transcript(transcript_example_rename)
 collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+#> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
+#> Please consider changing `n_bands` and `band_width`.
 merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
 freq_plot <- collocation_plot(merged_frequency)
 page_highlight <- highlighted_text(freq_plot)
