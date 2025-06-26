@@ -32,7 +32,7 @@ This function provides the frequency of collocations in comments that
 correspond to the provided transcript, using fuzzy matching.
 }
 \examples{
-comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+comment_example_rename <- dplyr::rename(comment_example[1:10,], page_notes=Notes)
 toks_comment <- token_comments(comment_example_rename)
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 toks_transcript <- token_transcript(transcript_example_rename)
