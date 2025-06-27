@@ -1,3 +1,5 @@
+# highlightr (development version)
+
 # highlightr 1.1.2
 
 # highlightr 1.1.1
