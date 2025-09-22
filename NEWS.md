@@ -1,8 +1,10 @@
+# highlightr (development version)
+
+* Correcting `wiki_pages` description with correct number of rows
+
+* Listing packages necessary for creating `wiki_pages` object
+
 # highlightr 1.1.2
-
-# highlightr 1.1.1
-
-# highlightr 1.1.0
 
 * Remove dependency on `fuzzyjoin` package, and use `zoomerjoin` package instead
 

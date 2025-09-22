@@ -7,7 +7,7 @@
 \format{
 \subsection{\code{wiki_pages}}{
 
-A data frame with 50 rows and 1 column:
+A data frame with 300 rows and 1 column:
 \describe{
 \item{page_notes}{text of the Wikipedia page for Highlighter}
 
