@@ -36,7 +36,8 @@ URL: https://rachelesrogers.github.io/highlightr/, https://github.com/rachelesro
 Suggests: 
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    xml2
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 BugReports: https://github.com/rachelesrogers/highlightr/issues

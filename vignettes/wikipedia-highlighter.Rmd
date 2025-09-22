@@ -103,7 +103,7 @@ head(collocation_object)
 ```
 
 These frequencies can be mapped back to the transcript document, then highlighted as described based on the average collocation frequency that each word appeared in.
-The results are shown below.
+The results are shown below by specifying `` `r '\x60r page_highlight\x60'` `` in an R Markdown document outside of a code chunk and knitting to HTML.
 Note that the "labels" argument can be used to add additional labels to the gradient key.
 
 ```{r}

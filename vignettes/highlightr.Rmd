@@ -84,6 +84,15 @@ This HTML output can be rendered into highlighted text by specifying `` `r '\x60
 `r page_highlight`  
 
 <br>
+
+Alternatively, the `xml2` package can be used to save the output as an html file, as shown in the following code:
+
+```{r, message=FALSE, warning=FALSE, eval=FALSE}
+library(xml2)
+
+xml2::write_html(xml2::read_html(page_highlight), "filename.html")
+
+```
   
 To exclude fuzzy matches, the `collocate_comments()` function can be used. Here, the listed frequencies are all whole numbers, because they are counts (without weighting).
 

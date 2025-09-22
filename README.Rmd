@@ -68,6 +68,15 @@ page_highlight
 `page_highlight` will produce HTML output that can then be rendered into highlighted text.
 This can be done in R Markdown by specifying the object outside of a code chunk as `` `r '\x60r page_highlight\x60'` ``, and knitting the document to HTML.
 
+Alternatively, the `xml2` package can be used to save the output as an html file, as shown in the following code:
+
+```{r, message=FALSE, warning=FALSE, eval=FALSE}
+library(xml2)
+
+xml2::write_html(xml2::read_html(page_highlight), "filename.html")
+
+```
+
 The below image is generated through the resulting html output (as seen in the `vignette("highlightr")`).
 
 <img src="man/figures/highlight_example.PNG" align="center" alt="highlightr example" />

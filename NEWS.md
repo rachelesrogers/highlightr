@@ -1,5 +1,7 @@
 # highlightr (development version)
 
+* Providing instructions on how to save highlighted output to .html file
+
 * Correcting `wiki_pages` description with correct number of rows
 
 * Listing packages necessary for creating `wiki_pages` object

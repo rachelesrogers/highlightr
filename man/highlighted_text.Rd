@@ -17,6 +17,8 @@ html code for highlighted text
 \description{
 Adds html tags to create a highlighted testimony corresponding to word frequency.
 To render correctly, the object produced from \code{highlighted_text()} can be added outside of a code chunk in an .Rmd document in the \code{`r highlighted_text()`} format.
+Alternatively, the html output can be saved by using the \code{xml2} package as follows:
+\code{xml2::write_html(xml2::read_html(highlighted_text(), "filepath.html"))}
 }
 \examples{
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
