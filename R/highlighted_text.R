@@ -1,7 +1,7 @@
 #' Create Highlighted Testimony
 #'
 #' Adds html tags to create a highlighted testimony corresponding to word frequency.
-#' To render correctly, the object produced from `highlighted_text()` can be added outside of a code chunk in an .Rmd document in the `\` r highlighted_text()\`` format.
+#' To render correctly, the object produced from `highlighted_text()` can be added outside of a code chunk in an .Rmd document in the `` `r highlighted_text()` `` format.
 #'
 #' @param plot_object plot object resulting from [collocation_plot()]
 #' @param labels lower and upper labels for the gradient scale
