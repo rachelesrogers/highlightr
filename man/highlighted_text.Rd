@@ -16,6 +16,7 @@ html code for highlighted text
 }
 \description{
 Adds html tags to create a highlighted testimony corresponding to word frequency.
+To render correctly, the object produced from \code{highlighted_text()} can be added outside of a code chunk in an .Rmd document in the \verb{\\} r highlighted_text()\`` format.
 }
 \examples{
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
