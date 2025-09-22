@@ -163,9 +163,10 @@ amount of times each collocation occurs.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>           6  7.76  7.74  7.79  7.79  7.83 fluorescent fluorescent pen is a ty…</span></span></code></pre></div>
 <p>These frequencies can be mapped back to the transcript document, then
 highlighted as described based on the average collocation frequency that
-each word appeared in. The results are shown below. Note that the
-“labels” argument can be used to add additional labels to the gradient
-key.</p>
+each word appeared in. The results are shown below by specifying
+<code>`r page_highlight`</code> in an R Markdown document outside of a
+code chunk and knitting to HTML. Note that the “labels” argument can be
+used to add additional labels to the gradient key.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_rename</span>, <span class="va">collocation_object</span><span class="op">)</span></span>

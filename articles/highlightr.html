@@ -416,10 +416,16 @@ at 
 trial. 
 </div>
 <p><br></p>
+<p>Alternatively, the <code>xml2</code> package can be used to save the
+output as an html file, as shown in the following code:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://xml2.r-lib.org" class="external-link">xml2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/write_xml.html" class="external-link">write_html</a></span><span class="op">(</span><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html" class="external-link">read_html</a></span><span class="op">(</span><span class="va">page_highlight</span><span class="op">)</span>, <span class="st">"filename.html"</span><span class="op">)</span></span></code></pre></div>
 <p>To exclude fuzzy matches, the <code><a href="../reference/collocate_comments.html">collocate_comments()</a></code>
 function can be used. Here, the listed frequencies are all whole
 numbers, because they are counts (without weighting).</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">collocation_object_nonfuzzy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments.html">collocate_comments</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">collocation_object_nonfuzzy</span><span class="op">)</span></span>
@@ -436,7 +442,7 @@ numbers, because they are counts (without weighting).</p>
 matches are included, but the maximum value reached is smaller. Note
 also that the colors used in highlighting can be changed in the “colors”
 argument of the <code>collocation_plot</code> function.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">merged_frequency_nonfuzzy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_rename</span>, <span class="va">collocation_object_nonfuzzy</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">freq_plot_nonfuzzy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency_nonfuzzy</span>, colors<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#15bf7e"</span>, <span class="st">"#fcc7ed"</span><span class="op">)</span><span class="op">)</span></span>
@@ -711,7 +717,7 @@ trial. 
 <p>Additionally, the length of the collocation can be changed. The
 default collocation length (shown above) is 5 words. Below, this
 collocation length has been changed to 2 words.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">collocation_object_2col</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments.html">collocate_comments</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span>, collocate_length <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">collocation_object_2col</span>, n<span class="op">=</span><span class="fl">7</span><span class="op">)</span></span>
@@ -728,7 +734,7 @@ collocation length has been changed to 2 words.</p>
 <p>In these shorter collocations, we can see that the collocation
 containing the name “Richard Cole” is popular, with a frequency of
 89.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">merged_frequency_2col</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_rename</span>, <span class="va">collocation_object_2col</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">freq_plot_2col</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency_2col</span><span class="op">)</span></span>
