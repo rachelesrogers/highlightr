@@ -9,7 +9,7 @@
 #' @param collocate_length the length of the collocation. Default is 5
 #' @param n_bands number of bands used in MinHash algorithm passed to `zoomerjoin::jaccard_right_join()`. Default is 50
 #' @param threshold Jaccard distance threshold to be considered a match passed to `zoomerjoin::jaccard_right_join()`. Default is 0.7
-#' @param n_gram_width width of n-grams used in Jaccard distance calculation passed to `zoomerjoin::jaccard_right_join()`. Default is 3
+#' @param n_gram_width width of n-grams used in Jaccard distance calculation passed to `zoomerjoin::jaccard_right_join()`. Default is 4
 #'
 #' @return data frame of the transcript and corresponding note frequency
 #' @export
@@ -20,7 +20,7 @@
 #' toks_transcript <- token_transcript(transcript_example_rename)
 #' fuzzy_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 
-collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_length=5, n_bands=50, threshold=0.7, n_gram_width=3){
+collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_length=5, n_bands=50, threshold=0.7, n_gram_width=4){
   collocation.y <- dist <- collocation.x <- weighted_count <- col_number <- word_number <-
     word_1 <- first_word <- collocation <- NULL
   `%>%` <- magrittr::`%>%`

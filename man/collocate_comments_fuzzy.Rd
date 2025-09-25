@@ -10,7 +10,7 @@ collocate_comments_fuzzy(
   collocate_length = 5,
   n_bands = 50,
   threshold = 0.7,
-  n_gram_width = 3
+  n_gram_width = 4
 )
 }
 \arguments{
@@ -25,7 +25,7 @@ from \code{\link[=token_transcript]{token_transcript()}}}
 
 \item{threshold}{Jaccard distance threshold to be considered a match passed to \code{zoomerjoin::jaccard_right_join()}. Default is 0.7}
 
-\item{n_gram_width}{width of n-grams used in Jaccard distance calculation passed to \code{zoomerjoin::jaccard_right_join()}. Default is 3}
+\item{n_gram_width}{width of n-grams used in Jaccard distance calculation passed to \code{zoomerjoin::jaccard_right_join()}. Default is 4}
 }
 \value{
 data frame of the transcript and corresponding note frequency
