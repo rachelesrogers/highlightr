@@ -6,6 +6,8 @@
 
 * Listing packages necessary for creating `wiki_pages` object
 
+* Adding option to specify n-gram width in `collocate_comments_fuzzy`
+
 # highlightr 1.1.2
 
 * Remove dependency on `fuzzyjoin` package, and use `zoomerjoin` package instead

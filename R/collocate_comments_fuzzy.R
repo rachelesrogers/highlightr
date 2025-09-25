@@ -8,7 +8,8 @@
 #' @param note_token tokenized document of notes, resulting from [token_comments()]
 #' @param collocate_length the length of the collocation. Default is 5
 #' @param n_bands number of bands used in MinHash algorithm passed to `zoomerjoin::jaccard_right_join()`. Default is 50
-#' @param threshold considered a match in for Jaccard distance passed to `zoomerjoin::jaccard_right_join()`. Default is 0.7
+#' @param threshold Jaccard distance threshold to be considered a match passed to `zoomerjoin::jaccard_right_join()`. Default is 0.7
+#' @param n_gram_width width of n-grams used in Jaccard distance calculation passed to `zoomerjoin::jaccard_right_join()`. Default is 3
 #'
 #' @return data frame of the transcript and corresponding note frequency
 #' @export
@@ -19,7 +20,7 @@
 #' toks_transcript <- token_transcript(transcript_example_rename)
 #' fuzzy_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 
-collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_length=5, n_bands=50, threshold=0.7){
+collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_length=5, n_bands=50, threshold=0.7, n_gram_width=3){
   collocation.y <- dist <- collocation.x <- weighted_count <- col_number <- word_number <-
     word_1 <- first_word <- collocation <- NULL
   `%>%` <- magrittr::`%>%`
@@ -51,7 +52,8 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
   mismatches <- dplyr::anti_join(col_descript, descript_ngram_df)
 
   fuzzy_matches <- zoomerjoin::jaccard_right_join(descript_ngram_df, mismatches,
-                                                  by='collocation', similarity_column="dist", n_bands=n_bands, threshold=threshold)%>%
+                                                  by='collocation', similarity_column="dist", n_bands=n_bands,
+                                                  threshold=threshold, n_gram_width=n_gram_width)%>%
     dplyr::filter(!is.na(collocation.x)) %>%
     dplyr::group_by(collocation.y) %>%
     dplyr::slice_max(order_by=dist, n=1) #finding closest match based on Jaccard Distance
