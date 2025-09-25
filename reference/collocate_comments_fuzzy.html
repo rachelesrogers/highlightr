@@ -51,7 +51,8 @@ correspond to the provided transcript, using fuzzy matching.</p>
 <span>  <span class="va">note_token</span>,</span>
 <span>  collocate_length <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  n_bands <span class="op">=</span> <span class="fl">50</span>,</span>
-<span>  threshold <span class="op">=</span> <span class="fl">0.7</span></span>
+<span>  threshold <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>  n_gram_width <span class="op">=</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -77,7 +78,11 @@ from <code><a href="token_transcript.html">token_transcript()</a></code></p></dd
 
 
 <dt id="arg-threshold">threshold<a class="anchor" aria-label="anchor" href="#arg-threshold"></a></dt>
-<dd><p>considered a match in for Jaccard distance passed to <code><a href="https://beniaminogreen.github.io/zoomerjoin/reference/jaccard-joins.html" class="external-link">zoomerjoin::jaccard_right_join()</a></code>. Default is 0.7</p></dd>
+<dd><p>Jaccard distance threshold to be considered a match passed to <code><a href="https://beniaminogreen.github.io/zoomerjoin/reference/jaccard-joins.html" class="external-link">zoomerjoin::jaccard_right_join()</a></code>. Default is 0.7</p></dd>
+
+
+<dt id="arg-n-gram-width">n_gram_width<a class="anchor" aria-label="anchor" href="#arg-n-gram-width"></a></dt>
+<dd><p>width of n-grams used in Jaccard distance calculation passed to <code><a href="https://beniaminogreen.github.io/zoomerjoin/reference/jaccard-joins.html" class="external-link">zoomerjoin::jaccard_right_join()</a></code>. Default is 3</p></dd>
 
 </dl></div>
     <div class="section level2">
