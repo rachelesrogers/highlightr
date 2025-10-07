@@ -69,7 +69,8 @@
 (in this case, on the <a href="https://en.wikipedia.org/wiki/Highlighter" class="external-link">Highlighter</a>), in
 order to see which parts are consistently included. This data includes
 the first 150 versions of the article, as well as the latest 150
-versions of the article. The data was gathered as follows:</p>
+versions of the article, collected around 14 March, 2024. The data was
+gathered as follows:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rvest.tidyverse.org/" class="external-link">rvest</a></span><span class="op">)</span></span>
@@ -80,9 +81,11 @@ versions of the article. The data was gathered as follows:</p>
 <span></span>
 <span><span class="va">class_of_interest</span> <span class="op">&lt;-</span> <span class="st">".mw-content-ltr"</span> <span class="co">## ids are #id-name, classes are .class-name</span></span>
 <span></span>
+<span><span class="co"># Finding newest 150 versions of Wikipedia's highlighter article</span></span>
 <span><span class="va">editurl</span> <span class="op">&lt;-</span> <span class="st">"https://en.wikipedia.org/w/index.php?title=Highlighter&amp;action=history&amp;offset=&amp;limit=150"</span></span>
 <span><span class="va">editclass_of_interest</span> <span class="op">&lt;-</span> <span class="st">".mw-changeslist-date"</span></span>
 <span></span>
+<span><span class="co"># Save the urls of the full articles</span></span>
 <span><span class="va">url_list1</span> <span class="op">&lt;-</span> <span class="va">editurl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">rvest</span><span class="fu">::</span><span class="fu">read_html</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">rvest</span><span class="fu">::</span><span class="fu">html_nodes</span><span class="op">(</span><span class="va">editclass_of_interest</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -90,8 +93,10 @@ versions of the article. The data was gathered as follows:</p>
 <span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>node <span class="op">=</span> <span class="va">.</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>link <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="va">node</span>, <span class="va">html_attr</span>, <span class="st">"href"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"https://en.wikipedia.org"</span>, <span class="va">.</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># Finding oldest 150 versions of Wikipedia's highlighter article</span></span>
 <span><span class="va">editurl2</span> <span class="op">&lt;-</span> <span class="st">"https://en.wikipedia.org/w/index.php?title=Highlighter&amp;action=history&amp;dir=prev&amp;limit=150"</span></span>
 <span></span>
+<span><span class="co"># Save the urls of the full articles</span></span>
 <span><span class="va">url_list2</span> <span class="op">&lt;-</span> <span class="va">editurl2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">rvest</span><span class="fu">::</span><span class="fu">read_html</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">rvest</span><span class="fu">::</span><span class="fu">html_nodes</span><span class="op">(</span><span class="va">editclass_of_interest</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -99,8 +104,10 @@ versions of the article. The data was gathered as follows:</p>
 <span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>node <span class="op">=</span> <span class="va">.</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>link <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="va">node</span>, <span class="va">html_attr</span>, <span class="st">"href"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"https://en.wikipedia.org"</span>, <span class="va">.</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># Combine url list</span></span>
 <span><span class="va">url_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">url_list1</span>, <span class="va">url_list2</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># create a data frame with the text of the documents</span></span>
 <span><span class="va">wiki_pages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>page_notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">url_list</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">url_list</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">{</span></span>
@@ -122,25 +129,30 @@ versions of the article. The data was gathered as follows:</p>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Note that the Wikipedia version text is placed in a column labelled
 “page_notes”, as needed for the comment functions in this package. This
-allows for the comments to be tokenized.</p>
+allows for the comments to be tokenized, or separated into words.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rachelesrogers.github.io/highlightr/">highlightr</a></span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># tokenize comments </span></span>
 <span><span class="va">toks_comment</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/token_comments.html">token_comments</a></span><span class="op">(</span><span class="fu">highlightr</span><span class="fu">::</span><span class="va"><a href="../reference/wiki_pages.html">wiki_pages</a></span><span class="op">)</span></span></code></pre></div>
 <p>The latest version of the article is the first row in the dataset,
 and can be used as the “transcript text”, or the base text to which the
-highlighting is applied. In this case, the column must be named
-“text”.</p>
+highlighting is applied. In this case, the column must be named “text”.
+This reference version is also tokenized for comparison to the
+derivative versions.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<code class="sourceCode R"><span><span class="co"># find most recent version of the article and save text to a data frame</span></span>
 <span><span class="va">transcript_example_rename</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>text<span class="op">=</span><span class="va">wiki_pages</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># tokenize most recent version of the article (as the reference)</span></span>
 <span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/token_transcript.html">token_transcript</a></span><span class="op">(</span><span class="va">transcript_example_rename</span><span class="op">)</span></span></code></pre></div>
 <p>The previous versions are then compared to the current version’s
 collocations with fuzzy matching in order to provide a count for the
 amount of times each collocation occurs.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
+<span><span class="co"># use fuzzy matching to calculate weighted frequency values between derivative and source documents</span></span>
+<span></span>
 <span><span class="va">collocation_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(unlist.descript_ngrams.)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
@@ -169,14 +181,16 @@ code chunk and knitting to HTML. Note that the “labels” argument can be
 used to add additional labels to the gradient key.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
+<span><span class="co"># connect collocation frequencies to source document</span></span>
 <span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_rename</span>, <span class="va">collocation_object</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(to_merge)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(text, lines, n_words, words, word_num, word_length,</span></span>
 <span><span class="co">#&gt; x_coord, to_merge, stanza_freq, word_number)`</span></span>
 <span></span>
-<span></span>
+<span><span class="co"># create a ggplot object of the transcript</span></span>
 <span><span class="va">freq_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># add html tags to source document</span></span>
 <span><span class="va">page_highlight</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/highlighted_text.html">highlighted_text</a></span><span class="op">(</span><span class="va">freq_plot</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"(fewest articles)"</span>, <span class="st">"(most articles)"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div>
 (fewest articles) 0
@@ -2088,10 +2102,14 @@ the dataset as the transcript reference to view which text has been
 changed:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
+<span><span class="co"># separate the oldest version of the article</span></span>
+<span></span>
 <span><span class="va">transcript_example_rename2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>text<span class="op">=</span><span class="va">wiki_pages</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">wiki_pages</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,<span class="op">]</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># tokenize the transcript</span></span>
 <span><span class="va">toks_transcript2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/token_transcript.html">token_transcript</a></span><span class="op">(</span><span class="va">transcript_example_rename2</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># use fuzzy collocation on the source and derivative documents</span></span>
 <span><span class="va">collocation_object2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript2</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(unlist.descript_ngrams.)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
@@ -2102,15 +2120,16 @@ changed:</p>
 <span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(word_number)`</span></span>
 <span></span>
-<span></span>
+<span><span class="co"># connect collocation frequencies to source document</span></span>
 <span><span class="va">merged_frequency2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_rename2</span>, <span class="va">collocation_object2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(to_merge)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(text, lines, n_words, words, word_num, word_length,</span></span>
 <span><span class="co">#&gt; x_coord, to_merge, stanza_freq, word_number)`</span></span>
 <span></span>
-<span></span>
+<span><span class="co"># create a gpplot object of the transcript</span></span>
 <span><span class="va">freq_plot2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency2</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># add html tags to source document</span></span>
 <span><span class="va">page_highlight2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/highlighted_text.html">highlighted_text</a></span><span class="op">(</span><span class="va">freq_plot2</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"(fewest articles)"</span>, <span class="st">"(most articles)"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div>
 (fewest articles) 0
