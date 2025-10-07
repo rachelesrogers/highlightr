@@ -3,6 +3,15 @@
 #' This function provides the frequency of collocations in comments that
 #' correspond to the provided transcript.
 #'
+#' Collocations are sequences of words present in the source document.
+#' For example, the phrase "the blue bird flies" contains one collocation of
+#' length 4 ("the blue bird flies"), two collocations of length 3 ("the blue bird"
+#' and "blue bird flies"), and three collocations of length 2 ("the blue",
+#' "blue bird", and "bird flies").
+#' This function counts the number of corresponding phrases in the 'notes', or the
+#' derivative documents.
+#' Matches between the two documents must be exact
+#'
 #' @param transcript_token transcript token to act as baseline for notes, resulting
 #' from [token_transcript()]
 #' @param note_token tokenized document of notes, resulting from [token_comments()]

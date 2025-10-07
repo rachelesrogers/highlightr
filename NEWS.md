@@ -8,6 +8,8 @@
 
 * Adding option to specify n-gram width in `collocate_comments_fuzzy`
 
+* Adding comments to example scripts and further description for collocation functions
+
 # highlightr 1.1.2
 
 * Remove dependency on `fuzzyjoin` package, and use `zoomerjoin` package instead

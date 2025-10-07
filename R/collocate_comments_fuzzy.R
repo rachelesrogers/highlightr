@@ -3,6 +3,18 @@
 #' This function provides the frequency of collocations in comments that
 #' correspond to the provided transcript, using fuzzy matching.
 #'
+#' Collocations are sequences of words present in the source document.
+#' For example, the phrase "the blue bird flies" contains one collocation of
+#' length 4 ("the blue bird flies"), two collocations of length 3 ("the blue bird"
+#' and "blue bird flies"), and three collocations of length 2 ("the blue",
+#' "blue bird", and "bird flies").
+#' This function counts the number of corresponding phrases in the 'notes', or the
+#' derivative documents.
+#' Due to fuzzy matching, indirect matches are included with a weight of
+#' (n*d)/m, where n is the frequency of the fuzzy collocation,
+#' d is the Jaccard similarity between the transcript and note collocation, and m
+#' is the number of closest matches for the note collocation.
+#'
 #' @param transcript_token transcript token to act as baseline for notes, resulting
 #' from [token_transcript()]
 #' @param note_token tokenized document of notes, resulting from [token_comments()]

@@ -34,6 +34,19 @@ data frame of the transcript and corresponding note frequency
 This function provides the frequency of collocations in comments that
 correspond to the provided transcript, using fuzzy matching.
 }
+\details{
+Collocations are sequences of words present in the source document.
+For example, the phrase "the blue bird flies" contains one collocation of
+length 4 ("the blue bird flies"), two collocations of length 3 ("the blue bird"
+and "blue bird flies"), and three collocations of length 2 ("the blue",
+"blue bird", and "bird flies").
+This function counts the number of corresponding phrases in the 'notes', or the
+derivative documents.
+Due to fuzzy matching, indirect matches are included with a weight of
+(n*d)/m, where n is the frequency of the fuzzy collocation,
+d is the Jaccard similarity between the transcript and note collocation, and m
+is the number of closest matches for the note collocation.
+}
 \examples{
 comment_example_rename <- dplyr::rename(comment_example[1:10,], page_notes=Notes)
 toks_comment <- token_comments(comment_example_rename)

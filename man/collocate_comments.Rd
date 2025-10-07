@@ -21,6 +21,16 @@ data frame of the transcript and corresponding note frequency
 This function provides the frequency of collocations in comments that
 correspond to the provided transcript.
 }
+\details{
+Collocations are sequences of words present in the source document.
+For example, the phrase "the blue bird flies" contains one collocation of
+length 4 ("the blue bird flies"), two collocations of length 3 ("the blue bird"
+and "blue bird flies"), and three collocations of length 2 ("the blue",
+"blue bird", and "bird flies").
+This function counts the number of corresponding phrases in the 'notes', or the
+derivative documents.
+Matches between the two documents must be exact
+}
 \examples{
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
 toks_comment <- token_comments(comment_example_rename[1:100,])
