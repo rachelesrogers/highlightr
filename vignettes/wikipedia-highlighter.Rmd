@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 In a second example, we view previous versions of a Wikipedia article (in this case, on the [Highlighter](https://en.wikipedia.org/wiki/Highlighter)), in order to see which parts are consistently included.
-This data includes the first 150 versions of the article, as well as the latest 150 versions of the article.
+This data includes the first 150 versions of the article, as well as the latest 150 versions of the article, collected around 14 March, 2024.
 The data was gathered as follows:
 
 ```{r data, eval=FALSE}
@@ -28,9 +28,11 @@ library(stringr)
 
 class_of_interest <- ".mw-content-ltr" ## ids are #id-name, classes are .class-name
 
+# Finding newest 150 versions of Wikipedia's highlighter article
 editurl <- "https://en.wikipedia.org/w/index.php?title=Highlighter&action=history&offset=&limit=150"
 editclass_of_interest <- ".mw-changeslist-date"
 
+# Save the urls of the full articles
 url_list1 <- editurl %>%
   rvest::read_html() %>%
   rvest::html_nodes(editclass_of_interest) %>%
@@ -38,8 +40,10 @@ url_list1 <- editurl %>%
   tibble::tibble(node = .) %>%
   dplyr::mutate(link = purrr::map_chr(node, html_attr, "href") %>% paste0("https://en.wikipedia.org", .))
 
+# Finding oldest 150 versions of Wikipedia's highlighter article
 editurl2 <- "https://en.wikipedia.org/w/index.php?title=Highlighter&action=history&dir=prev&limit=150"
 
+# Save the urls of the full articles
 url_list2 <- editurl2 %>%
   rvest::read_html() %>%
   rvest::html_nodes(editclass_of_interest) %>%
@@ -47,8 +51,10 @@ url_list2 <- editurl2 %>%
   tibble::tibble(node = .) %>%
   dplyr::mutate(link = purrr::map_chr(node, html_attr, "href") %>% paste0("https://en.wikipedia.org", .))
 
+# Combine url list
 url_list <- rbind(url_list1, url_list2)
 
+# create a data frame with the text of the documents
 wiki_pages <- data.frame(page_notes = rep(NA, dim(url_list)[1]))
 
 for (i in 1:dim(url_list)[1]){
@@ -72,22 +78,25 @@ for (i in 1:dim(url_list)[1]){
 ```
 
 Note that the Wikipedia version text is placed in a column labelled "page_notes", as needed for the comment functions in this package.
-This allows for the comments to be tokenized.
+This allows for the comments to be tokenized, or separated into words.
 
 
 ```{r setup}
 library(highlightr)
 
+# tokenize comments 
 toks_comment <- token_comments(highlightr::wiki_pages)
 ```
 
 The latest version of the article is the first row in the dataset, and can be used as the "transcript text", or the base text to which the highlighting is applied.
 In this case, the column must be named "text".
+This reference version is also tokenized for comparison to the derivative versions.
 
 ```{r}
-
+# find most recent version of the article and save text to a data frame
 transcript_example_rename <- data.frame(text=wiki_pages[1,])
 
+# tokenize most recent version of the article (as the reference)
 toks_transcript <- token_transcript(transcript_example_rename)
 
 ```
@@ -95,6 +104,8 @@ toks_transcript <- token_transcript(transcript_example_rename)
 The previous versions are then compared to the current version's collocations with fuzzy matching in order to provide a count for the amount of times each collocation occurs.
 
 ```{r}
+
+# use fuzzy matching to calculate weighted frequency values between derivative and source documents
 
 collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 
@@ -108,11 +119,13 @@ Note that the "labels" argument can be used to add additional labels to the grad
 
 ```{r}
 
+# connect collocation frequencies to source document
 merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
 
-
+# create a ggplot object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
 
+# add html tags to source document
 page_highlight <- highlighted_text(freq_plot, labels=c("(fewest articles)", "(most articles)"))
 ```
 
@@ -127,18 +140,23 @@ We could also use the oldest version of the Highlighter article in the dataset a
 
 ```{r}
 
+# separate the oldest version of the article
+
 transcript_example_rename2 <- data.frame(text=wiki_pages[dim(wiki_pages)[1],])
 
+# tokenize the transcript
 toks_transcript2 <- token_transcript(transcript_example_rename2)
 
+# use fuzzy collocation on the source and derivative documents
 collocation_object2 <- collocate_comments_fuzzy(toks_transcript2, toks_comment)
 
-
+# connect collocation frequencies to source document
 merged_frequency2 <- transcript_frequency(transcript_example_rename2, collocation_object2)
 
-
+# create a gpplot object of the transcript
 freq_plot2 <- collocation_plot(merged_frequency2)
 
+# add html tags to source document
 page_highlight2 <- highlighted_text(freq_plot2, labels=c("(fewest articles)", "(most articles)"))
 
 ```
