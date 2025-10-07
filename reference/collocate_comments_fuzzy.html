@@ -89,6 +89,20 @@ from <code><a href="token_transcript.html">token_transcript()</a></code></p></dd
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>data frame of the transcript and corresponding note frequency</p>
     </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Collocations are sequences of words present in the source document.
+For example, the phrase "the blue bird flies" contains one collocation of
+length 4 ("the blue bird flies"), two collocations of length 3 ("the blue bird"
+and "blue bird flies"), and three collocations of length 2 ("the blue",
+"blue bird", and "bird flies").
+This function counts the number of corresponding phrases in the 'notes', or the
+derivative documents.
+Due to fuzzy matching, indirect matches are included with a weight of
+(n*d)/m, where n is the frequency of the fuzzy collocation,
+d is the Jaccard similarity between the transcript and note collocation, and m
+is the number of closest matches for the note collocation.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
