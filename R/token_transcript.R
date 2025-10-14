@@ -9,7 +9,10 @@
 #' @return a tokenized object
 #' @export
 #'
-#' @examples transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+#' @examples
+#' # Rename relevant column in the source document to text
+#' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+#' # Tokenize source document
 #' toks_transcript <- token_transcript(transcript_example_rename)
 
 token_transcript <- function(transcript_file){

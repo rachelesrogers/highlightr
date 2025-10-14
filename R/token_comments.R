@@ -9,7 +9,10 @@
 #' @return tokenized comments
 #' @export
 #'
-#' @examples comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+#' @examples
+#' # Rename relevant column to page_notes in the derivative document
+#' comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+#' # Tokenize the derivative document
 #' toks_comment <- token_comments(comment_example_rename)
 
 token_comments <- function(comment_document){

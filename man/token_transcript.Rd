@@ -18,6 +18,8 @@ This function tokenizes a transcript document that is to be used in
 \code{\link[=collocate_comments_fuzzy]{collocate_comments_fuzzy()}} or \code{\link[=collocate_comments]{collocate_comments()}}
 }
 \examples{
+# Rename relevant column in the source document to text
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+# Tokenize source document
 toks_transcript <- token_transcript(transcript_example_rename)
 }

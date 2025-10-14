@@ -20,10 +20,16 @@
 #' @return data frame of the transcript and corresponding note frequency
 #' @export
 #'
-#' @examples comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+#' @examples
+#' # Rename relevant column to page_notes in the derivative document
+#' comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+#' # Tokenize the derivative document
 #' toks_comment <- token_comments(comment_example_rename[1:100,])
+#' # Rename relevant column in the source document to text
 #' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+#' # Tokenize source document
 #' toks_transcript <- token_transcript(transcript_example_rename)
+#' # Compute collocation frequencies
 #' collocation_object <- collocate_comments(toks_transcript, toks_comment)
 #'
 collocate_comments <- function(transcript_token, note_token, collocate_length=5){

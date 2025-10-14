@@ -18,6 +18,8 @@ This function tokenizes comments that are to be used in \code{\link[=collocate_c
 or \code{\link[=collocate_comments]{collocate_comments()}}
 }
 \examples{
+# Rename relevant column to page_notes in the derivative document
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+# Tokenize the derivative document
 toks_comment <- token_comments(comment_example_rename)
 }
