@@ -74,19 +74,27 @@ Alternatively, the html output can be saved by using the <code>xml2</code> packa
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">comment_example_rename</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">comment_example</span>, page_notes<span class="op">=</span><span class="va">Notes</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Rename relevant column to page_notes in the derivative document</span></span></span>
+<span class="r-in"><span><span class="va">comment_example_rename</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">comment_example</span>, page_notes<span class="op">=</span><span class="va">Notes</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Tokenize the derivative document</span></span></span>
 <span class="r-in"><span><span class="va">toks_comment</span> <span class="op">&lt;-</span> <span class="fu"><a href="token_comments.html">token_comments</a></span><span class="op">(</span><span class="va">comment_example_rename</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Rename relevant column in the source document to text</span></span></span>
 <span class="r-in"><span><span class="va">transcript_example_rename</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">transcript_example</span>, text<span class="op">=</span><span class="va">Text</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Tokenize source document</span></span></span>
 <span class="r-in"><span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="token_transcript.html">token_transcript</a></span><span class="op">(</span><span class="va">transcript_example_rename</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Compute collocation frequencies</span></span></span>
 <span class="r-in"><span><span class="va">collocation_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="collocate_comments.html">collocate_comments</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(tolower.unlist.descript_ngrams..)`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(collocation)`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(word_number)`</span>
+<span class="r-in"><span><span class="co"># Merge frequencies with source document to provide averages by word and correct formatting</span></span></span>
 <span class="r-in"><span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_rename</span>, <span class="va">collocation_object</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(to_merge)`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(text, lines, n_words, words, word_num, word_length,</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> x_coord, to_merge, stanza_freq, word_number)`</span>
+<span class="r-in"><span><span class="co"># Create a plot object to assign colors based on frequency</span></span></span>
 <span class="r-in"><span><span class="va">freq_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Add html tags to create a highlighted version of the source document</span></span></span>
 <span class="r-in"><span><span class="va">page_highlight</span> <span class="op">&lt;-</span> <span class="fu">highlighted_text</span><span class="op">(</span><span class="va">freq_plot</span>, <span class="va">merged_frequency</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
