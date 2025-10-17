@@ -1,6 +1,6 @@
 Package: highlightr
 Title: Highlight Conserved Edits Across Versions of a Document
-Version: 1.1.2.9000
+Version: 1.2.0
 Authors@R: 
     c(person("Center for Statistics and Applications in Forensic Evidence", role=c("aut", "cph", "fnd")),
     person("Rachel", "Rogers", , "rrogers.rpackages@gmail.com", role = c("aut", "cre"),
