@@ -1,3 +1,5 @@
+# highlightr (development version)
+
 # highlightr 1.2.0
 
 * Providing instructions on how to save highlighted output to .html file
