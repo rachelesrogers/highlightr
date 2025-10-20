@@ -1,6 +1,6 @@
 # highlightr (development version)
 
-* updating transcript_frequency() to appropriately recognize "+","=", ".extension"
+* Updating transcript_frequency() to appropriately recognize "+","=", ".extension"
 
 # highlightr 1.2.0
 
