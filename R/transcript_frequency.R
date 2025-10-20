@@ -62,6 +62,7 @@ transcript_cleaning <- function(transcript){
   poem$lines <- gsub("-", " - ", poem$lines) #replacing dash with space
   poem$lines <- gsub("\\.\\.\\.", "\\.\\.\\. ", poem$lines) #adding space after 3 dots
   poem$lines <- gsub(" \\.\\.\\.", "\\.\\.\\.", poem$lines) #removing space before 3 dots
+  poem$lines <- gsub("( \\.)([[:alnum:]])", " \\2", poem$lines) #removing dot before characters
   poem$lines <- gsub(" \\.", "\\.", poem$lines) #removing space before 1 dot
   poem$lines <- gsub("(>)([^ ])", "\\1 \\2", poem$lines)
   poem$lines <- gsub("([[:alnum:]])(/)","\\1 \\2", poem$lines)
@@ -90,6 +91,7 @@ transcript_cleaning <- function(transcript){
   poem_words$to_merge<- tolower(poem_words$words)
   poem_words$to_merge<- gsub("<.*?>","", poem_words$to_merge)
   poem_words$to_merge<- tm::removePunctuation(poem_words$to_merge)
+  poem_words[poem_words$words %in% c("+","="),]$to_merge <-  poem_words[poem_words$words %in% c("+","="),]$words
 
   group_exp <- poem_words %>%
     dplyr::group_by(to_merge) %>%

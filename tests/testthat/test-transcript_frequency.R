@@ -142,3 +142,21 @@ test_that("... are treated consistently",{
 
 }
 )
+
+test_that("math symbols are used correctly for merging",{
+  symbol_test <-
+    data.frame(ID=1:5,
+               Notes=c("They added 2 + 3 = 5", "2+3=5", "saved as an .html",
+                       "the function was add_numbers()", "they used add_numbers()"))
+  comment_example_rename <- dplyr::rename(symbol_test, page_notes=Notes)
+  toks_comment <- token_comments(comment_example_rename)
+  symbol_transcript <- data.frame(Text="They added 2 + 3 = 5 in an .html with the function add_numbers()")
+  transcript_example_rename <- dplyr::rename(symbol_transcript, text=Text)
+  toks_transcript <- token_transcript(transcript_example_rename)
+  collocation_object <- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)
+  frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
+
+  expect_identical(collocation_object$col_1, frequency_test$col_1)
+
+}
+)

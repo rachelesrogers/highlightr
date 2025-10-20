@@ -1,5 +1,7 @@
 # highlightr (development version)
 
+* updating transcript_frequency() to appropriately recognize "+","=", ".extension"
+
 # highlightr 1.2.0
 
 * Providing instructions on how to save highlighted output to .html file
