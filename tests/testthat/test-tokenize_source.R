@@ -1,8 +1,7 @@
 Sys.setenv("OMP_THREAD_LIMIT" = 1)
 
 test_that("html tags removed", {
-  testing <- data.frame(text =
-                          "<i> The review </i>. text with <br> a page break.<b>tag without spaces</b>.<font color='#9900FF'> color </font>")
+  testing <- "<i> The review </i>. text with <br> a page break.<b>tag without spaces</b>.<font color='#9900FF'> color </font>"
 
   results <- tokenize_source(testing)
 
@@ -12,7 +11,7 @@ test_that("html tags removed", {
 })
 
 test_that("dollar sign removed", {
-  testing <- data.frame(text = c("$4.50"))
+  testing <- "$4.50"
 
   results <- tokenize_source(testing)
 
@@ -21,7 +20,7 @@ test_that("dollar sign removed", {
 })
 
 test_that("period between characters removed to keep characters together", {
-  testing <- data.frame(text = c("This is a sentence. No.2"))
+  testing <- "This is a sentence. No.2"
 
   results <- tokenize_source(testing)
 
@@ -30,7 +29,7 @@ test_that("period between characters removed to keep characters together", {
 })
 
 test_that("comma between characters removed to keep characters together", {
-  testing <- data.frame(text = c("This, is a sentence. 5,000"))
+  testing <- "This, is a sentence. 5,000"
 
   results <- tokenize_source(testing)
 
@@ -39,7 +38,7 @@ test_that("comma between characters removed to keep characters together", {
 })
 
 test_that("dash removed and separates characters", {
-  testing <- data.frame(text = c("dash-name, 1877-1777"))
+  testing <- "dash-name, 1877-1777"
 
   results <- tokenize_source(testing)
 

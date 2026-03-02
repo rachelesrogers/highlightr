@@ -18,7 +18,7 @@
 #' # Rename relevant column in the source document to text
 #' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 #' # Tokenize source document
-#' toks_source <- tokenize_source(transcript_example_rename)
+#' toks_source <- tokenize_source(as.character(transcript_example))
 #' # Compute collocation frequencies
 #' collocation_object <- collocate_comments(toks_source, toks_comment)
 #' # Merge frequencies with source document to provide averages by word and correct formatting
@@ -51,7 +51,7 @@ transcript_cleaning <- function(transcript){
   `%>%` <- magrittr::`%>%`
   text <- lines <- words <- to_merge <- NULL
 
-  poem <- transcript %>% tibble::tibble(lines = text) %>%
+  poem <- transcript %>% tibble::tibble(lines = transcript) %>%
     # This looks for a letter + a space (of any sort, so an end-line counts) or
     # punctuation (last word of a line ends with e.g. a period or comma)
     dplyr::mutate(n_words = stringr::str_count(lines, "([A-z][[:space:][:punct:]])"))
