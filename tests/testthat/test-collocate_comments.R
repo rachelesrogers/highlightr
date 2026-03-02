@@ -2,7 +2,7 @@ Sys.setenv("OMP_THREAD_LIMIT" = 1)
 
 test_that("there are 5 collocations by default", {
   comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-  toks_comment <- token_comments(comment_example_rename)
+  toks_comment <- tokenize_derivative(comment_example_rename)
   transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments(toks_transcript, toks_comment)
@@ -13,7 +13,7 @@ test_that("there are 5 collocations by default", {
 
 test_that("6 collocations results in right number of columns and to_merge renders correctly", {
   comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-  toks_comment <- token_comments(comment_example_rename)
+  toks_comment <- tokenize_derivative(comment_example_rename)
   transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments(toks_transcript, toks_comment, collocate_length = 6)
@@ -27,7 +27,7 @@ test_that("6 collocations results in right number of columns and to_merge render
 
 test_that("2 collocations results in right number of columns", {
   comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-  toks_comment <- token_comments(comment_example_rename)
+  toks_comment <- tokenize_derivative(comment_example_rename)
   transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)

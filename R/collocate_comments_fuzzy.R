@@ -17,7 +17,7 @@
 #'
 #' @param transcript_token transcript token to act as baseline for notes, resulting
 #' from [tokenize_source()]
-#' @param note_token tokenized document of notes, resulting from [token_comments()]
+#' @param note_token tokenized document of notes, resulting from [tokenize_derivative()]
 #' @param collocate_length the length of the collocation. Default is 5
 #' @param n_bands number of bands used in MinHash algorithm passed to `zoomerjoin::jaccard_right_join()`. Default is 50
 #' @param threshold Jaccard distance threshold to be considered a match passed to `zoomerjoin::jaccard_right_join()`. Default is 0.7
@@ -30,7 +30,7 @@
 #' # Rename relevant column to page_notes in the derivative document
 #' comment_example_rename <- dplyr::rename(comment_example[1:10,], page_notes=Notes)
 #' # Tokenize the derivative document
-#' toks_comment <- token_comments(comment_example_rename)
+#' toks_comment <- tokenize_derivative(comment_example_rename)
 #' # Rename relevant column in the source document to text
 #' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 #' # Tokenize source document

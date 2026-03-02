@@ -14,7 +14,7 @@
 #'
 #' @param transcript_token transcript token to act as baseline for notes, resulting
 #' from [tokenize_source()]
-#' @param note_token tokenized document of notes, resulting from [token_comments()]
+#' @param note_token tokenized document of notes, resulting from [tokenize_derivative()]
 #' @param collocate_length the length of the collocation. Default is 5
 #'
 #' @return data frame of the transcript and corresponding note frequency
@@ -24,7 +24,7 @@
 #' # Rename relevant column to page_notes in the derivative document
 #' comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
 #' # Tokenize the derivative document
-#' toks_comment <- token_comments(comment_example_rename[1:100,])
+#' toks_comment <- tokenize_derivative(comment_example_rename[1:100,])
 #' # Rename relevant column in the source document to text
 #' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 #' # Tokenize source document

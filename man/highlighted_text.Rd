@@ -24,7 +24,7 @@ Alternatively, the html output can be saved by using the \code{xml2} package as 
 # Rename relevant column to page_notes in the derivative document
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
 # Tokenize the derivative document
-toks_comment <- token_comments(comment_example_rename)
+toks_comment <- tokenize_derivative(comment_example_rename)
 # Rename relevant column in the source document to text
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 # Tokenize source document

@@ -17,7 +17,7 @@ collocate_comments_fuzzy(
 \item{transcript_token}{transcript token to act as baseline for notes, resulting
 from \code{\link[=tokenize_source]{tokenize_source()}}}
 
-\item{note_token}{tokenized document of notes, resulting from \code{\link[=token_comments]{token_comments()}}}
+\item{note_token}{tokenized document of notes, resulting from \code{\link[=tokenize_derivative]{tokenize_derivative()}}}
 
 \item{collocate_length}{the length of the collocation. Default is 5}
 
@@ -51,7 +51,7 @@ is the number of closest matches for the note collocation.
 # Rename relevant column to page_notes in the derivative document
 comment_example_rename <- dplyr::rename(comment_example[1:10,], page_notes=Notes)
 # Tokenize the derivative document
-toks_comment <- token_comments(comment_example_rename)
+toks_comment <- tokenize_derivative(comment_example_rename)
 # Rename relevant column in the source document to text
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 # Tokenize source document
