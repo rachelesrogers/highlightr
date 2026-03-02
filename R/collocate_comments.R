@@ -13,7 +13,7 @@
 #' Matches between the two documents must be exact
 #'
 #' @param transcript_token transcript token to act as baseline for notes, resulting
-#' from [token_transcript()]
+#' from [tokenize_source()]
 #' @param note_token tokenized document of notes, resulting from [token_comments()]
 #' @param collocate_length the length of the collocation. Default is 5
 #'
@@ -28,9 +28,9 @@
 #' # Rename relevant column in the source document to text
 #' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 #' # Tokenize source document
-#' toks_transcript <- token_transcript(transcript_example_rename)
+#' toks_source <- tokenize_source(transcript_example_rename)
 #' # Compute collocation frequencies
-#' collocation_object <- collocate_comments(toks_transcript, toks_comment)
+#' collocation_object <- collocate_comments(toks_source, toks_comment)
 #'
 collocate_comments <- function(transcript_token, note_token, collocate_length=5){
   col_number <- word_number <- word_1 <- first_word <- collocation <- NULL

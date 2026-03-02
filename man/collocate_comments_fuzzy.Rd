@@ -15,7 +15,7 @@ collocate_comments_fuzzy(
 }
 \arguments{
 \item{transcript_token}{transcript token to act as baseline for notes, resulting
-from \code{\link[=token_transcript]{token_transcript()}}}
+from \code{\link[=tokenize_source]{tokenize_source()}}}
 
 \item{note_token}{tokenized document of notes, resulting from \code{\link[=token_comments]{token_comments()}}}
 
@@ -55,7 +55,7 @@ toks_comment <- token_comments(comment_example_rename)
 # Rename relevant column in the source document to text
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 # Tokenize source document
-toks_transcript <- token_transcript(transcript_example_rename)
+toks_source <- tokenize_source(transcript_example_rename)
 # Compute collocation frequencies using fuzzy (or indirect) matching
-fuzzy_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+fuzzy_object <- collocate_comments_fuzzy(toks_source, toks_comment)
 }

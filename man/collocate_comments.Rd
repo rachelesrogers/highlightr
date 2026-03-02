@@ -8,7 +8,7 @@ collocate_comments(transcript_token, note_token, collocate_length = 5)
 }
 \arguments{
 \item{transcript_token}{transcript token to act as baseline for notes, resulting
-from \code{\link[=token_transcript]{token_transcript()}}}
+from \code{\link[=tokenize_source]{tokenize_source()}}}
 
 \item{note_token}{tokenized document of notes, resulting from \code{\link[=token_comments]{token_comments()}}}
 
@@ -39,8 +39,8 @@ toks_comment <- token_comments(comment_example_rename[1:100,])
 # Rename relevant column in the source document to text
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 # Tokenize source document
-toks_transcript <- token_transcript(transcript_example_rename)
+toks_source <- tokenize_source(transcript_example_rename)
 # Compute collocation frequencies
-collocation_object <- collocate_comments(toks_transcript, toks_comment)
+collocation_object <- collocate_comments(toks_source, toks_comment)
 
 }

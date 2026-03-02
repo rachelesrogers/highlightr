@@ -41,7 +41,7 @@ The next step is to tokenize the transcript in a similar manner.
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 
 # tokenize source document
-toks_transcript <- token_transcript(transcript_example_rename)
+toks_transcript <- tokenize_source(transcript_example_rename)
 ```
 
 After that, a fuzzy collocation is used to match the tokenized notes to the phrases in the tokenized transcript.

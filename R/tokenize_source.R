@@ -1,9 +1,9 @@
-#' Tokenize Transcript
+#' Tokenize Source Document
 #'
-#' This function tokenizes a transcript document that is to be used in
+#' This function tokenizes a source document that is to be used in
 #' [collocate_comments_fuzzy()] or [collocate_comments()]
 #'
-#' @param transcript_file data frame of the transcript, where the transcript text
+#' @param transcript_file data frame of the source document, where the source document text
 #' is in a column named text.
 #'
 #' @return a tokenized object
@@ -11,11 +11,11 @@
 #'
 #' @examples
 #' # Rename relevant column in the source document to text
-#' transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+#' source_example_rename <- dplyr::rename(transcript_example, text=Text)
 #' # Tokenize source document
-#' toks_transcript <- token_transcript(transcript_example_rename)
+#' toks_source <- tokenize_source(source_example_rename)
 
-token_transcript <- function(transcript_file){
+tokenize_source <- function(transcript_file){
   `%>%` <- magrittr::`%>%`
   description_df <- transcript_file
   description_df <- purrr::map_df(description_df, ~ gsub("<.*?>", " ", .x)) #removing all html expressions
