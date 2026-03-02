@@ -75,7 +75,7 @@ a study of jury perception of algorithm use and demonstrative
 evidence.</p>
 <p>The first step is to re-assign names in the notepad text to
 correspond with the expected format used in
-<code><a href="../reference/token_comments.html">token_comments()</a></code> and use the function to tokenize the
+<code><a href="../reference/tokenize_derivative.html">tokenize_derivative()</a></code> and use the function to tokenize the
 comments.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
@@ -86,7 +86,7 @@ comments.</p>
 <span><span class="va">comment_example_rename</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">comment_example</span>, page_notes<span class="op">=</span><span class="va">Notes</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># tokenize comments</span></span>
-<span><span class="va">toks_comment</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/token_comments.html">token_comments</a></span><span class="op">(</span><span class="va">comment_example_rename</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">toks_comment</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_derivative.html">tokenize_derivative</a></span><span class="op">(</span><span class="va">comment_example_rename</span><span class="op">)</span></span></code></pre></div>
 <p>The next step is to tokenize the transcript in a similar manner.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>

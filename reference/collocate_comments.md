@@ -19,7 +19,7 @@ collocate_comments(transcript_token, note_token, collocate_length = 5)
 - note_token:
 
   tokenized document of notes, resulting from
-  [`token_comments()`](https://rachelesrogers.github.io/highlightr/reference/token_comments.md)
+  [`tokenize_derivative()`](https://rachelesrogers.github.io/highlightr/reference/tokenize_derivative.md)
 
 - collocate_length:
 
@@ -45,7 +45,7 @@ documents. Matches between the two documents must be exact
 # Rename relevant column to page_notes in the derivative document
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
 # Tokenize the derivative document
-toks_comment <- token_comments(comment_example_rename[1:100,])
+toks_comment <- tokenize_derivative(comment_example_rename[1:100,])
 # Rename relevant column in the source document to text
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 # Tokenize source document

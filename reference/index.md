@@ -12,7 +12,7 @@
   : Comment Example Dataset
 - [`highlighted_text()`](https://rachelesrogers.github.io/highlightr/reference/highlighted_text.md)
   : Create Highlighted Testimony
-- [`token_comments()`](https://rachelesrogers.github.io/highlightr/reference/token_comments.md)
+- [`tokenize_derivative()`](https://rachelesrogers.github.io/highlightr/reference/tokenize_derivative.md)
   : Tokenize comments
 - [`tokenize_source()`](https://rachelesrogers.github.io/highlightr/reference/tokenize_source.md)
   : Tokenize Source Document

@@ -26,7 +26,7 @@ collocate_comments_fuzzy(
 - note_token:
 
   tokenized document of notes, resulting from
-  [`token_comments()`](https://rachelesrogers.github.io/highlightr/reference/token_comments.md)
+  [`tokenize_derivative()`](https://rachelesrogers.github.io/highlightr/reference/tokenize_derivative.md)
 
 - collocate_length:
 
@@ -73,7 +73,7 @@ and m is the number of closest matches for the note collocation.
 # Rename relevant column to page_notes in the derivative document
 comment_example_rename <- dplyr::rename(comment_example[1:10,], page_notes=Notes)
 # Tokenize the derivative document
-toks_comment <- token_comments(comment_example_rename)
+toks_comment <- tokenize_derivative(comment_example_rename)
 # Rename relevant column in the source document to text
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 # Tokenize source document

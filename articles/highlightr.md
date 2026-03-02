@@ -11,7 +11,7 @@ study of jury perception of algorithm use and demonstrative evidence.
 
 The first step is to re-assign names in the notepad text to correspond
 with the expected format used in
-[`token_comments()`](https://rachelesrogers.github.io/highlightr/reference/token_comments.md)
+[`tokenize_derivative()`](https://rachelesrogers.github.io/highlightr/reference/tokenize_derivative.md)
 and use the function to tokenize the comments.
 
 ``` r
@@ -23,7 +23,7 @@ library(highlightr)
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
 
 # tokenize comments
-toks_comment <- token_comments(comment_example_rename)
+toks_comment <- tokenize_derivative(comment_example_rename)
 ```
 
 The next step is to tokenize the transcript in a similar manner.

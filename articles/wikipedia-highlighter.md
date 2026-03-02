@@ -74,7 +74,7 @@ allows for the comments to be tokenized, or separated into words.
 library(highlightr)
 
 # tokenize comments 
-toks_comment <- token_comments(highlightr::wiki_pages)
+toks_comment <- tokenize_derivative(highlightr::wiki_pages)
 ```
 
 The latest version of the article is the first row in the dataset, and
