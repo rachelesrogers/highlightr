@@ -20,10 +20,10 @@ and use the function to tokenize the comments.
 library(highlightr)
 
 # rename the column of interest to page_notes
-comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+# comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
 
 # tokenize comments
-toks_comment <- tokenize_derivative(comment_example_rename)
+toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
 ```
 
 The next step is to tokenize the transcript in a similar manner.

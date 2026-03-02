@@ -46,9 +46,9 @@ documents. Matches between the two documents must be exact
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 # Tokenize the derivative document
-toks_comment <- tokenize_derivative(comment_example_rename[1:100,])
+toks_comment <- tokenize_derivative(comment_example[1:100,], text_column="Notes")
 # Tokenize source document
-toks_source <- tokenize_source(transcript_example_rename)
+toks_source <- tokenize_source(transcript_example)
 # Compute collocation frequencies
 collocation_object <- collocate_comments(toks_source, toks_comment)
 #> Joining with `by = join_by(tolower.unlist.descript_ngrams..)`
