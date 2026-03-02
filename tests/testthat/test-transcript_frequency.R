@@ -2,7 +2,7 @@ testthat::skip_on_cran()
 Sys.setenv("OMP_THREAD_LIMIT" = 1)
 
 test_that("size 2 collocation works", {
-  transcript_test <- data.frame(text="This is a test.")
+  transcript_test <- "This is a test."
   collocation_test <- data.frame(word_number=1:4, col_1=c(2,4,6, NA), col_2=c(NA, 2, 4, 6),
                                  to_merge = c("this", "is", "a", "test"),
                                  collocation= c("this is", "is a", "a test", NA))
@@ -15,7 +15,7 @@ test_that("size 2 collocation works", {
 })
 
 test_that("removing html tags works", {
-  transcript_test <- data.frame(text="<i>This </i> <b>is</b> a<br> test.")
+  transcript_test <- "<i>This </i> <b>is</b> a<br> test."
   collocation_test <- data.frame(word_number=1:4, col_1=c(2,4,6, NA), col_2=c(NA, 2, 4, 6),
                                  to_merge = c("this", "is", "a", "test"),
                                  collocation= c("this is", "is a", "a test", NA))
@@ -31,7 +31,7 @@ test_that("removing html tags works", {
 
 test_that("dash check", {
 
-  transcript_test <- data.frame(text="This - is a - test.")
+  transcript_test <- "This - is a - test."
   collocation_test <- data.frame(word_number=1:4, col_1=c(2,4,6, NA), col_2=c(NA, 2, 4, 6),
                                  to_merge = c("this", "is", "a", "test"),
                                  collocation= c("this is", "is a", "a test", NA))
@@ -70,7 +70,8 @@ test_that("symbols are used correctly for merging",{
   symbol_transcript <- data.frame(Text="They/them were the pronouns they used when they paid $4.50
                                   to use a No.2 pencil. What… is how they started their speech; there
                                   were 5,000 people")
-  transcript_example_rename <- dplyr::rename(symbol_transcript, text=Text)
+  # transcript_example_rename <- dplyr::rename(symbol_transcript, text=Text)
+  transcript_example_rename <- as.character(symbol_transcript)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
   frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
@@ -90,7 +91,8 @@ test_that("dashes are used correctly for merging",{
   toks_comment <- tokenize_derivative(comment_example_rename)
   dash_transcript <- data.frame(Text="in an example - here is a dash space
                                   in the year 1892-1777 dash-name did this")
-  transcript_example_rename <- dplyr::rename(dash_transcript, text=Text)
+  # transcript_example_rename <- dplyr::rename(dash_transcript, text=Text)
+  transcript_example_rename <- as.character(dash_transcript)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, n_bands=5000, threshold=0.4, collocate_length=2)
   frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
@@ -112,7 +114,8 @@ test_that("colons are removed correctly for merging",{
   toks_comment <- tokenize_derivative(comment_example_rename)
   dash_transcript <- data.frame(Text="in an example: here is a colon space
                                   in the year 1892:1777 wɔːlz did this")
-  transcript_example_rename <- dplyr::rename(dash_transcript, text=Text)
+  # transcript_example_rename <- dplyr::rename(dash_transcript, text=Text)
+  transcript_example_rename <- as.character(dash_transcript)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
   frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
@@ -132,7 +135,8 @@ test_that("... are treated consistently",{
   comment_example_rename <- dplyr::rename(elipses_test, page_notes=Notes)
   toks_comment <- tokenize_derivative(comment_example_rename)
   elipses_transcript <- data.frame(Text="in an example... who ... did this it...was significant. another... did another thing")
-  transcript_example_rename <- dplyr::rename(elipses_transcript, text=Text)
+  # transcript_example_rename <- dplyr::rename(elipses_transcript, text=Text)
+  transcript_example_rename <- as.character(elipses_transcript)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
   frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
@@ -151,7 +155,8 @@ test_that("math symbols are used correctly for merging",{
   comment_example_rename <- dplyr::rename(symbol_test, page_notes=Notes)
   toks_comment <- tokenize_derivative(comment_example_rename)
   symbol_transcript <- data.frame(Text="They added 2 + 3 = 5 in an .html with the function add_numbers()")
-  transcript_example_rename <- dplyr::rename(symbol_transcript, text=Text)
+  # transcript_example_rename <- dplyr::rename(symbol_transcript, text=Text)
+  transcript_example_rename <- as.character(symbol_transcript)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)
   frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)

@@ -95,7 +95,7 @@ This reference version is also tokenized for comparison to the derivative versio
 ```{r}
 
 # tokenize most recent version of the article (as the reference)
-transcript_example_rename <- data.frame(text=wiki_pages[1,])
+transcript_example <- wiki_pages[1,]
 toks_transcript <- tokenize_source(as.character(wiki_pages[1,]))
 
 ```
@@ -119,7 +119,7 @@ Note that the "labels" argument can be used to add additional labels to the grad
 ```{r}
 
 # connect collocation frequencies to source document
-merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
+merged_frequency <- transcript_frequency(transcript_example, collocation_object)
 
 # create a ggplot object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
@@ -141,16 +141,16 @@ We could also use the oldest version of the Highlighter article in the dataset a
 
 # separate the oldest version of the article
 
-transcript_example_rename2 <- data.frame(text=wiki_pages[dim(wiki_pages)[1],])
+transcript_example_2 <- wiki_pages[dim(wiki_pages)[1],]
 
 # tokenize the transcript
-toks_transcript2 <- tokenize_source(as.character(wiki_pages[dim(wiki_pages)[1],]))
+toks_transcript2 <- tokenize_source(as.character(transcript_example_2))
 
 # use fuzzy collocation on the source and derivative documents
 collocation_object2 <- collocate_comments_fuzzy(toks_transcript2, toks_comment)
 
 # connect collocation frequencies to source document
-merged_frequency2 <- transcript_frequency(transcript_example_rename2, collocation_object2)
+merged_frequency2 <- transcript_frequency(transcript_example_2, collocation_object2)
 
 # create a gpplot object of the transcript
 freq_plot2 <- collocation_plot(merged_frequency2)

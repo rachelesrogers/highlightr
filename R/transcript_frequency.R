@@ -22,7 +22,7 @@
 #' # Compute collocation frequencies
 #' collocation_object <- collocate_comments(toks_source, toks_comment)
 #' # Merge frequencies with source document to provide averages by word and correct formatting
-#' merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
+#' merged_frequency <- transcript_frequency(as.character(transcript_example), collocation_object)
 
 transcript_frequency <- function(transcript, collocate_object){
   descript_words <- transcript_cleaning(transcript)
