@@ -1,0 +1,58 @@
+# Collocation of Comments
+
+This function provides the frequency of collocations in comments that
+correspond to the provided transcript.
+
+## Usage
+
+``` r
+collocate_comments(transcript_token, note_token, collocate_length = 5)
+```
+
+## Arguments
+
+- transcript_token:
+
+  transcript token to act as baseline for notes, resulting from
+  [`tokenize_source()`](https://rachelesrogers.github.io/highlightr/reference/tokenize_source.md)
+
+- note_token:
+
+  tokenized document of notes, resulting from
+  [`token_comments()`](https://rachelesrogers.github.io/highlightr/reference/token_comments.md)
+
+- collocate_length:
+
+  the length of the collocation. Default is 5
+
+## Value
+
+data frame of the transcript and corresponding note frequency
+
+## Details
+
+Collocations are sequences of words present in the source document. For
+example, the phrase "the blue bird flies" contains one collocation of
+length 4 ("the blue bird flies"), two collocations of length 3 ("the
+blue bird" and "blue bird flies"), and three collocations of length 2
+("the blue", "blue bird", and "bird flies"). This function counts the
+number of corresponding phrases in the 'notes', or the derivative
+documents. Matches between the two documents must be exact
+
+## Examples
+
+``` r
+# Rename relevant column to page_notes in the derivative document
+comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
+# Tokenize the derivative document
+toks_comment <- token_comments(comment_example_rename[1:100,])
+# Rename relevant column in the source document to text
+transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+# Tokenize source document
+toks_source <- tokenize_source(transcript_example_rename)
+# Compute collocation frequencies
+collocation_object <- collocate_comments(toks_source, toks_comment)
+#> Joining with `by = join_by(tolower.unlist.descript_ngrams..)`
+#> Joining with `by = join_by(collocation)`
+#> Joining with `by = join_by(word_number)`
+```
