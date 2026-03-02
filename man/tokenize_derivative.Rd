@@ -4,11 +4,13 @@
 \alias{tokenize_derivative}
 \title{Tokenize comments}
 \usage{
-tokenize_derivative(comment_document)
+tokenize_derivative(derivative_document, text_column)
 }
 \arguments{
-\item{comment_document}{document containing notes by individual, where the
-column containing the notes is named page_notes}
+\item{derivative_document}{data frame containing derivative documents, where each
+row represents a document}
+
+\item{text_column}{string indicating the name of the column containing derivative text}
 }
 \value{
 tokenized comments
@@ -21,5 +23,5 @@ or \code{\link[=collocate_comments]{collocate_comments()}}
 # Rename relevant column to page_notes in the derivative document
 comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
 # Tokenize the derivative document
-toks_comment <- tokenize_derivative(comment_example_rename)
+toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
 }

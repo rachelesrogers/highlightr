@@ -3,8 +3,9 @@
 #' This function tokenizes comments that are to be used in [collocate_comments_fuzzy()]
 #' or [collocate_comments()]
 #'
-#' @param comment_document document containing notes by individual, where the
-#' column containing the notes is named page_notes
+#' @param derivative_document data frame containing derivative documents, where each
+#' row represents a document
+#' @param text_column string indicating the name of the column containing derivative text
 #'
 #' @return tokenized comments
 #' @export
@@ -13,12 +14,12 @@
 #' # Rename relevant column to page_notes in the derivative document
 #' comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
 #' # Tokenize the derivative document
-#' toks_comment <- tokenize_derivative(comment_example_rename)
+#' toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
 
-tokenize_derivative <- function(comment_document){
+tokenize_derivative <- function(derivative_document, text_column){
 
-  comment_df <- data.frame(docid = cbind(seq(1:dim(comment_document)[1])),
-                           text=tolower(comment_document$page_notes)) #lowercasing text
+  comment_df <- data.frame(docid = cbind(seq(1:dim(derivative_document)[1])),
+                           text=tolower(derivative_document[[text_column]])) #lowercasing text
 
   comment_df <- purrr::map_df(comment_df, ~ gsub("<.*?>", " ", .x))
   comment_df <- purrr::map_df(comment_df, ~ gsub("\\$", " ", .x))
