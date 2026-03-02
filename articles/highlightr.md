@@ -31,7 +31,6 @@ The next step is to tokenize the transcript in a similar manner.
 ``` r
 
 # tokenize source document
-transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 toks_transcript <- tokenize_source(as.character(transcript_example))
 ```
 
@@ -85,7 +84,7 @@ transcript. The collocation frequencies are averaged per word.
 
 # connect collocation frequencies to source document
 
-merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
+merged_frequency <- transcript_frequency(transcript_example, collocation_object)
 ```
 
 The combined document is then fed through ggplot to assign gradient
@@ -293,7 +292,7 @@ argument of the `collocation_plot` function.
 
 # connect collocation frequencies to source document
 
-merged_frequency_nonfuzzy <- transcript_frequency(transcript_example_rename, collocation_object_nonfuzzy)
+merged_frequency_nonfuzzy <- transcript_frequency(transcript_example, collocation_object_nonfuzzy)
 
 # create a `ggplot` object of the transcript, and change colors of the gradient
 
@@ -466,7 +465,7 @@ containing the name “Richard Cole” is popular, with a frequency of 89.
 
 # connect collocation frequencies to source document
 
-merged_frequency_2col <- transcript_frequency(transcript_example_rename, collocation_object_2col)
+merged_frequency_2col <- transcript_frequency(transcript_example, collocation_object_2col)
 
 # create a `ggplot` object of the transcript
 

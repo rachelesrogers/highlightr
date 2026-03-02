@@ -86,7 +86,7 @@ derivative versions.
 ``` r
 
 # tokenize most recent version of the article (as the reference)
-transcript_example_rename <- data.frame(text=wiki_pages[1,])
+transcript_example <- wiki_pages[1,]
 toks_transcript <- tokenize_source(as.character(wiki_pages[1,]))
 ```
 
@@ -130,9 +130,9 @@ to add additional labels to the gradient key.
 ``` r
 
 # connect collocation frequencies to source document
-merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
+merged_frequency <- transcript_frequency(transcript_example, collocation_object)
 #> Joining with `by = join_by(to_merge)`
-#> Joining with `by = join_by(text, lines, n_words, words, word_num, word_length,
+#> Joining with `by = join_by(., lines, n_words, words, word_num, word_length,
 #> x_coord, to_merge, stanza_freq, word_number)`
 
 # create a ggplot object of the transcript
@@ -1121,10 +1121,10 @@ dataset as the transcript reference to view which text has been changed:
 
 # separate the oldest version of the article
 
-transcript_example_rename2 <- data.frame(text=wiki_pages[dim(wiki_pages)[1],])
+transcript_example_2 <- wiki_pages[dim(wiki_pages)[1],]
 
 # tokenize the transcript
-toks_transcript2 <- tokenize_source(as.character(wiki_pages[dim(wiki_pages)[1],]))
+toks_transcript2 <- tokenize_source(as.character(transcript_example_2))
 
 # use fuzzy collocation on the source and derivative documents
 collocation_object2 <- collocate_comments_fuzzy(toks_transcript2, toks_comment)
@@ -1138,9 +1138,9 @@ collocation_object2 <- collocate_comments_fuzzy(toks_transcript2, toks_comment)
 #> Joining with `by = join_by(word_number)`
 
 # connect collocation frequencies to source document
-merged_frequency2 <- transcript_frequency(transcript_example_rename2, collocation_object2)
+merged_frequency2 <- transcript_frequency(transcript_example_2, collocation_object2)
 #> Joining with `by = join_by(to_merge)`
-#> Joining with `by = join_by(text, lines, n_words, words, word_num, word_length,
+#> Joining with `by = join_by(., lines, n_words, words, word_num, word_length,
 #> x_coord, to_merge, stanza_freq, word_number)`
 
 # create a gpplot object of the transcript

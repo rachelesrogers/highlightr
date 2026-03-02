@@ -44,8 +44,8 @@ collocation_object <- collocate_comments(toks_source, toks_comment)
 #> Joining with `by = join_by(collocation)`
 #> Joining with `by = join_by(word_number)`
 # Merge frequencies with source document to provide averages by word and correct formatting
-merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
+merged_frequency <- transcript_frequency(as.character(transcript_example), collocation_object)
 #> Joining with `by = join_by(to_merge)`
-#> Joining with `by = join_by(text, lines, n_words, words, word_num, word_length,
+#> Joining with `by = join_by(., lines, n_words, words, word_num, word_length,
 #> x_coord, to_merge, stanza_freq, word_number)`
 ```
