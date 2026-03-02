@@ -84,11 +84,10 @@ This reference version is also tokenized for comparison to the
 derivative versions.
 
 ``` r
-# find most recent version of the article and save text to a data frame
-transcript_example_rename <- data.frame(text=wiki_pages[1,])
 
 # tokenize most recent version of the article (as the reference)
-toks_transcript <- tokenize_source(transcript_example_rename)
+transcript_example_rename <- data.frame(text=wiki_pages[1,])
+toks_transcript <- tokenize_source(as.character(wiki_pages[1,]))
 ```
 
 The previous versions are then compared to the current version’s
@@ -1125,7 +1124,7 @@ dataset as the transcript reference to view which text has been changed:
 transcript_example_rename2 <- data.frame(text=wiki_pages[dim(wiki_pages)[1],])
 
 # tokenize the transcript
-toks_transcript2 <- tokenize_source(transcript_example_rename2)
+toks_transcript2 <- tokenize_source(as.character(wiki_pages[dim(wiki_pages)[1],]))
 
 # use fuzzy collocation on the source and derivative documents
 collocation_object2 <- collocate_comments_fuzzy(toks_transcript2, toks_comment)

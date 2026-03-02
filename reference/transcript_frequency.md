@@ -37,7 +37,7 @@ toks_comment <- tokenize_derivative(comment_example_rename)
 # Rename relevant column in the source document to text
 transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 # Tokenize source document
-toks_source <- tokenize_source(transcript_example_rename)
+toks_source <- tokenize_source(as.character(transcript_example))
 # Compute collocation frequencies
 collocation_object <- collocate_comments(toks_source, toks_comment)
 #> Joining with `by = join_by(tolower.unlist.descript_ngrams..)`

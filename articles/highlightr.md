@@ -30,11 +30,9 @@ The next step is to tokenize the transcript in a similar manner.
 
 ``` r
 
-# rename column of interest for the source document to 'text'
-transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
-
 # tokenize source document
-toks_transcript <- tokenize_source(transcript_example_rename)
+transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+toks_transcript <- tokenize_source(as.character(transcript_example))
 ```
 
 After that, a fuzzy collocation is used to match the tokenized notes to

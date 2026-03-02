@@ -90,11 +90,9 @@ comments.</p>
 <p>The next step is to tokenize the transcript in a similar manner.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co"># rename column of interest for the source document to 'text'</span></span>
-<span><span class="va">transcript_example_rename</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">transcript_example</span>, text<span class="op">=</span><span class="va">Text</span><span class="op">)</span></span>
-<span></span>
 <span><span class="co"># tokenize source document</span></span>
-<span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="va">transcript_example_rename</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">transcript_example_rename</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">transcript_example</span>, text<span class="op">=</span><span class="va">Text</span><span class="op">)</span></span>
+<span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">transcript_example</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>After that, a fuzzy collocation is used to match the tokenized notes
 to the phrases in the tokenized transcript. This function first
 determines the number of times a collocation of length 5 occurs in

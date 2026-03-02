@@ -74,9 +74,8 @@ and m is the number of closest matches for the note collocation.
 comment_example_rename <- dplyr::rename(comment_example[1:10,], page_notes=Notes)
 # Tokenize the derivative document
 toks_comment <- tokenize_derivative(comment_example_rename)
-# Rename relevant column in the source document to text
-transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 # Tokenize source document
+transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 toks_source <- tokenize_source(transcript_example_rename)
 # Compute collocation frequencies using fuzzy (or indirect) matching
 fuzzy_object <- collocate_comments_fuzzy(toks_source, toks_comment)
