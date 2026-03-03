@@ -42,7 +42,7 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
   descript_ngrams <- quanteda::tokens_ngrams(transcript_token, n = collocate_length, skip = 0L, concatenator = " ")
   descript_ngram_df <- data.frame(unlist(descript_ngrams))
   rel_freq <-as.data.frame(table(descript_ngram_df))
-  descript_ngram_df <- dplyr::left_join(descript_ngram_df, rel_freq)
+  descript_ngram_df <- dplyr::left_join(descript_ngram_df, rel_freq, by = "unlist.descript_ngrams.")
   names(descript_ngram_df) <- c("collocation", "transcript_freq")
 
   descript_ngram_df <-data.frame(collocation = descript_ngram_df$collocation,
@@ -57,13 +57,13 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
   col_descript <- note_token %>% quanteda.textstats::textstat_collocations(min_count = 1,
                                                                            size=collocate_length)
 
-  col_merged_descript <- dplyr::left_join(descript_ngram_df, col_descript)
+  col_merged_descript <- dplyr::left_join(descript_ngram_df, col_descript, by = "collocation")
   col_merged_descript$count <- replace(col_merged_descript$count,is.na(col_merged_descript$count),0)
 
   ###Fuzzy Matching
 
   # Finding collocations that do not directly match the transcript
-  mismatches <- dplyr::anti_join(col_descript, descript_ngram_df)
+  mismatches <- dplyr::anti_join(col_descript, descript_ngram_df, by = "collocation")
 
   fuzzy_matches <- zoomerjoin::jaccard_right_join(descript_ngram_df, mismatches,
                                                   by='collocation', similarity_column="dist", n_bands=n_bands,
@@ -76,7 +76,7 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
   close_freq<-as.data.frame(table(fuzzy_matches$collocation.y))
   close_freq <- close_freq %>% dplyr::rename("collocation.y"="Var1", "close_freq"="Freq")
 
-  fuzzy_matches <- dplyr::left_join(fuzzy_matches, close_freq)
+  fuzzy_matches <- dplyr::left_join(fuzzy_matches, close_freq, by="collocation.y")
 
   #Fuzzy matches weight
   fuzzy_matches$weighted_count <- (fuzzy_matches$count*fuzzy_matches$dist)/(fuzzy_matches$close_freq)
@@ -87,7 +87,7 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
 
   fuzzy_col <- fuzzy_col %>% dplyr::rename("collocation"="collocation.x")
 
-  col_merged_fuzzy <- dplyr::left_join(col_merged_descript, fuzzy_col)
+  col_merged_fuzzy <- dplyr::left_join(col_merged_descript, fuzzy_col, by = "collocation")
   } else{
     col_merged_fuzzy <- col_merged_descript
     col_merged_fuzzy$fuzzy_count <- NA
@@ -110,7 +110,7 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
   add_word<-descript_ngram_df %>% dplyr::select(word_1, first_word, collocation) %>%
     dplyr::rename("word_number"="word_1")
 
-  descript_tomerge <- dplyr::left_join(descript_tomerge, add_word)
+  descript_tomerge <- dplyr::left_join(descript_tomerge, add_word, by = "word_number")
   descript_tomerge<-descript_tomerge %>% dplyr::rename("to_merge"="first_word")
 
   for (i in 2:collocate_length){

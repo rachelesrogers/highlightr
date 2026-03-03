@@ -18,7 +18,7 @@
 #' # Compute collocation frequencies
 #' collocation_object <- collocate_comments(toks_source, toks_comment)
 #' # Merge frequencies with source document to provide averages by word and correct formatting
-#' merged_frequency <- transcript_frequency(as.character(transcript_example), collocation_object)
+#' merged_frequency <- transcript_frequency(transcript_example, collocation_object)
 
 transcript_frequency <- function(transcript, collocate_object){
   descript_words <- transcript_cleaning(transcript)
@@ -38,7 +38,9 @@ transcript_frequency <- function(transcript, collocate_object){
   merged$Freq <- rowSums(merged[,grep("col_",colnames(collocate_object), value=TRUE)],
                          na.rm=TRUE)/rowSums(!is.na(merged[,grep("col_",colnames(collocate_object), value=TRUE)]))
 
-  merged_final<- dplyr::left_join(descript_words, merged)
+  merged_final<- dplyr::left_join(descript_words, merged, by = c("Text", "lines", "n_words",
+                                  "words", "word_num", "word_length", "x_coord",
+                                  "to_merge", "stanza_freq", "word_number"))
 
   return(merged_final)
 }
@@ -94,7 +96,8 @@ transcript_cleaning <- function(transcript){
     dplyr::summarize(stanza_freq=dplyr::n()) %>%
     dplyr::ungroup()
 
-  poem_words <- dplyr::right_join(poem_words, group_exp)
+  poem_words <- dplyr::right_join(poem_words, group_exp, by="to_merge")
+  colnames(poem_words)[1] <- 'Text'
 
 
   return(poem_words)
