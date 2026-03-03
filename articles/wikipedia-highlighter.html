@@ -153,14 +153,8 @@ amount of times each collocation occurs.</p>
 <span><span class="co"># use fuzzy matching to calculate weighted frequency values between derivative and source documents</span></span>
 <span></span>
 <span><span class="va">collocation_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(unlist.descript_ngrams.)`</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
 <span><span class="co">#&gt; Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.</span></span>
 <span><span class="co">#&gt; Please consider changing `n_bands` and `band_width`.</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(collocation.y)`</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(word_number)`</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">collocation_object</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
@@ -182,9 +176,6 @@ used to add additional labels to the gradient key.</p>
 <code class="sourceCode R"><span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
 <span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example</span>, <span class="va">collocation_object</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(to_merge)`</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(., lines, n_words, words, word_num, word_length,</span></span>
-<span><span class="co">#&gt; x_coord, to_merge, stanza_freq, word_number)`</span></span>
 <span></span>
 <span><span class="co"># create a ggplot object of the transcript</span></span>
 <span><span class="va">freq_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span></span>
@@ -2110,20 +2101,11 @@ changed:</p>
 <span></span>
 <span><span class="co"># use fuzzy collocation on the source and derivative documents</span></span>
 <span><span class="va">collocation_object2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript2</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(unlist.descript_ngrams.)`</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
 <span><span class="co">#&gt; Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.</span></span>
 <span><span class="co">#&gt; Please consider changing `n_bands` and `band_width`.</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(collocation.y)`</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(collocation)`</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(word_number)`</span></span>
 <span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
 <span><span class="va">merged_frequency2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example_2</span>, <span class="va">collocation_object2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(to_merge)`</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(., lines, n_words, words, word_num, word_length,</span></span>
-<span><span class="co">#&gt; x_coord, to_merge, stanza_freq, word_number)`</span></span>
 <span></span>
 <span><span class="co"># create a gpplot object of the transcript</span></span>
 <span><span class="va">freq_plot2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency2</span><span class="op">)</span></span>

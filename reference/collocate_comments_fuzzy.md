@@ -76,12 +76,6 @@ toks_comment <- tokenize_derivative(comment_example[1:10,], text_column="Notes")
 toks_source <- tokenize_source(transcript_example)
 # Compute collocation frequencies using fuzzy (or indirect) matching
 fuzzy_object <- collocate_comments_fuzzy(toks_source, toks_comment)
-#> Joining with `by = join_by(unlist.descript_ngrams.)`
-#> Joining with `by = join_by(collocation)`
-#> Joining with `by = join_by(collocation)`
 #> Warning: A pair of records at the threshold (0.7) have only a 95% chance of being compared.
 #> Please consider changing `n_bands` and `band_width`.
-#> Joining with `by = join_by(collocation.y)`
-#> Joining with `by = join_by(collocation)`
-#> Joining with `by = join_by(word_number)`
 ```

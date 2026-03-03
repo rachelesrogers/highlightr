@@ -99,14 +99,8 @@ amount of times each collocation occurs.
 # use fuzzy matching to calculate weighted frequency values between derivative and source documents
 
 collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
-#> Joining with `by = join_by(unlist.descript_ngrams.)`
-#> Joining with `by = join_by(collocation)`
-#> Joining with `by = join_by(collocation)`
 #> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
 #> Please consider changing `n_bands` and `band_width`.
-#> Joining with `by = join_by(collocation.y)`
-#> Joining with `by = join_by(collocation)`
-#> Joining with `by = join_by(word_number)`
 
 head(collocation_object)
 #> # A tibble: 6 × 8
@@ -131,9 +125,6 @@ to add additional labels to the gradient key.
 
 # connect collocation frequencies to source document
 merged_frequency <- transcript_frequency(transcript_example, collocation_object)
-#> Joining with `by = join_by(to_merge)`
-#> Joining with `by = join_by(., lines, n_words, words, word_num, word_length,
-#> x_coord, to_merge, stanza_freq, word_number)`
 
 # create a ggplot object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
@@ -1128,20 +1119,11 @@ toks_transcript2 <- tokenize_source(transcript_example_2)
 
 # use fuzzy collocation on the source and derivative documents
 collocation_object2 <- collocate_comments_fuzzy(toks_transcript2, toks_comment)
-#> Joining with `by = join_by(unlist.descript_ngrams.)`
-#> Joining with `by = join_by(collocation)`
-#> Joining with `by = join_by(collocation)`
 #> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
 #> Please consider changing `n_bands` and `band_width`.
-#> Joining with `by = join_by(collocation.y)`
-#> Joining with `by = join_by(collocation)`
-#> Joining with `by = join_by(word_number)`
 
 # connect collocation frequencies to source document
 merged_frequency2 <- transcript_frequency(transcript_example_2, collocation_object2)
-#> Joining with `by = join_by(to_merge)`
-#> Joining with `by = join_by(., lines, n_words, words, word_num, word_length,
-#> x_coord, to_merge, stanza_freq, word_number)`
 
 # create a gpplot object of the transcript
 freq_plot2 <- collocation_plot(merged_frequency2)

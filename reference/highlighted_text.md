@@ -37,14 +37,8 @@ toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
 toks_source <- tokenize_source(transcript_example)
 # Compute collocation frequencies
 collocation_object <- collocate_comments(toks_source, toks_comment)
-#> Joining with `by = join_by(tolower.unlist.descript_ngrams..)`
-#> Joining with `by = join_by(collocation)`
-#> Joining with `by = join_by(word_number)`
 # Merge frequencies with source document to provide averages by word and correct formatting
 merged_frequency <- transcript_frequency(transcript_example, collocation_object)
-#> Joining with `by = join_by(to_merge)`
-#> Joining with `by = join_by(Text, lines, n_words, words, word_num, word_length,
-#> x_coord, to_merge, stanza_freq, word_number)`
 # Create a plot object to assign colors based on frequency
 freq_plot <- collocation_plot(merged_frequency)
 # Add html tags to create a highlighted version of the source document
