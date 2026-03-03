@@ -30,12 +30,10 @@ a dataframe of the transcript document with collocation values by word
 ## Examples
 
 ``` r
-# Rename relevant column to page_notes in the derivative document
-comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
 # Tokenize the derivative document
 toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
 # Tokenize source document
-toks_source <- tokenize_source(as.character(transcript_example))
+toks_source <- tokenize_source(transcript_example)
 # Compute collocation frequencies
 collocation_object <- collocate_comments(toks_source, toks_comment)
 #> Joining with `by = join_by(tolower.unlist.descript_ngrams..)`

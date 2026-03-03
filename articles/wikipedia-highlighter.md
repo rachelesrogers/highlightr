@@ -87,7 +87,7 @@ derivative versions.
 
 # tokenize most recent version of the article (as the reference)
 transcript_example <- wiki_pages[1,]
-toks_transcript <- tokenize_source(as.character(wiki_pages[1,]))
+toks_transcript <- tokenize_source(transcript_example)
 ```
 
 The previous versions are then compared to the current version’s
@@ -1124,7 +1124,7 @@ dataset as the transcript reference to view which text has been changed:
 transcript_example_2 <- wiki_pages[dim(wiki_pages)[1],]
 
 # tokenize the transcript
-toks_transcript2 <- tokenize_source(as.character(transcript_example_2))
+toks_transcript2 <- tokenize_source(transcript_example_2)
 
 # use fuzzy collocation on the source and derivative documents
 collocation_object2 <- collocate_comments_fuzzy(toks_transcript2, toks_comment)

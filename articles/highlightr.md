@@ -19,9 +19,6 @@ and use the function to tokenize the comments.
 # load the library
 library(highlightr)
 
-# rename the column of interest to page_notes
-# comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-
 # tokenize comments
 toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
 ```
@@ -31,7 +28,7 @@ The next step is to tokenize the transcript in a similar manner.
 ``` r
 
 # tokenize source document
-toks_transcript <- tokenize_source(as.character(transcript_example))
+toks_transcript <- tokenize_source(transcript_example)
 ```
 
 After that, a fuzzy collocation is used to match the tokenized notes to

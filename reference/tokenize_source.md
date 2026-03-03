@@ -25,8 +25,6 @@ a tokenized object
 ## Examples
 
 ``` r
-# Rename relevant column in the source document to text
-source_example_rename <- as.character(transcript_example)
 # Tokenize source document
-toks_source <- tokenize_source(source_example_rename)
+toks_source <- tokenize_source(transcript_example)
 ```

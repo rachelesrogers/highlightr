@@ -144,7 +144,7 @@ derivative versions.</p>
 <code class="sourceCode R"><span></span>
 <span><span class="co"># tokenize most recent version of the article (as the reference)</span></span>
 <span><span class="va">transcript_example</span> <span class="op">&lt;-</span> <span class="va">wiki_pages</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span></span>
-<span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">wiki_pages</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="va">transcript_example</span><span class="op">)</span></span></code></pre></div>
 <p>The previous versions are then compared to the current version’s
 collocations with fuzzy matching in order to provide a count for the
 amount of times each collocation occurs.</p>
@@ -2106,7 +2106,7 @@ changed:</p>
 <span><span class="va">transcript_example_2</span> <span class="op">&lt;-</span> <span class="va">wiki_pages</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">wiki_pages</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,<span class="op">]</span></span>
 <span></span>
 <span><span class="co"># tokenize the transcript</span></span>
-<span><span class="va">toks_transcript2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">transcript_example_2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">toks_transcript2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="va">transcript_example_2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># use fuzzy collocation on the source and derivative documents</span></span>
 <span><span class="va">collocation_object2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript2</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
