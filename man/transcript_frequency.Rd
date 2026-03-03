@@ -20,12 +20,10 @@ This function connects the collocation frequency calculated in
 \code{\link[=collocate_comments_fuzzy]{collocate_comments_fuzzy()}} to the base transcript.
 }
 \examples{
-# Rename relevant column to page_notes in the derivative document
-comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
 # Tokenize the derivative document
 toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
 # Tokenize source document
-toks_source <- tokenize_source(as.character(transcript_example))
+toks_source <- tokenize_source(transcript_example)
 # Compute collocation frequencies
 collocation_object <- collocate_comments(toks_source, toks_comment)
 # Merge frequencies with source document to provide averages by word and correct formatting

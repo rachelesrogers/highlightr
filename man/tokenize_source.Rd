@@ -18,8 +18,6 @@ This function tokenizes a source document that is to be used in
 \code{\link[=collocate_comments_fuzzy]{collocate_comments_fuzzy()}} or \code{\link[=collocate_comments]{collocate_comments()}}
 }
 \examples{
-# Rename relevant column in the source document to text
-source_example_rename <- as.character(transcript_example)
 # Tokenize source document
-toks_source <- tokenize_source(source_example_rename)
+toks_source <- tokenize_source(transcript_example)
 }

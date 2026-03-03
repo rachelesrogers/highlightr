@@ -11,8 +11,6 @@
 #' @export
 #'
 #' @examples
-#' # Rename relevant column to page_notes in the derivative document
-#' comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
 #' # Tokenize the derivative document
 #' toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
 

@@ -26,9 +26,6 @@ The first step is to re-assign names in the notepad text to correspond with the 
 # load the library
 library(highlightr)
 
-# rename the column of interest to page_notes
-# comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-
 # tokenize comments
 toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
 ```
@@ -38,7 +35,7 @@ The next step is to tokenize the transcript in a similar manner.
 ```{r, message=FALSE, warning=FALSE}
 
 # tokenize source document
-toks_transcript <- tokenize_source(as.character(transcript_example))
+toks_transcript <- tokenize_source(transcript_example)
 ```
 
 After that, a fuzzy collocation is used to match the tokenized notes to the phrases in the tokenized transcript.
