@@ -21,7 +21,7 @@ This example is taken from the initial description of a crime used in a study of
 
 The first step is to re-assign names in the notepad text to correspond with the expected format used in `tokenize_derivative()` and use the function to tokenize the comments.
 
-```{r, message=FALSE, warning=FALSE}
+```{r}
 
 # load the library
 library(highlightr)
@@ -32,7 +32,7 @@ toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
 
 The next step is to tokenize the transcript in a similar manner.
 
-```{r, message=FALSE, warning=FALSE}
+```{r}
 
 # tokenize source document
 toks_transcript <- tokenize_source(transcript_example)
@@ -48,7 +48,7 @@ $$
 
 Here, $n$ is the frequency of the fuzzy collocation, $d$ is the Jaccard similarity between the fuzzy collocation and the transcript collocation (ranging from 0 to 1, where 1 indicates identical strings), and $m$ is the number of closest matches for the fuzzy collocation.
 
-```{r, message=FALSE, warning=FALSE}
+```{r}
 
 # use fuzzy collocation on source and derivative tokenized documents
 
@@ -67,7 +67,7 @@ Next, the `transcript_frequency()` function attaches the collocation counts to t
 <!-- This provides additional information about the original formatting of the transcript that is needed when constructing the final object. -->
 The collocation frequencies are averaged per word.
 
-```{r, message=FALSE, warning=FALSE}
+```{r}
 
 # connect collocation frequencies to source document
 
@@ -76,14 +76,14 @@ merged_frequency <- transcript_frequency(transcript_example, collocation_object)
 
 The combined document is then fed through ggplot to assign gradient colors based on frequency, and the minimum and maximum values are recorded.
 
-```{r, message=FALSE, warning=FALSE}
+```{r}
 
 # create `ggplot` object of the transcript
 
 freq_plot <- collocation_plot(merged_frequency)
 ```
 
-```{r, message=FALSE, warning=FALSE}
+```{r}
 
 # add html tags to source document
 
@@ -101,7 +101,7 @@ This HTML output can be rendered into highlighted text by specifying `` `r '\x60
 
 Alternatively, the `xml2` package can be used to save the output as an html file, as shown in the following code:
 
-```{r, message=FALSE, warning=FALSE, eval=FALSE}
+```{r, eval=FALSE}
 
 # load `xml2` library
 
@@ -115,7 +115,7 @@ xml2::write_html(xml2::read_html(page_highlight), "filename.html")
   
 To exclude fuzzy matches, the `collocate_comments()` function can be used. Here, the listed frequencies are all whole numbers, because they are counts (without weighting).
 
-```{r, message=FALSE, warning=FALSE}
+```{r}
 
 # use nonfuzzy collocation on the source and derivative tokenized texts
 
@@ -128,7 +128,7 @@ head(collocation_object_nonfuzzy)
 In this case, the highlighting pattern resembles that when the fuzzy matches are included, but the maximum value reached is smaller.
 Note also that the colors used in highlighting can be changed in the "colors" argument of the `collocation_plot` function.
 
-```{r, message=FALSE, warning=FALSE}
+```{r}
 
 # connect collocation frequencies to source document
 
@@ -151,7 +151,7 @@ Additionally, the length of the collocation can be changed.
 The default collocation length (shown above) is 5 words.
 Below, this collocation length has been changed to 2 words.
 
-```{r, message=FALSE, warning=FALSE}
+```{r}
 
 # use nonfuzzy collocations with a collocation length of 2
 
@@ -162,7 +162,7 @@ head(collocation_object_2col, n=7)
 ```
 In these shorter collocations, we can see that the collocation containing the name "Richard Cole" is popular, with a frequency of 89.
 
-```{r, message=FALSE, warning=FALSE}
+```{r}
 
 # connect collocation frequencies to source document
 

@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/rachelesrogers/highlightr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rachelesrogers/highlightr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 This package can be used to create a highlighted source document based on the frequency of phrases found in single or multiple note sheets.
@@ -49,27 +50,21 @@ devtools::install_github("rachelesrogers/highlightr")
 
 ## Example
 
-```{r, message=FALSE}
+```{r}
 # load library
 library(highlightr)
 
-# rename desired column of derivative documents to 'page_notes'
-comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-
 # tokenize derivative documents
-toks_comment <- tokenize_derivative(comment_example_rename)
-
-# rename desired column of source document to 'text'
-transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
 
 # tokenize source document
-toks_transcript <- tokenize_source(transcript_example_rename)
+toks_transcript <- tokenize_source(transcript_example)
 
 # use fuzzy matching in collocation
 collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 
 # connect collocation frequencies to source document
-merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
+merged_frequency <- transcript_frequency(transcript_example, collocation_object)
 
 # create `ggplot` object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
@@ -87,7 +82,7 @@ This can be done in R Markdown by specifying the object outside of a code chunk 
 
 Alternatively, the `xml2` package can be used to save the output as an html file, as shown in the following code:
 
-```{r, message=FALSE, warning=FALSE, eval=FALSE}
+```{r, eval=FALSE}
 
 # load `xml2` library
 
