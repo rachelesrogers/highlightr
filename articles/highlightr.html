@@ -113,6 +113,8 @@ is the number of closest matches for the fuzzy collocation.</p>
 <span><span class="co"># use fuzzy collocation on source and derivative tokenized documents</span></span>
 <span></span>
 <span><span class="va">collocation_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.</span></span>
+<span><span class="co">#&gt; Please consider changing `n_bands` and `band_width`.</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">collocation_object</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>

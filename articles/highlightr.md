@@ -49,6 +49,8 @@ the number of closest matches for the fuzzy collocation.
 # use fuzzy collocation on source and derivative tokenized documents
 
 collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+#> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
+#> Please consider changing `n_bands` and `band_width`.
 
 head(collocation_object)
 #> # A tibble: 6 × 8

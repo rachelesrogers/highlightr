@@ -40,17 +40,11 @@ devtools::install_github("rachelesrogers/highlightr")
 # load library
 library(highlightr)
 
-# rename desired column of derivative documents to 'page_notes'
-comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-
 # tokenize derivative documents
-toks_comment <- token_comments(comment_example_rename)
-
-# rename desired column of source document to 'text'
-transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
+toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
 
 # tokenize source document
-toks_transcript <- token_transcript(transcript_example_rename)
+toks_transcript <- tokenize_source(transcript_example)
 
 # use fuzzy matching in collocation
 collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
@@ -58,7 +52,7 @@ collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 #> Please consider changing `n_bands` and `band_width`.
 
 # connect collocation frequencies to source document
-merged_frequency <- transcript_frequency(transcript_example_rename, collocation_object)
+merged_frequency <- transcript_frequency(transcript_example, collocation_object)
 
 # create `ggplot` object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
