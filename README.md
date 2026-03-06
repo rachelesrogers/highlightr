@@ -5,6 +5,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/rachelesrogers/highlightr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rachelesrogers/highlightr/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/rachelesrogers/highlightr/graph/badge.svg)](https://app.codecov.io/gh/rachelesrogers/highlightr)
 <!-- badges: end -->
 
 This package can be used to create a highlighted source document based
