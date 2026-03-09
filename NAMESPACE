@@ -2,8 +2,8 @@
 
 export(collocate_comments)
 export(collocate_comments_fuzzy)
+export(collocation_frequency)
 export(collocation_plot)
 export(highlighted_text)
 export(tokenize_derivative)
 export(tokenize_source)
-export(transcript_frequency)

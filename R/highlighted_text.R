@@ -19,7 +19,7 @@
 #' # Compute collocation frequencies
 #' collocation_object <- collocate_comments(toks_source, toks_comment)
 #' # Merge frequencies with source document to provide averages by word and correct formatting
-#' merged_frequency <- transcript_frequency(transcript_example, collocation_object)
+#' merged_frequency <- collocation_frequency(transcript_example, collocation_object)
 #' # Create a plot object to assign colors based on frequency
 #' freq_plot <- collocation_plot(merged_frequency)
 #' # Add html tags to create a highlighted version of the source document

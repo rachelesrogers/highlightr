@@ -6,7 +6,7 @@ test_that("size 2 collocation works", {
   collocation_test <- data.frame(word_number=1:4, col_1=c(2,4,6, NA), col_2=c(NA, 2, 4, 6),
                                  to_merge = c("this", "is", "a", "test"),
                                  collocation= c("this is", "is a", "a test", NA))
-  frequency_test <- transcript_frequency(transcript_test, collocation_test)
+  frequency_test <- collocation_frequency(transcript_test, collocation_test)
 
   expect_identical(dim(frequency_test), c(4L, 14L))
 
@@ -19,7 +19,7 @@ test_that("removing html tags works", {
   collocation_test <- data.frame(word_number=1:4, col_1=c(2,4,6, NA), col_2=c(NA, 2, 4, 6),
                                  to_merge = c("this", "is", "a", "test"),
                                  collocation= c("this is", "is a", "a test", NA))
-  frequency_test <- transcript_frequency(transcript_test, collocation_test)
+  frequency_test <- collocation_frequency(transcript_test, collocation_test)
 
   expect_identical(dim(frequency_test), c(9L, 14L))
 
@@ -35,7 +35,7 @@ test_that("dash check", {
   collocation_test <- data.frame(word_number=1:4, col_1=c(2,4,6, NA), col_2=c(NA, 2, 4, 6),
                                  to_merge = c("this", "is", "a", "test"),
                                  collocation= c("this is", "is a", "a test", NA))
-  frequency_test <- transcript_frequency(transcript_test, collocation_test)
+  frequency_test <- collocation_frequency(transcript_test, collocation_test)
 
   expect_identical(frequency_test$to_merge, c("this","","is","a","","test"))
 
@@ -50,7 +50,7 @@ test_that("values are given to the last observations",{
   collocation_object <- collocate_comments(toks_transcript, toks_comment, collocate_length = 6)
   transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 
-  freq_test <- transcript_frequency(transcript_example_rename, collocation_object)
+  freq_test <- collocation_frequency(transcript_example_rename, collocation_object)
 
   expect_true(all(!is.na(tail(freq_test$col_6, n=5))))
   expect_true(all(!is.na(tail(freq_test$Freq))))
@@ -74,7 +74,7 @@ test_that("symbols are used correctly for merging",{
   transcript_example_rename <- as.character(symbol_transcript)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
-  frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
+  frequency_test <- collocation_frequency(transcript_example_rename, collocation_object)
 
   expect_identical(collocation_object$col_1, frequency_test$col_1)
 
@@ -95,7 +95,7 @@ test_that("dashes are used correctly for merging",{
   transcript_example_rename <- as.character(dash_transcript)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, n_bands=5000, threshold=0.4, collocate_length=2)
-  frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
+  frequency_test <- collocation_frequency(transcript_example_rename, collocation_object)
 
   expect_identical(frequency_test$to_merge, c("in","an","example","","here","is","a","dash","space","in",
                    "the","year","1892","","1777","dash","","name","did","this"))
@@ -118,7 +118,7 @@ test_that("colons are removed correctly for merging",{
   transcript_example_rename <- as.character(dash_transcript)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
-  frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
+  frequency_test <- collocation_frequency(transcript_example_rename, collocation_object)
 
   expect_identical(frequency_test$to_merge, c("in","an","example","here","is","a","colon","space","in",
                                               "the","year","18921777","wɔlz","did","this"))
@@ -139,7 +139,7 @@ test_that("... are treated consistently",{
   transcript_example_rename <- as.character(elipses_transcript)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
-  frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
+  frequency_test <- collocation_frequency(transcript_example_rename, collocation_object)
 
   expect_identical(frequency_test$to_merge, c("in","an","example","who","did","this","it","was","significant",
                                               "another","did","another","thing"))
@@ -159,7 +159,7 @@ test_that("math symbols are used correctly for merging",{
   transcript_example_rename <- as.character(symbol_transcript)
   toks_transcript <- tokenize_source(transcript_example_rename)
   collocation_object <- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)
-  frequency_test <- transcript_frequency(transcript_example_rename, collocation_object)
+  frequency_test <- collocation_frequency(transcript_example_rename, collocation_object)
 
   expect_identical(collocation_object$col_1, frequency_test$col_1)
 

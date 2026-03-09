@@ -3,7 +3,7 @@
 #' This assigns colors based on frequency to the words in the transcript.
 #'
 #' @param frequency_doc document of frequencies (returned from
-#' [transcript_frequency()])
+#' [collocation_frequency()])
 #' @param n_scenario number of scenarios for which this transcript appeared. Defualt is 1
 #' @param colors list for color specification for the gradient. Default is c("#f251fc","#f8ff1b")
 #'
@@ -19,7 +19,7 @@
 #' # Compute collocation frequencies
 #' collocation_object <- collocate_comments(toks_source, toks_comment)
 #' # Merge frequencies with source document to provide averages by word and correct formatting
-#' merged_frequency <- transcript_frequency(transcript_example, collocation_object)
+#' merged_frequency <- collocation_frequency(transcript_example, collocation_object)
 #' # Create a plot object to assign colors based on frequency
 #' freq_plot <- collocation_plot(merged_frequency)
 

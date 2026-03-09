@@ -12,7 +12,7 @@ collocation_plot(
 }
 \arguments{
 \item{frequency_doc}{document of frequencies (returned from
-\code{\link[=transcript_frequency]{transcript_frequency()}})}
+\code{\link[=collocation_frequency]{collocation_frequency()}})}
 
 \item{n_scenario}{number of scenarios for which this transcript appeared. Defualt is 1}
 
@@ -33,7 +33,7 @@ toks_source <- tokenize_source(transcript_example)
 # Compute collocation frequencies
 collocation_object <- collocate_comments(toks_source, toks_comment)
 # Merge frequencies with source document to provide averages by word and correct formatting
-merged_frequency <- transcript_frequency(transcript_example, collocation_object)
+merged_frequency <- collocation_frequency(transcript_example, collocation_object)
 # Create a plot object to assign colors based on frequency
 freq_plot <- collocation_plot(merged_frequency)
 }

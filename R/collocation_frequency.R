@@ -6,6 +6,7 @@
 #' @param transcript transcript document
 #' @param collocate_object collocation object (returned
 #' from [collocate_comments_fuzzy()] or [collocate_comments()])
+#' @param fuzzy=FALSE whether or not to use fuzzy matching in collocation calculations
 #'
 #' @return a dataframe of the transcript document with collocation values by word
 #' @export
@@ -18,9 +19,9 @@
 #' # Compute collocation frequencies
 #' collocation_object <- collocate_comments(toks_source, toks_comment)
 #' # Merge frequencies with source document to provide averages by word and correct formatting
-#' merged_frequency <- transcript_frequency(transcript_example, collocation_object)
+#' merged_frequency <- collocation_frequency(transcript_example, collocation_object)
 
-transcript_frequency <- function(transcript, collocate_object){
+collocation_frequency <- function(transcript, collocate_object, fuzzy=FALSE){
   descript_words <- transcript_cleaning(transcript)
 
   descript_words[descript_words$words %in% c("-"," "), ]$to_merge<-""

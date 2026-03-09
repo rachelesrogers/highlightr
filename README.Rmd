@@ -65,7 +65,7 @@ toks_transcript <- tokenize_source(transcript_example)
 collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 
 # connect collocation frequencies to source document
-merged_frequency <- transcript_frequency(transcript_example, collocation_object)
+merged_frequency <- collocation_frequency(transcript_example, collocation_object)
 
 # create `ggplot` object of the transcript
 freq_plot <- collocation_plot(merged_frequency)

@@ -48,7 +48,7 @@ test_that("correct output when nothing meets the fuzzy threshold",{
   # transcript_example_rename <- dplyr::rename(dash_transcript, text=Text)
   toks_transcript <- tokenize_source(dash_transcript)
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
-  frequency_test <- transcript_frequency(dash_transcript, collocation_object)
+  frequency_test <- collocation_frequency(dash_transcript, collocation_object)
 
   expect_identical(frequency_test$Freq[1:3], c(6,6,3))
 })
