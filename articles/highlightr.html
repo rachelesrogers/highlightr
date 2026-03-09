@@ -135,7 +135,7 @@ first word. The second word, “this” appears in the next collocation as
 well: this case the defendant richard, whose frequency is 7, and so on
 for all words in the description. Collocations are weighted by the
 number of times they appear in the transcript text.</p>
-<p>Next, the <code><a href="../reference/transcript_frequency.html">transcript_frequency()</a></code> function attaches the
+<p>Next, the <code><a href="../reference/collocation_frequency.html">collocation_frequency()</a></code> function attaches the
 collocation counts to the full text of the transcript.
 <!-- This provides additional information about the original formatting of the transcript that is needed when constructing the final object. -->
 The collocation frequencies are averaged per word.</p>
@@ -143,7 +143,7 @@ The collocation frequencies are averaged per word.</p>
 <code class="sourceCode R"><span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
 <span></span>
-<span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example</span>, <span class="va">collocation_object</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">transcript_example</span>, <span class="va">collocation_object</span><span class="op">)</span></span></code></pre></div>
 <p>The combined document is then fed through ggplot to assign gradient
 colors based on frequency, and the minimum and maximum values are
 recorded.</p>
@@ -469,7 +469,7 @@ argument of the <code>collocation_plot</code> function.</p>
 <code class="sourceCode R"><span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
 <span></span>
-<span><span class="va">merged_frequency_nonfuzzy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example</span>, <span class="va">collocation_object_nonfuzzy</span><span class="op">)</span></span>
+<span><span class="va">merged_frequency_nonfuzzy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">transcript_example</span>, <span class="va">collocation_object_nonfuzzy</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># create a `ggplot` object of the transcript, and change colors of the gradient</span></span>
 <span></span>
@@ -771,7 +771,7 @@ containing the name “Richard Cole” is popular, with a frequency of
 <code class="sourceCode R"><span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
 <span></span>
-<span><span class="va">merged_frequency_2col</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transcript_frequency.html">transcript_frequency</a></span><span class="op">(</span><span class="va">transcript_example</span>, <span class="va">collocation_object_2col</span><span class="op">)</span></span>
+<span><span class="va">merged_frequency_2col</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">transcript_example</span>, <span class="va">collocation_object_2col</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># create a `ggplot` object of the transcript</span></span>
 <span></span>

@@ -124,7 +124,7 @@ to add additional labels to the gradient key.
 ``` r
 
 # connect collocation frequencies to source document
-merged_frequency <- transcript_frequency(transcript_example, collocation_object)
+merged_frequency <- collocation_frequency(transcript_example, collocation_object)
 
 # create a ggplot object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
@@ -1123,7 +1123,7 @@ collocation_object2 <- collocate_comments_fuzzy(toks_transcript2, toks_comment)
 #> Please consider changing `n_bands` and `band_width`.
 
 # connect collocation frequencies to source document
-merged_frequency2 <- transcript_frequency(transcript_example_2, collocation_object2)
+merged_frequency2 <- collocation_frequency(transcript_example_2, collocation_object2)
 
 # create a gpplot object of the transcript
 freq_plot2 <- collocation_plot(merged_frequency2)

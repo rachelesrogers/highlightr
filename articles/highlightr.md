@@ -75,7 +75,7 @@ for all words in the description. Collocations are weighted by the
 number of times they appear in the transcript text.
 
 Next, the
-[`transcript_frequency()`](https://rachelesrogers.github.io/highlightr/reference/transcript_frequency.md)
+[`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)
 function attaches the collocation counts to the full text of the
 transcript. The collocation frequencies are averaged per word.
 
@@ -83,7 +83,7 @@ transcript. The collocation frequencies are averaged per word.
 
 # connect collocation frequencies to source document
 
-merged_frequency <- transcript_frequency(transcript_example, collocation_object)
+merged_frequency <- collocation_frequency(transcript_example, collocation_object)
 ```
 
 The combined document is then fed through ggplot to assign gradient
@@ -291,7 +291,7 @@ argument of the `collocation_plot` function.
 
 # connect collocation frequencies to source document
 
-merged_frequency_nonfuzzy <- transcript_frequency(transcript_example, collocation_object_nonfuzzy)
+merged_frequency_nonfuzzy <- collocation_frequency(transcript_example, collocation_object_nonfuzzy)
 
 # create a `ggplot` object of the transcript, and change colors of the gradient
 
@@ -464,7 +464,7 @@ containing the name “Richard Cole” is popular, with a frequency of 89.
 
 # connect collocation frequencies to source document
 
-merged_frequency_2col <- transcript_frequency(transcript_example, collocation_object_2col)
+merged_frequency_2col <- collocation_frequency(transcript_example, collocation_object_2col)
 
 # create a `ggplot` object of the transcript
 

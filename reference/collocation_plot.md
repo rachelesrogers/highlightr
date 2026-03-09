@@ -17,7 +17,7 @@ collocation_plot(
 - frequency_doc:
 
   document of frequencies (returned from
-  [`transcript_frequency()`](https://rachelesrogers.github.io/highlightr/reference/transcript_frequency.md))
+  [`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md))
 
 - n_scenario:
 
@@ -43,7 +43,7 @@ toks_source <- tokenize_source(transcript_example)
 # Compute collocation frequencies
 collocation_object <- collocate_comments(toks_source, toks_comment)
 # Merge frequencies with source document to provide averages by word and correct formatting
-merged_frequency <- transcript_frequency(transcript_example, collocation_object)
+merged_frequency <- collocation_frequency(transcript_example, collocation_object)
 # Create a plot object to assign colors based on frequency
 freq_plot <- collocation_plot(merged_frequency)
 ```
