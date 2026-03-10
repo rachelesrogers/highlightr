@@ -94,7 +94,7 @@
 <span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="va">transcript_example</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># use fuzzy matching in collocation</span></span>
-<span><span class="va">collocation_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
+<span><span class="va">collocation_object</span> <span class="op">&lt;-</span> <span class="fu">collocate_comments_fuzzy</span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.</span></span>
 <span><span class="co">#&gt; Please consider changing `n_bands` and `band_width`.</span></span>
 <span></span>

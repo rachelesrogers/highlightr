@@ -152,20 +152,9 @@ amount of times each collocation occurs.</p>
 <code class="sourceCode R"><span></span>
 <span><span class="co"># use fuzzy matching to calculate weighted frequency values between derivative and source documents</span></span>
 <span></span>
-<span><span class="va">collocation_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.</span></span>
-<span><span class="co">#&gt; Please consider changing `n_bands` and `band_width`.</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">collocation_object</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
-<span><span class="co">#&gt;   word_number col_1 col_2 col_3 col_4 col_5 to_merge    collocation             </span></span>
-<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>           1  8    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    a           a highlighter also call…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>           2  7.74  8    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    highlighter highlighter also called…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>           3  7     7.74  8    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    also        also called a fluoresce…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>           4  7     7     7.74  8    <span style="color: #BB0000;">NA</span>    called      called a fluorescent pe…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>           5  7     7     7     7.74  8    a           a fluorescent pen is a  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>           6  7     7     7     7     7.74 fluorescent fluorescent pen is a ty…</span></span></code></pre></div>
+<span><span class="co"># collocation_object &lt;- collocate_comments_fuzzy(toks_transcript, toks_comment)</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># head(collocation_object)</span></span></code></pre></div>
 <p>These frequencies can be mapped back to the transcript document, then
 highlighted as described based on the average collocation frequency that
 each word appeared in. The results are shown below by specifying
@@ -175,7 +164,7 @@ used to add additional labels to the gradient key.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
-<span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">transcript_example</span>, <span class="va">collocation_object</span><span class="op">)</span></span>
+<span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">transcript_example</span>, <span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># create a ggplot object of the transcript</span></span>
 <span><span class="va">freq_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span></span>
@@ -191,14 +180,14 @@ used to add additional labels to the gradient key.</p>
     background: linear-gradient(45deg, #F251FC , #F8FF1B );">
 
 </div>
-275 (most articles)
+261 (most articles)
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F458F7,#F458F7) ">
+  margin-left:-5px; background: linear-gradient(to right,#F459F7,#F459F7) ">
 A 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F458F7,#F458F7) ">
+  margin-left:-5px; background: linear-gradient(to right,#F459F7,#F458F7) ">
 highlighter, 
 </div>
 <div style="display: inline-block; padding:0px;
@@ -210,363 +199,363 @@ also 
 called 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F458F7,#F458F8) ">
+  margin-left:-5px; background: linear-gradient(to right,#F458F7,#F458F7) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F458F8,#F458F8) ">
+  margin-left:-5px; background: linear-gradient(to right,#F458F7,#F458F8) ">
 fluorescent 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F458F8,#F458F8) ">
+  margin-left:-5px; background: linear-gradient(to right,#F458F8,#F458F7) ">
 pen, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F458F8,#F96EE7) ">
+  margin-left:-5px; background: linear-gradient(to right,#F458F7,#FA70E6) ">
 is 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F96EE7,#FE82D6) ">
+  margin-left:-5px; background: linear-gradient(to right,#FA70E6,#FE84D4) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE82D6,#FF94C5) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE84D4,#FF97C2) ">
 type 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF94C5,#FFABAC) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF97C2,#FFA9AF) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFABAC,#FFABAD) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
 writing 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFABAD,#FF9ABF) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FF97C2) ">
 device 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9ABF,#FF88D0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF97C2,#FE83D4) ">
 used 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF88D0,#FB75E1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE83D4,#F96FE6) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FB75E1,#F867ED) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96FE6,#F457F8) ">
 bring 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F867ED,#FC7CDC) ">
+  margin-left:-5px; background: linear-gradient(to right,#F457F8,#F96FE6) ">
 attention 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDC,#FF8ECA) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96FE6,#FE84D4) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8ECA,#FFA0B8) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE84D4,#FF97C2) ">
 sections 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA0B8,#FFB1A6) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF97C2,#FFA9AF) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB1A6,#FFB6A1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFBA9C) ">
 text 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFB6A1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBA9C) ">
 by 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFB5A1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBA9C) ">
 marking 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A1,#FFB4A3) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFB99D) ">
 them 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFB3A4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB79F) ">
 with 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFB2A5) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB6A1) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB2A5,#FFB0A7) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFB4A3) ">
 vivid, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFAFA8) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFB3A4) ">
 translucent 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAFA8,#FFB1A6) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFB4A3) ">
 colour. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB1A6,#FFB4A3) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFB6A1) ">
 A 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFB3A4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFB5A1) ">
 typical 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFAFA8) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB5A1,#FFA6B2) ">
 highlighter 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAFA8,#FFA0B9) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA6B2,#FF96C3) ">
 is 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA0B9,#FF8ECB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF96C3,#FE83D5) ">
 fluorescent 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8ECB,#FC7ADD) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#F96EE7) ">
 yellow, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7ADD,#F868EC) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96EE7,#F45AF6) ">
 with 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F868EC,#F459F7) ">
+  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#F45AF6) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F459F7,#F459F7) ">
+  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#F45AF6) ">
 color 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F459F7,#F459F7) ">
+  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#F45AF6) ">
 coming 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F459F7,#F86AEA) ">
+  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#F45AF6) ">
 from 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F86AEA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#F45AF6,#FA70E5) ">
 pyranine. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FF90C8) ">
+  margin-left:-5px; background: linear-gradient(to right,#FA70E5,#FE85D3) ">
 Different 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF90C8,#FFA2B7) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE85D3,#FF98C1) ">
 compounds, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA2B7,#FFB3A4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF98C1,#FFAAAE) ">
 such 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFB7A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFBB9A) ">
 as 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB7A0,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBC99) ">
 rhodamines 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
 (Rhodamine 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
 6GD, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
 Rhodamine 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
 B) 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBB9A) ">
 are 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB6A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBA9B) ">
 used 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A0,#FFB6A1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9B,#FFBA9C) ">
 for 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFB5A2) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFB99D) ">
 other 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFB4A3) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB89F) ">
 colours. 
 </div>
 <br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFBF96) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB89F,#FFB6A1) ">
 A 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBF96,#FFBD98) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFB4A3) ">
 highlighter 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBB9B) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB4A3,#FFB2A5) ">
 is 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB2A5,#FFB0A8) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB0A8,#FFAEAA) ">
 felt 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FFB79F ">
+  margin-left:-5px; background-color: #FFAEAA ">
 - 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFACAC) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFAEAA,#FFADAA) ">
 tip 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFACAC,#FFAEAA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFADAA,#FFAFA8) ">
 marker 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAEAA,#FFB0A7) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFAFA8,#FFB2A5) ">
 filled 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFB3A4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB2A5,#FFB4A2) ">
 with 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB3A4,#FFB5A2) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB4A2,#FFB7A0) ">
 transparent 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFB6A1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB7A0,#FFBA9C) ">
 fluorescent 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFB7A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBA9B) ">
 ink 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB7A0,#FFB6A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9B,#FFBB9B) ">
 instead 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A0,#FFB7A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9B) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB7A0,#FFB7A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9A) ">
 black 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB7A0,#FFB7A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9A) ">
 or 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB7A0,#FFB6A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9B) ">
 opaque 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A0,#FFB7A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9A) ">
 ink. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB7A0,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9A) ">
 The 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBC9A) ">
 first 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBC99) ">
 highlighter 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
 was 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC9A) ">
 invented 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB7A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBB9A) ">
 by 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB7A0,#FFB6A1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFB5A1) ">
 Dr. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFB0A7) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB5A1,#FFAFA9) ">
 Frank 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFAAAE) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFAFA9,#FFA9AF) ">
 Honn 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFA4B4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA3B6) ">
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA4B4,#FFA3B5) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA3B6,#FF9DBC) ">
 1962 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA3B5,#FFA4B4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF9DBC,#FFA3B5) ">
 and 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA4B4,#FFAAAE) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA3B5,#FFA9AF) ">
 produced 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFB0A7) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFB0A8) ">
 by 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFB6A1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB0A8,#FFB6A1) ">
 Carter’s 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFBC99) ">
 Ink 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
 Company, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB89F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
 using 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89F,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBC99) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB6A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFB6A0) ">
 trademarked 
 </div>
 <div style="display: inline-block; padding:0px;
@@ -574,23 +563,23 @@ trademarked 
 name 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFAAAD) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB0A7,#FFAAAE) ">
 Hi 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FFAAAD ">
+  margin-left:-5px; background-color: #FFAAAE ">
 - 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAAAD,#FFA9AF) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFA3B5) ">
 Liter. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFA9AF) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA3B5,#FFA3B5) ">
 Avery 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFAAAE) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA3B5,#FFAAAE) ">
 Dennison 
 </div>
 <div style="display: inline-block; padding:0px;
@@ -602,695 +591,695 @@ Corporation 
 now 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A0,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB6A0,#FFBD99) ">
 owns 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBD99) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFABAD) ">
 brand, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFA6B2) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFABAD,#FF98C1) ">
 having 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA6B2,#FF94C4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF98C1,#FE84D4) ">
 acquired 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF94C4,#FD81D6) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE84D4,#F96FE6) ">
 Carter’s 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD81D6,#FC78DF) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96FE6,#F764EF) ">
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC78DF,#FA6FE6) ">
+  margin-left:-5px; background: linear-gradient(to right,#F764EF,#FA70E5) ">
 1975. 
 </div>
 <br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FA6FE6,#FF92C6) ">
+  margin-left:-5px; background: linear-gradient(to right,#FA70E5,#FF95C4) ">
 Many 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF92C6,#FFB1A6) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF95C4,#FFB5A1) ">
 highlighters 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB1A6,#FFD17F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB5A1,#FFD678) ">
 come 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD17F,#FFE265) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD678,#FFDE6C) ">
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE265,#FEE958) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFDE6C,#FFE65E) ">
 bright, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE958,#FFDD6C) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFE65E,#FFD973) ">
 often 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDD6C,#FFD17E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD973,#FFCC85) ">
 fluorescent 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD17E,#FFC391) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCC85,#FFBD98) ">
 and 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFC094) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 vibrant 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC094,#FFC989) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD99) ">
 colors. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC989,#FFD17E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBD99) ">
 Being 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD17E,#FFD17F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBC99) ">
 fluorescent, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD17F,#FFD17E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBD99) ">
 highlighter 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD17E,#FFCA89) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBD99) ">
 ink 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCA89,#FFC194) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBD98) ">
 glows 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC194,#FFC194) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 under 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC194,#FFCC86) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFC989) ">
 black 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCC86,#FFD578) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFC989,#FFCD84) ">
 light. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD578,#FFDF69) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCD84,#FFD17E) ">
 The 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDF69,#FEE85A) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD17E,#FFD579) ">
 most 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE85A,#FEEA58) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD579,#FFD973) ">
 common 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEEA58,#FEE85A) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD973,#FFD27D) ">
 color 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE85A,#FEE959) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD27D,#FFD973) ">
 for 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE959,#FEEB55) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD973,#FFE068) ">
 highlighters 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEEB55,#FDEF4D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFE068,#FEE85B) ">
 is 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FDEF4D,#FCF149) ">
+  margin-left:-5px; background: linear-gradient(to right,#FEE85B,#FDF04C) ">
 yellow, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF149,#FCF344) ">
+  margin-left:-5px; background: linear-gradient(to right,#FDF04C,#FBF739) ">
 but 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF344,#FCF442) ">
+  margin-left:-5px; background: linear-gradient(to right,#FBF739,#FAF837) ">
 they 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF442,#FEE85A) ">
+  margin-left:-5px; background: linear-gradient(to right,#FAF837,#FDED51) ">
 are 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE85A,#FFDB70) ">
+  margin-left:-5px; background: linear-gradient(to right,#FDED51,#FFE266) ">
 also 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDB70,#FFD080) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFE266,#FFD678) ">
 found 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD080,#FFC58F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD678,#FFCA88) ">
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC58F,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCA88,#FFBE97) ">
 orange, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 red, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 pink, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 purple, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 blue, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 and 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE98) ">
 green 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE98,#FFBD98) ">
 varieties. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 Some 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 yellow 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 highlighters 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD99) ">
 may 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBC99) ">
 look 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBB9A) ">
 greenish 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBB9B) ">
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBA9C) ">
 colour 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBB9B) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBB9A) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9A,#FFBC99) ">
 naked 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBD99) ">
 eye. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBD98) ">
 Yellow 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 is 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBE98) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE98,#FFBE97) ">
 preferred 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 color 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE98) ">
 use 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE98,#FFBD98) ">
 when 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 making 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD99) ">
 photocopy 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBD98) ">
 as 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 it 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 will 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBE98) ">
 not 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE98,#FFBE97) ">
 produce 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFC391) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFB5A2) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFAFA8) ">
 shadow 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFA7B1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFAFA8,#FFA0B9) ">
 on 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FF98C1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA0B9,#FF90C9) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF98C1,#FF89CF) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF90C9,#FD7FD9) ">
 copy. 
 </div>
 <br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF89CF,#FD7DDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7FD9,#FD7ED9) ">
 Highlighters 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FF8DCB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FF8FCA) ">
 are 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8DCB,#FF9DBC) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF8FCA,#FF9FBA) ">
 available 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9DBC,#FFABAD) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF9FBA,#FFAEA9) ">
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFABAD,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFAEA9,#FFBD98) ">
 multiple 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 forms, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 including 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 some 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 that 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 have 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD99) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBD99) ">
 retractable 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBD99) ">
 felt 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBD98) ">
 tip 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFC094) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 or 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC094,#FFC094) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 an 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC094,#FFC98A) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 eraser 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC98A,#FFC98A) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 on 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC98A,#FFC98A) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC98A,#FFC194) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 end 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC194,#FFC194) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 opposite 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC194,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFC293) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 felt. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC293,#FFCD84) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFC989) ">
 Other 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCD84,#FFDB70) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFC989,#FFD875) ">
 types 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDB70,#FEE85A) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD875,#FFE65F) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE85A,#FBF53E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFE65F,#FCF442) ">
 highlighters 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF53E,#FAF838) ">
+  margin-left:-5px; background: linear-gradient(to right,#FCF442,#F8FF1B) ">
 include 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF838,#FAF838) ">
+  margin-left:-5px; background: linear-gradient(to right,#F8FF1B,#F8FF1C) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF838,#FBF53E) ">
+  margin-left:-5px; background: linear-gradient(to right,#F8FF1C,#F9FC28) ">
 trilighter, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF53E,#FBF53F) ">
+  margin-left:-5px; background: linear-gradient(to right,#F9FC28,#FAFA30) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF53F,#FBF53E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FAFA30,#FAFA2F) ">
 triangularly 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FBF53E ">
+  margin-left:-5px; background-color: #FAFA2F ">
 - 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF53E,#FAF838) ">
+  margin-left:-5px; background: linear-gradient(to right,#FAFA2F,#F9FD25) ">
 shaped 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF838,#FAFA31) ">
+  margin-left:-5px; background: linear-gradient(to right,#F9FD25,#F8FF1C) ">
 pen 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAFA31,#F9FB2C) ">
+  margin-left:-5px; background: linear-gradient(to right,#F8FF1C,#F8FF1E) ">
 with 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F9FB2C,#FAF933) ">
+  margin-left:-5px; background: linear-gradient(to right,#F8FF1E,#F8FE21) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FAF933,#FBF73A) ">
+  margin-left:-5px; background: linear-gradient(to right,#F8FE21,#F9FB2D) ">
 different 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FBF73A ">
+  margin-left:-5px; background-color: #F9FB2D ">
 - 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF73A,#FBF540) ">
+  margin-left:-5px; background: linear-gradient(to right,#F9FB2D,#FAF836) ">
 coloured 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF540,#FCF345) ">
+  margin-left:-5px; background: linear-gradient(to right,#FAF836,#FBF73B) ">
 tip 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF345,#FCF149) ">
+  margin-left:-5px; background: linear-gradient(to right,#FBF73B,#FBF739) ">
 at 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF149,#FCF148) ">
+  margin-left:-5px; background: linear-gradient(to right,#FBF739,#FAF838) ">
 each 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF148,#FCF148) ">
+  margin-left:-5px; background: linear-gradient(to right,#FAF838,#FAF836) ">
 corner, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF148,#FCF148) ">
+  margin-left:-5px; background: linear-gradient(to right,#FAF836,#FAF934) ">
 and 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF148,#FDF04C) ">
+  margin-left:-5px; background: linear-gradient(to right,#FAF934,#FCF148) ">
 ones 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FDF04C,#FEE95A) ">
+  margin-left:-5px; background: linear-gradient(to right,#FCF148,#FEEA57) ">
 that 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE95A,#FFE266) ">
+  margin-left:-5px; background: linear-gradient(to right,#FEEA57,#FFE364) ">
 are 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE266,#FFD677) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFE364,#FFD776) ">
 stackable. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD677,#FFCB87) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD776,#FFCB87) ">
 There 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCB87,#FFC193) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCB87,#FFC78C) ">
 are 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC193,#FFBD98) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFC78C,#FFC292) ">
 also 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFC292,#FFBE97) ">
 some 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 forms 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFBA9C) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBA9C) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 highlighters 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBA9C) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 that 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBA9C) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 have 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFB99C) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99C,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 wax 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FFB99D ">
+  margin-left:-5px; background-color: #FFBE97 ">
 - 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 like 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 quality 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 similar 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 an 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 oil 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 pastel. 
 </div>
 <br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFD080) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFCB86) ">
 “Dry 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD080,#FFDC6E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCB86,#FFD874) ">
 highlighters” 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDC6E,#FEE959) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD874,#FFE65F) ">
 (occasionally 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE959,#FCF246) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFE65F,#FFE65F) ">
 called 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF246,#FCF246) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFE65F,#FFE65F) ">
 “dry 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF246,#FFDC6E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFE65F,#FFD874) ">
 line 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDC6E,#FFD080) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD874,#FFCB86) ">
 highlighters”) 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD080,#FFC391) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCB86,#FFBE97) ">
 have 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 an 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 applicator 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 that 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 applies 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFC391) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 thin 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFC391) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 strip 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFC391) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFC391) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 highlighter 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFC391) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE98) ">
 tape 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE98,#FFBD98) ">
 (physically 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFA7B1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFABAD) ">
 similar 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FF95C4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFABAD,#FF98C1) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF95C4,#FD81D6) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF98C1,#FE83D4) ">
 audio 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD81D6,#F96CE8) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE83D4,#F96DE7) ">
 tape 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F96CE8,#F354FA) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96DE7,#F354FA) ">
 or 
 </div>
 <div style="display: inline-block; padding:0px;
@@ -1298,787 +1287,787 @@ or 
 correction 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F354FA,#F96CE8) ">
+  margin-left:-5px; background: linear-gradient(to right,#F354FA,#F96EE7) ">
 tape) 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F96CE8,#FE82D6) ">
+  margin-left:-5px; background: linear-gradient(to right,#F96EE7,#FE84D4) ">
 instead 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE82D6,#FF95C4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE84D4,#FF98C0) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF95C4,#FFA7B1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF98C0,#FFABAC) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA7B1,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFABAC,#FFBE97) ">
 felt 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFC490) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 tip. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC490,#FFD07F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFCB86) ">
 Unlike 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD07F,#FFDC6F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCB86,#FFD875) ">
 standard 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDC6F,#FFE560) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD875,#FFD875) ">
 highlighters, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE560,#FDEE50) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD875,#FFD875) ">
 they 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FDEE50,#FEEC53) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD875,#FFD875) ">
 are 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEEC53,#FFE069) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD875,#FFCA88) ">
 easily 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE069,#FFD47A) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCA88,#FFBE97) ">
 erasable. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD47A,#FFCB87) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 They 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCB87,#FFC292) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 are 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC292,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 different 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFC68E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFCA88) ">
 from 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC68E,#FFD17E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCA88,#FFD677) ">
 “dry 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFD17E,#FFDD6E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD677,#FFE265) ">
 mark 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDD6E,#FEE85B) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFE265,#FDEE4F) ">
 highlighters”, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FEE85B,#FCF344) ">
+  margin-left:-5px; background: linear-gradient(to right,#FDEE4F,#FAFA31) ">
 which 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF344,#FCF343) ">
+  margin-left:-5px; background: linear-gradient(to right,#FAFA31,#FAFA31) ">
 are 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF343,#FBF442) ">
+  margin-left:-5px; background: linear-gradient(to right,#FAFA31,#F9FB2E) ">
 sometimes 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF442,#FBF540) ">
+  margin-left:-5px; background: linear-gradient(to right,#F9FB2E,#F9FB2C) ">
 advertised 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FBF540,#F8FF1B) ">
+  margin-left:-5px; background: linear-gradient(to right,#F9FB2C,#F9FC29) ">
 as 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F8FF1B,#FCF443) ">
+  margin-left:-5px; background: linear-gradient(to right,#F9FC29,#FDF04B) ">
 being 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FCF443,#FFE75C) ">
+  margin-left:-5px; background: linear-gradient(to right,#FDF04B,#FFE462) ">
 useful 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFE75C,#FFDB70) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFE462,#FFD777) ">
 for 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFDB70,#FFCF81) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFD777,#FFCA88) ">
 highlighting 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFCF81,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFCA88,#FFBC99) ">
 books 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBD99) ">
 with 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBD98) ">
 thin 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 pages. 
 </div>
 <br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 “Gel 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 highlighters” 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBE98) ">
 contain 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE98,#FFBE97) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 gel 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 stick 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 rather 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 than 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 felt 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 tip. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 The 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 gel 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 does 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 not 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 bleed 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 through 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 paper 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 or 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 become 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 dried 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 out 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 pen 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFC391) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 as 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFB5A2) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFAFA9) ">
 other 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFA6B2) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFAFA9,#FF9FBA) ">
 highlighters’ 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA6B2,#FF97C2) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF9FBA,#FF8FCA) ">
 inks 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF97C2,#FF87D1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF8FCA,#FD7DDA) ">
 may, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF87D1,#F869EB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#F86AEA) ">
 which 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F869EB,#F869EB) ">
+  margin-left:-5px; background: linear-gradient(to right,#F86AEA,#F86AEA) ">
 renders 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F869EB,#F869EB) ">
+  margin-left:-5px; background: linear-gradient(to right,#F86AEA,#F86AEA) ">
 them 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F869EB,#F869EB) ">
+  margin-left:-5px; background: linear-gradient(to right,#F86AEA,#F86AEA) ">
 useless. 
 </div>
 <br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#F869EB,#FC7BDC) ">
+  margin-left:-5px; background: linear-gradient(to right,#F86AEA,#FD7DDA) ">
 “Liquid 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7BDC,#FF8CCD) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FF8FCA) ">
 Highlighters” 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8CCD,#FF9BBD) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF8FCA,#FF9EBA) ">
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9BBD,#FFAAAE) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF9EBA,#FFADAA) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFADAA,#FFBC9A) ">
 range 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBB9B) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBA9C) ">
 colours 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFBA9B) ">
 are 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFB89F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9B,#FFBB9B) ">
 also 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89F,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBC9A) ">
 available, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBC99) ">
 and 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC99,#FFBD98) ">
 because 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBE98) ">
 they 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE98,#FFBE97) ">
 put 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 more 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 ink 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 on 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB6A1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFB1A6) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFAAAE) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB1A6,#FFA4B4) ">
 page 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFAAAE,#FF9DBB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA4B4,#FF97C2) ">
 when 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9DBB,#FF91C8) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF97C2,#FF89CF) ">
 highlighting, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF91C8,#FE83D5) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF89CF,#FC7BDC) ">
 they 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#FF87D1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FC7BDC,#FF89CF) ">
 make 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF87D1,#FF94C5) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF89CF,#FF97C2) ">
 words 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF94C5,#FFA1B8) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF97C2,#FFA4B4) ">
 stand 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA1B8,#FFADAB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA4B4,#FFB1A6) ">
 out 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFADAB,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB1A6,#FFBE97) ">
 more 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 than 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 with 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 non 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background-color: #FFB99D ">
+  margin-left:-5px; background-color: #FFBE97 ">
 - 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 liquid 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 types. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 Also 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 fact 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 that 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE98) ">
 more 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE98,#FFBD98) ">
 highlighting 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 ink 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 is 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD99) ">
 put 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBD98) ">
 on 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD98) ">
 page 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBE98) ">
 with 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE98,#FFBE97) ">
 liquid 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 highlighters 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 means 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 that 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBD98) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB89E) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFBD99) ">
 highlighting 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFB89F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBD99,#FFBC9A) ">
 ink 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB89F,#FFB7A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBC9A,#FFBB9B) ">
 is 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB7A0,#FFB6A1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBB9B,#FFBA9C) ">
 much 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A1,#FFB5A2) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBA9C,#FFB99D) ">
 more 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFB5A2) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
 resistive 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB5A2,#FFADAB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB1A6) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFADAB,#FFA5B3) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB1A6,#FFA9AF) ">
 fading 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA5B3,#FF9DBB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FF9DBC) ">
 with 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9DBB,#FF95C4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF9DBC,#FF90C8) ">
 age. 
 </div>
 <br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF95C4,#FF8CCD) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF90C8,#FE83D5) ">
 “Pastel 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8CCD,#FF8BCD) ">
+  margin-left:-5px; background: linear-gradient(to right,#FE83D5,#FD7FD9) ">
 Highlighters” 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8BCD,#FF8ACE) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7FD9,#FC7ADD) ">
 use 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8ACE,#FF89CF) ">
+  margin-left:-5px; background: linear-gradient(to right,#FC7ADD,#FD7EDA) ">
 pastel 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF89CF,#FF8DCC) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD81D7) ">
 dyes 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8DCC,#FF87D1) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD81D7,#FD7ED9) ">
 instead 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF87D1,#FD81D6) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FC7CDC) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD81D6,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FC7CDC,#FC79DE) ">
 fluorescent 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FE84D4) ">
+  margin-left:-5px; background: linear-gradient(to right,#FC79DE,#FB74E2) ">
 dyes. 
 </div>
 <br><div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FE84D4,#FF8BCE) ">
+  margin-left:-5px; background: linear-gradient(to right,#FB74E2,#FD80D8) ">
 Some 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8BCE,#FF9ABF) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FF90C8) ">
 word 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9ABF,#FFA9AF) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF90C8,#FFA0B8) ">
 processing 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFA9AF,#FFB6A0) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA0B8,#FFB0A8) ">
 software 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB6A0,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB0A8,#FFBE97) ">
 can 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 simulate 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 highlighting 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 by 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 using 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 technique 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFB99D) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 similar 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB99D,#FFBD98) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFBE97) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFBD98,#FFC391) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFBE97,#FFC490) ">
 reverse 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC391,#FFC292) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFC490,#FFB89E) ">
 video 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFC292,#FFB79F) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFB89E,#FFACAB) ">
 on 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFB79F,#FFACAB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFACAB,#FFA0B8) ">
 some 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FFACAB,#FF9CBC) ">
+  margin-left:-5px; background: linear-gradient(to right,#FFA0B8,#FF94C5) ">
 terminals. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF9CBC,#FF8ACE) ">
+  margin-left:-5px; background: linear-gradient(to right,#FF94C5,#FD80D8) ">
 Some 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FF8ACE,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 forms 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 syntax 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 highlighting 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 may 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 also 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 be 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 displayed 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 in 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 style 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 of 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 highlighter 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 pen, 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 with 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 a 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 bright 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 or 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD80D8) ">
 pastel 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7DDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD80D8,#FD7FD8) ">
 background 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDA) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7FD8,#FD7FD9) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDA,#FD7DDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7FD9,#FD7FD9) ">
 the 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FD7DDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7FD9,#FD7ED9) ">
 text. 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7EDA) ">
 Some 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7EDA) ">
 web 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7EDA,#FD7ED9) ">
 browser 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 extensions 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 also 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 enables 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 users 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 to 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 create 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 digital 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 highlights 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 on 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 websites 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 and 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 online 
 </div>
 <div style="display: inline-block; padding:0px;
-  margin-left:-5px; background: linear-gradient(to right,#FC7CDB,#FC7CDB) ">
+  margin-left:-5px; background: linear-gradient(to right,#FD7ED9,#FD7ED9) ">
 PDFs. 
 </div>
 <p><br></p>
@@ -2100,12 +2089,12 @@ changed:</p>
 <span><span class="va">toks_transcript2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="va">transcript_example_2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># use fuzzy collocation on the source and derivative documents</span></span>
-<span><span class="va">collocation_object2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocate_comments_fuzzy.html">collocate_comments_fuzzy</a></span><span class="op">(</span><span class="va">toks_transcript2</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.</span></span>
-<span><span class="co">#&gt; Please consider changing `n_bands` and `band_width`.</span></span>
+<span><span class="co"># collocation_object2 &lt;- collocate_comments_fuzzy(toks_transcript2, toks_comment)</span></span>
 <span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
-<span><span class="va">merged_frequency2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">transcript_example_2</span>, <span class="va">collocation_object2</span><span class="op">)</span></span>
+<span><span class="va">merged_frequency2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">transcript_example_2</span>, <span class="va">toks_transcript2</span>, <span class="va">toks_comment</span>, fuzzy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.</span></span>
+<span><span class="co">#&gt; Please consider changing `n_bands` and `band_width`.</span></span>
 <span></span>
 <span><span class="co"># create a gpplot object of the transcript</span></span>
 <span><span class="va">freq_plot2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency2</span><span class="op">)</span></span>

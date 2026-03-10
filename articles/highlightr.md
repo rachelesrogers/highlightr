@@ -48,31 +48,10 @@ the number of closest matches for the fuzzy collocation.
 
 # use fuzzy collocation on source and derivative tokenized documents
 
-collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
-#> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
-#> Please consider changing `n_bands` and `band_width`.
-
-head(collocation_object)
-#> # A tibble: 6 × 8
-#>   word_number col_1 col_2 col_3 col_4 col_5 to_merge  collocation               
-#>         <int> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>     <chr>                     
-#> 1           1  6.96 NA    NA    NA    NA    in        in this case the defendant
-#> 2           2  7     6.96 NA    NA    NA    this      this case the defendant r…
-#> 3           3  7.93  7     6.96 NA    NA    case      case the defendant richar…
-#> 4           4 10     7.93  7     6.96 NA    the       the defendant richard col…
-#> 5           5 10    10     7.93  7     6.96 defendant defendant richard cole ha…
-#> 6           6 21    10    10     7.93  7    richard   richard cole has been cha…
+# collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+# 
+# head(collocation_object)
 ```
-
-The output assigns the frequency of each collocation to each word that
-occurs in that collocation. For example, the first collocation in the
-description is “in this case the defendant”, which occurs with a
-frequency of 6.96. This is the only collocation in which the first word
-will appear, so this is the only collocation value provided for the
-first word. The second word, “this” appears in the next collocation as
-well: this case the defendant richard, whose frequency is 7, and so on
-for all words in the description. Collocations are weighted by the
-number of times they appear in the transcript text.
 
 Next, the
 [`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)
@@ -83,7 +62,9 @@ transcript. The collocation frequencies are averaged per word.
 
 # connect collocation frequencies to source document
 
-merged_frequency <- collocation_frequency(transcript_example, collocation_object)
+merged_frequency <- collocation_frequency(transcript_example, toks_transcript, toks_comment, fuzzy=TRUE)
+#> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
+#> Please consider changing `n_bands` and `band_width`.
 ```
 
 The combined document is then fed through ggplot to assign gradient
@@ -259,27 +240,13 @@ library(xml2)
 xml2::write_html(xml2::read_html(page_highlight), "filename.html")
 ```
 
-To exclude fuzzy matches, the
-[`collocate_comments()`](https://rachelesrogers.github.io/highlightr/reference/collocate_comments.md)
-function can be used. Here, the listed frequencies are all whole
-numbers, because they are counts (without weighting).
-
 ``` r
 
 # use nonfuzzy collocation on the source and derivative tokenized texts
-
-collocation_object_nonfuzzy <- collocate_comments(toks_transcript, toks_comment)
-
-head(collocation_object_nonfuzzy)
-#> # A tibble: 6 × 8
-#>   word_number col_1 col_2 col_3 col_4 col_5 to_merge  collocation               
-#>         <int> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>     <chr>                     
-#> 1           1     6    NA    NA    NA    NA in        in this case the defendant
-#> 2           2     7     6    NA    NA    NA this      this case the defendant r…
-#> 3           3     7     7     6    NA    NA case      case the defendant richar…
-#> 4           4    10     7     7     6    NA the       the defendant richard col…
-#> 5           5    10    10     7     7     6 defendant defendant richard cole ha…
-#> 6           6    21    10    10     7     7 richard   richard cole has been cha…
+# 
+# collocation_object_nonfuzzy <- collocate_comments(toks_transcript, toks_comment)
+# 
+# head(collocation_object_nonfuzzy)
 ```
 
 In this case, the highlighting pattern resembles that when the fuzzy
@@ -291,7 +258,7 @@ argument of the `collocation_plot` function.
 
 # connect collocation frequencies to source document
 
-merged_frequency_nonfuzzy <- collocation_frequency(transcript_example, collocation_object_nonfuzzy)
+merged_frequency_nonfuzzy <- collocation_frequency(transcript_example, toks_transcript, toks_comment)
 
 # create a `ggplot` object of the transcript, and change colors of the gradient
 
@@ -442,19 +409,9 @@ length has been changed to 2 words.
 
 # use nonfuzzy collocations with a collocation length of 2
 
-collocation_object_2col <- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)
-
-head(collocation_object_2col, n=7)
-#> # A tibble: 7 × 5
-#>   word_number col_1 col_2 to_merge  collocation      
-#>         <int> <dbl> <dbl> <chr>     <chr>            
-#> 1           1   6      NA in        in this          
-#> 2           2   7       6 this      this case        
-#> 3           3   7       7 case      case the         
-#> 4           4  10       7 the       the defendant    
-#> 5           5  22      10 defendant defendant richard
-#> 6           6  89      22 richard   richard cole     
-#> 7           7  18.5    89 cole      cole has
+# collocation_object_2col <- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)
+# 
+# head(collocation_object_2col, n=7)
 ```
 
 In these shorter collocations, we can see that the collocation
@@ -464,7 +421,7 @@ containing the name “Richard Cole” is popular, with a frequency of 89.
 
 # connect collocation frequencies to source document
 
-merged_frequency_2col <- collocation_frequency(transcript_example, collocation_object_2col)
+merged_frequency_2col <- collocation_frequency(transcript_example, toks_transcript, toks_comment, collocate_length = 2)
 
 # create a `ggplot` object of the transcript
 

@@ -2,12 +2,8 @@
 
 ## All functions
 
-- [`collocate_comments()`](https://rachelesrogers.github.io/highlightr/reference/collocate_comments.md)
-  : Collocation of Comments
-- [`collocate_comments_fuzzy()`](https://rachelesrogers.github.io/highlightr/reference/collocate_comments_fuzzy.md)
-  : Collocate Comments Fuzzy
 - [`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)
-  : Mapping Collocation Frequency to Transcript Document
+  : Mapping Collocation Frequency to Source Document
 - [`collocation_plot()`](https://rachelesrogers.github.io/highlightr/reference/collocation_plot.md)
   : Map collocation to ggplot object
 - [`comment_example`](https://rachelesrogers.github.io/highlightr/reference/comment_example.md)

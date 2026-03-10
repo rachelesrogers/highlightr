@@ -1,9 +1,7 @@
 # Tokenize Source Document
 
 This function tokenizes a source document that is to be used in
-[`collocate_comments_fuzzy()`](https://rachelesrogers.github.io/highlightr/reference/collocate_comments_fuzzy.md)
-or
-[`collocate_comments()`](https://rachelesrogers.github.io/highlightr/reference/collocate_comments.md)
+[`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)
 
 ## Usage
 

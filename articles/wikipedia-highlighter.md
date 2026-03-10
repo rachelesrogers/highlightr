@@ -98,20 +98,9 @@ amount of times each collocation occurs.
 
 # use fuzzy matching to calculate weighted frequency values between derivative and source documents
 
-collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
-#> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
-#> Please consider changing `n_bands` and `band_width`.
-
-head(collocation_object)
-#> # A tibble: 6 × 8
-#>   word_number col_1 col_2 col_3 col_4 col_5 to_merge    collocation             
-#>         <int> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>       <chr>                   
-#> 1           1  8    NA    NA    NA    NA    a           a highlighter also call…
-#> 2           2  7.74  8    NA    NA    NA    highlighter highlighter also called…
-#> 3           3  7     7.74  8    NA    NA    also        also called a fluoresce…
-#> 4           4  7     7     7.74  8    NA    called      called a fluorescent pe…
-#> 5           5  7     7     7     7.74  8    a           a fluorescent pen is a  
-#> 6           6  7     7     7     7     7.74 fluorescent fluorescent pen is a ty…
+# collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+# 
+# head(collocation_object)
 ```
 
 These frequencies can be mapped back to the transcript document, then
@@ -124,7 +113,7 @@ to add additional labels to the gradient key.
 ``` r
 
 # connect collocation frequencies to source document
-merged_frequency <- collocation_frequency(transcript_example, collocation_object)
+merged_frequency <- collocation_frequency(transcript_example, toks_transcript, toks_comment)
 
 # create a ggplot object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
@@ -135,7 +124,7 @@ page_highlight <- highlighted_text(freq_plot, labels=c("(fewest articles)", "(mo
 
 (fewest articles) 0
 
-275 (most articles)
+261 (most articles)
 
 A 
 
@@ -1118,12 +1107,12 @@ transcript_example_2 <- wiki_pages[dim(wiki_pages)[1],]
 toks_transcript2 <- tokenize_source(transcript_example_2)
 
 # use fuzzy collocation on the source and derivative documents
-collocation_object2 <- collocate_comments_fuzzy(toks_transcript2, toks_comment)
-#> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
-#> Please consider changing `n_bands` and `band_width`.
+# collocation_object2 <- collocate_comments_fuzzy(toks_transcript2, toks_comment)
 
 # connect collocation frequencies to source document
-merged_frequency2 <- collocation_frequency(transcript_example_2, collocation_object2)
+merged_frequency2 <- collocation_frequency(transcript_example_2, toks_transcript2, toks_comment, fuzzy=TRUE)
+#> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
+#> Please consider changing `n_bands` and `band_width`.
 
 # create a gpplot object of the transcript
 freq_plot2 <- collocation_plot(merged_frequency2)
