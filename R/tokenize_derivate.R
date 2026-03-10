@@ -1,7 +1,6 @@
 #' Tokenize comments
 #'
-#' This function tokenizes comments that are to be used in [collocate_comments_fuzzy()]
-#' or [collocate_comments()]
+#' This function tokenizes comments that are to be used in [collocation_frequency()]
 #'
 #' @param derivative_document data frame containing derivative documents, where each
 #' row represents a document

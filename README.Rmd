@@ -62,7 +62,7 @@ toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
 toks_transcript <- tokenize_source(transcript_example)
 
 # use fuzzy matching in collocation
-collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+# collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 
 # connect collocation frequencies to source document
 merged_frequency <- collocation_frequency(transcript_example, collocation_object)

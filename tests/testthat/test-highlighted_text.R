@@ -2,11 +2,13 @@ Sys.setenv("OMP_THREAD_LIMIT" = 1)
 
 test_that("html tags work", {
 
-  transcript_test <- data.frame(text="<i>This </i> <b>is</b> a<br> test.")
-  collocation_test <- data.frame(word_number=1:4, col_1=c(2,4,6, NA), col_2=c(NA, 2, 4, 6),
-                                 to_merge = c("this", "is", "a", "test"),
-                                 collocation= c("this is", "is a", "a test", NA))
-  frequency_test <- collocation_frequency(transcript_test, collocation_test)
+  transcript_test <- data.frame("<i>This </i> <b>is</b> a<br> test.")
+  collocation_test <- data.frame(Notes = c("this is a test", "this is a test", "is a test", "is a test", "a test", "a test"))
+
+  toks_comment <- tokenize_derivative(collocation_test, text_column = "Notes")
+  toks_source <- tokenize_source(transcript_test)
+
+  frequency_test <- collocation_frequency(transcript_test, toks_source, toks_comment, collocate_length=2)
   freq_plot <- collocation_plot(frequency_test)
   test_highlight <- highlighted_text(freq_plot)
 
@@ -16,11 +18,14 @@ test_that("html tags work", {
 
 test_that("dash check", {
 
-  transcript_test <- data.frame(text="This - is a - test.")
-  collocation_test <- data.frame(word_number=1:4, col_1=c(2,4,6, NA), col_2=c(NA, 2, 4, 6),
-                                 to_merge = c("this", "is", "a", "test"),
-                                 collocation= c("this is", "is a", "a test", NA))
-  frequency_test <- collocation_frequency(transcript_test, collocation_test)
+  transcript_test <- data.frame("This - is a - test.")
+
+  collocation_test <- data.frame(Notes = c("this is a test", "this is a test",
+                                           "is a test", "is a test", "a test", "a test"))
+  toks_comment <- tokenize_derivative(collocation_test, text_column = "Notes")
+  toks_source <- tokenize_source(transcript_test)
+
+  frequency_test <- collocation_frequency(transcript_test, toks_source, toks_comment, collocate_length=2)
   freq_plot <- collocation_plot(frequency_test)
   test_highlight <- highlighted_text(freq_plot)
 

@@ -15,7 +15,7 @@ a tokenized object
 }
 \description{
 This function tokenizes a source document that is to be used in
-\code{\link[=collocate_comments_fuzzy]{collocate_comments_fuzzy()}} or \code{\link[=collocate_comments]{collocate_comments()}}
+\code{\link[=collocation_frequency]{collocation_frequency()}}
 }
 \examples{
 # Tokenize source document

@@ -16,8 +16,7 @@ row represents a document}
 tokenized comments
 }
 \description{
-This function tokenizes comments that are to be used in \code{\link[=collocate_comments_fuzzy]{collocate_comments_fuzzy()}}
-or \code{\link[=collocate_comments]{collocate_comments()}}
+This function tokenizes comments that are to be used in \code{\link[=collocation_frequency]{collocation_frequency()}}
 }
 \examples{
 # Tokenize the derivative document

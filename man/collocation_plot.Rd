@@ -30,10 +30,8 @@ This assigns colors based on frequency to the words in the transcript.
 toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
 # Tokenize source document
 toks_source <- tokenize_source(transcript_example)
-# Compute collocation frequencies
-collocation_object <- collocate_comments(toks_source, toks_comment)
 # Merge frequencies with source document to provide averages by word and correct formatting
-merged_frequency <- collocation_frequency(transcript_example, collocation_object)
+merged_frequency <- collocation_frequency(transcript_example, toks_source, toks_comment)
 # Create a plot object to assign colors based on frequency
 freq_plot <- collocation_plot(merged_frequency)
 }

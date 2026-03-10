@@ -1,7 +1,7 @@
 #' Tokenize Source Document
 #'
 #' This function tokenizes a source document that is to be used in
-#' [collocate_comments_fuzzy()] or [collocate_comments()]
+#' [collocation_frequency()]
 #'
 #' @param transcript_file data frame of the source document, where the source document text
 #' is in a column named text.
