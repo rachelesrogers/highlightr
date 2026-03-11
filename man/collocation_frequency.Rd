@@ -5,9 +5,9 @@
 \title{Mapping Collocation Frequency to Source Document}
 \usage{
 collocation_frequency(
-  transcript,
-  transcript_token,
-  note_token,
+  tbl,
+  source_row,
+  text_column,
   collocate_length = 5,
   fuzzy = FALSE,
   n_bands = 50,
@@ -16,12 +16,12 @@ collocation_frequency(
 )
 }
 \arguments{
-\item{transcript}{transcript document}
+\item{tbl}{data frame containing documents, where each
+row represents a document}
 
-\item{transcript_token}{transcript token to act as baseline for notes, resulting
-from \code{\link[=tokenize_source]{tokenize_source()}}}
+\item{source_row}{row containing text to be treated as source}
 
-\item{note_token}{tokenized document of notes, resulting from \code{\link[=tokenize_derivative]{tokenize_derivative()}}}
+\item{text_column}{string indicating the name of the column containing derivative text}
 
 \item{collocate_length}{the length of the collocation. Default is 5}
 
@@ -54,12 +54,6 @@ d is the Jaccard similarity between the transcript and note collocation, and m
 is the number of closest matches for the note collocation.
 }
 \examples{
-# Tokenize the derivative document
 src_row <- which(notepad_example$ID=="source")
-toks_comment <- tokenize_derivative(notepad_example, source_row=src_row, text_column="Text")
-# Tokenize source document
-toks_source <- tokenize_source(notepad_example, source_row=src_row, text_column="Text")
-# Merge frequencies with source document to provide averages by word and correct formatting
-merged_frequency <- collocation_frequency(notepad_example[src_row,][["Text"]],
-toks_source, toks_comment)
+merged_frequency <- collocation_frequency(notepad_example, src_row, "Text")
 }

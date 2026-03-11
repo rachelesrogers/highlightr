@@ -5,10 +5,7 @@ test_that("html tags work", {
   collocation_test <- data.frame(ID = c("source",1:6),
                                  Notes = c("<i>This </i> <b>is</b> a<br> test.", "this is a test", "this is a test", "is a test", "is a test", "a test", "a test"))
 
-  toks_comment <- tokenize_derivative(collocation_test, source_row=1, text_column = "Notes")
-  toks_source <- tokenize_source(collocation_test, source_row=1, text_column="Notes")
-
-  frequency_test <- collocation_frequency(collocation_test[which(collocation_test$ID=="source"),][["Notes"]], toks_source, toks_comment, collocate_length=2)
+  frequency_test <- collocation_frequency(collocation_test, source_row=1, text_column = "Notes", collocate_length=2)
   freq_plot <- collocation_plot(frequency_test)
   test_highlight <- highlighted_text(freq_plot)
 
@@ -21,10 +18,8 @@ test_that("dash check", {
   collocation_test <- data.frame(ID = c("source",1:6),
                                  Notes = c("This - is a - test.", "this is a test", "this is a test",
                                            "is a test", "is a test", "a test", "a test"))
-  toks_comment <- tokenize_derivative(collocation_test, source_row=1, text_column = "Notes")
-  toks_source <- tokenize_source(collocation_test, source_row=1, text_column="Notes")
 
-  frequency_test <- collocation_frequency(collocation_test[which(collocation_test$ID=="source"),][["Notes"]], toks_source, toks_comment, collocate_length=2)
+  frequency_test <- collocation_frequency(collocation_test, source_row=1, text_column = "Notes", collocate_length=2)
   freq_plot <- collocation_plot(frequency_test)
   test_highlight <- highlighted_text(freq_plot)
 

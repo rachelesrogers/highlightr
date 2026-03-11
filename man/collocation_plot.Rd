@@ -25,14 +25,9 @@ list of plot, plot object, and frequency
 This assigns colors based on frequency to the words in the transcript.
 }
 \examples{
-# Tokenize the derivative document
+# Identify Source Row
 src_row <- which(notepad_example$ID=="source")
-toks_comment <- tokenize_derivative(notepad_example, source_row=src_row, text_column="Text")
-# Tokenize source document
-toks_source <- tokenize_source(notepad_example, source_row=src_row, text_column="Text")
-# Merge frequencies with source document to provide averages by word and correct formatting
-merged_frequency <- collocation_frequency(notepad_example[src_row,][["Text"]],
-toks_source, toks_comment)
+merged_frequency <- collocation_frequency(notepad_example, src_row, "Text")
 # Create a plot object to assign colors based on frequency
 freq_plot <- collocation_plot(merged_frequency)
 }

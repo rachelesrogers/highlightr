@@ -15,10 +15,10 @@
 #' d is the Jaccard similarity between the transcript and note collocation, and m
 #' is the number of closest matches for the note collocation.
 #'
-#' @param transcript transcript document
-#' @param transcript_token transcript token to act as baseline for notes, resulting
-#' from [tokenize_source()]
-#' @param note_token tokenized document of notes, resulting from [tokenize_derivative()]
+#' @param tbl data frame containing documents, where each
+#' row represents a document
+#' @param source_row row containing text to be treated as source
+#' @param text_column string indicating the name of the column containing derivative text
 #' @param fuzzy whether or not to use fuzzy matching in collocation calculations
 #' @param collocate_length the length of the collocation. Default is 5
 #' @param n_bands number of bands used in MinHash algorithm passed to `zoomerjoin::jaccard_right_join()`. Default is 50
@@ -29,18 +29,20 @@
 #' @export
 #'
 #' @examples
-#' # Tokenize the derivative document
 #' src_row <- which(notepad_example$ID=="source")
-#' toks_comment <- tokenize_derivative(notepad_example, source_row=src_row, text_column="Text")
-#' # Tokenize source document
-#' toks_source <- tokenize_source(notepad_example, source_row=src_row, text_column="Text")
-#' # Merge frequencies with source document to provide averages by word and correct formatting
-#' merged_frequency <- collocation_frequency(notepad_example[src_row,][["Text"]],
-#' toks_source, toks_comment)
+#' merged_frequency <- collocation_frequency(notepad_example, src_row, "Text")
 
-collocation_frequency <- function(transcript, transcript_token, note_token,
+collocation_frequency <- function(tbl, source_row, text_column,
                                   collocate_length=5, fuzzy=FALSE, n_bands=50,
                                   threshold=0.7, n_gram_width=4){
+
+  transcript_token <- tokenize_source(tbl=tbl, source_row=source_row, text_column = text_column)
+  note_token <- tokenize_derivative(tbl=tbl, source_row=source_row, text_column = text_column)
+
+  source_doc <- data.frame(tbl[source_row,])
+  colnames(source_doc) <- colnames(tbl)
+  transcript <- source_doc[[text_column]]
+
 
   if (fuzzy == TRUE){
     collocate_object <-
@@ -276,3 +278,49 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
   return(descript_tomerge)
 
 }
+
+tokenize_source <- function(tbl, source_row, text_column){
+  `%>%` <- magrittr::`%>%`
+
+  source <- data.frame(tbl[source_row,])
+  colnames(source) <- colnames(tbl)
+
+  description_df <- source[[text_column]]
+  description_df <- gsub("<.*?>", " ", description_df) #removing all html expressions
+  description_df <- gsub("\\\\n", " ", description_df) #removing line breaks
+  description_df <- stringi::stri_trans_general(description_df, "latin-ascii")
+  description_df <- gsub("\\$", " ", description_df) #removing dollar sign
+  description_df <- gsub("-", " ", description_df) #removing dash with space
+  description_df <- gsub(":", "", description_df) #removing colon without space
+  description_df <- gsub("([[:alnum:]])(\\.)([[:alnum:]])","\\1\\3", description_df) #removing period between characters
+  description_df <- gsub("([[:alnum:]])(,)([[:alnum:]])","\\1\\3", description_df) #removing comma between characters
+  description_df <- tolower(description_df)
+
+  corpus_descript <- quanteda::corpus(description_df) #creating a corpus
+
+  toks_des <- quanteda::tokens(corpus_descript, remove_punct = TRUE) #tokenizing transcript
+  return(toks_des)
+}
+
+tokenize_derivative <- function(tbl, source_row, text_column){
+
+  derivatives <- data.frame(tbl[-source_row,])
+  colnames(derivatives) <- colnames(tbl)
+
+  comment_df <- data.frame(docid = cbind(seq(1:nrow(derivatives))),
+                           text=tolower(derivatives[[text_column]])) #lowercasing text
+
+  comment_df <- purrr::map_df(comment_df, ~ gsub("<.*?>", " ", .x))
+  comment_df <- purrr::map_df(comment_df, ~ gsub("\\$", " ", .x))
+  comment_df <- purrr::map_df(comment_df, ~stringi::stri_trans_general(.x, "latin-ascii"))
+  comment_df <- purrr::map_df(comment_df, ~ gsub("-", " ", .x)) #removing dash with space
+  comment_df <- purrr::map_df(comment_df, ~ gsub(":", "", .x)) #removing colon without space
+  comment_df <- purrr::map_df(comment_df, ~ gsub("([[:alnum:]])(\\.)([[:alnum:]])","\\1\\3", .x)) #removing period between characters
+  comment_df <- purrr::map_df(comment_df, ~ gsub("([[:alnum:]])(,)([[:alnum:]])","\\1\\3", .x)) #removing comma between characters
+
+  corpus_doc <- quanteda::corpus(comment_df)
+
+  toks_doc <- quanteda::tokens(corpus_doc, remove_punct = TRUE)
+  return(toks_doc)
+}
+

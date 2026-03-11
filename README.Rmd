@@ -55,14 +55,8 @@ devtools::install_github("rachelesrogers/highlightr")
 # load library
 library(highlightr)
 
-# tokenize derivative documents
-toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
-
-# tokenize source document
-toks_transcript <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
-
 # connect collocation frequencies to source document
-merged_frequency <- collocation_frequency(notepad_example[which(notepad_example$ID=="source"),][["Text"]], toks_transcript, toks_comment, fuzzy=TRUE)
+merged_frequency <- collocation_frequency(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text", fuzzy=TRUE)
 
 # create `ggplot` object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
