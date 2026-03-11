@@ -2,13 +2,13 @@ testthat::skip_on_cran()
 Sys.setenv("OMP_THREAD_LIMIT" = 1)
 
 test_that("size 2 collocation works", {
-  transcript_test <- data.frame("This is a test.")
-  collocation_test <- data.frame(Notes = c("this is a test", "this is a test", "is a test", "is a test", "a test", "a test"))
+  collocation_test <- data.frame(ID = c("source", 1:6),
+                                 Notes = c("This is a test.", "this is a test", "this is a test", "is a test", "is a test", "a test", "a test"))
 
-  toks_comment <- tokenize_derivative(collocation_test, text_column = "Notes")
-  toks_source <- tokenize_source(transcript_test)
+  toks_comment <- tokenize_derivative(collocation_test, source_row=1, text_column = "Notes")
+  toks_source <- tokenize_source(collocation_test, source_row=1, text_column="Notes")
 
-  frequency_test <- collocation_frequency(transcript_test, toks_source, toks_comment, collocate_length=2)
+  frequency_test <- collocation_frequency(collocation_test[which(collocation_test$ID=="source"),][["Notes"]], toks_source, toks_comment, collocate_length=2)
 
   expect_identical(dim(frequency_test), c(4L, 14L))
 
@@ -17,13 +17,13 @@ test_that("size 2 collocation works", {
 })
 
 test_that("removing html tags works", {
-  transcript_test <- data.frame("<i>This </i> <b>is</b> a<br> test.")
-  collocation_test <- data.frame(Notes = c("this is a test", "this is a test", "is a test", "is a test", "a test", "a test"))
+  collocation_test <- data.frame(ID = c("source",1:6),
+                                 Notes = c("<i>This </i> <b>is</b> a<br> test.", "this is a test", "this is a test", "is a test", "is a test", "a test", "a test"))
 
-  toks_comment <- tokenize_derivative(collocation_test, text_column = "Notes")
-  toks_source <- tokenize_source(transcript_test)
+  toks_comment <- tokenize_derivative(collocation_test, source_row=1, text_column = "Notes")
+  toks_source <- tokenize_source(collocation_test, source_row=1, text_column="Notes")
 
-  frequency_test <- collocation_frequency(transcript_test, toks_source, toks_comment, collocate_length=2)
+  frequency_test <- collocation_frequency(collocation_test[which(collocation_test$ID=="source"),][["Notes"]], toks_source, toks_comment, collocate_length=2)
 
   expect_identical(dim(frequency_test), c(9L, 14L))
 
@@ -35,14 +35,13 @@ test_that("removing html tags works", {
 
 test_that("dash check", {
 
-  transcript_test <- data.frame("This - is a - test.")
-
-  collocation_test <- data.frame(Notes = c("this is a test", "this is a test",
+  collocation_test <- data.frame(ID = c("source",1:6),
+                                 Notes = c("This - is a - test.", "this is a test", "this is a test",
                                            "is a test", "is a test", "a test", "a test"))
-  toks_comment <- tokenize_derivative(collocation_test, text_column = "Notes")
-  toks_source <- tokenize_source(transcript_test)
+  toks_comment <- tokenize_derivative(collocation_test, source_row=1, text_column = "Notes")
+  toks_source <- tokenize_source(collocation_test, source_row=1, text_column="Notes")
 
-  frequency_test <- collocation_frequency(transcript_test, toks_source, toks_comment, collocate_length=2)
+  frequency_test <- collocation_frequency(collocation_test[which(collocation_test$ID=="source"),][["Notes"]], toks_source, toks_comment, collocate_length=2)
 
   expect_identical(frequency_test$to_merge, c("this","","is","a","","test"))
 
@@ -50,14 +49,12 @@ test_that("dash check", {
 })
 
 test_that("values are given to the last observations",{
-  # comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
-  transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
-  toks_transcript <- tokenize_source(transcript_example_rename)
-  collocation_object <- collocate_comments(toks_transcript, toks_comment, collocate_length = 6)
-  transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
 
-  freq_test <- collocation_frequency(transcript_example_rename,toks_transcript, toks_comment, collocate_length = 6)
+  toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column="Text")
+  toks_source <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column="Text")
+
+  freq_test <- collocation_frequency(notepad_example[which(notepad_example$ID=="source"),][["Text"]], toks_source, toks_comment,
+                                     collocate_length = 6)
 
   expect_true(all(!is.na(tail(freq_test$col_6, n=5))))
   expect_true(all(!is.na(tail(freq_test$Freq))))
@@ -67,21 +64,20 @@ test_that("values are given to the last observations",{
 
 test_that("symbols are used correctly for merging",{
   symbol_test <-
-    data.frame(ID=1:7,
-               Notes=c("They paid $4.50", "There were 5,000 people", "Use a No.2 pencil",
+    data.frame(ID=c("source",1:7),
+               Notes=c("They/them were the pronouns they used when they paid $4.50
+                                  to use a No.2 pencil. What… is how they started their speech; there
+                                  were 5,000 people",
+                       "They paid $4.50", "There were 5,000 people", "Use a No.2 pencil",
                        "they/them were the pronouns they used", "What… they paid $4.50",
                        "They paid $4.50, and there were 5,000 people who used a No.2 pencil",
                        "they/them were the pronouns they used when they paid $4.50"))
-  # comment_example_rename <- dplyr::rename(symbol_test, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
-  symbol_transcript <- data.frame(Text="They/them were the pronouns they used when they paid $4.50
-                                  to use a No.2 pencil. What… is how they started their speech; there
-                                  were 5,000 people")
-  # transcript_example_rename <- dplyr::rename(symbol_transcript, text=Text)
-  transcript_example_rename <- as.character(symbol_transcript)
-  toks_transcript <- tokenize_source(transcript_example_rename)
-  collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
-  frequency_test <- collocation_frequency(transcript_example_rename, toks_transcript, toks_comment, collocate_length = 2)
+
+  toks_comment <- tokenize_derivative(symbol_test, source_row=1, text_column="Notes")
+
+  toks_transcript <- tokenize_source(symbol_test, source_row=1, text_column="Notes")
+  collocation_object <- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)
+  frequency_test <- collocation_frequency(symbol_test[1,][["Notes"]], toks_transcript, toks_comment, collocate_length = 2)
 
   expect_identical(collocation_object$col_1, frequency_test$col_1)
 
@@ -90,19 +86,17 @@ test_that("symbols are used correctly for merging",{
 
 test_that("dashes are used correctly for merging",{
   dash_test <-
-    data.frame(ID=1:6,
-               Notes=c("dash-name did this", "year 1892-1777 was significant", "another dash-name did this",
+    data.frame(ID=c("source",1:6),
+               Notes=c("in an example - here is a dash space
+                                  in the year 1892-1777 dash-name did this",
+                       "dash-name did this", "year 1892-1777 was significant", "another dash-name did this",
                        "in year 1892-1777 dash-name did another thing", "in an example - here is a dash space",
                        "in an example - here is a dash space with dash-name and year 1892-1777"))
-  # comment_example_rename <- dplyr::rename(dash_test, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
-  dash_transcript <- data.frame(Text="in an example - here is a dash space
-                                  in the year 1892-1777 dash-name did this")
-  # transcript_example_rename <- dplyr::rename(dash_transcript, text=Text)
-  transcript_example_rename <- as.character(dash_transcript)
-  toks_transcript <- tokenize_source(transcript_example_rename)
-  collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, n_bands=5000, threshold=0.4, collocate_length=2)
-  frequency_test <- collocation_frequency(transcript_example_rename, toks_transcript, toks_comment, n_bands=5000, threshold=0.4, collocate_length=2)
+
+  toks_comment <- tokenize_derivative(dash_test, source_row=1, text_column="Notes")
+
+  toks_transcript <- tokenize_source(dash_test, source_row=1, text_column="Notes")
+  frequency_test <- collocation_frequency(dash_test[1,][["Notes"]], toks_transcript, toks_comment, n_bands=5000, threshold=0.4, collocate_length=2)
 
   expect_identical(frequency_test$to_merge, c("in","an","example","","here","is","a","dash","space","in",
                    "the","year","1892","","1777","dash","","name","did","this"))
@@ -113,19 +107,16 @@ test_that("dashes are used correctly for merging",{
 
 test_that("colons are removed correctly for merging",{
   colon_test <-
-    data.frame(ID=1:6,
-               Notes=c("wɔːlz did this", "year 1892:1777 was significant", "another wɔːlz did this",
+    data.frame(ID=c("source",1:6),
+               Notes=c("in an example: here is a colon space
+                                  in the year 1892:1777 wɔːlz did this",
+                       "wɔːlz did this", "year 1892:1777 was significant", "another wɔːlz did this",
                        "in year 1892:1777 wɔːlz did another thing", "in an example: here is a colon space",
                        "in an example: here is a colon space with wɔːlz and year 1892:1777"))
-  # comment_example_rename <- dplyr::rename(colon_test, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
-  dash_transcript <- data.frame(Text="in an example: here is a colon space
-                                  in the year 1892:1777 wɔːlz did this")
-  # transcript_example_rename <- dplyr::rename(dash_transcript, text=Text)
-  transcript_example_rename <- as.character(dash_transcript)
-  toks_transcript <- tokenize_source(transcript_example_rename)
-  collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
-  frequency_test <- collocation_frequency(transcript_example_rename, toks_transcript, toks_comment, collocate_length = 2)
+
+  toks_comment <- tokenize_derivative(colon_test, source_row=1, text_column="Notes")
+  toks_transcript <- tokenize_source(colon_test, source_row=1, text_column="Notes")
+  frequency_test <- collocation_frequency(colon_test[1,][["Notes"]], toks_transcript, toks_comment, collocate_length = 2)
 
   expect_identical(frequency_test$to_merge, c("in","an","example","here","is","a","colon","space","in",
                                               "the","year","18921777","wɔlz","did","this"))
@@ -135,18 +126,14 @@ test_that("colons are removed correctly for merging",{
 
 test_that("... are treated consistently",{
   elipses_test <-
-    data.frame(ID=1:5,
-               Notes=c("who... did this", "it...was significant", "another... did this",
+    data.frame(ID=c("source",1:5),
+               Notes=c("in an example... who ... did this it...was significant. another... did another thing",
+                       "who... did this", "it...was significant", "another... did this",
                        "...did another thing",
                        "in an example... here is a...with...another thing"))
-  # comment_example_rename <- dplyr::rename(elipses_test, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
-  elipses_transcript <- data.frame(Text="in an example... who ... did this it...was significant. another... did another thing")
-  # transcript_example_rename <- dplyr::rename(elipses_transcript, text=Text)
-  transcript_example_rename <- as.character(elipses_transcript)
-  toks_transcript <- tokenize_source(transcript_example_rename)
-  collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
-  frequency_test <- collocation_frequency(transcript_example_rename, toks_transcript, toks_comment, collocate_length = 2)
+  toks_comment <- tokenize_derivative(elipses_test, source_row=1, text_column="Notes")
+  toks_transcript <- tokenize_source(elipses_test, source_row=1, text_column="Notes")
+  frequency_test <- collocation_frequency(elipses_test[1,][["Notes"]], toks_transcript, toks_comment, collocate_length = 2)
 
   expect_identical(frequency_test$to_merge, c("in","an","example","who","did","this","it","was","significant",
                                               "another","did","another","thing"))
@@ -156,17 +143,14 @@ test_that("... are treated consistently",{
 
 test_that("math symbols are used correctly for merging",{
   symbol_test <-
-    data.frame(ID=1:5,
-               Notes=c("They added 2 + 3 = 5", "2+3=5", "saved as an .html",
+    data.frame(ID=c("source",1:5),
+               Notes=c("They added 2 + 3 = 5 in an .html with the function add_numbers()",
+                       "They added 2 + 3 = 5", "2+3=5", "saved as an .html",
                        "the function was add_numbers()", "they used add_numbers()"))
-  # comment_example_rename <- dplyr::rename(symbol_test, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
-  symbol_transcript <- data.frame(Text="They added 2 + 3 = 5 in an .html with the function add_numbers()")
-  # transcript_example_rename <- dplyr::rename(symbol_transcript, text=Text)
-  transcript_example_rename <- as.character(symbol_transcript)
-  toks_transcript <- tokenize_source(transcript_example_rename)
+  toks_comment <- tokenize_derivative(symbol_test, source_row=1, text_column="Notes")
+  toks_transcript <- tokenize_source(symbol_test, source_row=1, text_column="Notes")
   collocation_object <- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)
-  frequency_test <- collocation_frequency(transcript_example_rename, toks_transcript, toks_comment, collocate_length = 2)
+  frequency_test <- collocation_frequency(symbol_test[1,][["Notes"]], toks_transcript, toks_comment, collocate_length = 2)
 
   expect_identical(collocation_object$col_1, frequency_test$col_1)
 
@@ -175,10 +159,8 @@ test_that("math symbols are used correctly for merging",{
 
 
 test_that("there are 5 collocations by default", {
-  # comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
-  # transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
-  toks_transcript <- tokenize_source(transcript_example)
+  toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
+  toks_transcript <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 
   expect_identical(grep("col_",colnames(collocation_object), value=TRUE),
@@ -186,10 +168,8 @@ test_that("there are 5 collocations by default", {
 })
 
 test_that("6 collocations results in right number of columns", {
-  # comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
-  # transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
-  toks_transcript <- tokenize_source(transcript_example)
+  toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
+  toks_transcript <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 6)
   default_collocation <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 5)
 
@@ -200,10 +180,8 @@ test_that("6 collocations results in right number of columns", {
 })
 
 test_that("2 collocations results in right number of columns", {
-  # comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
-  # transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
-  toks_transcript <- tokenize_source(transcript_example)
+  toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
+  toks_transcript <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
 
   expect_identical(grep("col_",colnames(collocation_object), value=TRUE),
@@ -212,16 +190,13 @@ test_that("2 collocations results in right number of columns", {
 
 test_that("correct output when nothing meets the fuzzy threshold",{
   rep_test <-
-    data.frame(ID=1:6,
-               Notes=c(rep("in an example", 6)))
-  # comment_example_rename <- dplyr::rename(rep_test, page_notes=Notes)
-  toks_comment <- tokenize_derivative(rep_test, text_column = "Notes")
-  dash_transcript <- data.frame(Text="in an example - here is a dash space
-                                  in the year 1892-1777 dash-name did this")
-  # transcript_example_rename <- dplyr::rename(dash_transcript, text=Text)
-  toks_transcript <- tokenize_source(dash_transcript)
-  collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
-  frequency_test <- collocation_frequency(dash_transcript, toks_transcript, toks_comment, collocate_length = 2,
+    data.frame(ID=c("source",1:6),
+               Notes=c("in an example - here is a dash space
+                                  in the year 1892-1777 dash-name did this",
+                       rep("in an example", 6)))
+  toks_comment <- tokenize_derivative(rep_test, source_row=1, text_column = "Notes")
+  toks_transcript <- tokenize_source(rep_test, source_row=1, text_column = "Notes")
+  frequency_test <- collocation_frequency(rep_test[1,][["Notes"]], toks_transcript, toks_comment, collocate_length = 2,
                                           fuzzy=TRUE)
 
   expect_identical(frequency_test$Freq[1:3], c(6,6,3))
@@ -230,10 +205,8 @@ test_that("correct output when nothing meets the fuzzy threshold",{
 ########### FUZZY MATCHING ##################
 
 test_that("there are 5 collocations by default fuzzy", {
-  # comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
-  # transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
-  toks_transcript <- tokenize_source(transcript_example)
+  toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
+  toks_transcript <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
 
   expect_identical(grep("col_",colnames(collocation_object), value=TRUE),
@@ -241,10 +214,8 @@ test_that("there are 5 collocations by default fuzzy", {
 })
 
 test_that("6 collocations results in right number of columns fuzzy", {
-  # comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
-  # transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
-  toks_transcript <- tokenize_source(transcript_example)
+  toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
+  toks_transcript <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 6)
   default_collocation <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 5)
 
@@ -255,10 +226,8 @@ test_that("6 collocations results in right number of columns fuzzy", {
 })
 
 test_that("2 collocations results in right number of columns fuzzy", {
-  # comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
-  # transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
-  toks_transcript <- tokenize_source(transcript_example)
+  toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
+  toks_transcript <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
 
   expect_identical(grep("col_",colnames(collocation_object), value=TRUE),
@@ -267,16 +236,14 @@ test_that("2 collocations results in right number of columns fuzzy", {
 
 test_that("correct output when nothing meets the fuzzy threshold fuzzy",{
   rep_test <-
-    data.frame(ID=1:6,
-               Notes=c(rep("in an example", 6)))
-  # comment_example_rename <- dplyr::rename(rep_test, page_notes=Notes)
-  toks_comment <- tokenize_derivative(rep_test, text_column = "Notes")
-  dash_transcript <- data.frame(Text="in an example - here is a dash space
-                                  in the year 1892-1777 dash-name did this")
-  # transcript_example_rename <- dplyr::rename(dash_transcript, text=Text)
-  toks_transcript <- tokenize_source(dash_transcript)
+    data.frame(ID=c("source",1:6),
+               Notes=c("in an example - here is a dash space
+                                  in the year 1892-1777 dash-name did this",
+                                  rep("in an example", 6)))
+  toks_comment <- tokenize_derivative(rep_test, source_row = 1, text_column = "Notes")
+  toks_transcript <- tokenize_source(rep_test, source_row = 1, text_column = "Notes")
   collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment, collocate_length = 2)
-  frequency_test <- collocation_frequency(dash_transcript, toks_transcript, toks_comment, collocate_length = 2,
+  frequency_test <- collocation_frequency(rep_test[1,][["Notes"]], toks_transcript, toks_comment, collocate_length = 2,
                                           fuzzy=TRUE)
 
   expect_identical(frequency_test$Freq[1:3], c(6,6,3))
@@ -286,10 +253,8 @@ test_that("correct output when nothing meets the fuzzy threshold fuzzy",{
 Sys.setenv("OMP_THREAD_LIMIT" = 1)
 
 test_that("there are 5 collocations by default nonfuzzy", {
-  # comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
-  # transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
-  toks_transcript <- tokenize_source(transcript_example)
+  toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
+  toks_transcript <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
   collocation_object <- collocate_comments(toks_transcript, toks_comment)
 
   expect_identical(grep("col_",colnames(collocation_object), value=TRUE),
@@ -297,10 +262,8 @@ test_that("there are 5 collocations by default nonfuzzy", {
 })
 
 test_that("6 collocations results in right number of columns and to_merge renders correctly nonfuzzy", {
-  # comment_example_rename <- dplyr::rename(comment_example, page_notes=Notes)
-  toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
-  # transcript_example_rename <- dplyr::rename(transcript_example, text=Text)
-  toks_transcript <- tokenize_source(transcript_example)
+  toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
+  toks_transcript <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
   collocation_object <- collocate_comments(toks_transcript, toks_comment, collocate_length = 6)
   default_collocation <- collocate_comments(toks_transcript, toks_comment, collocate_length = 5)
 
@@ -312,8 +275,8 @@ test_that("6 collocations results in right number of columns and to_merge render
 
 test_that("2 collocations results in right number of columns nonfuzzy", {
 
-  toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
-  toks_transcript <- tokenize_source(transcript_example)
+  toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
+  toks_transcript <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
   collocation_object <- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)
 
   expect_identical(grep("col_",colnames(collocation_object), value=TRUE),

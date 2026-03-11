@@ -3,19 +3,26 @@
 #' This function tokenizes a source document that is to be used in
 #' [collocation_frequency()]
 #'
-#' @param transcript_file data frame of the source document, where the source document text
-#' is in a column named text.
+#' @param tbl data frame containing documents, where each
+#' row represents a document
+#' @param source_row row containing text to be treated as source
+#' @param text_column string indicating the name of the column containing derivative text
 #'
 #' @return a tokenized object
 #' @export
 #'
 #' @examples
 #' # Tokenize source document
-#' toks_source <- tokenize_source(transcript_example)
+#' src_row <- which(notepad_example$ID=="source")
+#' toks_source <- tokenize_source(notepad_example, source_row=src_row, text_column = "Text")
 
-tokenize_source <- function(transcript_file){
+tokenize_source <- function(tbl, source_row, text_column){
   `%>%` <- magrittr::`%>%`
-  description_df <- transcript_file
+
+  source <- data.frame(tbl[source_row,])
+  colnames(source) <- colnames(tbl)
+
+  description_df <- source[[text_column]]
   description_df <- gsub("<.*?>", " ", description_df) #removing all html expressions
   description_df <- gsub("\\\\n", " ", description_df) #removing line breaks
   description_df <- stringi::stri_trans_general(description_df, "latin-ascii")

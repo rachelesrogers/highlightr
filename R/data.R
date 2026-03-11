@@ -4,30 +4,15 @@
 #' study
 #'
 #'
-#' @format ## `comment_example`
-#' A data frame with 125 rows and 2 columns:
+#' @format ## `notepad_example`
+#' A data frame with 126 rows and 2 columns:
 #' \describe{
-#'   \item{ID}{Participant Identifier}
-#'   \item{Notes}{Participant notes}
+#'   \item{ID}{Participant Identifier, as well as source document identifier}
+#'   \item{Text}{Participant notes, as well as source transcript}
 #'
 #' }
 #' @source Jury Perception Study (see Rogers (2024) <https://digitalcommons.unl.edu/dissertations/AAI31240449/>)
-"comment_example"
-
-
-#' Transcript Example
-#'
-#' Text corresponding to participant comments
-#'
-#'
-#' @format ## `transcript_example`
-#' A data frame with 1 row and 1 column:
-#' \describe{
-#'   \item{Text}{Transcript text corresponding to the jury perception study}
-#'
-#' }
-#' @source Jury Perception Study (see Rogers (2024) <https://digitalcommons.unl.edu/dissertations/AAI31240449/> and Garrett et. al. (2020) <doi:10.1037/lhb0000423>)
-"transcript_example"
+"notepad_example"
 
 #' Wikipedia Edit History for "Highlighter"
 #'

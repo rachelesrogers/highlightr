@@ -4,11 +4,13 @@
 \alias{tokenize_derivative}
 \title{Tokenize comments}
 \usage{
-tokenize_derivative(derivative_document, text_column)
+tokenize_derivative(tbl, source_row, text_column)
 }
 \arguments{
-\item{derivative_document}{data frame containing derivative documents, where each
+\item{tbl}{data frame containing documents, where each
 row represents a document}
+
+\item{source_row}{row containing text to be treated as source}
 
 \item{text_column}{string indicating the name of the column containing derivative text}
 }
@@ -20,5 +22,6 @@ This function tokenizes comments that are to be used in \code{\link[=collocation
 }
 \examples{
 # Tokenize the derivative document
-toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
+src_row <- which(notepad_example$ID=="source")
+toks_comment <- tokenize_derivative(notepad_example, source_row=src_row, text_column="Text")
 }

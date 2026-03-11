@@ -85,7 +85,8 @@ This allows for the comments to be tokenized, or separated into words.
 library(highlightr)
 
 # tokenize comments 
-toks_comment <- tokenize_derivative(highlightr::wiki_pages, text_column = "page_notes")
+toks_comment <- tokenize_derivative(highlightr::wiki_pages, text_column = "page_notes",
+                                    source_row = 1)
 ```
 
 The latest version of the article is the first row in the dataset, and can be used as the "transcript text", or the base text to which the highlighting is applied.
@@ -95,22 +96,12 @@ This reference version is also tokenized for comparison to the derivative versio
 ```{r}
 
 # tokenize most recent version of the article (as the reference)
-transcript_example <- wiki_pages[1,]
-toks_transcript <- tokenize_source(transcript_example)
+toks_transcript <- tokenize_source(highlightr::wiki_pages, text_column = "page_notes",
+                                    source_row = 1)
 
 ```
 
 The previous versions are then compared to the current version's collocations with fuzzy matching in order to provide a count for the amount of times each collocation occurs.
-
-```{r}
-
-# use fuzzy matching to calculate weighted frequency values between derivative and source documents
-
-# collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
-# 
-# head(collocation_object)
-
-```
 
 These frequencies can be mapped back to the transcript document, then highlighted as described based on the average collocation frequency that each word appeared in.
 The results are shown below by specifying `` `r '\x60r page_highlight\x60'` `` in an R Markdown document outside of a code chunk and knitting to HTML.
@@ -119,7 +110,10 @@ Note that the "labels" argument can be used to add additional labels to the grad
 ```{r}
 
 # connect collocation frequencies to source document
-merged_frequency <- collocation_frequency(transcript_example, toks_transcript, toks_comment)
+source <- data.frame(wiki_pages[1,])
+colnames(source) <- colnames(wiki_pages)
+  
+merged_frequency <- collocation_frequency(source[["page_notes"]], toks_transcript, toks_comment)
 
 # create a ggplot object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
@@ -139,18 +133,19 @@ We could also use the oldest version of the Highlighter article in the dataset a
 
 ```{r}
 
-# separate the oldest version of the article
-
-transcript_example_2 <- wiki_pages[dim(wiki_pages)[1],]
 
 # tokenize the transcript
-toks_transcript2 <- tokenize_source(transcript_example_2)
+toks_transcript2 <- tokenize_source(highlightr::wiki_pages, text_column = "page_notes",
+                                    source_row = nrow(wiki_pages))
 
-# use fuzzy collocation on the source and derivative documents
-# collocation_object2 <- collocate_comments_fuzzy(toks_transcript2, toks_comment)
+toks_comment2 <- tokenize_derivative(highlightr::wiki_pages, text_column = "page_notes",
+                                    source_row = nrow(wiki_pages))
 
 # connect collocation frequencies to source document
-merged_frequency2 <- collocation_frequency(transcript_example_2, toks_transcript2, toks_comment, fuzzy=TRUE)
+source <- data.frame(wiki_pages[nrow(wiki_pages),])
+colnames(source) <- colnames(wiki_pages)
+
+merged_frequency2 <- collocation_frequency(source[["page_notes"]], toks_transcript2, toks_comment2, fuzzy=TRUE)
 
 # create a gpplot object of the transcript
 freq_plot2 <- collocation_plot(merged_frequency2)

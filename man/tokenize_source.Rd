@@ -4,11 +4,15 @@
 \alias{tokenize_source}
 \title{Tokenize Source Document}
 \usage{
-tokenize_source(transcript_file)
+tokenize_source(tbl, source_row, text_column)
 }
 \arguments{
-\item{transcript_file}{data frame of the source document, where the source document text
-is in a column named text.}
+\item{tbl}{data frame containing documents, where each
+row represents a document}
+
+\item{source_row}{row containing text to be treated as source}
+
+\item{text_column}{string indicating the name of the column containing derivative text}
 }
 \value{
 a tokenized object
@@ -19,5 +23,6 @@ This function tokenizes a source document that is to be used in
 }
 \examples{
 # Tokenize source document
-toks_source <- tokenize_source(transcript_example)
+src_row <- which(notepad_example$ID=="source")
+toks_source <- tokenize_source(notepad_example, source_row=src_row, text_column = "Text")
 }

@@ -11,13 +11,14 @@
 #' @export
 #'
 #' @examples
-#' # Rename relevant column to page_notes in the derivative document
 #' # Tokenize the derivative document
-#' toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
+#' src_row <- which(notepad_example$ID=="source")
+#' toks_comment <- tokenize_derivative(notepad_example, source_row=src_row, text_column="Text")
 #' # Tokenize source document
-#' toks_source <- tokenize_source(transcript_example)
+#' toks_source <- tokenize_source(notepad_example, source_row=src_row, text_column="Text")
 #' # Merge frequencies with source document to provide averages by word and correct formatting
-#' merged_frequency <- collocation_frequency(transcript_example, toks_source, toks_comment)
+#' merged_frequency <- collocation_frequency(notepad_example[src_row,][["Text"]],
+#' toks_source, toks_comment)
 #' # Create a plot object to assign colors based on frequency
 #' freq_plot <- collocation_plot(merged_frequency)
 

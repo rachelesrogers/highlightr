@@ -2,8 +2,9 @@
 #'
 #' This function tokenizes comments that are to be used in [collocation_frequency()]
 #'
-#' @param derivative_document data frame containing derivative documents, where each
+#' @param tbl data frame containing documents, where each
 #' row represents a document
+#' @param source_row row containing text to be treated as source
 #' @param text_column string indicating the name of the column containing derivative text
 #'
 #' @return tokenized comments
@@ -11,12 +12,16 @@
 #'
 #' @examples
 #' # Tokenize the derivative document
-#' toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
+#' src_row <- which(notepad_example$ID=="source")
+#' toks_comment <- tokenize_derivative(notepad_example, source_row=src_row, text_column="Text")
 
-tokenize_derivative <- function(derivative_document, text_column){
+tokenize_derivative <- function(tbl, source_row, text_column){
 
-  comment_df <- data.frame(docid = cbind(seq(1:dim(derivative_document)[1])),
-                           text=tolower(derivative_document[[text_column]])) #lowercasing text
+  derivatives <- data.frame(tbl[-source_row,])
+  colnames(derivatives) <- colnames(tbl)
+
+  comment_df <- data.frame(docid = cbind(seq(1:nrow(derivatives))),
+                           text=tolower(derivatives[[text_column]])) #lowercasing text
 
   comment_df <- purrr::map_df(comment_df, ~ gsub("<.*?>", " ", .x))
   comment_df <- purrr::map_df(comment_df, ~ gsub("\\$", " ", .x))

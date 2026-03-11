@@ -30,11 +30,13 @@
 #'
 #' @examples
 #' # Tokenize the derivative document
-#' toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
+#' src_row <- which(notepad_example$ID=="source")
+#' toks_comment <- tokenize_derivative(notepad_example, source_row=src_row, text_column="Text")
 #' # Tokenize source document
-#' toks_source <- tokenize_source(transcript_example)
+#' toks_source <- tokenize_source(notepad_example, source_row=src_row, text_column="Text")
 #' # Merge frequencies with source document to provide averages by word and correct formatting
-#' merged_frequency <- collocation_frequency(transcript_example, toks_source, toks_comment)
+#' merged_frequency <- collocation_frequency(notepad_example[src_row,][["Text"]],
+#' toks_source, toks_comment)
 
 collocation_frequency <- function(transcript, transcript_token, note_token,
                                   collocate_length=5, fuzzy=FALSE, n_bands=50,
