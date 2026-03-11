@@ -77,9 +77,6 @@ for (i in 1:dim(url_list)[1]){
 
 ```
 
-Note that the Wikipedia version text is placed in a column labelled "page_notes", as needed for the comment functions in this package.
-This allows for the comments to be tokenized, or separated into words.
-
 
 The previous versions are then compared to the current version's collocations with fuzzy matching in order to provide a count for the amount of times each collocation occurs.
 
@@ -89,8 +86,8 @@ Note that the "labels" argument can be used to add additional labels to the grad
 
 ```{r}
 
-# connect collocation frequencies to source document
 library(highlightr)
+# calculate frequencies with reference to source document (first row)
 merged_frequency <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
                                     source_row = 1)
 
@@ -112,6 +109,7 @@ We could also use the oldest version of the Highlighter article in the dataset a
 
 ```{r}
 
+# calculate frequencies with reference to source document (last row)
 merged_frequency2 <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
                                     source_row = nrow(wiki_pages), fuzzy=TRUE)
 

@@ -14,31 +14,51 @@ knitr::opts_chunk$set(
 )
 ```
 
-This package is designed to map a group of individuals' notes to the corresponding parent text, based on the frequency with which phrases occur in the individual notes.
-The parent text is highlighted corresponding to this frequency, in order to create a 'heatmap' of popular phrases found in the note sheets.
+This package is designed to map a group of derivative texts to the corresponding parent text, based on the frequency with which phrases occur in the derivative texts.
+The parent text is highlighted corresponding to this frequency, in order to create a 'heatmap' of popular phrases found in the derivative texts.
 
 This example is taken from the initial description of a crime used in a study of jury perception of algorithm use and demonstrative evidence.
-
-
-After that, a fuzzy collocation is used to match the tokenized notes to the phrases in the tokenized transcript.
-This function first determines the number of times a collocation of length 5 occurs in participant notes.
-Fuzzy (or indirect) matches are then added to the frequency count of the transcript collocation that is the closest match.
-These fuzzy matches are weighted based on the edit distance between the transcript collocation and the indirect phrase:
-$$
-\frac{n*d}{m}
-$$
-
-Here, $n$ is the frequency of the fuzzy collocation, $d$ is the Jaccard similarity between the fuzzy collocation and the transcript collocation (ranging from 0 to 1, where 1 indicates identical strings), and $m$ is the number of closest matches for the fuzzy collocation.
-
-
-Next, the `collocation_frequency()` function attaches the collocation counts to the full text of the transcript.
-<!-- This provides additional information about the original formatting of the transcript that is needed when constructing the final object. -->
-The collocation frequencies are averaged per word.
+The `notepad_example` data frame contains an 'ID' number corresponding to a study participant, as well as their notes, labelled as 'Text'.
+The first six observations are shown below.
 
 ```{r}
 
 # load the library
 library(highlightr)
+library(knitr)
+
+# View first 6 observations
+knitr::kable(head(notepad_example))
+
+```
+
+Additionally, the source document (or study transcript) is included in `notepad_example` with an ID of 'source'.
+The original transcript is shown here:
+
+```{r}
+
+study_transcript <- notepad_example[notepad_example$ID == "source",]$Text
+
+knitr::kable(study_transcript)
+
+```
+
+<br>
+Fuzzy collocation is used to match the tokenized derivative texts to the phrases in the tokenized source text.
+This function first determines the number of times a collocation of length 5 occurs in derivative texts, or participant notes on the case.
+Fuzzy (or indirect) matches are then added to the frequency count of the source collocation that is the closest match.
+These fuzzy matches are weighted based on the edit distance between the source collocation and the indirect phrase:
+$$
+\frac{n*d}{m}
+$$
+
+Here, $n$ is the frequency of the fuzzy collocation, $d$ is the Jaccard similarity between the fuzzy collocation and the source collocation (ranging from 0 to 1, where 1 indicates identical strings), and $m$ is the number of closest matches for the fuzzy collocation.
+
+
+The `collocation_frequency()` function attaches the collocation counts to the full text of the transcript.
+The collocation frequencies are averaged per word.
+
+```{r}
 
 # connect collocation frequencies to source document
 
