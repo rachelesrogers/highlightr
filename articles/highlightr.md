@@ -1,36 +1,72 @@
 # highlightr
 
-This package is designed to map a group of individuals’ notes to the
+This package is designed to map a group of derivative texts to the
 corresponding parent text, based on the frequency with which phrases
-occur in the individual notes. The parent text is highlighted
+occur in the derivative texts. The parent text is highlighted
 corresponding to this frequency, in order to create a ‘heatmap’ of
-popular phrases found in the note sheets.
+popular phrases found in the derivative texts.
 
 This example is taken from the initial description of a crime used in a
 study of jury perception of algorithm use and demonstrative evidence.
-
-After that, a fuzzy collocation is used to match the tokenized notes to
-the phrases in the tokenized transcript. This function first determines
-the number of times a collocation of length 5 occurs in participant
-notes. Fuzzy (or indirect) matches are then added to the frequency count
-of the transcript collocation that is the closest match. These fuzzy
-matches are weighted based on the edit distance between the transcript
-collocation and the indirect phrase: $$\frac{n*d}{m}$$
-
-Here, $n$ is the frequency of the fuzzy collocation, $d$ is the Jaccard
-similarity between the fuzzy collocation and the transcript collocation
-(ranging from 0 to 1, where 1 indicates identical strings), and $m$ is
-the number of closest matches for the fuzzy collocation.
-
-Next, the
-[`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)
-function attaches the collocation counts to the full text of the
-transcript. The collocation frequencies are averaged per word.
+The `notepad_example` data frame contains an ‘ID’ number corresponding
+to a study participant, as well as their notes, labelled as ‘Text’. The
+first six observations are shown below.
 
 ``` r
 
 # load the library
 library(highlightr)
+library(knitr)
+
+# View first 6 observations
+knitr::kable(head(notepad_example))
+```
+
+| ID  | Text                                                                                                                                               |
+|:----|:---------------------------------------------------------------------------------------------------------------------------------------------------|
+| 121 | Richard Cole - charged with discharging firearm in business. // felony . NOT GUILTY.                                                               |
+| 197 | Richard Cole - Def: Willfully discarge firearm in biz - Felony. Pleaded NG                                                                         |
+| 168 | willfully discharging firearm in a business - felony. not guilty                                                                                   |
+| 131 | discharged firearm in business, intentionally                                                                                                      |
+| 77  | In this case, the defendant - Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony. |
+| 24  | defendant - Richard Cole discharging a firearm in a place of business. pleaded not guilty.                                                         |
+
+Additionally, the source document (or study transcript) is included in
+`notepad_example` with an ID of ‘source’. The original transcript is
+shown here:
+
+``` r
+
+study_transcript <- notepad_example[notepad_example$ID == "source",]$Text
+
+knitr::kable(study_transcript)
+```
+
+| x                                                                                                                                                                                                                                                                                                                                                           |
+|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| In this case, the defendant - Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony. Mr. Cole has pleaded not guilty to the charge. You will now read a summary of the case. This summary was prepared by an objective court clerk. It describes select evidence that was presented at trial. |
+
+  
+Fuzzy collocation is used to match the tokenized derivative texts to the
+phrases in the tokenized source text. This function first determines the
+number of times a collocation of length 5 occurs in derivative texts, or
+participant notes on the case. Fuzzy (or indirect) matches are then
+added to the frequency count of the source collocation that is the
+closest match. These fuzzy matches are weighted based on the edit
+distance between the source collocation and the indirect phrase:
+$$\frac{n*d}{m}$$
+
+Here, $n$ is the frequency of the fuzzy collocation, $d$ is the Jaccard
+similarity between the fuzzy collocation and the source collocation
+(ranging from 0 to 1, where 1 indicates identical strings), and $m$ is
+the number of closest matches for the fuzzy collocation.
+
+The
+[`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)
+function attaches the collocation counts to the full text of the
+transcript. The collocation frequencies are averaged per word.
+
+``` r
 
 # connect collocation frequencies to source document
 

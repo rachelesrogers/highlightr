@@ -66,10 +66,6 @@ for (i in 1:dim(url_list)[1]){
 }
 ```
 
-Note that the Wikipedia version text is placed in a column labelled
-“page_notes”, as needed for the comment functions in this package. This
-allows for the comments to be tokenized, or separated into words.
-
 The previous versions are then compared to the current version’s
 collocations with fuzzy matching in order to provide a count for the
 amount of times each collocation occurs.
@@ -83,8 +79,8 @@ to add additional labels to the gradient key.
 
 ``` r
 
-# connect collocation frequencies to source document
 library(highlightr)
+# calculate frequencies with reference to source document (first row)
 merged_frequency <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
                                     source_row = 1)
 
@@ -1072,6 +1068,7 @@ dataset as the transcript reference to view which text has been changed:
 
 ``` r
 
+# calculate frequencies with reference to source document (last row)
 merged_frequency2 <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
                                     source_row = nrow(wiki_pages), fuzzy=TRUE)
 #> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.

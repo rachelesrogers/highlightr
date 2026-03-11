@@ -65,21 +65,95 @@
 
     
     
-<p>This package is designed to map a group of individuals’ notes to the
+<p>This package is designed to map a group of derivative texts to the
 corresponding parent text, based on the frequency with which phrases
-occur in the individual notes. The parent text is highlighted
+occur in the derivative texts. The parent text is highlighted
 corresponding to this frequency, in order to create a ‘heatmap’ of
-popular phrases found in the note sheets.</p>
+popular phrases found in the derivative texts.</p>
 <p>This example is taken from the initial description of a crime used in
-a study of jury perception of algorithm use and demonstrative
-evidence.</p>
-<p>After that, a fuzzy collocation is used to match the tokenized notes
-to the phrases in the tokenized transcript. This function first
+a study of jury perception of algorithm use and demonstrative evidence.
+The <code>notepad_example</code> data frame contains an ‘ID’ number
+corresponding to a study participant, as well as their notes, labelled
+as ‘Text’. The first six observations are shown below.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># load the library</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rachelesrogers.github.io/highlightr/">highlightr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/" class="external-link">knitr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># View first 6 observations</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">notepad_example</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="2%">
+<col width="97%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">ID</th>
+<th align="left">Text</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">121</td>
+<td align="left">Richard Cole - charged with discharging firearm in
+business. // felony . NOT GUILTY.</td>
+</tr>
+<tr class="even">
+<td align="left">197</td>
+<td align="left">Richard Cole - Def: Willfully discarge firearm in biz -
+Felony. Pleaded NG</td>
+</tr>
+<tr class="odd">
+<td align="left">168</td>
+<td align="left">willfully discharging firearm in a business - felony.
+not guilty</td>
+</tr>
+<tr class="even">
+<td align="left">131</td>
+<td align="left">discharged firearm in business, intentionally</td>
+</tr>
+<tr class="odd">
+<td align="left">77</td>
+<td align="left">In this case, the defendant - Richard Cole - has been
+charged with willfully discharging a firearm in a place of business.
+This crime is a felony.</td>
+</tr>
+<tr class="even">
+<td align="left">24</td>
+<td align="left">defendant - Richard Cole discharging a firearm in a
+place of business. pleaded not guilty.</td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, the source document (or study transcript) is included
+in <code>notepad_example</code> with an ID of ‘source’. The original
+transcript is shown here:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">study_transcript</span> <span class="op">&lt;-</span> <span class="va">notepad_example</span><span class="op">[</span><span class="va">notepad_example</span><span class="op">$</span><span class="va">ID</span> <span class="op">==</span> <span class="st">"source"</span>,<span class="op">]</span><span class="op">$</span><span class="va">Text</span></span>
+<span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">study_transcript</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<colgroup><col width="100%"></colgroup>
+<thead><tr class="header">
+<th align="left">x</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="left">In this case, the defendant - Richard Cole - has been
+charged with willfully discharging a firearm in a place of business.
+This crime is a felony.  Mr. Cole has pleaded not guilty to
+the charge.  You will now read a summary of the case. This
+summary was prepared by an objective court clerk. It describes select
+evidence that was presented at trial.</td>
+</tr></tbody>
+</table>
+<p><br> Fuzzy collocation is used to match the tokenized derivative
+texts to the phrases in the tokenized source text. This function first
 determines the number of times a collocation of length 5 occurs in
-participant notes. Fuzzy (or indirect) matches are then added to the
-frequency count of the transcript collocation that is the closest match.
-These fuzzy matches are weighted based on the edit distance between the
-transcript collocation and the indirect phrase:
+derivative texts, or participant notes on the case. Fuzzy (or indirect)
+matches are then added to the frequency count of the source collocation
+that is the closest match. These fuzzy matches are weighted based on the
+edit distance between the source collocation and the indirect phrase:
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mrow><mi>n</mi><mo>*</mo><mi>d</mi></mrow><mi>m</mi></mfrac><annotation encoding="application/x-tex">
 \frac{n*d}{m}
 </annotation></semantics></math></p>
@@ -87,20 +161,16 @@ transcript collocation and the indirect phrase:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 is the frequency of the fuzzy collocation,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
-is the Jaccard similarity between the fuzzy collocation and the
-transcript collocation (ranging from 0 to 1, where 1 indicates identical
-strings), and
+is the Jaccard similarity between the fuzzy collocation and the source
+collocation (ranging from 0 to 1, where 1 indicates identical strings),
+and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
 is the number of closest matches for the fuzzy collocation.</p>
-<p>Next, the <code><a href="../reference/collocation_frequency.html">collocation_frequency()</a></code> function attaches the
-collocation counts to the full text of the transcript.
-<!-- This provides additional information about the original formatting of the transcript that is needed when constructing the final object. -->
-The collocation frequencies are averaged per word.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<p>The <code><a href="../reference/collocation_frequency.html">collocation_frequency()</a></code> function attaches the
+collocation counts to the full text of the transcript. The collocation
+frequencies are averaged per word.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co"># load the library</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rachelesrogers.github.io/highlightr/">highlightr</a></span><span class="op">)</span></span>
-<span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
 <span></span>
 <span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">notepad_example</span>, source_row<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">notepad_example</span><span class="op">$</span><span class="va">ID</span><span class="op">==</span><span class="st">"source"</span><span class="op">)</span>, text_column <span class="op">=</span> <span class="st">"Text"</span>, fuzzy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
@@ -109,12 +179,12 @@ The collocation frequencies are averaged per word.</p>
 <p>The combined document is then fed through ggplot to assign gradient
 colors based on frequency, and the minimum and maximum values are
 recorded.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># create `ggplot` object of the transcript</span></span>
 <span></span>
 <span><span class="va">freq_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># add html tags to source document</span></span>
 <span></span>
@@ -395,7 +465,7 @@ trial. 
 <p><br></p>
 <p>Alternatively, the <code>xml2</code> package can be used to save the
 output as an html file, as shown in the following code:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># load `xml2` library</span></span>
 <span></span>
@@ -408,7 +478,7 @@ output as an html file, as shown in the following code:</p>
 matches are included, but the maximum value reached is smaller. Note
 also that the colors used in highlighting can be changed in the “colors”
 argument of the <code>collocation_plot</code> function.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
 <span></span>
@@ -693,7 +763,7 @@ collocation length has been changed to 2 words.</p>
 <p>In these shorter collocations, we can see that the collocation
 containing the name “Richard Cole” is popular, with a frequency of
 89.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
 <span></span>
