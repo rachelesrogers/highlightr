@@ -10,9 +10,5 @@
   : Create Highlighted Testimony
 - [`notepad_example`](https://rachelesrogers.github.io/highlightr/reference/notepad_example.md)
   : Comment Example Dataset
-- [`tokenize_derivative()`](https://rachelesrogers.github.io/highlightr/reference/tokenize_derivative.md)
-  : Tokenize comments
-- [`tokenize_source()`](https://rachelesrogers.github.io/highlightr/reference/tokenize_source.md)
-  : Tokenize Source Document
 - [`wiki_pages`](https://rachelesrogers.github.io/highlightr/reference/wiki_pages.md)
   : Wikipedia Edit History for "Highlighter"

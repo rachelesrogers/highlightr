@@ -130,22 +130,6 @@ gathered as follows:</p>
 <p>Note that the Wikipedia version text is placed in a column labelled
 “page_notes”, as needed for the comment functions in this package. This
 allows for the comments to be tokenized, or separated into words.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rachelesrogers.github.io/highlightr/">highlightr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># tokenize comments </span></span>
-<span><span class="va">toks_comment</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_derivative.html">tokenize_derivative</a></span><span class="op">(</span><span class="fu">highlightr</span><span class="fu">::</span><span class="va"><a href="../reference/wiki_pages.html">wiki_pages</a></span>, text_column <span class="op">=</span> <span class="st">"page_notes"</span>,</span>
-<span>                                    source_row <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<p>The latest version of the article is the first row in the dataset,
-and can be used as the “transcript text”, or the base text to which the
-highlighting is applied. In this case, the column must be named “text”.
-This reference version is also tokenized for comparison to the
-derivative versions.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># tokenize most recent version of the article (as the reference)</span></span>
-<span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="fu">highlightr</span><span class="fu">::</span><span class="va"><a href="../reference/wiki_pages.html">wiki_pages</a></span>, text_column <span class="op">=</span> <span class="st">"page_notes"</span>,</span>
-<span>                                    source_row <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>The previous versions are then compared to the current version’s
 collocations with fuzzy matching in order to provide a count for the
 amount of times each collocation occurs.</p>
@@ -155,13 +139,12 @@ each word appeared in. The results are shown below by specifying
 <code>`r page_highlight`</code> in an R Markdown document outside of a
 code chunk and knitting to HTML. Note that the “labels” argument can be
 used to add additional labels to the gradient key.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
-<span><span class="va">source</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">wiki_pages</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">wiki_pages</span><span class="op">)</span></span>
-<span>  </span>
-<span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">source</span><span class="op">[[</span><span class="st">"page_notes"</span><span class="op">]</span><span class="op">]</span>, <span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rachelesrogers.github.io/highlightr/">highlightr</a></span><span class="op">)</span></span>
+<span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="fu">highlightr</span><span class="fu">::</span><span class="va"><a href="../reference/wiki_pages.html">wiki_pages</a></span>, text_column <span class="op">=</span> <span class="st">"page_notes"</span>,</span>
+<span>                                    source_row <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># create a ggplot object of the transcript</span></span>
 <span><span class="va">freq_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span></span>
@@ -2076,21 +2059,10 @@ introductory sentence and the reference to correction tape).</p>
 <p>We could also use the oldest version of the Highlighter article in
 the dataset as the transcript reference to view which text has been
 changed:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span></span>
-<span><span class="co"># tokenize the transcript</span></span>
-<span><span class="va">toks_transcript2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="fu">highlightr</span><span class="fu">::</span><span class="va"><a href="../reference/wiki_pages.html">wiki_pages</a></span>, text_column <span class="op">=</span> <span class="st">"page_notes"</span>,</span>
-<span>                                    source_row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">wiki_pages</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">toks_comment2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_derivative.html">tokenize_derivative</a></span><span class="op">(</span><span class="fu">highlightr</span><span class="fu">::</span><span class="va"><a href="../reference/wiki_pages.html">wiki_pages</a></span>, text_column <span class="op">=</span> <span class="st">"page_notes"</span>,</span>
-<span>                                    source_row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">wiki_pages</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># connect collocation frequencies to source document</span></span>
-<span><span class="va">source</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">wiki_pages</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">wiki_pages</span><span class="op">)</span>,<span class="op">]</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">wiki_pages</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">merged_frequency2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">source</span><span class="op">[[</span><span class="st">"page_notes"</span><span class="op">]</span><span class="op">]</span>, <span class="va">toks_transcript2</span>, <span class="va">toks_comment2</span>, fuzzy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">merged_frequency2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="fu">highlightr</span><span class="fu">::</span><span class="va"><a href="../reference/wiki_pages.html">wiki_pages</a></span>, text_column <span class="op">=</span> <span class="st">"page_notes"</span>,</span>
+<span>                                    source_row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">wiki_pages</span><span class="op">)</span>, fuzzy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.</span></span>
 <span><span class="co">#&gt; Please consider changing `n_bands` and `band_width`.</span></span>
 <span></span>

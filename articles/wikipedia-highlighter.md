@@ -70,27 +70,6 @@ Note that the Wikipedia version text is placed in a column labelled
 “page_notes”, as needed for the comment functions in this package. This
 allows for the comments to be tokenized, or separated into words.
 
-``` r
-library(highlightr)
-
-# tokenize comments 
-toks_comment <- tokenize_derivative(highlightr::wiki_pages, text_column = "page_notes",
-                                    source_row = 1)
-```
-
-The latest version of the article is the first row in the dataset, and
-can be used as the “transcript text”, or the base text to which the
-highlighting is applied. In this case, the column must be named “text”.
-This reference version is also tokenized for comparison to the
-derivative versions.
-
-``` r
-
-# tokenize most recent version of the article (as the reference)
-toks_transcript <- tokenize_source(highlightr::wiki_pages, text_column = "page_notes",
-                                    source_row = 1)
-```
-
 The previous versions are then compared to the current version’s
 collocations with fuzzy matching in order to provide a count for the
 amount of times each collocation occurs.
@@ -105,10 +84,9 @@ to add additional labels to the gradient key.
 ``` r
 
 # connect collocation frequencies to source document
-source <- data.frame(wiki_pages[1,])
-colnames(source) <- colnames(wiki_pages)
-  
-merged_frequency <- collocation_frequency(source[["page_notes"]], toks_transcript, toks_comment)
+library(highlightr)
+merged_frequency <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
+                                    source_row = 1)
 
 # create a ggplot object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
@@ -1094,19 +1072,8 @@ dataset as the transcript reference to view which text has been changed:
 
 ``` r
 
-
-# tokenize the transcript
-toks_transcript2 <- tokenize_source(highlightr::wiki_pages, text_column = "page_notes",
-                                    source_row = nrow(wiki_pages))
-
-toks_comment2 <- tokenize_derivative(highlightr::wiki_pages, text_column = "page_notes",
-                                    source_row = nrow(wiki_pages))
-
-# connect collocation frequencies to source document
-source <- data.frame(wiki_pages[nrow(wiki_pages),])
-colnames(source) <- colnames(wiki_pages)
-
-merged_frequency2 <- collocation_frequency(source[["page_notes"]], toks_transcript2, toks_comment2, fuzzy=TRUE)
+merged_frequency2 <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
+                                    source_row = nrow(wiki_pages), fuzzy=TRUE)
 #> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
 #> Please consider changing `n_bands` and `band_width`.
 

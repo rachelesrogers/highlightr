@@ -9,28 +9,6 @@ popular phrases found in the note sheets.
 This example is taken from the initial description of a crime used in a
 study of jury perception of algorithm use and demonstrative evidence.
 
-The first step is to re-assign names in the notepad text to correspond
-with the expected format used in
-[`tokenize_derivative()`](https://rachelesrogers.github.io/highlightr/reference/tokenize_derivative.md)
-and use the function to tokenize the comments.
-
-``` r
-
-# load the library
-library(highlightr)
-
-# tokenize comments
-toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
-```
-
-The next step is to tokenize the transcript in a similar manner.
-
-``` r
-
-# tokenize source document
-toks_transcript <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
-```
-
 After that, a fuzzy collocation is used to match the tokenized notes to
 the phrases in the tokenized transcript. This function first determines
 the number of times a collocation of length 5 occurs in participant
@@ -51,9 +29,12 @@ transcript. The collocation frequencies are averaged per word.
 
 ``` r
 
+# load the library
+library(highlightr)
+
 # connect collocation frequencies to source document
 
-merged_frequency <- collocation_frequency(notepad_example[which(notepad_example$ID=="source"),][["Text"]], toks_transcript, toks_comment, fuzzy=TRUE)
+merged_frequency <- collocation_frequency(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text", fuzzy=TRUE)
 #> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
 #> Please consider changing `n_bands` and `band_width`.
 ```
@@ -240,7 +221,7 @@ argument of the `collocation_plot` function.
 
 # connect collocation frequencies to source document
 
-merged_frequency_nonfuzzy <- collocation_frequency(notepad_example[which(notepad_example$ID=="source"),][["Text"]], toks_transcript, toks_comment)
+merged_frequency_nonfuzzy <- collocation_frequency(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
 
 # create a `ggplot` object of the transcript, and change colors of the gradient
 
@@ -394,7 +375,7 @@ containing the name “Richard Cole” is popular, with a frequency of 89.
 
 # connect collocation frequencies to source document
 
-merged_frequency_2col <- collocation_frequency(notepad_example[which(notepad_example$ID=="source"),][["Text"]], toks_transcript, toks_comment, collocate_length = 2)
+merged_frequency_2col <- collocation_frequency(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text", collocate_length = 2)
 
 # create a `ggplot` object of the transcript
 

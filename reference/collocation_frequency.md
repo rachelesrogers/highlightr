@@ -7,9 +7,9 @@ correspond to the provided source document.
 
 ``` r
 collocation_frequency(
-  transcript,
-  transcript_token,
-  note_token,
+  tbl,
+  source_row,
+  text_column,
   collocate_length = 5,
   fuzzy = FALSE,
   n_bands = 50,
@@ -20,19 +20,17 @@ collocation_frequency(
 
 ## Arguments
 
-- transcript:
+- tbl:
 
-  transcript document
+  data frame containing documents, where each row represents a document
 
-- transcript_token:
+- source_row:
 
-  transcript token to act as baseline for notes, resulting from
-  [`tokenize_source()`](https://rachelesrogers.github.io/highlightr/reference/tokenize_source.md)
+  row containing text to be treated as source
 
-- note_token:
+- text_column:
 
-  tokenized document of notes, resulting from
-  [`tokenize_derivative()`](https://rachelesrogers.github.io/highlightr/reference/tokenize_derivative.md)
+  string indicating the name of the column containing derivative text
 
 - collocate_length:
 
@@ -81,12 +79,6 @@ note collocation.
 ## Examples
 
 ``` r
-# Tokenize the derivative document
 src_row <- which(notepad_example$ID=="source")
-toks_comment <- tokenize_derivative(notepad_example, source_row=src_row, text_column="Text")
-# Tokenize source document
-toks_source <- tokenize_source(notepad_example, source_row=src_row, text_column="Text")
-# Merge frequencies with source document to provide averages by word and correct formatting
-merged_frequency <- collocation_frequency(notepad_example[src_row,][["Text"]],
-toks_source, toks_comment)
+merged_frequency <- collocation_frequency(notepad_example, src_row, "Text")
 ```

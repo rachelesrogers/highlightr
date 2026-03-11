@@ -88,10 +88,10 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rachelesrogers.github.io/highlightr/">highlightr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># tokenize derivative documents</span></span>
-<span><span class="va">toks_comment</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tokenize_derivative.html">tokenize_derivative</a></span><span class="op">(</span><span class="va">comment_example</span>, text_column <span class="op">=</span> <span class="st">"Notes"</span><span class="op">)</span></span>
+<span><span class="va">toks_comment</span> <span class="op">&lt;-</span> <span class="fu">tokenize_derivative</span><span class="op">(</span><span class="va">comment_example</span>, text_column <span class="op">=</span> <span class="st">"Notes"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># tokenize source document</span></span>
-<span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="va">transcript_example</span><span class="op">)</span></span>
+<span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu">tokenize_source</span><span class="op">(</span><span class="va">transcript_example</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># use fuzzy matching in collocation</span></span>
 <span><span class="va">collocation_object</span> <span class="op">&lt;-</span> <span class="fu">collocate_comments_fuzzy</span><span class="op">(</span><span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
