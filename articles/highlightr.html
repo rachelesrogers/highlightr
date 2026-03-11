@@ -83,12 +83,12 @@ comments.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rachelesrogers.github.io/highlightr/">highlightr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># tokenize comments</span></span>
-<span><span class="va">toks_comment</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_derivative.html">tokenize_derivative</a></span><span class="op">(</span><span class="va">comment_example</span>, text_column <span class="op">=</span> <span class="st">"Notes"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">toks_comment</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_derivative.html">tokenize_derivative</a></span><span class="op">(</span><span class="va">notepad_example</span>, source_row<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">notepad_example</span><span class="op">$</span><span class="va">ID</span><span class="op">==</span><span class="st">"source"</span><span class="op">)</span>, text_column <span class="op">=</span> <span class="st">"Text"</span><span class="op">)</span></span></code></pre></div>
 <p>The next step is to tokenize the transcript in a similar manner.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># tokenize source document</span></span>
-<span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="va">transcript_example</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">toks_transcript</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tokenize_source.html">tokenize_source</a></span><span class="op">(</span><span class="va">notepad_example</span>, source_row<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">notepad_example</span><span class="op">$</span><span class="va">ID</span><span class="op">==</span><span class="st">"source"</span><span class="op">)</span>, text_column <span class="op">=</span> <span class="st">"Text"</span><span class="op">)</span></span></code></pre></div>
 <p>After that, a fuzzy collocation is used to match the tokenized notes
 to the phrases in the tokenized transcript. This function first
 determines the number of times a collocation of length 5 occurs in
@@ -108,33 +108,26 @@ transcript collocation (ranging from 0 to 1, where 1 indicates identical
 strings), and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
 is the number of closest matches for the fuzzy collocation.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># use fuzzy collocation on source and derivative tokenized documents</span></span>
-<span></span>
-<span><span class="co"># collocation_object &lt;- collocate_comments_fuzzy(toks_transcript, toks_comment)</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># head(collocation_object)</span></span></code></pre></div>
 <p>Next, the <code><a href="../reference/collocation_frequency.html">collocation_frequency()</a></code> function attaches the
 collocation counts to the full text of the transcript.
 <!-- This provides additional information about the original formatting of the transcript that is needed when constructing the final object. -->
 The collocation frequencies are averaged per word.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
 <span></span>
-<span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">transcript_example</span>, <span class="va">toks_transcript</span>, <span class="va">toks_comment</span>, fuzzy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">merged_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">notepad_example</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">notepad_example</span><span class="op">$</span><span class="va">ID</span><span class="op">==</span><span class="st">"source"</span><span class="op">)</span>,<span class="op">]</span><span class="op">[[</span><span class="st">"Text"</span><span class="op">]</span><span class="op">]</span>, <span class="va">toks_transcript</span>, <span class="va">toks_comment</span>, fuzzy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.</span></span>
 <span><span class="co">#&gt; Please consider changing `n_bands` and `band_width`.</span></span></code></pre></div>
 <p>The combined document is then fed through ggplot to assign gradient
 colors based on frequency, and the minimum and maximum values are
 recorded.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># create `ggplot` object of the transcript</span></span>
 <span></span>
 <span><span class="va">freq_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_plot.html">collocation_plot</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># add html tags to source document</span></span>
 <span></span>
@@ -415,7 +408,7 @@ trial. 
 <p><br></p>
 <p>Alternatively, the <code>xml2</code> package can be used to save the
 output as an html file, as shown in the following code:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># load `xml2` library</span></span>
 <span></span>
@@ -424,23 +417,15 @@ output as an html file, as shown in the following code:</p>
 <span><span class="co"># save html output to desired location</span></span>
 <span></span>
 <span><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/write_xml.html" class="external-link">write_html</a></span><span class="op">(</span><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html" class="external-link">read_html</a></span><span class="op">(</span><span class="va">page_highlight</span><span class="op">)</span>, <span class="st">"filename.html"</span><span class="op">)</span></span></code></pre></div>
-<!-- To exclude fuzzy matches, the `collocate_comments()` function can be used. Here, the listed frequencies are all whole numbers, because they are counts (without weighting). -->
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># use nonfuzzy collocation on the source and derivative tokenized texts</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># collocation_object_nonfuzzy &lt;- collocate_comments(toks_transcript, toks_comment)</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># head(collocation_object_nonfuzzy)</span></span></code></pre></div>
 <p>In this case, the highlighting pattern resembles that when the fuzzy
 matches are included, but the maximum value reached is smaller. Note
 also that the colors used in highlighting can be changed in the “colors”
 argument of the <code>collocation_plot</code> function.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
 <span></span>
-<span><span class="va">merged_frequency_nonfuzzy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">transcript_example</span>, <span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
+<span><span class="va">merged_frequency_nonfuzzy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">notepad_example</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">notepad_example</span><span class="op">$</span><span class="va">ID</span><span class="op">==</span><span class="st">"source"</span><span class="op">)</span>,<span class="op">]</span><span class="op">[[</span><span class="st">"Text"</span><span class="op">]</span><span class="op">]</span>, <span class="va">toks_transcript</span>, <span class="va">toks_comment</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># create a `ggplot` object of the transcript, and change colors of the gradient</span></span>
 <span></span>
@@ -718,21 +703,14 @@ trial. 
 <p>Additionally, the length of the collocation can be changed. The
 default collocation length (shown above) is 5 words. Below, this
 collocation length has been changed to 2 words.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># use nonfuzzy collocations with a collocation length of 2</span></span>
-<span></span>
-<span><span class="co"># collocation_object_2col &lt;- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># head(collocation_object_2col, n=7)</span></span></code></pre></div>
 <p>In these shorter collocations, we can see that the collocation
 containing the name “Richard Cole” is popular, with a frequency of
 89.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>
 <span></span>
-<span><span class="va">merged_frequency_2col</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">transcript_example</span>, <span class="va">toks_transcript</span>, <span class="va">toks_comment</span>, collocate_length <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">merged_frequency_2col</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collocation_frequency.html">collocation_frequency</a></span><span class="op">(</span><span class="va">notepad_example</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">notepad_example</span><span class="op">$</span><span class="va">ID</span><span class="op">==</span><span class="st">"source"</span><span class="op">)</span>,<span class="op">]</span><span class="op">[[</span><span class="st">"Text"</span><span class="op">]</span><span class="op">]</span>, <span class="va">toks_transcript</span>, <span class="va">toks_comment</span>, collocate_length <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># create a `ggplot` object of the transcript</span></span>
 <span></span>

@@ -6,15 +6,18 @@ This function tokenizes comments that are to be used in
 ## Usage
 
 ``` r
-tokenize_derivative(derivative_document, text_column)
+tokenize_derivative(tbl, source_row, text_column)
 ```
 
 ## Arguments
 
-- derivative_document:
+- tbl:
 
-  data frame containing derivative documents, where each row represents
-  a document
+  data frame containing documents, where each row represents a document
+
+- source_row:
+
+  row containing text to be treated as source
 
 - text_column:
 
@@ -28,5 +31,6 @@ tokenized comments
 
 ``` r
 # Tokenize the derivative document
-toks_comment <- tokenize_derivative(comment_example, text_column="Notes")
+src_row <- which(notepad_example$ID=="source")
+toks_comment <- tokenize_derivative(notepad_example, source_row=src_row, text_column="Text")
 ```

@@ -74,7 +74,8 @@ allows for the comments to be tokenized, or separated into words.
 library(highlightr)
 
 # tokenize comments 
-toks_comment <- tokenize_derivative(highlightr::wiki_pages, text_column = "page_notes")
+toks_comment <- tokenize_derivative(highlightr::wiki_pages, text_column = "page_notes",
+                                    source_row = 1)
 ```
 
 The latest version of the article is the first row in the dataset, and
@@ -86,22 +87,13 @@ derivative versions.
 ``` r
 
 # tokenize most recent version of the article (as the reference)
-transcript_example <- wiki_pages[1,]
-toks_transcript <- tokenize_source(transcript_example)
+toks_transcript <- tokenize_source(highlightr::wiki_pages, text_column = "page_notes",
+                                    source_row = 1)
 ```
 
 The previous versions are then compared to the current version’s
 collocations with fuzzy matching in order to provide a count for the
 amount of times each collocation occurs.
-
-``` r
-
-# use fuzzy matching to calculate weighted frequency values between derivative and source documents
-
-# collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
-# 
-# head(collocation_object)
-```
 
 These frequencies can be mapped back to the transcript document, then
 highlighted as described based on the average collocation frequency that
@@ -113,7 +105,10 @@ to add additional labels to the gradient key.
 ``` r
 
 # connect collocation frequencies to source document
-merged_frequency <- collocation_frequency(transcript_example, toks_transcript, toks_comment)
+source <- data.frame(wiki_pages[1,])
+colnames(source) <- colnames(wiki_pages)
+  
+merged_frequency <- collocation_frequency(source[["page_notes"]], toks_transcript, toks_comment)
 
 # create a ggplot object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
@@ -124,7 +119,7 @@ page_highlight <- highlighted_text(freq_plot, labels=c("(fewest articles)", "(mo
 
 (fewest articles) 0
 
-261 (most articles)
+260 (most articles)
 
 A 
 
@@ -1099,18 +1094,19 @@ dataset as the transcript reference to view which text has been changed:
 
 ``` r
 
-# separate the oldest version of the article
-
-transcript_example_2 <- wiki_pages[dim(wiki_pages)[1],]
 
 # tokenize the transcript
-toks_transcript2 <- tokenize_source(transcript_example_2)
+toks_transcript2 <- tokenize_source(highlightr::wiki_pages, text_column = "page_notes",
+                                    source_row = nrow(wiki_pages))
 
-# use fuzzy collocation on the source and derivative documents
-# collocation_object2 <- collocate_comments_fuzzy(toks_transcript2, toks_comment)
+toks_comment2 <- tokenize_derivative(highlightr::wiki_pages, text_column = "page_notes",
+                                    source_row = nrow(wiki_pages))
 
 # connect collocation frequencies to source document
-merged_frequency2 <- collocation_frequency(transcript_example_2, toks_transcript2, toks_comment, fuzzy=TRUE)
+source <- data.frame(wiki_pages[nrow(wiki_pages),])
+colnames(source) <- colnames(wiki_pages)
+
+merged_frequency2 <- collocation_frequency(source[["page_notes"]], toks_transcript2, toks_comment2, fuzzy=TRUE)
 #> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
 #> Please consider changing `n_bands` and `band_width`.
 
@@ -1123,7 +1119,7 @@ page_highlight2 <- highlighted_text(freq_plot2, labels=c("(fewest articles)", "(
 
 (fewest articles) 0
 
-243 (most articles)
+242 (most articles)
 
 A 
 

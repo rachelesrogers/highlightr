@@ -20,7 +20,7 @@ and use the function to tokenize the comments.
 library(highlightr)
 
 # tokenize comments
-toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
+toks_comment <- tokenize_derivative(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
 ```
 
 The next step is to tokenize the transcript in a similar manner.
@@ -28,7 +28,7 @@ The next step is to tokenize the transcript in a similar manner.
 ``` r
 
 # tokenize source document
-toks_transcript <- tokenize_source(transcript_example)
+toks_transcript <- tokenize_source(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text")
 ```
 
 After that, a fuzzy collocation is used to match the tokenized notes to
@@ -44,15 +44,6 @@ similarity between the fuzzy collocation and the transcript collocation
 (ranging from 0 to 1, where 1 indicates identical strings), and $m$ is
 the number of closest matches for the fuzzy collocation.
 
-``` r
-
-# use fuzzy collocation on source and derivative tokenized documents
-
-# collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
-# 
-# head(collocation_object)
-```
-
 Next, the
 [`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)
 function attaches the collocation counts to the full text of the
@@ -62,7 +53,7 @@ transcript. The collocation frequencies are averaged per word.
 
 # connect collocation frequencies to source document
 
-merged_frequency <- collocation_frequency(transcript_example, toks_transcript, toks_comment, fuzzy=TRUE)
+merged_frequency <- collocation_frequency(notepad_example[which(notepad_example$ID=="source"),][["Text"]], toks_transcript, toks_comment, fuzzy=TRUE)
 #> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
 #> Please consider changing `n_bands` and `band_width`.
 ```
@@ -240,15 +231,6 @@ library(xml2)
 xml2::write_html(xml2::read_html(page_highlight), "filename.html")
 ```
 
-``` r
-
-# use nonfuzzy collocation on the source and derivative tokenized texts
-# 
-# collocation_object_nonfuzzy <- collocate_comments(toks_transcript, toks_comment)
-# 
-# head(collocation_object_nonfuzzy)
-```
-
 In this case, the highlighting pattern resembles that when the fuzzy
 matches are included, but the maximum value reached is smaller. Note
 also that the colors used in highlighting can be changed in the “colors”
@@ -258,7 +240,7 @@ argument of the `collocation_plot` function.
 
 # connect collocation frequencies to source document
 
-merged_frequency_nonfuzzy <- collocation_frequency(transcript_example, toks_transcript, toks_comment)
+merged_frequency_nonfuzzy <- collocation_frequency(notepad_example[which(notepad_example$ID=="source"),][["Text"]], toks_transcript, toks_comment)
 
 # create a `ggplot` object of the transcript, and change colors of the gradient
 
@@ -405,15 +387,6 @@ Additionally, the length of the collocation can be changed. The default
 collocation length (shown above) is 5 words. Below, this collocation
 length has been changed to 2 words.
 
-``` r
-
-# use nonfuzzy collocations with a collocation length of 2
-
-# collocation_object_2col <- collocate_comments(toks_transcript, toks_comment, collocate_length = 2)
-# 
-# head(collocation_object_2col, n=7)
-```
-
 In these shorter collocations, we can see that the collocation
 containing the name “Richard Cole” is popular, with a frequency of 89.
 
@@ -421,7 +394,7 @@ containing the name “Richard Cole” is popular, with a frequency of 89.
 
 # connect collocation frequencies to source document
 
-merged_frequency_2col <- collocation_frequency(transcript_example, toks_transcript, toks_comment, collocate_length = 2)
+merged_frequency_2col <- collocation_frequency(notepad_example[which(notepad_example$ID=="source"),][["Text"]], toks_transcript, toks_comment, collocate_length = 2)
 
 # create a `ggplot` object of the transcript
 
