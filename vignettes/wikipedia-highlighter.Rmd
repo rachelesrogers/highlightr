@@ -80,10 +80,6 @@ for (i in 1:dim(url_list)[1]){
 
 The previous versions are then compared to the current version's collocations with fuzzy matching in order to provide a count for the amount of times each collocation occurs.
 
-These frequencies can be mapped back to the transcript document, then highlighted as described based on the average collocation frequency that each word appeared in.
-The results are shown below by specifying `` `r '\x60r page_highlight\x60'` `` in an R Markdown document outside of a code chunk and knitting to HTML.
-Note that the "labels" argument can be used to add additional labels to the gradient key.
-
 ```{r}
 
 library(highlightr)
@@ -91,6 +87,16 @@ library(highlightr)
 merged_frequency <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
                                     source_row = 1)
 
+head(merged_frequency)
+```
+
+These frequencies can be mapped back to the transcript document, then highlighted as described based on the average collocation frequency that each word appeared in.
+The results are shown below by specifying `` `r '\x60r page_highlight\x60'` `` in an R Markdown document outside of a code chunk and knitting to HTML.
+Note that the "labels" argument can be used to add additional labels to the gradient key.
+
+
+
+```{r}
 # create a ggplot object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
 

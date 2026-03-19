@@ -36,6 +36,7 @@ collocation_frequency <- function(tbl, source_row, text_column,
                                   collocate_length=5, fuzzy=FALSE, n_bands=50,
                                   threshold=0.7, n_gram_width=4){
 
+  `%>%` <- magrittr::`%>%`
   transcript_token <- tokenize_source(tbl=tbl, source_row=source_row, text_column = text_column)
   note_token <- tokenize_derivative(tbl=tbl, source_row=source_row, text_column = text_column)
 
@@ -76,7 +77,9 @@ collocation_frequency <- function(tbl, source_row, text_column,
                                   "words", "word_num", "word_length", "x_coord",
                                   "to_merge", "stanza_freq", "word_number"))
 
-  return(merged_final)
+  reduced_merged <- merged_final %>% dplyr::select(!c("Text", "lines", "n_words", "word_length", "stanza_freq"))
+
+  return(reduced_merged)
 }
 
 transcript_cleaning <- function(transcript){

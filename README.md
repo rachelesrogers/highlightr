@@ -49,19 +49,10 @@ devtools::install_github("rachelesrogers/highlightr")
 # load library
 library(highlightr)
 
-# tokenize derivative documents
-toks_comment <- tokenize_derivative(comment_example, text_column = "Notes")
-
-# tokenize source document
-toks_transcript <- tokenize_source(transcript_example)
-
-# use fuzzy matching in collocation
-collocation_object <- collocate_comments_fuzzy(toks_transcript, toks_comment)
+# connect collocation frequencies to source document
+merged_frequency <- collocation_frequency(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text", fuzzy=TRUE)
 #> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
 #> Please consider changing `n_bands` and `band_width`.
-
-# connect collocation frequencies to source document
-merged_frequency <- transcript_frequency(transcript_example, collocation_object)
 
 # create `ggplot` object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
