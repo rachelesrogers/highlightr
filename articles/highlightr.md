@@ -73,7 +73,28 @@ transcript. The collocation frequencies are averaged per word.
 merged_frequency <- collocation_frequency(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text", fuzzy=TRUE)
 #> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
 #> Please consider changing `n_bands` and `band_width`.
+
+knitr::kable(head(merged_frequency))
 ```
+
+| words     | word_num | x_coord | to_merge  | word_number |     col_1 |     col_2 |    col_3 |    col_4 |    col_5 | collocation                     |     Freq |
+|:----------|---------:|--------:|:----------|------------:|----------:|----------:|---------:|---------:|---------:|:--------------------------------|---------:|
+| In        |        1 |       1 | in        |           1 |  6.956522 |        NA |       NA |       NA |       NA | in this case the defendant      | 6.956522 |
+| this      |        2 |       5 | this      |           2 |  7.000000 |  6.956522 |       NA |       NA |       NA | this case the defendant richard | 6.978261 |
+| case,     |        3 |      13 | case      |           3 |  7.928571 |  7.000000 | 6.956522 |       NA |       NA | case the defendant richard cole | 7.295031 |
+| the       |        4 |      23 | the       |           4 | 10.000000 |  7.928571 | 7.000000 | 6.956522 |       NA | the defendant richard cole has  | 7.971273 |
+| defendant |        5 |      29 | defendant |           5 | 10.000000 | 10.000000 | 7.928571 | 7.000000 | 6.956522 | defendant richard cole has been | 8.377019 |
+| \-        |        6 |      47 |           |          NA |        NA |        NA |       NA |       NA |       NA | NA                              |      NaN |
+
+The output assigns the frequency of each collocation to each word that
+occurs in that collocation. For example, the first collocation in the
+description is “in this case the defendant”, which occurs with a
+frequency of 6.96. This is the only collocation in which the first word
+will appear, so this is the only collocation value provided for the
+first word. The second word, “this” appears in the next collocation as
+well: “this case the defendant richard”, whose frequency is 7, and so on
+for all words in the description. Collocations are weighted by the
+number of times they appear in the transcript text.
 
 The combined document is then fed through ggplot to assign gradient
 colors based on frequency, and the minimum and maximum values are

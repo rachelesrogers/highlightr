@@ -70,6 +70,26 @@ The previous versions are then compared to the current version’s
 collocations with fuzzy matching in order to provide a count for the
 amount of times each collocation occurs.
 
+``` r
+
+library(highlightr)
+# calculate frequencies with reference to source document (first row)
+merged_frequency <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
+                                    source_row = 1)
+
+head(merged_frequency)
+#> # A tibble: 6 × 12
+#>   words      word_num x_coord to_merge word_number col_1 col_2 col_3 col_4 col_5
+#>   <chr>         <int>   <dbl> <chr>          <int> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1 A                 1       1 a                  1     7    NA    NA    NA    NA
+#> 2 highlight…        2       3 highlig…           2     6     7    NA    NA    NA
+#> 3 also              3      27 also               3     6     6     7    NA    NA
+#> 4 called            4      35 called             4     6     6     6     7    NA
+#> 5 a                 5      47 a                  5     6     6     6     6     7
+#> 6 fluoresce…        6      49 fluores…           6     6     6     6     6     6
+#> # ℹ 2 more variables: collocation <chr>, Freq <dbl>
+```
+
 These frequencies can be mapped back to the transcript document, then
 highlighted as described based on the average collocation frequency that
 each word appeared in. The results are shown below by specifying
@@ -78,12 +98,6 @@ chunk and knitting to HTML. Note that the “labels” argument can be used
 to add additional labels to the gradient key.
 
 ``` r
-
-library(highlightr)
-# calculate frequencies with reference to source document (first row)
-merged_frequency <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
-                                    source_row = 1)
-
 # create a ggplot object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
 
