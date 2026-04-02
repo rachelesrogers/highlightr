@@ -44,7 +44,7 @@ knitr::kable(study_transcript)
 ```
 
 <br>
-Fuzzy collocation is used to match the tokenized derivative texts to the phrases in the tokenized source text.
+Fuzzy collocations are used to match the tokenized derivative texts to the phrases in the tokenized source text.
 This function first determines the number of times a collocation of length 5 occurs in derivative texts, or participant notes on the case.
 Fuzzy (or indirect) matches are then added to the frequency count of the source collocation that is the closest match.
 These fuzzy matches are weighted based on the edit distance between the source collocation and the indirect phrase:
@@ -53,6 +53,7 @@ $$
 $$
 
 Here, $n$ is the frequency of the fuzzy collocation, $d$ is the Jaccard similarity between the fuzzy collocation and the source collocation (ranging from 0 to 1, where 1 indicates identical strings), and $m$ is the number of closest matches for the fuzzy collocation.
+The total count is divided by the number of times a collocation occurs in the source document.
 
 
 The `collocation_frequency()` function attaches the collocation counts to the full text of the transcript.

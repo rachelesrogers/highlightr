@@ -10,6 +10,7 @@
 #' "blue bird", and "bird flies").
 #' This function counts the number of corresponding phrases in the 'notes', or the
 #' derivative documents.
+#' This count is divided by the number of times the phrase occurs in the source document.
 #' When fuzzy matching is included, indirect matches are included with a weight of
 #' (n*d)/m, where n is the frequency of the fuzzy collocation,
 #' d is the Jaccard similarity between the transcript and note collocation, and m
@@ -173,7 +174,7 @@ collocate_comments <- function(transcript_token, note_token, collocate_length=5)
                                                                     names_prefix = "word_",
                                                                     values_to = "word_number"
   )
-  #calculating relative frequency based on number of times colloactions occur
+  #calculating relative frequency based on number of times collocations occur
   col_descript_long$rel_freq <- col_descript_long$count/col_descript_long$transcript_freq
 
   descript_tomerge <- col_descript_long %>% dplyr::select(rel_freq, col_number, word_number) %>%
