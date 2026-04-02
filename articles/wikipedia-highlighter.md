@@ -68,7 +68,9 @@ for (i in 1:dim(url_list)[1]){
 
 The previous versions are then compared to the current version’s
 collocations with fuzzy matching in order to provide a count for the
-amount of times each collocation occurs.
+amount of times each collocation occurs (divided by the number of times
+the collocation occurs in the current version to account for
+duplications).
 
 ``` r
 

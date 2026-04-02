@@ -70,11 +70,12 @@ length 4 ("the blue bird flies"), two collocations of length 3 ("the
 blue bird" and "blue bird flies"), and three collocations of length 2
 ("the blue", "blue bird", and "bird flies"). This function counts the
 number of corresponding phrases in the 'notes', or the derivative
-documents. When fuzzy matching is included, indirect matches are
-included with a weight of (n\*d)/m, where n is the frequency of the
-fuzzy collocation, d is the Jaccard similarity between the transcript
-and note collocation, and m is the number of closest matches for the
-note collocation.
+documents. This count is divided by the number of times the phrase
+occurs in the source document. When fuzzy matching is included, indirect
+matches are included with a weight of (n\*d)/m, where n is the frequency
+of the fuzzy collocation, d is the Jaccard similarity between the
+transcript and note collocation, and m is the number of closest matches
+for the note collocation.
 
 ## Examples
 

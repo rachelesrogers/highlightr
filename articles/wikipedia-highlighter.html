@@ -129,7 +129,9 @@ gathered as follows:</p>
 <span><span class="op">}</span></span></code></pre></div>
 <p>The previous versions are then compared to the current version’s
 collocations with fuzzy matching in order to provide a count for the
-amount of times each collocation occurs.</p>
+amount of times each collocation occurs (divided by the number of times
+the collocation occurs in the current version to account for
+duplications).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rachelesrogers.github.io/highlightr/">highlightr</a></span><span class="op">)</span></span>

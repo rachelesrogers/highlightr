@@ -47,11 +47,11 @@ knitr::kable(study_transcript)
 | In this case, the defendant - Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony. Mr. Cole has pleaded not guilty to the charge. You will now read a summary of the case. This summary was prepared by an objective court clerk. It describes select evidence that was presented at trial. |
 
   
-Fuzzy collocation is used to match the tokenized derivative texts to the
-phrases in the tokenized source text. This function first determines the
-number of times a collocation of length 5 occurs in derivative texts, or
-participant notes on the case. Fuzzy (or indirect) matches are then
-added to the frequency count of the source collocation that is the
+Fuzzy collocations are used to match the tokenized derivative texts to
+the phrases in the tokenized source text. This function first determines
+the number of times a collocation of length 5 occurs in derivative
+texts, or participant notes on the case. Fuzzy (or indirect) matches are
+then added to the frequency count of the source collocation that is the
 closest match. These fuzzy matches are weighted based on the edit
 distance between the source collocation and the indirect phrase:
 $$\frac{n*d}{m}$$
@@ -59,7 +59,9 @@ $$\frac{n*d}{m}$$
 Here, $n$ is the frequency of the fuzzy collocation, $d$ is the Jaccard
 similarity between the fuzzy collocation and the source collocation
 (ranging from 0 to 1, where 1 indicates identical strings), and $m$ is
-the number of closest matches for the fuzzy collocation.
+the number of closest matches for the fuzzy collocation. The total count
+is divided by the number of times a collocation occurs in the source
+document.
 
 The
 [`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)

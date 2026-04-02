@@ -147,7 +147,7 @@ summary was prepared by an objective court clerk. It describes select
 evidence that was presented at trial.</td>
 </tr></tbody>
 </table>
-<p><br> Fuzzy collocation is used to match the tokenized derivative
+<p><br> Fuzzy collocations are used to match the tokenized derivative
 texts to the phrases in the tokenized source text. This function first
 determines the number of times a collocation of length 5 occurs in
 derivative texts, or participant notes on the case. Fuzzy (or indirect)
@@ -165,7 +165,9 @@ is the Jaccard similarity between the fuzzy collocation and the source
 collocation (ranging from 0 to 1, where 1 indicates identical strings),
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-is the number of closest matches for the fuzzy collocation.</p>
+is the number of closest matches for the fuzzy collocation. The total
+count is divided by the number of times a collocation occurs in the
+source document.</p>
 <p>The <code><a href="../reference/collocation_frequency.html">collocation_frequency()</a></code> function attaches the
 collocation counts to the full text of the transcript. The collocation
 frequencies are averaged per word.</p>
