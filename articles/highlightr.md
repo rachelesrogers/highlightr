@@ -79,14 +79,14 @@ merged_frequency <- collocation_frequency(notepad_example, source_row=which(note
 knitr::kable(head(merged_frequency))
 ```
 
-| words     | word_num | x_coord | to_merge  | word_number |     col_1 |     col_2 |    col_3 |    col_4 |    col_5 | collocation                     |     Freq |
-|:----------|---------:|--------:|:----------|------------:|----------:|----------:|---------:|---------:|---------:|:--------------------------------|---------:|
-| In        |        1 |       1 | in        |           1 |  6.956522 |        NA |       NA |       NA |       NA | in this case the defendant      | 6.956522 |
-| this      |        2 |       5 | this      |           2 |  7.000000 |  6.956522 |       NA |       NA |       NA | this case the defendant richard | 6.978261 |
-| case,     |        3 |      13 | case      |           3 |  7.928571 |  7.000000 | 6.956522 |       NA |       NA | case the defendant richard cole | 7.295031 |
-| the       |        4 |      23 | the       |           4 | 10.000000 |  7.928571 | 7.000000 | 6.956522 |       NA | the defendant richard cole has  | 7.971273 |
-| defendant |        5 |      29 | defendant |           5 | 10.000000 | 10.000000 | 7.928571 | 7.000000 | 6.956522 | defendant richard cole has been | 8.377019 |
-| \-        |        6 |      47 |           |          NA |        NA |        NA |       NA |       NA |       NA | NA                              |      NaN |
+| words     | word_num | to_merge  | word_number |     col_1 |     col_2 |    col_3 |    col_4 |    col_5 | collocation                     |     Freq |
+|:----------|---------:|:----------|------------:|----------:|----------:|---------:|---------:|---------:|:--------------------------------|---------:|
+| In        |        1 | in        |           1 |  6.956522 |        NA |       NA |       NA |       NA | in this case the defendant      | 6.956522 |
+| this      |        2 | this      |           2 |  7.000000 |  6.956522 |       NA |       NA |       NA | this case the defendant richard | 6.978261 |
+| case,     |        3 | case      |           3 |  7.928571 |  7.000000 | 6.956522 |       NA |       NA | case the defendant richard cole | 7.295031 |
+| the       |        4 | the       |           4 | 10.000000 |  7.928571 | 7.000000 | 6.956522 |       NA | the defendant richard cole has  | 7.971273 |
+| defendant |        5 | defendant |           5 | 10.000000 | 10.000000 | 7.928571 | 7.000000 | 6.956522 | defendant richard cole has been | 8.377019 |
+| \-        |        6 |           |          NA |        NA |        NA |       NA |       NA |       NA | NA                              |      NaN |
 
 The output assigns the frequency of each collocation to each word that
 occurs in that collocation. For example, the first collocation in the

@@ -80,16 +80,16 @@ merged_frequency <- collocation_frequency(highlightr::wiki_pages, text_column = 
                                     source_row = 1)
 
 head(merged_frequency)
-#> # A tibble: 6 × 12
-#>   words      word_num x_coord to_merge word_number col_1 col_2 col_3 col_4 col_5
-#>   <chr>         <int>   <dbl> <chr>          <int> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1 A                 1       1 a                  1     7    NA    NA    NA    NA
-#> 2 highlight…        2       3 highlig…           2     6     7    NA    NA    NA
-#> 3 also              3      27 also               3     6     6     7    NA    NA
-#> 4 called            4      35 called             4     6     6     6     7    NA
-#> 5 a                 5      47 a                  5     6     6     6     6     7
-#> 6 fluoresce…        6      49 fluores…           6     6     6     6     6     6
-#> # ℹ 2 more variables: collocation <chr>, Freq <dbl>
+#> # A tibble: 6 × 11
+#>   words  word_num to_merge word_number col_1 col_2 col_3 col_4 col_5 collocation
+#>   <chr>     <int> <chr>          <int> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>      
+#> 1 A             1 a                  1     7    NA    NA    NA    NA a highligh…
+#> 2 highl…        2 highlig…           2     6     7    NA    NA    NA highlighte…
+#> 3 also          3 also               3     6     6     7    NA    NA also calle…
+#> 4 called        4 called             4     6     6     6     7    NA called a f…
+#> 5 a             5 a                  5     6     6     6     6     7 a fluoresc…
+#> 6 fluor…        6 fluores…           6     6     6     6     6     6 fluorescen…
+#> # ℹ 1 more variable: Freq <dbl>
 ```
 
 These frequencies can be mapped back to the transcript document, then
