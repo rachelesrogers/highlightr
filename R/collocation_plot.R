@@ -4,8 +4,13 @@
 #'
 #' @param frequency_doc document of frequencies (returned from
 #' [collocation_frequency()])
-#' @param n_scenario number of scenarios for which this transcript appeared. Defualt is 1
 #' @param colors list for color specification for the gradient. Default is c("#f251fc","#f8ff1b")
+#' @param values column name of values to use in gradient calculation. Default is "Freq",
+#' corresponding to document returned from [collocation_frequency()]
+#' @param text column name corresponding to text to map the gradient to. Default is "words",
+#' corresponding to the document returned from [collocation_frequency()]
+#' @param order column name corresponding to the the word order of the text. Default
+#' is "word_num", corresponding to the document returned from [collocation_frequency()]
 #'
 #' @return list of plot, plot object, and frequency
 #' @export
@@ -17,17 +22,19 @@
 #' # Create a plot object to assign colors based on frequency
 #' freq_plot <- collocation_plot(merged_frequency)
 
-collocation_plot <- function(frequency_doc,n_scenario=1, colors=c("#f251fc","#f8ff1b")){
+collocation_plot <- function(frequency_doc, colors=c("#f251fc","#f8ff1b"), values="Freq",
+                             order="word_num", text="words"){
   `%>%` <- magrittr::`%>%`
-  x_coord <- words <- frequency <- NULL
-  frequency_doc[is.na(frequency_doc$Freq),]$Freq <- 0
-  xlimit<-max(frequency_doc$x_coord)+5
+   x_coord <- words <- frequency <- .data <- NULL
+  frequency_doc[is.na(frequency_doc[[values]]),][[values]] <- 0
+  xlimit<-max(frequency_doc[[order]])+5
 
-  #normalizing by number of scenarios
-  frequency_doc$frequency<- frequency_doc$Freq/n_scenario
+  frequency_doc$frequency<- frequency_doc[[values]]
+  frequency_doc$words <- frequency_doc[[text]]
+  frequency_doc$x_coord <- frequency_doc[[order]]
 
   #Using ggplot to establish gradient
-  p <- ggplot2::ggplot(frequency_doc, ggplot2::aes(x=x_coord, y=1, label=words))+
+  p <- ggplot2::ggplot(frequency_doc, ggplot2::aes(x=.data[[order]], y=1, label=.data[[text]]))+
     ggplot2::geom_text(hjust="left", size=5,
                        ggplot2::aes(alpha=frequency, color=frequency))+
     ggplot2::scale_y_reverse()+

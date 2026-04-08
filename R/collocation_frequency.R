@@ -78,7 +78,7 @@ collocation_frequency <- function(tbl, source_row, text_column,
                                   "words", "word_num", "word_length", "x_coord",
                                   "to_merge", "stanza_freq", "word_number"))
 
-  reduced_merged <- merged_final %>% dplyr::select(!c("Text", "lines", "n_words", "word_length", "stanza_freq"))
+  reduced_merged <- merged_final %>% dplyr::select(!c("Text", "lines", "n_words", "word_length", "stanza_freq", "x_coord"))
 
   return(reduced_merged)
 }

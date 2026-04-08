@@ -6,17 +6,26 @@
 \usage{
 collocation_plot(
   frequency_doc,
-  n_scenario = 1,
-  colors = c("#f251fc", "#f8ff1b")
+  colors = c("#f251fc", "#f8ff1b"),
+  values = "Freq",
+  order = "word_num",
+  text = "words"
 )
 }
 \arguments{
 \item{frequency_doc}{document of frequencies (returned from
 \code{\link[=collocation_frequency]{collocation_frequency()}})}
 
-\item{n_scenario}{number of scenarios for which this transcript appeared. Defualt is 1}
-
 \item{colors}{list for color specification for the gradient. Default is c("#f251fc","#f8ff1b")}
+
+\item{values}{column name of values to use in gradient calculation. Default is "Freq",
+corresponding to document returned from \code{\link[=collocation_frequency]{collocation_frequency()}}}
+
+\item{order}{column name corresponding to the the word order of the text. Default
+is "word_num", corresponding to the document returned from \code{\link[=collocation_frequency]{collocation_frequency()}}}
+
+\item{text}{column name corresponding to text to map the gradient to. Default is "words",
+corresponding to the document returned from \code{\link[=collocation_frequency]{collocation_frequency()}}}
 }
 \value{
 list of plot, plot object, and frequency
