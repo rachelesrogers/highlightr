@@ -7,7 +7,7 @@ test_that("size 2 collocation works", {
 
   frequency_test <- collocation_frequency(collocation_test, source_row=1, text_column="Notes", collocate_length=2)
 
-  expect_identical(dim(frequency_test), c(4L, 8L))
+  expect_identical(dim(frequency_test), c(4L, 7L))
 
   expect_identical(frequency_test$Freq, c(2,3,5,6))
 
@@ -19,7 +19,7 @@ test_that("removing html tags works", {
 
   frequency_test <- collocation_frequency(collocation_test, source_row=1, text_column="Notes", collocate_length=2)
 
-  expect_identical(dim(frequency_test), c(9L, 8L))
+  expect_identical(dim(frequency_test), c(9L, 7L))
 
   expect_identical(frequency_test$Freq, c(NaN, 2,NaN, NaN, 3,NaN, 5, NaN, 6))
 

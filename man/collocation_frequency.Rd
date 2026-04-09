@@ -12,7 +12,8 @@ collocation_frequency(
   fuzzy = FALSE,
   n_bands = 50,
   threshold = 0.7,
-  n_gram_width = 4
+  n_gram_width = 4,
+  band_width = 8
 )
 }
 \arguments{
@@ -32,6 +33,8 @@ row represents a document}
 \item{threshold}{Jaccard distance threshold to be considered a match passed to \code{zoomerjoin::jaccard_right_join()}. Default is 0.7}
 
 \item{n_gram_width}{width of n-grams used in Jaccard distance calculation passed to \code{zoomerjoin::jaccard_right_join()}. Default is 4}
+
+\item{band_width}{width of band used in MinHash algorithm passed to \code{zoomerjoin::jaccard_right_join()}. Default is 8}
 }
 \value{
 a dataframe of the transcript document with collocation values by word

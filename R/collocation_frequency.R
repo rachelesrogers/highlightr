@@ -23,6 +23,7 @@
 #' @param fuzzy whether or not to use fuzzy matching in collocation calculations
 #' @param collocate_length the length of the collocation. Default is 5
 #' @param n_bands number of bands used in MinHash algorithm passed to `zoomerjoin::jaccard_right_join()`. Default is 50
+#' @param band_width width of band used in MinHash algorithm passed to `zoomerjoin::jaccard_right_join()`. Default is 8
 #' @param threshold Jaccard distance threshold to be considered a match passed to `zoomerjoin::jaccard_right_join()`. Default is 0.7
 #' @param n_gram_width width of n-grams used in Jaccard distance calculation passed to `zoomerjoin::jaccard_right_join()`. Default is 4
 #'
@@ -35,7 +36,7 @@
 
 collocation_frequency <- function(tbl, source_row, text_column,
                                   collocate_length=5, fuzzy=FALSE, n_bands=50,
-                                  threshold=0.7, n_gram_width=4){
+                                  threshold=0.7, n_gram_width=4, band_width = 8){
 
   `%>%` <- magrittr::`%>%`
   transcript_token <- tokenize_source(tbl=tbl, source_row=source_row, text_column = text_column)
@@ -50,7 +51,8 @@ collocation_frequency <- function(tbl, source_row, text_column,
     collocate_object <-
       collocate_comments_fuzzy(transcript_token=transcript_token, note_token=note_token,
                                collocate_length=collocate_length, n_bands=n_bands,
-                               threshold=threshold, n_gram_width=n_gram_width)
+                               threshold=threshold, n_gram_width=n_gram_width,
+                               band_width=band_width)
   }else{
     collocate_object <-
       collocate_comments(transcript_token, note_token, collocate_length=collocate_length)
@@ -78,7 +80,7 @@ collocation_frequency <- function(tbl, source_row, text_column,
                                   "words", "word_num", "word_length", "x_coord",
                                   "to_merge", "stanza_freq", "word_number"))
 
-  reduced_merged <- merged_final %>% dplyr::select(!c("Text", "lines", "n_words", "word_length", "stanza_freq", "x_coord"))
+  reduced_merged <- merged_final %>% dplyr::select(!c("Text", "lines", "n_words", "word_length", "stanza_freq", "x_coord", "word_number"))
 
   return(reduced_merged)
 }
@@ -195,7 +197,7 @@ collocate_comments <- function(transcript_token, note_token, collocate_length=5)
 
 }
 
-collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_length=5, n_bands=50, threshold=0.7, n_gram_width=4){
+collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_length=5, n_bands=50, threshold=0.7, n_gram_width=4, band_width=8){
   collocation.y <- dist <- collocation.x <- weighted_count <- col_number <- word_number <-
     word_1 <- first_word <- collocation <- NULL
   `%>%` <- magrittr::`%>%`
@@ -228,7 +230,7 @@ collocate_comments_fuzzy <- function(transcript_token, note_token, collocate_len
 
   fuzzy_matches <- zoomerjoin::jaccard_right_join(descript_ngram_df, mismatches,
                                                   by='collocation', similarity_column="dist", n_bands=n_bands,
-                                                  threshold=threshold, n_gram_width=n_gram_width)%>%
+                                                  threshold=threshold, n_gram_width=n_gram_width, band_width=band_width)%>%
     dplyr::filter(!is.na(collocation.x)) %>%
     dplyr::group_by(collocation.y) %>%
     dplyr::slice_max(order_by=dist, n=1) #finding closest match based on Jaccard Distance

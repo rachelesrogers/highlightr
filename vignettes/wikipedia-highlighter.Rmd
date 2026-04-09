@@ -78,14 +78,14 @@ for (i in 1:dim(url_list)[1]){
 ```
 
 
-The previous versions are then compared to the current version's collocations with fuzzy matching in order to provide a count for the amount of times each collocation occurs (divided by the number of times the collocation occurs in the current version to account for duplications).
+The previous versions are then compared to the current version's collocations with fuzzy matching in order to provide a count for the amount of times each collocation occurs in edited documents (divided by the number of times the collocation occurs in the current version to account for duplications).
 
 ```{r}
 
 library(highlightr)
 # calculate frequencies with reference to source document (first row)
 merged_frequency <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
-                                    source_row = 1)
+                                    source_row = 1, fuzzy=TRUE)
 
 head(merged_frequency)
 ```
