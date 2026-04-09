@@ -25,3 +25,16 @@ test_that("dash check", {
 
   expect_identical(freq_plot$build$data[[1]]$label, c("This","-","is","a","-","test."))
 })
+
+test_that("renaming", {
+  collocation_test <- data.frame(writing = c("This", "is", "a",
+                                             "test"),
+                                 value = c(2,3,4,1),
+                                 number = 1:4)
+  freq_plot <- collocation_plot(collocation_test, values="value", order="number", text="writing")
+
+  col_output <- collocation_test
+  colnames(col_output) <- c("words", "frequency", "x_coord")
+  expect_identical(freq_plot$build$data[[1]]$label, c("This", "is", "a", "test"))
+  expect_identical(freq_plot$freq, col_output)
+})

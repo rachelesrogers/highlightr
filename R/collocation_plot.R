@@ -26,7 +26,8 @@ collocation_plot <- function(frequency_doc, colors=c("#f251fc","#f8ff1b"), value
                              order="word_num", text="words"){
   `%>%` <- magrittr::`%>%`
    x_coord <- words <- frequency <- .data <- NULL
-  frequency_doc[is.na(frequency_doc[[values]]),][[values]] <- 0
+   if (sum(is.na(frequency_doc[[values]])) >0){
+  frequency_doc[is.na(frequency_doc[[values]]),][[values]] <- 0}
   xlimit<-max(frequency_doc[[order]])+5
 
   frequency_doc$frequency<- frequency_doc[[values]]
