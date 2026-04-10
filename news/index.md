@@ -1,6 +1,6 @@
 # Changelog
 
-## highlightr (development version)
+## highlightr 2.0.0
 
 - [`collocation_plot()`](https://rachelesrogers.github.io/highlightr/reference/collocation_plot.md)
   updated to accept inputs not generated from
