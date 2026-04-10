@@ -179,26 +179,24 @@ frequencies are averaged per word.</p>
 <span><span class="co">#&gt; Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.</span></span>
 <span><span class="co">#&gt; Please consider changing `n_bands` and `band_width`.</span></span>
 <span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">merged_frequency</span><span class="op">)</span>, digits<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="7%">
-<col width="6%">
-<col width="7%">
+<col width="10%">
 <col width="9%">
-<col width="7%">
-<col width="7%">
+<col width="10%">
 <col width="6%">
 <col width="6%">
 <col width="6%">
-<col width="24%">
 <col width="6%">
+<col width="6%">
+<col width="33%">
+<col width="5%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">words</th>
 <th align="right">word_num</th>
 <th align="left">to_merge</th>
-<th align="right">word_number</th>
 <th align="right">col_1</th>
 <th align="right">col_2</th>
 <th align="right">col_3</th>
@@ -212,66 +210,61 @@ frequencies are averaged per word.</p>
 <td align="left">In</td>
 <td align="right">1</td>
 <td align="left">in</td>
-<td align="right">1</td>
-<td align="right">6.956522</td>
+<td align="right">6.96</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="left">in this case the defendant</td>
-<td align="right">6.956522</td>
+<td align="right">6.96</td>
 </tr>
 <tr class="even">
 <td align="left">this</td>
 <td align="right">2</td>
 <td align="left">this</td>
-<td align="right">2</td>
-<td align="right">7.000000</td>
-<td align="right">6.956522</td>
+<td align="right">7.00</td>
+<td align="right">6.96</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="left">this case the defendant richard</td>
-<td align="right">6.978261</td>
+<td align="right">6.98</td>
 </tr>
 <tr class="odd">
 <td align="left">case,</td>
 <td align="right">3</td>
 <td align="left">case</td>
-<td align="right">3</td>
-<td align="right">7.928571</td>
-<td align="right">7.000000</td>
-<td align="right">6.956522</td>
+<td align="right">7.93</td>
+<td align="right">7.00</td>
+<td align="right">6.96</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="left">case the defendant richard cole</td>
-<td align="right">7.295031</td>
+<td align="right">7.30</td>
 </tr>
 <tr class="even">
 <td align="left">the</td>
 <td align="right">4</td>
 <td align="left">the</td>
-<td align="right">4</td>
-<td align="right">10.000000</td>
-<td align="right">7.928571</td>
-<td align="right">7.000000</td>
-<td align="right">6.956522</td>
+<td align="right">10.00</td>
+<td align="right">7.93</td>
+<td align="right">7.00</td>
+<td align="right">6.96</td>
 <td align="right">NA</td>
 <td align="left">the defendant richard cole has</td>
-<td align="right">7.971273</td>
+<td align="right">7.97</td>
 </tr>
 <tr class="odd">
 <td align="left">defendant</td>
 <td align="right">5</td>
 <td align="left">defendant</td>
-<td align="right">5</td>
-<td align="right">10.000000</td>
-<td align="right">10.000000</td>
-<td align="right">7.928571</td>
-<td align="right">7.000000</td>
-<td align="right">6.956522</td>
+<td align="right">10.00</td>
+<td align="right">10.00</td>
+<td align="right">7.93</td>
+<td align="right">7.00</td>
+<td align="right">6.96</td>
 <td align="left">defendant richard cole has been</td>
-<td align="right">8.377019</td>
+<td align="right">8.38</td>
 </tr>
 <tr class="even">
 <td align="left">-</td>
@@ -282,21 +275,25 @@ frequencies are averaged per word.</p>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="right">NA</td>
 <td align="left">NA</td>
 <td align="right">NaN</td>
 </tr>
 </tbody>
 </table>
-<p>The output assigns the frequency of each collocation to each word
-that occurs in that collocation. For example, the first collocation in
-the description is “in this case the defendant”, which occurs with a
-frequency of 6.96. This is the only collocation in which the first word
-will appear, so this is the only collocation value provided for the
-first word. The second word, “this” appears in the next collocation as
-well: “this case the defendant richard”, whose frequency is 7, and so on
-for all words in the description. Collocations are weighted by the
-number of times they appear in the transcript text.</p>
+<p>The warning regarding the chance of comparisons for a threshold of
+0.7 is generated from <code><a href="https://beniaminogreen.github.io/zoomerjoin/reference/jaccard-joins.html" class="external-link">zoomerjoin::jaccard_right_join()</a></code>. If
+desired, <code>threshold</code>, <code>n_bands</code>, and
+<code>band_width</code> can be adjusted via corresponding values in
+<code><a href="../reference/collocation_frequency.html">collocation_frequency()</a></code>. The output assigns the frequency
+of each collocation to each word that occurs in that collocation. For
+example, the first collocation in the description is “in this case the
+defendant”, which occurs with a frequency of 6.96. This is the only
+collocation in which the first word will appear, so this is the only
+collocation value provided for the first word. The second word, “this”
+appears in the next collocation as well: “this case the defendant
+richard”, whose frequency is 7, and so on for all words in the
+description. Collocations are weighted by the number of times they
+appear in the transcript text.</p>
 <p>The combined document is then fed through ggplot to assign gradient
 colors based on frequency, and the minimum and maximum values are
 recorded.</p>
@@ -595,10 +592,13 @@ output as an html file, as shown in the following code:</p>
 <span><span class="co"># save html output to desired location</span></span>
 <span></span>
 <span><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/write_xml.html" class="external-link">write_html</a></span><span class="op">(</span><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html" class="external-link">read_html</a></span><span class="op">(</span><span class="va">page_highlight</span><span class="op">)</span>, <span class="st">"filename.html"</span><span class="op">)</span></span></code></pre></div>
-<p>In this case, the highlighting pattern resembles that when the fuzzy
-matches are included, but the maximum value reached is smaller. Note
-also that the colors used in highlighting can be changed in the “colors”
-argument of the <code>collocation_plot</code> function.</p>
+<p>Non-fuzzy matching can also be used by removing the
+<code>fuzzy=TRUE</code> argument. This will only include direct matches
+betweeen derivative documents and the parent document. In this case, the
+highlighting pattern resembles that when the fuzzy matches are included,
+but the maximum value reached is smaller. Note also that the colors used
+in highlighting can be changed in the “colors” argument of the
+<code>collocation_plot</code> function.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># connect collocation frequencies to source document</span></span>

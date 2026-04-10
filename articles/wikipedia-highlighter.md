@@ -68,28 +68,29 @@ for (i in 1:dim(url_list)[1]){
 
 The previous versions are then compared to the current version’s
 collocations with fuzzy matching in order to provide a count for the
-amount of times each collocation occurs (divided by the number of times
-the collocation occurs in the current version to account for
-duplications).
+amount of times each collocation occurs in edited documents (divided by
+the number of times the collocation occurs in the current version to
+account for duplications).
 
 ``` r
 
 library(highlightr)
 # calculate frequencies with reference to source document (first row)
 merged_frequency <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
-                                    source_row = 1)
+                                    source_row = 1, fuzzy=TRUE)
+#> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
+#> Please consider changing `n_bands` and `band_width`.
 
 head(merged_frequency)
-#> # A tibble: 6 × 11
-#>   words  word_num to_merge word_number col_1 col_2 col_3 col_4 col_5 collocation
-#>   <chr>     <int> <chr>          <int> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>      
-#> 1 A             1 a                  1     7    NA    NA    NA    NA a highligh…
-#> 2 highl…        2 highlig…           2     6     7    NA    NA    NA highlighte…
-#> 3 also          3 also               3     6     6     7    NA    NA also calle…
-#> 4 called        4 called             4     6     6     6     7    NA called a f…
-#> 5 a             5 a                  5     6     6     6     6     7 a fluoresc…
-#> 6 fluor…        6 fluores…           6     6     6     6     6     6 fluorescen…
-#> # ℹ 1 more variable: Freq <dbl>
+#> # A tibble: 6 × 10
+#>   words        word_num to_merge col_1 col_2 col_3 col_4 col_5 collocation  Freq
+#>   <chr>           <int> <chr>    <dbl> <dbl> <dbl> <dbl> <dbl> <chr>       <dbl>
+#> 1 A                   1 a         7    NA    NA    NA    NA    a highligh…  7   
+#> 2 highlighter,        2 highlig…  6.74  7    NA    NA    NA    highlighte…  6.87
+#> 3 also                3 also      6     6.74  7    NA    NA    also calle…  6.58
+#> 4 called              4 called    6     6     6.74  7    NA    called a f…  6.44
+#> 5 a                   5 a         6     6     6     6.74  7    a fluoresc…  6.35
+#> 6 fluorescent         6 fluores…  6     6     6     6     6.74 fluorescen…  6.15
 ```
 
 These frequencies can be mapped back to the transcript document, then
@@ -109,7 +110,7 @@ page_highlight <- highlighted_text(freq_plot, labels=c("(fewest articles)", "(mo
 
 (fewest articles) 0
 
-260 (most articles)
+274 (most articles)
 
 A 
 

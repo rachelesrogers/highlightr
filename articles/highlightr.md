@@ -76,18 +76,24 @@ merged_frequency <- collocation_frequency(notepad_example, source_row=which(note
 #> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
 #> Please consider changing `n_bands` and `band_width`.
 
-knitr::kable(head(merged_frequency))
+knitr::kable(head(merged_frequency), digits=2)
 ```
 
-| words     | word_num | to_merge  | word_number |     col_1 |     col_2 |    col_3 |    col_4 |    col_5 | collocation                     |     Freq |
-|:----------|---------:|:----------|------------:|----------:|----------:|---------:|---------:|---------:|:--------------------------------|---------:|
-| In        |        1 | in        |           1 |  6.956522 |        NA |       NA |       NA |       NA | in this case the defendant      | 6.956522 |
-| this      |        2 | this      |           2 |  7.000000 |  6.956522 |       NA |       NA |       NA | this case the defendant richard | 6.978261 |
-| case,     |        3 | case      |           3 |  7.928571 |  7.000000 | 6.956522 |       NA |       NA | case the defendant richard cole | 7.295031 |
-| the       |        4 | the       |           4 | 10.000000 |  7.928571 | 7.000000 | 6.956522 |       NA | the defendant richard cole has  | 7.971273 |
-| defendant |        5 | defendant |           5 | 10.000000 | 10.000000 | 7.928571 | 7.000000 | 6.956522 | defendant richard cole has been | 8.377019 |
-| \-        |        6 |           |          NA |        NA |        NA |       NA |       NA |       NA | NA                              |      NaN |
+| words     | word_num | to_merge  | col_1 | col_2 | col_3 | col_4 | col_5 | collocation                     | Freq |
+|:----------|---------:|:----------|------:|------:|------:|------:|------:|:--------------------------------|-----:|
+| In        |        1 | in        |  6.96 |    NA |    NA |    NA |    NA | in this case the defendant      | 6.96 |
+| this      |        2 | this      |  7.00 |  6.96 |    NA |    NA |    NA | this case the defendant richard | 6.98 |
+| case,     |        3 | case      |  7.93 |  7.00 |  6.96 |    NA |    NA | case the defendant richard cole | 7.30 |
+| the       |        4 | the       | 10.00 |  7.93 |  7.00 |  6.96 |    NA | the defendant richard cole has  | 7.97 |
+| defendant |        5 | defendant | 10.00 | 10.00 |  7.93 |  7.00 |  6.96 | defendant richard cole has been | 8.38 |
+| \-        |        6 |           |    NA |    NA |    NA |    NA |    NA | NA                              |  NaN |
 
+The warning regarding the chance of comparisons for a threshold of 0.7
+is generated from
+[`zoomerjoin::jaccard_right_join()`](https://beniaminogreen.github.io/zoomerjoin/reference/jaccard-joins.html).
+If desired, `threshold`, `n_bands`, and `band_width` can be adjusted via
+corresponding values in
+[`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md).
 The output assigns the frequency of each collocation to each word that
 occurs in that collocation. For example, the first collocation in the
 description is “in this case the defendant”, which occurs with a
@@ -271,10 +277,13 @@ library(xml2)
 xml2::write_html(xml2::read_html(page_highlight), "filename.html")
 ```
 
-In this case, the highlighting pattern resembles that when the fuzzy
-matches are included, but the maximum value reached is smaller. Note
-also that the colors used in highlighting can be changed in the “colors”
-argument of the `collocation_plot` function.
+Non-fuzzy matching can also be used by removing the `fuzzy=TRUE`
+argument. This will only include direct matches betweeen derivative
+documents and the parent document. In this case, the highlighting
+pattern resembles that when the fuzzy matches are included, but the
+maximum value reached is smaller. Note also that the colors used in
+highlighting can be changed in the “colors” argument of the
+`collocation_plot` function.
 
 ``` r
 
