@@ -1,4 +1,4 @@
-# highlightr (development version)
+# highlightr 2.0.0
 
 * `collocation_plot()` updated to accept inputs not generated from `collocation_frequency()`
 
