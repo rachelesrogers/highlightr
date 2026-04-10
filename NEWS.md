@@ -1,11 +1,13 @@
 # highlightr (development version)
 
-* Updating collocation_plot() to accept inputs not generated from collocation_frequency()
+* `collocation_plot()` updated to accept inputs not generated from `collocation_frequency()`
 
-* Restructuring function format so that only collocation_frequency() (formerly transcript_frequency()), 
-collocation_plot(), and highlighted_text() are user-facing
+* `collocation_frequency()` (formerly transcript_frequency()) restructured to be main input,
 
-* Updating transcript_frequency() to appropriately recognize "+","=", ".extension"
+* `collocate_comments()`, `collocate_comments_fuzzy()`, `tokenize_source()`, 
+and `tokenize_derivative()` are now internal functions
+
+*`transcript_frequency()` updated to appropriately recognize "+","=", ".extension"
 
 # highlightr 1.2.0
 
