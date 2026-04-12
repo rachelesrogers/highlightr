@@ -2,6 +2,8 @@
 
 ## highlightr 2.0.0
 
+CRAN release: 2026-04-10
+
 - [`collocation_plot()`](https://rachelesrogers.github.io/highlightr/reference/collocation_plot.md)
   updated to accept inputs not generated from
   [`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)

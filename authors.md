@@ -14,7 +14,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/rachelesrogers/highlightr/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/rachelesrogers/highlightr/blob/v2.0.0/DESCRIPTION)
 
 Center for Statistics and Applications in Forensic Evidence, Rogers R,
 VanderPlas S (2026). *highlightr: Highlight Conserved Edits Across
