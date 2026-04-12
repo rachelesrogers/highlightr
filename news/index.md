@@ -1,5 +1,7 @@
 # Changelog
 
+## highlightr (development version)
+
 ## highlightr 2.0.0
 
 CRAN release: 2026-04-10
