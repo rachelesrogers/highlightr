@@ -297,6 +297,7 @@ tokenize_source <- function(tbl, source_row, text_column){
   description_df <- stringi::stri_trans_general(description_df, "latin-ascii")
   description_df <- gsub("\\$", " ", description_df) #removing dollar sign
   description_df <- gsub("-", " ", description_df) #removing dash with space
+  description_df <- gsub("_", "", description_df) #removing underscore
   description_df <- gsub(":", "", description_df) #removing colon without space
   description_df <- gsub("([[:alnum:]])(\\.)([[:alnum:]])","\\1\\3", description_df) #removing period between characters
   description_df <- gsub("([[:alnum:]])(,)([[:alnum:]])","\\1\\3", description_df) #removing comma between characters
@@ -320,6 +321,7 @@ tokenize_derivative <- function(tbl, source_row, text_column){
   comment_df <- purrr::map_df(comment_df, ~ gsub("\\$", " ", .x))
   comment_df <- purrr::map_df(comment_df, ~stringi::stri_trans_general(.x, "latin-ascii"))
   comment_df <- purrr::map_df(comment_df, ~ gsub("-", " ", .x)) #removing dash with space
+  comment_df <- purrr::map_df(comment_df, ~ gsub("_", "", .x)) #removing underscore
   comment_df <- purrr::map_df(comment_df, ~ gsub(":", "", .x)) #removing colon without space
   comment_df <- purrr::map_df(comment_df, ~ gsub("([[:alnum:]])(\\.)([[:alnum:]])","\\1\\3", .x)) #removing period between characters
   comment_df <- purrr::map_df(comment_df, ~ gsub("([[:alnum:]])(,)([[:alnum:]])","\\1\\3", .x)) #removing comma between characters

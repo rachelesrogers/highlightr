@@ -13,6 +13,18 @@ test_that("size 2 collocation works", {
 
 })
 
+test_that("consistent treatment of underscore", {
+  collocation_test <- data.frame(ID = c("source", 1:4),
+                                 Notes = c("This is function_name.", "this is functionname", "this is function_name", "this is function_name", "this is functionname"))
+
+  frequency_test <- collocation_frequency(collocation_test, source_row=1, text_column="Notes", collocate_length=2)
+
+  expect_identical(dim(frequency_test), c(3L, 7L))
+
+  expect_identical(frequency_test$Freq, c(4,4,4))
+
+})
+
 test_that("removing html tags works", {
   collocation_test <- data.frame(ID = c("source",1:6),
                                  Notes = c("<i>This </i> <b>is</b> a<br> test.", "this is a test", "this is a test", "is a test", "is a test", "a test", "a test"))
