@@ -2,6 +2,9 @@
 
 ## highlightr (development version)
 
+- [`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)
+  updated to appropriately recognize “\_”
+
 ## highlightr 2.0.0
 
 CRAN release: 2026-04-10
