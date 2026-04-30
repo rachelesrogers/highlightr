@@ -2,6 +2,8 @@
 
 ## highlightr (development version)
 
+- [`highlighted_text()`](https://rachelesrogers.github.io/highlightr/reference/highlighted_text.md)
+  updated to appropriately recognize “&”
 - [`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)
   updated to appropriately recognize “\_”
 
