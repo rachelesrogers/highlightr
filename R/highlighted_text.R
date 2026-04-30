@@ -31,7 +31,7 @@ highlighted_text <- function(plot_object, labels=c("","")){
 
   page_df$cleancolor <- gsub("#","",page_df$colour)
 
-  page_df$nonmissing_val <- !(grepl("<.*?>",page_df$label)) & !(page_df$label %in% "-")
+  page_df$nonmissing_val <- !(grepl("<.*?>",page_df$label)) & !(page_df$label %in% "-") & !(page_df$label %in% "&")
 
   page_df$rgb <- NA
   page_df$color_def <- NA
@@ -49,7 +49,7 @@ highlighted_text <- function(plot_object, labels=c("","")){
       first_word <- "No"
     }else {
       previous_color <- max(which(page_df$nonmissing_val)[which(page_df$nonmissing_val)<i])
-      if (page_df$label[i] =="-"){
+      if (page_df$label[i] =="-" | page_df$label[i] =="&"){
       next_color <- min(which(page_df$nonmissing_val)[which(page_df$nonmissing_val)>i])
       page_df$word_assign[i] <- paste("<div style=\"display: inline-block; padding:0px;
   margin-left:-5px; background-color: ",page_df$colour[previous_color]," \">",page_df$label[i],"&nbsp;","</div>", sep="")

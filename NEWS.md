@@ -1,5 +1,6 @@
 # highlightr (development version)
 
+* `highlighted_text()` updated to appropriately recognize "&"
 * `collocation_frequency()` updated to appropriately recognize "_"
 
 # highlightr 2.0.0
