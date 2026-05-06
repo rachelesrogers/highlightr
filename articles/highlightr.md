@@ -14,6 +14,7 @@ first six observations are shown below.
 
 ``` r
 
+
 # load the library
 library(highlightr)
 library(knitr)
@@ -22,14 +23,14 @@ library(knitr)
 knitr::kable(head(notepad_example))
 ```
 
-| ID  | Text                                                                                                                                               |
-|:----|:---------------------------------------------------------------------------------------------------------------------------------------------------|
-| 121 | Richard Cole - charged with discharging firearm in business. // felony . NOT GUILTY.                                                               |
-| 197 | Richard Cole - Def: Willfully discarge firearm in biz - Felony. Pleaded NG                                                                         |
-| 168 | willfully discharging firearm in a business - felony. not guilty                                                                                   |
-| 131 | discharged firearm in business, intentionally                                                                                                      |
-| 77  | In this case, the defendant - Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony. |
-| 24  | defendant - Richard Cole discharging a firearm in a place of business. pleaded not guilty.                                                         |
+| ID | Text |
+|:---|:---|
+| 121 | Richard Cole - charged with discharging firearm in business. // felony . NOT GUILTY. |
+| 197 | Richard Cole - Def: Willfully discarge firearm in biz - Felony. Pleaded NG |
+| 168 | willfully discharging firearm in a business - felony. not guilty |
+| 131 | discharged firearm in business, intentionally |
+| 77 | In this case, the defendant - Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony. |
+| 24 | defendant - Richard Cole discharging a firearm in a place of business. pleaded not guilty. |
 
 Additionally, the source document (or study transcript) is included in
 `notepad_example` with an ID of ‘source’. The original transcript is
@@ -37,13 +38,14 @@ shown here:
 
 ``` r
 
+
 study_transcript <- notepad_example[notepad_example$ID == "source",]$Text
 
 knitr::kable(study_transcript)
 ```
 
-| x                                                                                                                                                                                                                                                                                                                                                           |
-|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| x |
+|:---|
 | In this case, the defendant - Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony. Mr. Cole has pleaded not guilty to the charge. You will now read a summary of the case. This summary was prepared by an objective court clerk. It describes select evidence that was presented at trial. |
 
   
@@ -54,14 +56,16 @@ texts, or participant notes on the case. Fuzzy (or indirect) matches are
 then added to the frequency count of the source collocation that is the
 closest match. These fuzzy matches are weighted based on the edit
 distance between the source collocation and the indirect phrase:
-$$\frac{n*d}{m}$$
+``` math
+\frac{n*d}{m}
+```
 
-Here, $n$ is the frequency of the fuzzy collocation, $d$ is the Jaccard
-similarity between the fuzzy collocation and the source collocation
-(ranging from 0 to 1, where 1 indicates identical strings), and $m$ is
-the number of closest matches for the fuzzy collocation. The total count
-is divided by the number of times a collocation occurs in the source
-document.
+Here, $`n`$ is the frequency of the fuzzy collocation, $`d`$ is the
+Jaccard similarity between the fuzzy collocation and the source
+collocation (ranging from 0 to 1, where 1 indicates identical strings),
+and $`m`$ is the number of closest matches for the fuzzy collocation.
+The total count is divided by the number of times a collocation occurs
+in the source document.
 
 The
 [`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)
@@ -70,30 +74,46 @@ transcript. The collocation frequencies are averaged per word.
 
 ``` r
 
+
 # connect collocation frequencies to source document
 
 merged_frequency <- collocation_frequency(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text", fuzzy=TRUE)
 #> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
 #> Please consider changing `n_bands` and `band_width`.
+```
+
+The warning regarding the chance of comparisons for a threshold of 0.7
+is generated from
+[`zoomerjoin::jaccard_right_join()`](https://rdrr.io/pkg/zoomerjoin/man/jaccard-joins.html).
+If desired, `threshold`, `n_bands`, and `band_width` can be adjusted via
+corresponding values in
+[`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md).
+These three arguments are passed to their corresponding arguments in
+[`zoomerjoin::jaccard_right_join()`](https://rdrr.io/pkg/zoomerjoin/man/jaccard-joins.html).
+The `threshold` indicates the Jaccard similarity value necessary to be
+considered a match, while `n_bands` is the number of bands used in the
+MinHash algorithm, and `band_width` is the width of the band used in the
+MinHash algorithm. Updating the number of bands eliminates this warning.
+
+``` r
+
+
+# connect collocation frequencies to source document
+
+merged_frequency <- collocation_frequency(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text", fuzzy=TRUE, n_bands=100)
 
 knitr::kable(head(merged_frequency), digits=2)
 ```
 
-| words     | word_num | to_merge  | col_1 | col_2 | col_3 | col_4 | col_5 | collocation                     | Freq |
-|:----------|---------:|:----------|------:|------:|------:|------:|------:|:--------------------------------|-----:|
-| In        |        1 | in        |  6.96 |    NA |    NA |    NA |    NA | in this case the defendant      | 6.96 |
-| this      |        2 | this      |  7.00 |  6.96 |    NA |    NA |    NA | this case the defendant richard | 6.98 |
-| case,     |        3 | case      |  7.93 |  7.00 |  6.96 |    NA |    NA | case the defendant richard cole | 7.30 |
-| the       |        4 | the       | 10.00 |  7.93 |  7.00 |  6.96 |    NA | the defendant richard cole has  | 7.97 |
-| defendant |        5 | defendant | 10.00 | 10.00 |  7.93 |  7.00 |  6.96 | defendant richard cole has been | 8.38 |
-| \-        |        6 |           |    NA |    NA |    NA |    NA |    NA | NA                              |  NaN |
+| words | word_num | to_merge | col_1 | col_2 | col_3 | col_4 | col_5 | collocation | Freq |
+|:---|---:|:---|---:|---:|---:|---:|---:|:---|---:|
+| In | 1 | in | 6.96 | NA | NA | NA | NA | in this case the defendant | 6.96 |
+| this | 2 | this | 7.00 | 6.96 | NA | NA | NA | this case the defendant richard | 6.98 |
+| case, | 3 | case | 7.93 | 7.00 | 6.96 | NA | NA | case the defendant richard cole | 7.30 |
+| the | 4 | the | 10.00 | 7.93 | 7.00 | 6.96 | NA | the defendant richard cole has | 7.97 |
+| defendant | 5 | defendant | 10.00 | 10.00 | 7.93 | 7.00 | 6.96 | defendant richard cole has been | 8.38 |
+| \- | 6 |  | NA | NA | NA | NA | NA | NA | NaN |
 
-The warning regarding the chance of comparisons for a threshold of 0.7
-is generated from
-[`zoomerjoin::jaccard_right_join()`](https://beniaminogreen.github.io/zoomerjoin/reference/jaccard-joins.html).
-If desired, `threshold`, `n_bands`, and `band_width` can be adjusted via
-corresponding values in
-[`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md).
 The output assigns the frequency of each collocation to each word that
 occurs in that collocation. For example, the first collocation in the
 description is “in this case the defendant”, which occurs with a
@@ -110,12 +130,14 @@ recorded.
 
 ``` r
 
+
 # create `ggplot` object of the transcript
 
 freq_plot <- collocation_plot(merged_frequency)
 ```
 
 ``` r
+
 
 # add html tags to source document
 
@@ -268,6 +290,7 @@ html file, as shown in the following code:
 
 ``` r
 
+
 # load `xml2` library
 
 library(xml2)
@@ -286,6 +309,7 @@ highlighting can be changed in the “colors” argument of the
 `collocation_plot` function.
 
 ``` r
+
 
 # connect collocation frequencies to source document
 
@@ -440,6 +464,7 @@ In these shorter collocations, we can see that the collocation
 containing the name “Richard Cole” is popular, with a frequency of 89.
 
 ``` r
+
 
 # connect collocation frequencies to source document
 

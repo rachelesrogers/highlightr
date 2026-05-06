@@ -10,6 +10,7 @@ follows:
 
 ``` r
 
+
 library(rvest)
 library(dplyr)
 library(purrr)
@@ -74,12 +75,11 @@ account for duplications).
 
 ``` r
 
+
 library(highlightr)
 # calculate frequencies with reference to source document (first row)
 merged_frequency <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
-                                    source_row = 1, fuzzy=TRUE)
-#> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
-#> Please consider changing `n_bands` and `band_width`.
+                                    source_row = 1, fuzzy=TRUE, n_bands=75)
 
 head(merged_frequency)
 #> # A tibble: 6 × 10
@@ -101,6 +101,7 @@ chunk and knitting to HTML. Note that the “labels” argument can be used
 to add additional labels to the gradient key.
 
 ``` r
+
 # create a ggplot object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
 
@@ -1085,11 +1086,10 @@ dataset as the transcript reference to view which text has been changed:
 
 ``` r
 
+
 # calculate frequencies with reference to source document (last row)
 merged_frequency2 <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
-                                    source_row = nrow(wiki_pages), fuzzy=TRUE)
-#> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
-#> Please consider changing `n_bands` and `band_width`.
+                                    source_row = nrow(wiki_pages), fuzzy=TRUE, n_bands=75)
 
 # create a gpplot object of the transcript
 freq_plot2 <- collocation_plot(merged_frequency2)

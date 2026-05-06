@@ -23,6 +23,7 @@ Swarthmore College and University of Nebraska, Lincoln.
 You can install from CRAN with:
 
 ``` r
+
 install.packages("highlightr")
 ```
 
@@ -30,6 +31,7 @@ You can install the development version of highlightr from
 [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("rachelesrogers/highlightr")
 ```
@@ -37,6 +39,7 @@ devtools::install_github("rachelesrogers/highlightr")
 ## Example
 
 ``` r
+
 # load library
 library(highlightr)
 
@@ -53,6 +56,7 @@ page_highlight <- highlighted_text(freq_plot)
 ```
 
 ``` r
+
 page_highlight
 ```
 
@@ -65,6 +69,7 @@ Alternatively, the `xml2` package can be used to save the output as an
 html file, as shown in the following code:
 
 ``` r
+
 
 # load `xml2` library
 
