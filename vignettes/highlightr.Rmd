@@ -65,10 +65,22 @@ The collocation frequencies are averaged per word.
 
 merged_frequency <- collocation_frequency(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text", fuzzy=TRUE)
 
-knitr::kable(head(merged_frequency), digits=2)
 ```
 The warning regarding the chance of comparisons for a threshold of 0.7 is generated from `zoomerjoin::jaccard_right_join()`.
 If desired, `threshold`, `n_bands`, and `band_width` can be adjusted via corresponding values in `collocation_frequency()`.
+These three arguments are passed to their corresponding arguments in `zoomerjoin::jaccard_right_join()`.
+The `threshold` indicates the Jaccard similarity value necessary to be considered a match, while `n_bands` is the number of bands used in the MinHash algorithm, and `band_width` is the width of the band used in the MinHash algorithm.
+Updating the number of bands eliminates this warning.
+
+```{r}
+
+# connect collocation frequencies to source document
+
+merged_frequency <- collocation_frequency(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text", fuzzy=TRUE, n_bands=100)
+
+knitr::kable(head(merged_frequency), digits=2)
+```
+
 The output assigns the frequency of each collocation to each word that occurs in that collocation. 
 For example, the first collocation in the description is “in this case the defendant”, which occurs with a frequency of 6.96. 
 This is the only collocation in which the first word will appear, so this is the only collocation value provided for the first word. 

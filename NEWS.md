@@ -1,5 +1,7 @@
 # highlightr (development version)
 
+* `collocation_frequency()` arguments of `n_bands`, and `band_width` described in 
+highlightr vignette
 * `highlighted_text()` updated to appropriately recognize "&"
 * `collocation_frequency()` updated to appropriately recognize "_"
 

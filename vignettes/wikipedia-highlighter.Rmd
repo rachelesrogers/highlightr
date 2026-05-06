@@ -85,7 +85,7 @@ The previous versions are then compared to the current version's collocations wi
 library(highlightr)
 # calculate frequencies with reference to source document (first row)
 merged_frequency <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
-                                    source_row = 1, fuzzy=TRUE)
+                                    source_row = 1, fuzzy=TRUE, n_bands=75)
 
 head(merged_frequency)
 ```
@@ -117,7 +117,7 @@ We could also use the oldest version of the Highlighter article in the dataset a
 
 # calculate frequencies with reference to source document (last row)
 merged_frequency2 <- collocation_frequency(highlightr::wiki_pages, text_column = "page_notes",
-                                    source_row = nrow(wiki_pages), fuzzy=TRUE)
+                                    source_row = nrow(wiki_pages), fuzzy=TRUE, n_bands=75)
 
 # create a gpplot object of the transcript
 freq_plot2 <- collocation_plot(merged_frequency2)
