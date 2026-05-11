@@ -1,4 +1,4 @@
-# highlightr (development version)
+# highlightr 2.0.1
 
 * `collocation_frequency()` arguments of `n_bands`, and `band_width` described in 
 highlightr vignette
