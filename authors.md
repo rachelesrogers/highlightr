@@ -14,17 +14,17 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/rachelesrogers/highlightr/blob/v2.0.1/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/rachelesrogers/highlightr/blob/main/DESCRIPTION)
 
 Center for Statistics and Applications in Forensic Evidence, Rogers R,
 VanderPlas S (2026). *highlightr: Highlight Conserved Edits Across
-Versions of a Document*. R package version 2.0.1,
+Versions of a Document*. R package version 2.0.1.9000,
 <https://rachelesrogers.github.io/highlightr/>.
 
     @Manual{,
       title = {highlightr: Highlight Conserved Edits Across Versions of a Document},
       author = {{Center for Statistics and Applications in Forensic Evidence} and Rachel Rogers and Susan VanderPlas},
       year = {2026},
-      note = {R package version 2.0.1},
+      note = {R package version 2.0.1.9000},
       url = {https://rachelesrogers.github.io/highlightr/},
     }

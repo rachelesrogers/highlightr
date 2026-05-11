@@ -1,5 +1,7 @@
 # Changelog
 
+## highlightr (development version)
+
 ## highlightr 2.0.1
 
 - [`collocation_frequency()`](https://rachelesrogers.github.io/highlightr/reference/collocation_frequency.md)
