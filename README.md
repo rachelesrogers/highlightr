@@ -50,9 +50,8 @@ devtools::install_github("rachelesrogers/highlightr")
 library(highlightr)
 
 # connect collocation frequencies to source document
-merged_frequency <- collocation_frequency(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text", fuzzy=TRUE)
-#> Warning in join_func(a = a, b = b, by_a = by_a, by_b = by_b, block_by_a = block_by_a, : A pair of records at the threshold (0.7) have only a 95% chance of being compared.
-#> Please consider changing `n_bands` and `band_width`.
+merged_frequency <- collocation_frequency(notepad_example, source_row=which(notepad_example$ID=="source"), text_column = "Text", fuzzy=TRUE,
+                                          n_bands=100)
 
 # create `ggplot` object of the transcript
 freq_plot <- collocation_plot(merged_frequency)
